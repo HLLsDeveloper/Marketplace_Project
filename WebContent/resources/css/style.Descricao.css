@@ -1,0 +1,7 @@
+label input:checked + span {
+  color: white;
+  background-color: #343a40;
+  background-image: none;
+  border-color: #343a40;
+  border-radius: 4px;
+}
