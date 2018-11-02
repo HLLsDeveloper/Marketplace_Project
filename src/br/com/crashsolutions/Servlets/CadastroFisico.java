@@ -83,6 +83,6 @@ public class CadastroFisico extends HttpServlet {
 			System.out.println("Erro no CadastroFisico: "+ ex);
 		}
 	    // EXIBI A TELA JSP
-	    request.getRequestDispatcher("CadastroFisico.jsp").forward(request, response);
+	    response.sendRedirect("http://localhost:8080/TShirtGames/CadastroFisico.jsp");
 	}
 }
