@@ -27,31 +27,38 @@
 <!-- NAVBAR -->
 <c:import url="resources/template/nav.jsp"/>
 
-	<section id="form_login" class="container">
-        <div class="col-lg-12 offset-lg-2">
+	<section id="form_login" class="header-site py-5">
+	 <div class="container ">
+	
+        <div class="col-md-8 mx-auto ">
            <!-- INICIO DO FORMULÁRIO -->
            <form>
-                <div class="row">
-                	<h2 class="text-center col-8 mb-5">Login:</h2>
+            <div class="card">
+                <div class="">
+                	<h2 class="text-center ">Login:</h2>
                     <div class="col-lg-8 mx-auto" >
-                        <div class="form-group col-md-6">
+                        <div class="form-group ">
                             <label for="login_email">Email:</label>
                             <input type="email" class="form-control" name="email" id="login_email" aria-describedby="login_email_ajuda" placeholder="" required>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group ">
                             <label for="login_senha">Senha do seu usuário</label>
                             <input type="password" class="form-control" id="login_senha" name="senha" placeholder="" required>
                             <small id="login_email_ajuda" class="form-text text-muted">Nunca compartilharemos.</small>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group ">
 	                        <button id="login_button" type="submit" formaction="Login" formmethod="post" class="btn btn-primary btn-lg btn-block mt-5 color-btn">Continuar</button>
 	                        <hr>
 	                        <p class="text-center cadastrar">Não tem cadastro?<a href="CadastroFisico.jsp">Cadastre-se</a></p>
                         </div>
                     </div>
                 </div>
+                   </div>
             </form>
         </div>
+       </div>
+       
+    
     </section>
     
     <!-- MODAL PARA MOSTRAR SE FOI ADICIONADO NO CARRINHO OU NÃO -->
