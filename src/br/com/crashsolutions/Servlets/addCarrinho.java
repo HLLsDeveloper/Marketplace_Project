@@ -53,9 +53,9 @@ public class addCarrinho extends HttpServlet {
 			//Pega o carrinho atual e se prepara para adicionar o próximo produto
 			if(sessao.getAttribute("carrinho") != null) {
 				
-				ArrayList<ProdutoSG> teste = (ArrayList<ProdutoSG>) sessao.getAttribute("carrinho");	
+				ArrayList<ProdutoSG> carrinhoSessao = (ArrayList<ProdutoSG>) sessao.getAttribute("carrinho");
 				
-				for(ProdutoSG sg: teste) {
+				for(ProdutoSG sg: carrinhoSessao) {
 					
 					sg.getIdproduto();
 					sg.getProduto();
@@ -89,7 +89,8 @@ public class addCarrinho extends HttpServlet {
 					produtosg.setValor_venda(valor);
 					carrinho.AdicionarCarrinho(produtosg);
 					
-					ArrayList<ProdutoSG> carrinhoSessao = carrinho.MostrarCarrinho();
+					carrinhoSessao = carrinho.MostrarCarrinho();
+					
 					sessao.setAttribute("carrinho", carrinhoSessao);
 					
 					request.setAttribute("mensagem", "Produto adicionado no carrinho com sucesso!");

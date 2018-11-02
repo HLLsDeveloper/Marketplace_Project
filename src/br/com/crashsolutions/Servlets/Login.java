@@ -36,6 +36,7 @@ public class Login extends HttpServlet {
 			
 			String email = request.getParameter("email");
 			String senha = request.getParameter("senha");
+			String url = null;
 			
 			ConexaoLogin conexaologin = new ConexaoLogin();
 			Boolean acesso = conexaologin.LoginFisico(email, senha);
@@ -56,7 +57,17 @@ public class Login extends HttpServlet {
 				sessao.setAttribute("sexo", fisico.getSexo());
 				sessao.setAttribute("telefone", fisico.getTelefone());
 				sessao.setAttribute("celular", fisico.getCelular());
-				response.sendRedirect("http://localhost:8080/TShirtGames/Home");
+				
+				if(sessao.getAttribute("url") != null) {
+					url = (String) sessao.getAttribute("url");
+					sessao.removeAttribute("url");
+				}
+				if (url != null) {
+					response.sendRedirect(url);
+				}
+				else {
+					response.sendRedirect("http://localhost:8080/TShirtGames/Home");
+				}
 			}
 			else {
 				

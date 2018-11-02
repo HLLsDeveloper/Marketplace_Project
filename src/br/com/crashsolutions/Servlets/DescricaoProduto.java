@@ -39,7 +39,7 @@ public class DescricaoProduto extends HttpServlet {
 			Integer referencia = Integer.parseInt(request.getParameter("referencia"));
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("validaID", id);
+			session.setAttribute("url", request.getRequestURI()+"?id="+id+"&referencia="+referencia);
 			
 			ProdutoDAO pdao = new ProdutoDAO();
 			FornecedorDAO fdao = new FornecedorDAO();
