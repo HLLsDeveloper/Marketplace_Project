@@ -208,11 +208,12 @@ public class ProdutoDAO {
 				retornoLista.setReferencia(listaConsulta.getInt("referencia"));
 				retornoLista.setCondicao(listaConsulta.getString("condicao"));
 				
-				if(referencia == listaConsulta.getInt("referencia")) {
-					
-					listartodos.add(retornoLista);
+				// VERIFICA SE A MAIS DE UM PRODUTO COM A REFERENCIA E ADICIONA APENAS UM
+				if(referencia != listaConsulta.getInt("referencia")) {
 					referencia = listaConsulta.getInt("referencia");
+					listartodos.add(retornoLista);					
 				}
+				
 			}
 			stmListaConsulta.close();
 			con.close();

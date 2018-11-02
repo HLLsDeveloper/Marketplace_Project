@@ -13,13 +13,18 @@
 <script src="resources/js/jquery/bootstrap.min.js"></script>
 </head>
 <body>
+
 <c:import url="resources/template/nav.jsp"/>
+
 <div class="header-site">
-  <div class="container">
+  <div class="container ">
   	<div class="content-wrapper p-4 mx-5">
     <div class="container-fluid">
       <div class="card">
-        <div class="card-header"><i class="fa fa-table"></i>Carrinho.</div>
+        <div class="card-header"><i class="fa fa-table"></i>Carrinho</div>
+        
+        
+        <!-- tabela do carrinho -->
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable">
@@ -52,17 +57,49 @@
             </table>
           </div>
         </div>
+
+				            <!--RODAPE CARRINHO-->
+        <div class="card-footer  small text-muted ">
+                <div  class="container-fluid ">
+               		 <div class="row">
+               		 	<div class="col-xs-6 ">Produto(s)</div>
+                		<div class="col-xs-6 ">1</div>
+                	</div>
+               		 <div class="row">
+	                	<div class="col-xs-6">Valor</div>
+		                <input type='hidden'  value='' />
+		                <div class="col-xs-6">R$ 724,50</div>
+	                </div>
+               		 <div class="row">
+		                <div class="col-xs-6">Frete</div>
+		                <div class="col-xs-6" id='divValorFreteCarrinho'>A calcular</div>
+	                </div>
+               		 <div class="row">
+		                <div class="col-xs-6">Peso</div>
+		                <div class="col-xs-6">4,420</div>
+	                </div>
+	                <div class="row primary-color">
+		                <div class="col-xs-6">Total</div>
+		                <div class="col-xs-6" id='divValorTotalGeralCarrinho'>R$ 724,50</div>
+	                </div>
+                </div>
+            </div>
+
+            <!--FIM RODAPE CARRINHO-->
+            
         <div class="card-footer small text-muted">
         <form>
         		<button type="submit" data-toggle="modal" data-target="#" class="btn btn-danger btn-lg float-left" formaction="Home">Continuar Comprando</button> 
 				<button type="submit" data-toggle="modal" data-target="#" class="btn btn-danger btn-lg float-right" formaction="Enderecos">Finalizar Compra</button>
 		</form>
-		</div>
+		</div> 
       </div>
      </div>
     </div>
   </div>
 </div>
+
 <c:import url="resources/template/footer.jsp"/>
+
 </body>
 </html>
