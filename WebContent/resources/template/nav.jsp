@@ -21,7 +21,7 @@
             
             <ul class="nav nav-pills">
               <li class="nav-item ">
-                <a class="nav-link dropdown-toggle font-weight-bold text-light" href="http://localhost:8080/TShirtGames/FinalizacaoCompra.jsp" role="button" aria-haspopup="true" aria-expanded="false"><img src="resources/img/icones/Shopping-cart.png" width="20" height="20" alt="Carrinho"> <span class="badge badge-pill badge-danger">3</span></a>
+                <a class="nav-link dropdown-toggle font-weight-bold text-light" href="http://localhost:8080/TShirtGames/Carrinho.jsp" role="button" aria-haspopup="true" aria-expanded="false"><img src="resources/img/icones/Shopping-cart.png" width="20" height="20" alt="Carrinho"> <span class="badge badge-pill badge-danger">3</span></a>
               </li>
               
               <c:if test="${not empty idsessao}">
