@@ -31,16 +31,17 @@
 				<div>
 					<h1>
 						<c:out value="${produto}"></c:out>
-						<input type="hidden" name="id" value="${id}">
-						<input type="hidden" name="referencia" value="${referencia}">
 					</h1>
+					<span class="font-weight-light">
+						<c:out value="COD: ${referencia}"></c:out>
+					</span>
 					<div class="row border mb-4">
 						<div class="d-block mx-auto text-center col-md-6 pt-4 pb-3">
 							<p class="text-center">Tamanho</p>
 							<div class="custom-control center custom-radio custom-control-inline">
 								<c:forEach var="lista" items="${listatamanho}">
 									<label>
-										<input type="radio" name="tamanho" class="custom-control-input d-block" value="${lista.tamanho}">
+										<input type="radio" name="idtamanho" class="custom-control-input d-block" value="${lista.idproduto}">
 										<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
 									</label>
 								</c:forEach>

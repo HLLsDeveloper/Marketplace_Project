@@ -72,6 +72,7 @@ public class ProdutoDAO {
 			while (listaConsulta.next()) {
 				
 				ProdutoSG retornoLista = new ProdutoSG();
+							
 				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
 				retornoLista.setReferencia(listaConsulta.getInt("referencia"));	
 				retornoLista.setTamanho(listaConsulta.getString("tamanho"));
@@ -98,7 +99,7 @@ public class ProdutoDAO {
 	public ProdutoSG consultar(String geral) throws SQLException{
 		
 		con = new Factory().conBD1();
-		sql = "select * from PRODUTO where idproduto = ? or produto = ?";
+		sql = "select * from PRODUTO where idproduto = ? or referencia = ?";
 		retornoLista = new ProdutoSG();
 		
 		try {
