@@ -20,7 +20,7 @@ public class CadastroFisicoDAO {
 	public void cadastrarUsuario(CadastroFisicoSG sg) throws SQLException {
 		
 		con = new Factory().conBD1();
-		sql = "insert into FISICO (email,senha,cpf,nome,sobrenome,datanascimento,sexo,condicao) value (?,?,?,?,?,?,?,'Ativo')";
+		sql = "insert into FISICO (email,senha,cpf,nome,sobrenome,datanascimento,sexo,telefone,celular,condicao) value (?,?,?,?,?,?,?,?,?,'Ativo')";
 		
 		try {
 			
@@ -33,6 +33,8 @@ public class CadastroFisicoDAO {
 			stmCadastrar.setString(5, sg.getSobrenome());
 			stmCadastrar.setString(6, sg.getDatanascimento());
 			stmCadastrar.setString(7, sg.getSexo());
+			stmCadastrar.setBigDecimal(8, sg.getTelefone());
+			stmCadastrar.setBigDecimal(9, sg.getCelular());
 			
 			stmCadastrar.execute();
 			stmCadastrar.close();
@@ -180,6 +182,32 @@ public class CadastroFisicoDAO {
 			con.close();
 		}
 		return listartodos;
+	}
+	
+	//PEGA O ÚLTIMO ID GERADO PELO BANCO DE DADOS
+	public CadastroFisicoSG buscarultimo() throws SQLException {
+		
+		con = new Factory().conBD1();
+		sql = "select max(idusuario) from FISICO";
+		
+		try {
+			
+			stmConsulta = con.prepareStatement(sql);
+			respConsulta = stmConsulta.executeQuery();
+			
+			while (respConsulta.next()) {
+				
+				retornoLista.setIdusuario(respConsulta.getInt("max(idusuario)"));
+			}
+			
+			stmConsulta.close();
+			con.close(); 
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao buscar o último dado do banco: "+ e);
+			con.close();
+		}
+		return retornoLista;
 	}
 }
 
