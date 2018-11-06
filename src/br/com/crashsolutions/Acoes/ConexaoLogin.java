@@ -49,7 +49,7 @@ public class ConexaoLogin {
 		 
 		 // VERIFICA NA TABELA JURIDICO
 		 con = new Factory().conBD1();
-		 sql = "select email, senha, condicao from JURIDICO where email = '" + email + "' and senha = '" + email + "'";
+		 sql = "select email, senha, condicao from JURIDICO where email = '" + email + "' and senha = '" + senha + "' and condicao = 'Ativo'";
 		 
 		 try {
 			 

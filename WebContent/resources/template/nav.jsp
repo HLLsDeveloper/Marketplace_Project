@@ -26,7 +26,12 @@
               
               <c:if test="${not empty idsessao}">
               	<li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle font-weight-bold text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><strong class="mr-2"><c:out value="Olá ${nome}"></c:out></strong><img src="resources/img/icones/user.svg" class="d-inline-block minhaconta-size" width="30" height="30"></a>
+                <c:if test="${not empty nome}">
+                	<a class="nav-link dropdown-toggle font-weight-bold text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><strong class="mr-2"><c:out value="Olá ${nome}"></c:out></strong><img src="resources/img/icones/user.svg" class="d-inline-block minhaconta-size" width="30" height="30"></a>
+                </c:if>
+                <c:if test="${empty nome}">
+                	<a class="nav-link dropdown-toggle font-weight-bold text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><strong class="mr-2"><c:out value="${nomefantasia}"></c:out></strong><img src="resources/img/icones/user.svg" class="d-inline-block minhaconta-size" width="30" height="30"></a>
+                </c:if>
                 <div class="dropdown-menu">
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Meus Dados</a>

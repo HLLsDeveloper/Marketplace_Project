@@ -12,7 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import br.com.crashsolutions.Acoes.ConexaoLogin;
 import br.com.crashsolutions.DAO.CadastroFisicoDAO;
+import br.com.crashsolutions.DAO.CadastroJuridicoDAO;
 import br.com.crashsolutions.SG.CadastroFisicoSG;
+import br.com.crashsolutions.SG.CadastroJuridicoSG;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -44,7 +46,7 @@ public class Login extends HttpServlet {
 			if(acesso == true) {
 				
 				CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();
-				CadastroFisicoSG fisico = fisicodao.consultar(email);
+				CadastroFisicoSG fisico = fisicodao.ConsultarUsuario(email);
 				
 				sessao = request.getSession();
 				sessao.setAttribute("idsessao", sessao.getId());
@@ -57,6 +59,7 @@ public class Login extends HttpServlet {
 				sessao.setAttribute("sexo", fisico.getSexo());
 				sessao.setAttribute("telefone", fisico.getTelefone());
 				sessao.setAttribute("celular", fisico.getCelular());
+				sessao.setAttribute("condicao", fisico.getCondicao());
 				
 				if(sessao.getAttribute("url") != null) {
 					url = (String) sessao.getAttribute("url");
@@ -69,17 +72,49 @@ public class Login extends HttpServlet {
 					response.sendRedirect("http://localhost:8080/TShirtGames/Home");
 				}
 			}
+			
+			if(acesso == false) {
+				
+				acesso = conexaologin.LoginJuridico(email, senha);
+				
+				if(acesso == true) {
+					
+					CadastroJuridicoDAO juridicodao = new CadastroJuridicoDAO();
+					CadastroJuridicoSG juridico = juridicodao.ConsultarUsuario(email);
+					
+					sessao = request.getSession();
+					sessao.setAttribute("idsessao", sessao.getId());
+					sessao.setAttribute("idempresa", juridico.getIdempresa());
+					sessao.setAttribute("email", juridico.getEmail());
+					sessao.setAttribute("cnpj", juridico.getCnpj());
+					sessao.setAttribute("razao", juridico.getRazao());
+					sessao.setAttribute("nomefantasia", juridico.getNomefantasia());
+					sessao.setAttribute("ie", juridico.getIe());
+					sessao.setAttribute("condicao", juridico.getCondicao());
+					
+					if(sessao.getAttribute("url") != null) {
+						url = (String) sessao.getAttribute("url");
+						sessao.removeAttribute("url");
+					}
+					if (url != null) {
+						response.sendRedirect(url);
+					}
+					else {
+						response.sendRedirect("http://localhost:8080/TShirtGames/Home");
+					}
+				}
+			}
 			else {
 				
 				String texto = "O usuário ou a senha está incorreto, por favor, tente novamente!";
 				request.setAttribute("mensagem", texto);
-				RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
-				enviar.forward(request, response);
+				/*RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
+				enviar.forward(request, response);*/
 				
 			}
 			
 		} catch(Exception e) {
-			System.out.println("Erro " + e);
+			System.out.println("Erro doido " + e);
 		}
 	}
 }

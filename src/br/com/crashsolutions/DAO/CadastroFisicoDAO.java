@@ -75,7 +75,7 @@ public class CadastroFisicoDAO {
 		}
 	}
 	
-	public CadastroFisicoSG consultar (String geral) throws SQLException {
+	public CadastroFisicoSG ConsultarUsuario (String geral) throws SQLException {
 		
 		con = new Factory().conBD1();
 		sql = "select * from FISICO where email = ?";
@@ -103,7 +103,7 @@ public class CadastroFisicoDAO {
 			con.close();
 			
 		} catch (Exception ex) {
-			System.out.println("Erro ao cadastrar"+ ex);
+			System.out.println("Erro ao consultar o usuário "+ ex);
 			con.close();
 		}
 		return retornoLista; 
@@ -140,7 +140,7 @@ public class CadastroFisicoDAO {
 			con.close();
 			
 		} catch (Exception ex) {
-			System.out.println("Erro ao cadastrar"+ ex);
+			System.out.println("Erro ao consultar todos "+ ex);
 			con.close();
 		}
 		return lista; 
