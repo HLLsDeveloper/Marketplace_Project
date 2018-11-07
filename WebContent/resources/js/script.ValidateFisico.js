@@ -35,6 +35,7 @@ $(document).ready(function () {
             },        
             datanascimento:{
                 required:true,
+                minlength: 10
             },
             endereco:{
                 required:true,
@@ -97,6 +98,7 @@ $(document).ready(function () {
             },          
             datanascimento:{
                 required: "Campo obrigatório",
+                minlength: "Formato inválido",
             },
             endereco:{
                 required: "Campo obrigatório",
