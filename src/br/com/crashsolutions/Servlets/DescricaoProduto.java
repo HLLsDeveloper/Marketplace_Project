@@ -19,12 +19,10 @@ import br.com.crashsolutions.DAO.FornecedorDAO;
 import br.com.crashsolutions.DAO.ProdutoDAO;
 import br.com.crashsolutions.SG.ProdutoSG;
 
-
 @WebServlet("/Descricao")
 public class DescricaoProduto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession sessao;
-	
 	
     public DescricaoProduto() {
         super();
@@ -32,35 +30,22 @@ public class DescricaoProduto extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// VARIAVEIS ID E REFERENCIA
+		String id = request.getParameter("id");
+		Integer referencia = Integer.parseInt(request.getParameter("referencia"));
+		
 		try {
 			
-			//Traz o produto selecionado
-			String id = request.getParameter("id");
-			Integer referencia = Integer.parseInt(request.getParameter("referencia"));
-			
 			HttpSession session = request.getSession();
-			session.setAttribute("validaID", id);
+			session.setAttribute("url", request.getRequestURI()+"?id="+id+"&referencia="+referencia);
 			
 			ProdutoDAO pdao = new ProdutoDAO();
 			FornecedorDAO fdao = new FornecedorDAO();
 			Fornecedor2DAO f2dao = new Fornecedor2DAO();
 			ProdutoSG unico = pdao.consultar(id);
-			Float valor1 = null;
-			Float valor2 = null;
-			Float valor3 = null;
-			Float x = null;
 			
 			// BUSCA O TAMANHO PELA REFERENCIA E MONTA A LISTA
 			ArrayList<ProdutoSG> listatamanho = pdao.consultarTamanho(referencia);
-					
-			// ORDENAR O TAMANHO
-			String tamanho = null;
-			
-			for (int i = 0; i < listatamanho.size(); i++)	{
-				
-				tamanho = listatamanho.get(i).getTamanho();
-			}
-			
 			request.setAttribute("listatamanho", listatamanho);
 			
 			request.setAttribute("produto", unico.getProduto());
@@ -70,11 +55,12 @@ public class DescricaoProduto extends HttpServlet {
 			request.setAttribute("cor", unico.getCor());
 			request.setAttribute("genero", unico.getGenero());
 			request.setAttribute("categoria", unico.getCategoria());
-			request.setAttribute("quantidade", 1);
-			request.setAttribute("quantidade_bd", unico.getQuantidade());
 			request.setAttribute("id", unico.getIdproduto());
 			request.setAttribute("referencia", unico.getReferencia());
-					
+						
+			// VARIAVEIS DOS VALORES E LOGÍCA DE ORDENAÇÃO
+			Float valor1 = null, valor2 = null, valor3 = null, x = null;
+			
 			valor1 = unico.getValor_venda();
 			
 			unico = fdao.consultar(id);
@@ -141,7 +127,7 @@ public class DescricaoProduto extends HttpServlet {
 			enviar.forward(request, response);
 			
 		} catch(Exception e) {
-			System.out.println(e);
+			System.out.println("Erro na busca da DescriçãoProduto: "+ e);
 		}
 	}
 
@@ -152,21 +138,21 @@ public class DescricaoProduto extends HttpServlet {
 			sessao = request.getSession();
 			
 			ProdutoDAO produtodao = new ProdutoDAO();
-			String id = request.getParameter("id");
+			String id = request.getParameter("idtamanho");
 			ProdutoSG colocarcarrinho = produtodao.consultar(id);
 			
 			Integer idproduto = colocarcarrinho.getIdproduto();
 			String produto = colocarcarrinho.getProduto();
 			String imagem = colocarcarrinho.getImagem();
-			String tamanho = request.getParameter("tamanho");
-			String cor = request.getParameter("cor");
+			String tamanho = colocarcarrinho.getTamanho();
+			String cor = colocarcarrinho.getCor();
 			String categoria = colocarcarrinho.getCategoria();
-			Integer quantidade = Integer.parseInt(request.getParameter("quantidade"));
+			Integer quantidade = colocarcarrinho.getQuantidade();
 			Float valor = colocarcarrinho.getValor_venda();
 			
 			Carrinho carrinho = new Carrinho();
 			
-			//Pega o carrinho atual e se prepara para adicionar o próximo produto
+			// PEGA  CARRINHO ATUAL E SE PREPARA PARA ADICIONAR O PRÓXIMO PRODUTO
 			if(sessao.getAttribute("carrinho") != null) {
 				
 				@SuppressWarnings("unchecked")
@@ -188,8 +174,7 @@ public class DescricaoProduto extends HttpServlet {
 				Boolean encontrado = carrinho.ProcurarnoCarrinho(idproduto, tamanho);
 				
 				if(encontrado == false) {
-					
-					//adiciona no carrinho
+					// ADICIONA NO CARRINHO
 					colocarcarrinho.setIdproduto(idproduto);
 					colocarcarrinho.setProduto(produto);
 					colocarcarrinho.setImagem(imagem);
@@ -207,8 +192,7 @@ public class DescricaoProduto extends HttpServlet {
 			} 
 			
 			else {
-				
-				//adiciona no carrinho
+				// ADICIONA NO CARRINHO
 				colocarcarrinho.setIdproduto(idproduto);
 				colocarcarrinho.setProduto(produto);
 				colocarcarrinho.setImagem(imagem);
@@ -227,7 +211,7 @@ public class DescricaoProduto extends HttpServlet {
 			response.sendRedirect("http://localhost:8080/TShirtGames/Carrinho");
 			
 		} catch(Exception e) {
-			System.out.println(e);
+			System.out.println("Erro na DescriçãoProduto ação de comprar:"+ e);
 		}
 	}
 }

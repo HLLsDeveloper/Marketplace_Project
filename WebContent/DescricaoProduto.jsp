@@ -29,28 +29,13 @@
 			</div>
 			<form class="col-md-12 col-lg-7 d-block mx-auto mt-5">
 				<div>
-					<h1>
-						<c:out value="${produto}"></c:out>
-						<input type="hidden" name="id" value="${id}">
-						<input type="hidden" name="referencia" value="${referencia}">
-					</h1>
+					<h1><c:out value="${produto}"></c:out></h1>
+					
+					<span class="font-weight-light">
+						<c:out value="COD: ${referencia}"></c:out>
+					</span>
+					
 					<div class="row border mb-4">
-						<div class="d-block mx-auto text-center col-md-6 pt-4 pb-3">
-							<p class="text-center">Tamanho</p>
-							<div class="custom-control center custom-radio custom-control-inline">
-								<c:forEach var="lista" items="${listatamanho}">
-									<label>
-										<input type="radio" name="tamanho" class="custom-control-input d-block" value="${lista.tamanho}">
-										<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
-									</label>
-								</c:forEach>
-							</div>
-						</div>
-
-						<div class="col-md-5 py-4 center">	
-							<p class="text-center">Quantidade</p>
-							<input type="number" class="form-control col-sm-8 col-md-10 col-lg-10 d-block mx-auto" id="quantidade" name="quantidade" value="${quantidade}" min="1" max="${quantidade_bd}" required>
-						</div>
 						<div class="col-md-6 pt-4 pb-3">
 							<h1 class="text-center font-weight-bold">
 								<c:out value="${valorf1}"></c:out>
@@ -81,12 +66,22 @@
 								</table>
 							</div>
 						</div>
-						<p class="text-center font-weight-light" id="parcela"></p>
 						
-						<div class="col-md-6 pt-4 pb-3">
-							<input type="hidden" id="cor" name="cor" value="${cor}">
-							<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
-							<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
+						<div class="col-md-5 py-4 center">	
+							<h5 class="text-center">Tamanho</h5>
+							<div class="custom-control center custom-radio custom-control-inline mt-4">
+								<c:forEach var="lista" items="${listatamanho}">
+									<label>
+										<input type="radio" name="idtamanho" class="custom-control-input d-block" value="${lista.idproduto}">
+										<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
+									</label>
+								</c:forEach>
+							</div>
+							
+							<div class="mt-5">
+								<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
+								<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
+							</div>
 						</div>
 					</div>
 					<div class="row border my-4 p-4">
@@ -173,31 +168,7 @@
 			</table>
 		</div>
 	</div>
-
 	<c:import url="resources/template/footer.jsp" />
-	
-	<!-- MODAL PARA MOSTRAR SE FOI ADICIONADO NO CARRINHO OU NÃO -->
-	<div class="modal fade" id="carrinho" tabindex="" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered" role="document">
-	    <div class="modal-content">
-	    <div class="modal-header">
-	        <h5 class="modal-title" id="title">Carrinho</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	        <h4 class="center">
-	        	${mensagem}
-	        	<input type="hidden" id="mensagem" value="${mensagem}">
-	        </h4>
-	      </div>
-	      <div class="modal-footer">
-	      	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	
+	<c:import url="resources/template/modal.Mensagem.jsp"/>
 </body>
 </html>

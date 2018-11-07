@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Bem vindo a T-Shirt Games.</title>
+	<title>Bem vindo a T-Shirt Games</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">

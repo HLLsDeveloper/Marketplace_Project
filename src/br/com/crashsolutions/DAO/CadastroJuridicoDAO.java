@@ -3,8 +3,10 @@ package br.com.crashsolutions.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.crashsolutions.SG.CadastroFisicoSG;
 import br.com.crashsolutions.SG.CadastroJuridicoSG;
 import br.com.crashsolutions.Conexao.Factory;
 
@@ -12,14 +14,14 @@ public class CadastroJuridicoDAO {
 
 	private String sql;
 	private Connection con;
+	private CadastroJuridicoSG retornoConsulta = new CadastroJuridicoSG();
 	private PreparedStatement stmtConsultar, stmtInserir;
 	private ResultSet respConsulta;
-	private CadastroJuridicoSG retornoConsulta;
 
-	public void inserir (CadastroJuridicoSG sg) {
+	public void CadastrarUsuario(CadastroJuridicoSG sg) throws SQLException {
 		
 		con = new Factory().conBD1();
-		sql = "insert into JURIDICO (email,senha,cnpj,razao,nomefantasia,ie,endereco,numero,complemento,bairro,cidade,estado,cep,condicao) value (?,?,?,?,?,?,?,?,?,?,?,?,?,'Ativo')";
+		sql = "insert into JURIDICO (email,senha,cnpj,razao,nomefantasia,ie,telefone,celular,condicao) value (?,?,?,?,?,?,?,?,'Ativo')";
 		
 		try {
 			
@@ -30,35 +32,58 @@ public class CadastroJuridicoDAO {
 			stmtInserir.setString(4, sg.getRazao());
 			stmtInserir.setString(5, sg.getNomefantasia());
 			stmtInserir.setString(6, sg.getIe());
-			stmtInserir.setString(7, sg.getEndereco());
-			stmtInserir.setInt(8, sg.getNumero());
-			stmtInserir.setString(9, sg.getComplemento());
-			stmtInserir.setString(10, sg.getBairro());
-			stmtInserir.setString(11, sg.getCidade());
-			stmtInserir.setString(12, sg.getEstado());
-			stmtInserir.setString(13, sg.getCep());
-			 
+			stmtInserir.setBigDecimal(7, sg.getTelefone());
+			stmtInserir.setBigDecimal(8, sg.getCelular());
+			
 			stmtInserir.execute();
 			stmtInserir.close();
+			con.close();
 			
 			
 		} 
 		catch (Exception e) {
-			System.out.println("Erro ao inserir " + e);
+			con.close();
+			System.out.println("Erro ao inserir o usuário" + e);
+		}
+	}
+	
+	public void CadastrarEndereco(CadastroJuridicoSG sg) throws SQLException  {
+		
+		con = new Factory().conBD1();
+		sql = "insert into ENDERECO_JURIDICO (idenderecojuridico,nomeendereco,endereco,numero,complemento,bairro,cidade,estado,cep) value (?,?,?,?,?,?,?,?,?)";
+		
+		try {
+			
+			stmtInserir = con.prepareStatement(sql);
+			stmtInserir.setInt(1, sg.getIdenderecojuridico());
+			stmtInserir.setString(2, sg.getNomeendereco());
+			stmtInserir.setString(3, sg.getEndereco());
+			stmtInserir.setInt(4, sg.getNumero());
+			stmtInserir.setString(5, sg.getComplemento());
+			stmtInserir.setString(6, sg.getBairro());
+			stmtInserir.setString(7, sg.getCidade());
+			stmtInserir.setString(8, sg.getEstado());
+			stmtInserir.setString(9, sg.getCep());
+			
+			stmtInserir.execute();
+			stmtInserir.close();
+			con.close();
+			
+		} catch(Exception e) {
+			con.close();
+			System.out.println("Erro ao inserir o endereço" + e);
 		}
 	}
 
-	public ArrayList<CadastroJuridicoSG> consultar (String unico) {
+	public CadastroJuridicoSG ConsultarUsuario (String geral) throws SQLException {
 		
 		con = new Factory().conBD1();
-		sql = "select * from JURIDICO where idempresa = ?";
-		
-		ArrayList<CadastroJuridicoSG> unicoProduto = new ArrayList<>();
+		sql = "select * from JURIDICO where email = ?";
 		
 		try {
 			
 			stmtConsultar = con.prepareStatement(sql);
-			stmtConsultar.setString(1, unico);
+			stmtConsultar.setString(1, geral);
 			respConsulta = stmtConsultar.executeQuery();
 			
 			while (respConsulta.next()) {
@@ -67,30 +92,64 @@ public class CadastroJuridicoDAO {
 				retornoConsulta.setEmail(respConsulta.getString("email"));
 				retornoConsulta.setSenha(respConsulta.getString("senha"));
 				retornoConsulta.setCnpj(respConsulta.getString("cnpj"));
-				retornoConsulta.setRazao(respConsulta.getString("razaos"));
+				retornoConsulta.setRazao(respConsulta.getString("razao"));
 				retornoConsulta.setNomefantasia(respConsulta.getString("nomefantasia"));
 				retornoConsulta.setIe(respConsulta.getString("ie"));
-				retornoConsulta.setEstado(respConsulta.getString("estado"));
-				retornoConsulta.setEndereco(respConsulta.getString("endereco"));
-				retornoConsulta.setNumero(respConsulta.getInt("numero"));
-				retornoConsulta.setComplemento(respConsulta.getString("complemento"));
-				retornoConsulta.setBairro(respConsulta.getString("bairro"));
-				retornoConsulta.setCidade(respConsulta.getString("cidade"));
-				retornoConsulta.setCep(respConsulta.getString("cep"));
+				retornoConsulta.setTelefone(respConsulta.getBigDecimal("telefone"));
+				retornoConsulta.setCelular(respConsulta.getBigDecimal("celular"));
 				retornoConsulta.setCondicao(respConsulta.getString("condicao"));
 					
 			}
+			
 			stmtConsultar.close();
 			con.close();
 			
 		} catch (Exception e) {
-			System.out.println("Erro " + e);
-			return null;
+			con.close();
+			System.out.println("Erro ao consultar o usuário + doidera " + e);
 		}
-		return unicoProduto;
+		return retornoConsulta;
 	}
 	
-	public ArrayList<CadastroJuridicoSG> listar() {
+	public ArrayList<CadastroJuridicoSG> listarEnderecos (String geral) throws SQLException {
+		
+		con = new Factory().conBD1();
+		sql = "select JURIDICO.idempresa, ENDERECO_JURIDICO.* from ENDERECO_JURIDICO join JURIDICO on endereco_juridico.idenderecojuridico = juridico.idempresa where email = ?";
+		
+		ArrayList <CadastroJuridicoSG> listartodos = new ArrayList<>();
+		
+		try {
+			stmtConsultar = con.prepareStatement(sql);
+			stmtConsultar.setString(1, geral);
+			respConsulta = stmtConsultar.executeQuery();
+			
+			while (respConsulta.next()) {
+				
+				CadastroJuridicoSG retornoLista = new CadastroJuridicoSG();
+				retornoLista.setIdempresa(respConsulta.getInt("endereco_juridico.idendereco"));
+				retornoLista.setNomeendereco(respConsulta.getString("endereco_juridico.nomeendereco"));
+				retornoLista.setEndereco(respConsulta.getString("endereco_juridico.endereco"));
+				retornoLista.setNumero(respConsulta.getInt("endereco_juridico.numero"));
+				retornoLista.setComplemento(respConsulta.getString("endereco_juridico.complemento"));
+				retornoLista.setBairro(respConsulta.getString("endereco_juridico.bairro"));
+				retornoLista.setCidade(respConsulta.getString("endereco_juridico.cidade"));
+				retornoLista.setEstado(respConsulta.getString("endereco_juridico.estado"));
+				retornoLista.setCep(respConsulta.getString("endereco_juridico.cep"));
+				listartodos.add(retornoLista);
+	
+			}
+			
+			stmtConsultar.close();
+			con.close();
+			
+		} catch (Exception ex) {
+			con.close();
+			System.out.println("Erro ao cadastrar"+ ex);
+		}
+		return listartodos;
+	}
+	
+	public ArrayList<CadastroJuridicoSG> listar() throws SQLException {
 		
 		con = new Factory().conBD1();
 		
@@ -113,16 +172,7 @@ public class CadastroJuridicoDAO {
 				retornoConsulta.setRazao(respConsulta.getString("razaos"));
 				retornoConsulta.setNomefantasia(respConsulta.getString("nomefantasia"));
 				retornoConsulta.setIe(respConsulta.getString("ie"));
-				retornoConsulta.setEstado(respConsulta.getString("estado"));
-				retornoConsulta.setEndereco(respConsulta.getString("endereco"));
-				retornoConsulta.setNumero(respConsulta.getInt("numero"));
-				retornoConsulta.setComplemento(respConsulta.getString("complemento"));
-				retornoConsulta.setBairro(respConsulta.getString("bairro"));
-				retornoConsulta.setCidade(respConsulta.getString("cidade"));
-				retornoConsulta.setCep(respConsulta.getString("cep"));
 				retornoConsulta.setCondicao(respConsulta.getString("condicao"));
-				
-				
 				lista.add(retornoConsulta);
 				
 			}
@@ -131,11 +181,36 @@ public class CadastroJuridicoDAO {
 			con.close();
 			
 		} catch (Exception e) {
-			System.out.println("Erro " + e);
-			return null;
+			con.close();
+			System.out.println("Erro ao buscar todos os usuários do bd " + e);
 		}
 		
 		return lista;
-		
 	}
+	
+	//PEGA O ÚLTIMO ID GERADO PELO BANCO DE DADOS
+		public CadastroJuridicoSG buscarultimo() throws SQLException {
+			
+			con = new Factory().conBD1();
+			sql = "select max(idempresa) from JURIDICO";
+			
+			try {
+				
+				stmtConsultar = con.prepareStatement(sql);
+				respConsulta = stmtConsultar.executeQuery();
+				
+				while (respConsulta.next()) {
+					
+					retornoConsulta.setIdempresa(respConsulta.getInt("max(idempresa)"));
+				}
+				
+				stmtConsultar.close();
+				con.close(); 
+				
+			} catch (Exception e) {
+				con.close();
+				System.out.println("Erro ao buscar o último dado do banco: "+ e);
+			}
+			return retornoConsulta;
+		}
 }

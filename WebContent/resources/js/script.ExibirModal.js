@@ -7,7 +7,7 @@ function ListaProdutos() {
 $(document).ready(function(){
 	
 	if($("#mensagem").val() != ""){
-		$("#produto_cadastrado").modal();
+		$("#test_message").modal();
 	}
 	
 });

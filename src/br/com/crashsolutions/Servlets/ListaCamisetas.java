@@ -1,7 +1,6 @@
 package br.com.crashsolutions.Servlets;
 
 import br.com.crashsolutions.Acoes.CalculoParcelas;
-import br.com.crashsolutions.Acoes.FormatarReal;
 import br.com.crashsolutions.DAO.ProdutoDAO;
 import br.com.crashsolutions.SG.ProdutoSG;
 import java.io.IOException;
@@ -25,11 +24,7 @@ public class ListaCamisetas extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try {
-			
-			// FORMATAR REAL
-			FormatarReal fr = new FormatarReal();
-			
+		try {			
 			// TRÁS O PRODUTO SELECIONADO
 			String id = request.getParameter("id");
 					
@@ -68,9 +63,9 @@ public class ListaCamisetas extends HttpServlet {
 			RequestDispatcher enviar = request.getRequestDispatcher("DescricaoProduto.jsp");
 			enviar.forward(request, response);
 			
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		} catch (SQLException e) {
+			System.out.println("Erro na ListaCamisetas: "+ e);
+			e.printStackTrace();
 		}
 	}
 	
