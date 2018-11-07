@@ -1406,7 +1406,7 @@ $.extend( $.validator, {
 
 		// https://jqueryvalidation.org/number-method/
 		number: function( value, element ) {
-			return this.optional( element ) || /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test( value );
+			return this.optional( element ) || /\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}/.test( value );
 		},
 
 		// https://jqueryvalidation.org/digits-method/

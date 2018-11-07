@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
-	<link rel="stylesheet" href="resources/css/style.ValidateFisico.css">
+	<link rel="stylesheet" href="resources/css/style.ValidateJuridico.css">
 	
 	<script src="resources/js/bootstrap/popper.min.js"></script>
 	<script src="resources/js/bootstrap/bootstrap.min.js"></script>
@@ -19,6 +19,7 @@
 	<script src="resources/js/jquery/jquery.mask.js"></script>
 	<script src="resources/js/jquery/jquery.cpfcnpj.js"></script>
 	<script src="resources/js/script.Buscacep.js"></script>
+	<script src="resources/js/script.Mask.js"></script>
 </head>
 <body>
 
@@ -136,14 +137,12 @@
 		    </div>
 		    <div class="form-row">
 				<div class="form-group col-md-6">
-					<label for="inputCity">Telefone</label> <input type="text"
-						class="form-control" name="telefone" id="telefone"
-						placeholder="Ex: (99)99999999" required>
+					<label for="inputCity">Telefone</label> 
+					<input type="text" class="form-control telefone" name="telefone" id="telefone" placeholder="Ex: (99)99999999" required>
 				</div>
 				<div class="form-group col-md-6">
-					<label for="inputCity">Celular</label> <input type="text"
-						class="form-control" name="celular" id="celular"
-						placeholder="Ex: (99)999999999" required>
+					<label for="inputCity">Celular</label> 
+					<input type="text" class="form-control celular" name="celular" id="celular" placeholder="Ex: (99)999999999" pattern="\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}" required>
 				</div>
 			</div>
 		    <br>

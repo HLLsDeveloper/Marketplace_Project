@@ -172,12 +172,12 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="inputCity">Telefone</label> <input type="text"
-							class="form-control" name="telefone" id="telefone"
+							class="form-control telefone" name="telefone" id="telefone"
 							placeholder="Ex: (99)99999999" required>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="inputCity">Celular</label> <input type="text"
-							class="form-control" name="celular" id="celular"
+							class="form-control celular" name="celular" id="celular"
 							placeholder="Ex: (99)999999999" required>
 					</div>
 				</div>
