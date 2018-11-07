@@ -65,7 +65,20 @@
 						<input name="email" value="${email}" id="email" type="text" class="form-control" disabled required>
 					</div>
 				</div>
-				<hr>
+			
+				<div class="row">
+				
+					<div class="form-group col-md">
+						<h5>Idade:</h5> 
+						<input name="idade" value="${idade}" id="cpf" type="text" class="form-control" disabled required>
+					</div>
+
+					<div class="form-group col-md">
+						<h5>Idade</h5>
+						<input name="idade" value="${idade}" id="email" type="text" class="form-control" disabled required>
+					</div>
+				</div>
+			
 				<div class="row">
 					<div class="col-md-4 mt-3 mb-3 float-right">
 						<div class="col-md-6 mt-3 mb-3 ">

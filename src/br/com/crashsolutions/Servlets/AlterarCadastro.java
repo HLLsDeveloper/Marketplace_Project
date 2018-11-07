@@ -31,35 +31,14 @@ public class AlterarCadastro extends HttpServlet {
 				CadastroFisicoDAO dao = new CadastroFisicoDAO();
 				CadastroFisicoSG sg = new CadastroFisicoSG();
 
-				// CONSULTA PELO ID DO USUÁRIO
-				try {
-					sg = dao.ConsultarUsuario(request.getParameter("idusuario"));
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				
-				if (request.getParameter("idusuario") != null) {
-					
+			
 					try {
-						
-						// BUSCA OS DADOS NO BANCO COM O SG
-						Integer Idusuario = sg.getIdusuario();
-						String Nome = sg.getNome();
-						String Sobrenome = sg.getSobrenome();
-						String Cpf = sg.getCpf();
-						String saEmail = sg.getEmail();			
-						
-						// INSERE OS DADOS NOS CAMPOS DA PÁGINA JSP
-						request.setAttribute("idusuario", Idusuario);
-						request.setAttribute("nome", Nome);
-						request.setAttribute("sobrenome", Sobrenome);
-						request.setAttribute("cpf", Cpf);
-
-					
-					} catch (Exception ex) {
-						System.out.println("Erro ao consultar os dados:"+ ex);
+						sg = dao.ConsultarUsuario(request.getParameter("idusuario"));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-				}
+		
 				
 				// EXIBIR TELA APÓS CADASTRAR A PESSOA FÍSICA
 				request.getRequestDispatcher("AlterarCadastro.jsp").forward(request, response);
