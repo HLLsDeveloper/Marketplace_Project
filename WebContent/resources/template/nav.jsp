@@ -35,8 +35,8 @@
                 <div class="dropdown-menu">
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Meus Dados</a>
-                  <a class="dropdown-item" href="http://localhost:8080/TShirtGames/InserirProduto.jsp">Cadastrar Produto</a>
-                  <a class="dropdown-item" href="http://localhost:8080/TShirtGames/GerenciamentoEstoque.jsp">Gerenciamento Estoque</a>
+                  <a class="dropdown-item" href="http://localhost:8080/TShirtGames/InserirProduto">Cadastrar Produto</a>
+                  <a class="dropdown-item" href="http://localhost:8080/TShirtGames/GerenciamentoEstoque">Gerenciamento Estoque</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/Login">Sair</a>
                 </div>
