@@ -45,7 +45,6 @@ public class DescricaoProduto extends HttpServlet {
 			ProdutoSG unico = pdao.consultar(id);
 			
 			// BUSCA O TAMANHO PELA REFERENCIA E MONTA A LISTA
-			
 			ArrayList<ProdutoSG> listatamanho = pdao.consultarTamanho(referencia);
 			request.setAttribute("listatamanho", listatamanho);
 			
@@ -56,8 +55,6 @@ public class DescricaoProduto extends HttpServlet {
 			request.setAttribute("cor", unico.getCor());
 			request.setAttribute("genero", unico.getGenero());
 			request.setAttribute("categoria", unico.getCategoria());
-			request.setAttribute("quantidade", 1);
-			request.setAttribute("quantidade_bd", unico.getQuantidade());
 			request.setAttribute("id", unico.getIdproduto());
 			request.setAttribute("referencia", unico.getReferencia());
 						
@@ -150,7 +147,7 @@ public class DescricaoProduto extends HttpServlet {
 			String tamanho = colocarcarrinho.getTamanho();
 			String cor = colocarcarrinho.getCor();
 			String categoria = colocarcarrinho.getCategoria();
-			Integer quantidade = Integer.parseInt(request.getParameter("quantidade"));
+			Integer quantidade = colocarcarrinho.getQuantidade();
 			Float valor = colocarcarrinho.getValor_venda();
 			
 			Carrinho carrinho = new Carrinho();

@@ -10,7 +10,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
- 	<link rel="stylesheet" href="resources/css/style.Principal.css">
 
 	<script type="text/javascript" src="resources/js/jquery/jquery-1.11.1.js"></script>
 	<script type="text/javascript" src="resources/js/jquery/jquery.mask.js"></script>

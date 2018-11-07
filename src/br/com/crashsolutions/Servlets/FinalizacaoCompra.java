@@ -50,7 +50,7 @@ public class FinalizacaoCompra extends HttpServlet {
 					request.setAttribute("cep", sg.getCep());
 					request.setAttribute("valorfrete", null);
 					request.setAttribute("complemento", sg.getComplemento());
-					request.setAttribute("destinatario",null);
+					request.setAttribute("destinatario", null);
 					request.setAttribute("endereco", sg.getEndereco());
 					request.setAttribute("numero", sg.getNumero());
 					request.setAttribute("bairro", sg.getBairro());

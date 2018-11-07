@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html">
+
+<!DOCTYPE html>
 <html>
 <head>
-<title>Carrinho</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
-<link rel="stylesheet" href="resources/css/owlcarousel/owl.carousel.css">
-<link rel="stylesheet" href="resources/css/owlcarousel/owl.theme.default.css">
-<script src="resources/js/jquery.min.js"></script>
-<script src="resources/js/popper.min.js"></script>
-<script src="resources/js/jquery/bootstrap.min.js"></script>
+	<title>Carrinho</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="resources/css/owlcarousel/owl.carousel.css">
+	<link rel="stylesheet" href="resources/css/owlcarousel/owl.theme.default.css">
+	
+	<script src="resources/js/jquery.min.js"></script>
+	<script src="resources/js/popper.min.js"></script>
+	<script src="resources/js/jquery/bootstrap.min.js"></script>
 </head>
 <body>
-
 <c:import url="resources/template/nav.jsp"/>
 
 <div class="header-site">
@@ -44,7 +46,9 @@
                   <td><img height="80" src="resources/img/img-produtos/<c:out value="${carrinho.imagem}"></c:out>"></td>
                   <td><c:out value="${carrinho.produto}"></c:out></td>
                   <td><c:out value="${carrinho.tamanho}"></c:out></td>
-                  <td><p id="quantidade"><c:out value="${carrinho.quantidade}"></c:out></td>
+                  <td>
+                  	<input type="number" value="1" min="1" max="${carrinho.quantidade}">
+                  </td>
                   <td><c:out value="R$ ${carrinho.valor_venda}"></c:out></td>
                   <td> 	
                   <form>				
@@ -89,8 +93,8 @@
             
         <div class="card-footer small text-muted">
         <form>
-        		<button type="submit" data-toggle="modal" data-target="#" class="btn btn-danger btn-lg float-left" formaction="Home">Continuar Comprando</button> 
-				<button type="submit" data-toggle="modal" data-target="#" class="btn btn-danger btn-lg float-right" formaction="Enderecos">Finalizar Compra</button>
+        	<button type="submit" data-toggle="modal" data-target="#" class="btn btn-danger btn-lg float-left" formaction="Home">Continuar Comprando</button> 
+			<button type="submit" data-toggle="modal" data-target="#" class="btn btn-danger btn-lg float-right" formaction="Enderecos">Finalizar Compra</button>
 		</form>
 		</div> 
       </div>
@@ -100,6 +104,5 @@
 </div>
 
 <c:import url="resources/template/footer.jsp"/>
-
 </body>
 </html>
