@@ -33,24 +33,9 @@
 		<form id="form-produto" enctype="multipart/form-data" accept-charset="ISO-8859-1">
 		<div class="row">
 			<div class="col-md-4 mt-4">
-				<div class="card m-2 mb-4">
-					<div class="card m-3">
-						<img id="img-pre-visualiza" class="card-img-top m-4 mx-auto d-inline-block" src="resources/img/img-produtos/${imagem}">
-						<p class="text-center" id="msg_imagem" style="display: none;">Insira uma imagem!</p>
-					</div>
-
-					<div class="card m-3">
-						<div class="custom-file">
-							<input name="pre-imagem" id="pre-imagem" onchange="PreviewImage()" class="border-tshirt w-100 custom-file-input" type="file">
-							<span id="input-imagem" class="custom-file-label text-truncate">${imagem}</span>
-							<input name="imagem" id="imagem" class="d-none" value="${imagem}">
-						</div>
-					</div>
-				</div>
-
 				<div class="card m-2">
 					<div class="form-group m-2">
-						<h4>Descrição do Produto</h4>
+						<h4>Descrição do Usuário</h4>
 						<textarea name="descricao" id="descricao" class="form-control" rows="4" required>${nome}</textarea>
 					</div>
 				</div>
@@ -60,81 +45,34 @@
 				<div class="row mt-3">
 					<div class="form-group col-md">
 						<h5>Nome</h5> 
-						<input name="produto" value="${nome}" id="produto" type="text" class="form-control" required>
+						<input name="usuario" value="${nome}" id="usuario" type="text" class="form-control" required>
 					</div>
 					<div class="form-group col-md">
-						<h5>Modelo</h5>
-						<input name="modelo" value="${sobrenome}" id="modelo" type="text" class="form-control" required>
+						<h5>Sobrenome</h5>
+						<input name="sobrenome" value="${sobrenome}" id="sobrenome" type="text" class="form-control" required>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="form-group col-md">
-						<h5>Referência</h5> 
-						<input name="referencia" value="${referencia}" onkeypress="return ApenasNumeros(event)" id="referencia" type="text" class="form-control" required>
-					</div>
 				
 					<div class="form-group col-md">
-						<h5>Genero</h5> 
-						<input name="genero" value="${genero}" id="genero" type="text" class="form-control" disabled required>
+						<h5>CPF</h5> 
+						<input name="cpf" value="${cpf}" id="cpf" type="text" class="form-control" disabled required>
 					</div>
 
 					<div class="form-group col-md">
-						<h5>Categoria</h5>
-						<input name="categoria" value="${categoria}" id="categoria" type="text" class="form-control" disabled required>
+						<h5>Email</h5>
+						<input name="email" value="${email}" id="email" type="text" class="form-control" disabled required>
 					</div>
 				</div>
 				<hr>
 				<div class="row">
-					<div class="form-group col-md">
-						<h5>Tamanho</h5> 
-						<input name="tamanho" value="${tamanho}" id="tamanho" type="text" class="form-control" disabled required>
-					</div>
-
-					<div class="form-group col-md">
-						<h5>Cor</h5> 
-						<input name="cor" value="${cor}" id="cor" type="text" class="form-control" required>
-					</div>
-
-					<div class="form-group col-md">
-						<h5>Quantidade</h5>
-						<input name="quantidade" value="${quantidade}" id="quantidade" type="number" class="form-control" min="1" required>
-					</div>
-				</div>
-				<hr>
-				<div class="row">
-					<div class="form-group col-md">
-						<h5>Valor Custo</h5>
-						<input name="valor_custo" value="${valor_custo}" id="valor_custo" type="text" class="form-control" pattern="[0-9]{,2}" title="Formato correto: 0.00" onkeypress="return BloquearCaracteres(event)" required>
-					</div>
-
-					<div class="form-group col-md">
-						<h5>Valor Venda</h5>
-						<input name="valor_venda" value="${valor_venda}" id="valor_venda" type="text" class="form-control" pattern="[0-9]{,2}" title="Formato correto: 0.00" onkeypress="return BloquearCaracteres(event)" required>
-					</div>
-				</div>
-				<hr>
-				<div class="row">
-					<div class="col-md-4 mt-3 mb-3 center">
-						<div class="col-md-6 mt-3 mb-3 center">
-							<a href="InserirProduto.jsp">
-								<label class="btn btn-warning">Cadastrar Produto ➔</label>
+					<div class="col-md-4 mt-3 mb-3 float-right">
+						<div class="col-md-6 mt-3 mb-3 ">
+							<a href="CadastroFisico.jsp">
+								<label class="btn btn-warning">Cadastrar Pessoa Física ➔</label>
 							</a>
 						</div>
-					</div>
-					<div class="row col-md-3 mt-3 mb-3">
-						<div class="ml-4">
-							<label class="btn btn-tshirt" onclick="ListaProdutos()">
-								<img src="resources/img/icones/list.svg">
-							</label>
-						</div>
-						<div class="col">
-							<input value="${idproduto}" name="idproduto" id="buscar" class="col form-control" required>
-						</div>
-					</div>
-					<div class="col-md-3 mt-3 mb-3">
-						<button name="bt-buscar" type="submit" class="btn btn-warning font-size-2" formaction="AlterarProduto" formmethod="get" formnovalidate>Buscar</button>
-						<button name="bt-buscar" type="submit" class="btn btn-warning font-size-2" formaction="AlterarProduto" formmethod="post">Alterar</button>
 					</div>
 				</div>
 			</div>
