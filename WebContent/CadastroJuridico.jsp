@@ -165,6 +165,19 @@
 		     
 		    </div>
 		    
+		    				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="inputCity">Telefone Comercial</label> <input type="text"
+							class="form-control" name="telefone" id="telefone"
+							placeholder="Ex: (99)99999999" required>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="inputCity">Celular</label> <input type="text"
+							class="form-control" name="celular" id="celular"
+							placeholder="Ex: (99)999999999" required>
+					</div>
+				</div>
+		    
 		    <br>
 		    <button id="cadastrar_button" type="submit" class="btn btn-lg btn-block btn-tshirt" formaction="CadastroJuridico" formmethod="post">Criar seu cadastro</button>
 		    <p class="text-center cadastrar">Já tem cadastro? <a href="Login.jsp">Entrar</a></p>
