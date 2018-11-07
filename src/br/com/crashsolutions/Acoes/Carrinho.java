@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpSession;
 
 import br.com.crashsolutions.SG.ProdutoSG;
 
@@ -12,7 +11,6 @@ public class Carrinho {
 	
 	private ArrayList<ProdutoSG> lista = new ArrayList<>();
 	public boolean encontrado;
-	HttpSession session;
 	
 	public ArrayList<ProdutoSG> AdicionarCarrinho(ProdutoSG sgproduto) throws IOException, ServletException {
 		
@@ -85,7 +83,7 @@ public class Carrinho {
 		return lista;
 	}
 	
-	public boolean ProcurarnoCarrinho(int idproduto, String tamanho) {
+	public Boolean ProcurarnoCarrinho(int idproduto, String tamanho) {
 	
 		if(!lista.isEmpty()) {
 			for(ProdutoSG sg: lista) {	

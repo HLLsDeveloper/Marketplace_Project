@@ -33,7 +33,7 @@ public class FinalizacaoCompra extends HttpServlet {
 			request.setAttribute("carrinho", session.getAttribute("carrinho"));;
 			
 			CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();
-			CadastroFisicoSG fisicosg = fisicodao.consultar((String) session.getAttribute("email"));
+			CadastroFisicoSG fisicosg = fisicodao.ConsultarUsuario((String) session.getAttribute("email"));
 			request.setAttribute("nome", fisicosg.getNome());
 			request.setAttribute("email", fisicosg.getEmail());
 			request.setAttribute("celular", fisicosg.getCelular());

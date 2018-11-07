@@ -8,24 +8,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
-	    <link rel="stylesheet" href="resources/css/owl.carousel.css">
-	    <link rel="stylesheet" href="resources/css/owl.theme.default.css">
-		<link rel="stylesheet" href="resources/css/style.home.css">
-		<link rel="stylesheet" href="resources/css/style.cadastro-produto.css">
-		<link rel="stylesheet" href="resources/css/style.validacaocampos.css">
-		<link rel="stylesheet" href="resources/css/style.principal.css">
-	    
-	    <script src="resources/js/jquery.min.js"></script>
-	    <script src="resources/js/popper.min.js"></script>
-	    <script src="resources/js/bootstrap.min.js"></script>
-	    <script src="resources/js/jquery-1.11.1.js"></script>
-	    <script src="resources/js/jquery.validate.js"></script>
-	    <script src="resources/js/validacao-cadjuridico.js"></script>
-	    <script src="resources/js/jquery.mask.js"></script>
-	    <script src="resources/js/mask.js"></script>
-	    <script src="resources/js/jquery.cpfcnpj.js"></script>
-	    <script src="resources/js/buscacep.js"></script>
+<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="resources/css/style.ValidateFisico.css">
+
+<script src="resources/js/bootstrap/popper.min.js"></script>
+<script src="resources/js/bootstrap/bootstrap.min.js"></script>
+<script src="resources/js/jquery/jquery.min.js"></script>
+<script src="resources/js/jquery/jquery.validate.js"></script>
+<script src="resources/js/script.ValidateJuridico.js"></script>
+<script src="resources/js/jquery/jquery.mask.js"></script>
+<script src="resources/js/jquery/jquery.cpfcnpj.js"></script>
+<script src="resources/js/script.Buscacep.js"></script>
 	    
 	    
 </head>
@@ -171,6 +164,19 @@
 		
 		     
 		    </div>
+		    
+		    				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="inputCity">Telefone Comercial</label> <input type="text"
+							class="form-control" name="telefone" id="telefone"
+							placeholder="Ex: (99)99999999" required>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="inputCity">Celular</label> <input type="text"
+							class="form-control" name="celular" id="celular"
+							placeholder="Ex: (99)999999999" required>
+					</div>
+				</div>
 		    
 		    <br>
 		    <button id="cadastrar_button" type="submit" class="btn btn-lg btn-block btn-tshirt" formaction="CadastroJuridico" formmethod="post">Criar seu cadastro</button>

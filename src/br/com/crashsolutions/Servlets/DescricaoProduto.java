@@ -37,7 +37,7 @@ public class DescricaoProduto extends HttpServlet {
 		try {
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("validaID", id);
+			session.setAttribute("url", request.getRequestURI()+"?id="+id+"&referencia="+referencia);
 			
 			ProdutoDAO pdao = new ProdutoDAO();
 			FornecedorDAO fdao = new FornecedorDAO();

@@ -1,7 +1,7 @@
 package br.com.crashsolutions.Servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.math.BigDecimal;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +38,9 @@ public class CadastroFisico extends HttpServlet {
 		    String Sobrenome = request.getParameter("sobrenome");
 		    String Datanascimento = request.getParameter("datanascimento");
 		    String Sexo = request.getParameter("sexo");
+		    BigDecimal telefone = (new BigDecimal(request.getParameter("telefone")));
+		    BigDecimal celular = (new BigDecimal(request.getParameter("celular")));
+		    
 		    
 		    // ENVIA OS DADOS DA PAGINA JSP PARA O SG
 		    sg.setEmail(Email);
@@ -47,17 +50,13 @@ public class CadastroFisico extends HttpServlet {
 		    sg.setSobrenome(Sobrenome);
 		    sg.setDatanascimento(Datanascimento);
 		    sg.setSexo(Sexo);
+		    sg.setTelefone(telefone);
+		    sg.setCelular(celular);
 		    
 		    // UTILIZA O METODO CADASTRARUSUARIO DO DAO
 		    dao.cadastrarUsuario(sg);
 		    
-		    Integer id = null;
-		    
-		    ArrayList<CadastroFisicoSG> lista = dao.buscartodos();
-		    
-		    for(CadastroFisicoSG fisicosg: lista) {
-		    	id = fisicosg.getIdusuario();
-		    }
+		    sg = dao.buscarultimo();
 		    
 		    //PEGA OS DADOS DO JSP PARA GRAVAR NA TABELA ENDERECO
 		    String Endereco = request.getParameter("endereco");
@@ -68,7 +67,7 @@ public class CadastroFisico extends HttpServlet {
 		    String Estado = request.getParameter("estado");
 		    String Cep = request.getParameter("cep");
 		    
-		    sg.setIdenderecofisico(id);
+		    sg.setIdenderecofisico(sg.getIdusuario());
 		    sg.setEndereco(Endereco);
 		    sg.setNumero(Numero);
 		    sg.setComplemento(Complemento);
@@ -80,11 +79,10 @@ public class CadastroFisico extends HttpServlet {
 		    // UTILIZA O METODO CADASTRARENDERECO DO DAO
 		    dao.cadastrarEndereco(sg);
 		    
-		    System.out.println("Sucesso no CadastroFisico: "+ Email);
 		} catch (Exception ex) {
 			System.out.println("Erro no CadastroFisico: "+ ex);
 		}
 	    // EXIBI A TELA JSP
-	    request.getRequestDispatcher("CadastroFisico.jsp").forward(request, response);
+	    response.sendRedirect("http://localhost:8080/TShirtGames/CadastroFisico.jsp");
 	}
 }
