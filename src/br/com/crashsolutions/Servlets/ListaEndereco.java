@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.crashsolutions.DAO.CadastroFisicoDAO;
+import br.com.crashsolutions.DAO.CadastroJuridicoDAO;
 import br.com.crashsolutions.SG.CadastroFisicoSG;
+import br.com.crashsolutions.SG.CadastroJuridicoSG;
 
 @WebServlet("/Enderecos")
 public class ListaEndereco extends HttpServlet {
@@ -30,10 +32,19 @@ public class ListaEndereco extends HttpServlet {
 			String email = (String) session.getAttribute("email");
 			
 			CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();
+			CadastroJuridicoDAO juridicodao = new CadastroJuridicoDAO();
 			
-			ArrayList<CadastroFisicoSG> listaenderecos = fisicodao.listarEnderecos(email);
+			ArrayList<CadastroFisicoSG> enderecos_fisico = fisicodao.listarEnderecos(email);
 			
-			request.setAttribute("enderecos", listaenderecos);
+			if(enderecos_fisico != null) {
+				
+				request.setAttribute("enderecos", enderecos_fisico);
+				
+			} else {
+				
+				ArrayList<CadastroJuridicoSG> enderecos_juridico = juridicodao.listarEnderecos(email);
+				request.setAttribute("enderecos", enderecos_juridico);
+			}
 			
 			RequestDispatcher enviar = request.getRequestDispatcher("ListaEndereco.jsp");
 			enviar.forward(request, response);

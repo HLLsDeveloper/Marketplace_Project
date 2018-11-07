@@ -7,47 +7,39 @@
 <html>
 
 <head>
-<title>T-Shirt Games - Cadastra-se.</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
-<link rel="stylesheet" href="resources/css/style.validacaocampos.css">
-
-<script src="resources/js/popper.min.js"></script>
-<script src="resources/js/bootstrap.min.js"></script>
-<script src="resources/js/jquery/jquery.min.js"></script>
-<script src="resources/js/jquery.validate.js"></script>
-<script src="resources/js/validacaocampos.js"></script>
-<script src="resources/js/jquery.mask.js"></script>
-<script src="resources/js/mask.js"></script>
-<script src="resources/js/jquery.cpfcnpj.js"></script>
-<script src="resources/js/buscacep.js"></script>
-
+	<title>T-Shirt Games - Cadastra-se.</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="resources/css/style.validacaocampos.css">
+	
+	<script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="resources/js/validacao-cadjuridico.js"></script>
+    <script type="text/javascript" src="resources/js/jquery.mask.js"></script>
+    <script type="text/javascript" src="resources/js/mask.js"></script>
+    <script type="text/javascript" src="resources/js/jquery.cpfcnpj.js"></script>
+    <script type="text/javascript" src="resources/js/buscacep.js"></script>
+	<script type="text/javascript" src="resources/js/script.ExibirModal.js"></script>
 </head>
-
 <body>
 
 	<!-- NAV -->
 	<c:import url="resources/template/nav.jsp" />
-
 	<section class="container mt-4">
 		<div class="col-lg-6 offset-lg-3">
 			<h2 class="text-center">Cadastre-se</h2>
 			<p class="lead text-center">Fique tranquilo, nossa loja é segura</p>
 			<hr>
-
 			<form id="ValidacaoCampos" accept-charset="ISO-8859-1">
-
-
-
 				<div class="form-group">
 					<label for="cadastro_email">E-mail:</label> <input type="email"
 						class="form-control" name="conf_email" id="conf_email"
 						placeholder="seuemail@seuemail.com" required>
 				</div>
-
 				<div class="form-group">
 					<label for="confirma_email">Confirmar E-mail:</label> <input
 						type="email" class="form-control" name="email" id="email"
@@ -58,14 +50,11 @@
 						class="form-control" name="conf_senha" id="conf_senha"
 						onchange="form.confirma_senha.pattern = this.value;" required>
 				</div>
-
 				<div class="form-group">
 					<label for="confirma_senha">Confirmar Senha:</label> <input
 						type="password" class="form-control" name="senha" id="senha"
 						required>
 				</div>
-
-
 				<div class="row no-gutters">
 					<div class="col-lg-6">
 						<div class="form-group">
@@ -80,8 +69,6 @@
 						</p>
 					</div>
 				</div>
-
-
 				<div class="form-group">
 					<label for="CadastroNM">Nome:</label> <input type="text"
 						class="form-control" name="nome" id="nome" placeholder="" required>
@@ -112,7 +99,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div class="form-row">
 					<div class="form-group col-md-12">
 						<label for="inputZip">CEP</label> <input type="text"
@@ -120,18 +106,14 @@
 							pattern="\d{5}-?\d{3}" required>
 					</div>
 				</div>
-
 				<div class="form-row">
 					<div class="form-group col-md-12">
 						<label for="inputAddress">Endereço</label> <input type="text"
 							class="form-control" name="endereco" id="endereco"
 							placeholder="Ex: Rua das Oliveiras" required>
 					</div>
-
 				</div>
-
 				<div class="form-row">
-
 					<div class="form-group col-md-3">
 						<label for="inputAddress">Nº</label> <input type="text"
 							class="form-control" name="numero" id="numero"
@@ -142,21 +124,18 @@
 							class="form-control" name="complemento" id="complemento"
 							placeholder="Ex: 5 Andar" required>
 					</div>
-
 					<div class="form-group col-md-6">
 						<label for="inputCity">Bairro</label> <input type="text"
 							class="form-control" name="bairro" id="bairro"
 							placeholder="Ex: Centro" required>
 					</div>
 				</div>
-
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="inputCity">Cidade</label> <input type="text"
 							class="form-control" name="cidade" id="cidade"
 							placeholder="Ex: São Paulo" required>
 					</div>
-
 					<div class="form-group col-md-6">
 						<label>Estado</label> <select id="estado" name="estado"
 							class="form-control" required>
@@ -190,11 +169,7 @@
 							<option value="27">Tocantins</option>
 						</select>
 					</div>
-
-
 				</div>
-
-
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="inputCity">Telefone</label> <input type="text"
@@ -216,12 +191,11 @@
 				</p>
 			</form>
 		</div>
-
 	</section>
 
 	<!-- FOOTER -->
 	<c:import url="resources/template/footer.jsp" />
-
+	<c:import url="resources/template/modal.Mensagem.jsp"/>
 </body>
 
 </html>
