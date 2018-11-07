@@ -11,19 +11,18 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
-	<link rel="stylesheet" href="resources/css/style.validacaocampos.css">
 	
-	<script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
-    <script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
-    <script type="text/javascript" src="resources/js/jquery.validate.js"></script>
-    <script type="text/javascript" src="resources/js/validacao-cadjuridico.js"></script>
-    <script type="text/javascript" src="resources/js/jquery.mask.js"></script>
-    <script type="text/javascript" src="resources/js/mask.js"></script>
-    <script type="text/javascript" src="resources/js/jquery.cpfcnpj.js"></script>
-    <script type="text/javascript" src="resources/js/buscacep.js"></script>
-	<script type="text/javascript" src="resources/js/script.ExibirModal.js"></script>
+	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
+	<link rel="stylesheet" href="resources/css/style.ValidateFisico.css">
+	
+	<script src="resources/js/bootstrap/popper.min.js"></script>
+	<script src="resources/js/bootstrap/bootstrap.min.js"></script>
+	<script src="resources/js/jquery/jquery.min.js"></script>
+	<script src="resources/js/jquery/jquery.validate.js"></script>
+	<script src="resources/js/script.ValidateFisico.js"></script>
+	<script src="resources/js/jquery/jquery.mask.js"></script>
+	<script src="resources/js/jquery/jquery.cpfcnpj.js"></script>
+	<script src="resources/js/script.Buscacep.js"></script>
 </head>
 <body>
 

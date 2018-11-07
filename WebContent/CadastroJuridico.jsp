@@ -9,19 +9,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
-	<link rel="stylesheet" href="resources/css/style.cadastro-produto.css">
-	<link rel="stylesheet" href="resources/css/style.validacaocampos.css">
-    
-    <script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
-    <script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
-    <script type="text/javascript" src="resources/js/jquery.validate.js"></script>
-    <script type="text/javascript" src="resources/js/validacao-cadjuridico.js"></script>
-    <script type="text/javascript" src="resources/js/jquery.mask.js"></script>
-    <script type="text/javascript" src="resources/js/mask.js"></script>
-    <script type="text/javascript" src="resources/js/jquery.cpfcnpj.js"></script>
-    <script type="text/javascript" src="resources/js/buscacep.js"></script>
-	<script type="text/javascript" src="resources/js/script.ExibirModal.js"></script>
+	<link rel="stylesheet" href="resources/css/style.ValidateFisico.css">
+	
+	<script src="resources/js/bootstrap/popper.min.js"></script>
+	<script src="resources/js/bootstrap/bootstrap.min.js"></script>
+	<script src="resources/js/jquery/jquery.min.js"></script>
+	<script src="resources/js/jquery/jquery.validate.js"></script>
+	<script src="resources/js/script.ValidateJuridico.js"></script>
+	<script src="resources/js/jquery/jquery.mask.js"></script>
+	<script src="resources/js/jquery/jquery.cpfcnpj.js"></script>
+	<script src="resources/js/script.Buscacep.js"></script>
 </head>
 <body>
 
@@ -93,7 +90,6 @@
                 	<label for="inputAddress">Comp.</label>
                 	<input type="text" class="form-control" name="complemento" id="complemento" placeholder="Ex: Apto 3" required>
               	</div>
-             
 		     	<div class="form-group col-md-6">
 		            <label for="inputCidade">Bairro</label>
 		            <input type="text" class="form-control" name="bairro" id="bairro" placeholder="Ex: Centro" required>
