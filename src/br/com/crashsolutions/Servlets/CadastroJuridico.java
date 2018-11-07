@@ -3,6 +3,7 @@ package br.com.crashsolutions.Servlets;
 import br.com.crashsolutions.DAO.CadastroJuridicoDAO;
 import br.com.crashsolutions.SG.CadastroJuridicoSG;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -43,49 +44,55 @@ public class CadastroJuridico extends HttpServlet {
 			CadastroJuridicoSG juridicosg = new CadastroJuridicoSG();
 		    CadastroJuridicoDAO juridicodao = new CadastroJuridicoDAO();
 			
-			String Email = request.getParameter("email");
-		    String Senha = request.getParameter("senha");
-		    String Cnpj = request.getParameter("cnpj");
-		    String Razao = request.getParameter("razao");
-		    String Nomefantasia = request.getParameter("nomefantasia");
-		    String Ie = request.getParameter("ie");
+			String email = request.getParameter("email");
+		    String senha = request.getParameter("senha");
+		    String cnpj = request.getParameter("cnpj");
+		    String razao = request.getParameter("razao");
+		    String nomefantasia = request.getParameter("nomefantasia");
+		    String ie = request.getParameter("ie");
+		    BigDecimal telefone = (new BigDecimal(request.getParameter("telefone")));
+		    BigDecimal celular = (new BigDecimal(request.getParameter("celular")));
 		    
-		    juridicosg.setEmail(Email);
-		    juridicosg.setSenha(Senha);
-		    juridicosg.setCnpj(Cnpj);
-		    juridicosg.setRazao(Razao);
-		    juridicosg.setNomefantasia(Nomefantasia);
-		    juridicosg.setIe(Ie);
+		    juridicosg.setEmail(email);
+		    juridicosg.setSenha(senha);
+		    juridicosg.setCnpj(cnpj);
+		    juridicosg.setRazao(razao);
+		    juridicosg.setNomefantasia(nomefantasia);
+		    juridicosg.setTelefone(telefone);
+		    juridicosg.setCelular(celular);
+		    juridicosg.setIe(ie);
 		    
 		    juridicodao.CadastrarUsuario(juridicosg);
 		    
 		    juridicosg = juridicodao.buscarultimo();
 		    
 		    //PEGA OS DADOS DO JSP PARA GRAVAR NA TABELA ENDERECO
-		    String Endereco = request.getParameter("endereco");
-		    Integer Numero = Integer.parseInt(request.getParameter("numero"));
-		    String Complemento = request.getParameter("complemento");
-		    String Bairro = request.getParameter("bairro");
-		    String Cidade = request.getParameter("cidade");
-		    String Estado = request.getParameter("estado");
-		    String Cep = request.getParameter("cep");
+		    String endereco = request.getParameter("endereco");
+		    Integer numero = Integer.parseInt(request.getParameter("numero"));
+		    String complemento = request.getParameter("complemento");
+		    String bairro = request.getParameter("bairro");
+		    String cidade = request.getParameter("cidade");
+		    String estado = request.getParameter("estado");
+		    String cep = request.getParameter("cep");
 		    
 		    juridicosg.setIdenderecojuridico(juridicosg.getIdempresa());
-		    juridicosg.setEndereco(Endereco);
-		    juridicosg.setNumero(Numero);
-		    juridicosg.setComplemento(Complemento);
-		    juridicosg.setBairro(Bairro);
-		    juridicosg.setCidade(Cidade);
-		    juridicosg.setEstado(Estado);
-		    juridicosg.setCep(Cep);
+		    juridicosg.setEndereco(endereco);
+		    juridicosg.setNumero(numero);
+		    juridicosg.setComplemento(complemento);
+		    juridicosg.setBairro(bairro);
+		    juridicosg.setCidade(cidade);
+		    juridicosg.setEstado(estado);
+		    juridicosg.setCep(cep);
 		    
 		    // UTILIZA O METODO CADASTRARENDERECO DO DAO
 		    juridicodao.CadastrarEndereco(juridicosg);
 		    
-		    request.getRequestDispatcher("CadastroJuridico.jsp").forward(request, response);
+		    request.setAttribute("mensagem", "Empresa cadastrada com sucesso!");
+		    
+		    response.sendRedirect("CadastroJuridico.jsp");
 		    
 		} catch (Exception ex) {
-			System.out.println("Erro no CadastroJuridico: "+ ex);
+			System.out.println("Erro no CadastroJuridico: " + ex);
 		}
 	}
 }

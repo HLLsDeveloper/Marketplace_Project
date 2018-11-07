@@ -168,31 +168,7 @@
 			</table>
 		</div>
 	</div>
-
 	<c:import url="resources/template/footer.jsp" />
-	
-	<!-- MODAL PARA MOSTRAR SE FOI ADICIONADO NO CARRINHO OU NÃO -->
-	<div class="modal fade" id="carrinho" tabindex="" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered" role="document">
-	    <div class="modal-content">
-	    <div class="modal-header">
-	        <h5 class="modal-title" id="title">Carrinho</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	        <h4 class="center">
-	        	${mensagem}
-	        	<input type="hidden" id="mensagem" value="${mensagem}">
-	        </h4>
-	      </div>
-	      <div class="modal-footer">
-	      	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	
+	<c:import url="resources/template/modal.Mensagem.jsp"/>
 </body>
 </html>
