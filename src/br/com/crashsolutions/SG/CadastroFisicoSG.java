@@ -26,8 +26,15 @@ public class CadastroFisicoSG {
 	private BigDecimal telefone = null;
 	private BigDecimal celular = null;
 	private String condicao = null;
+	private String imagem = null;
 	
 	
+	public String getImagem() {
+		return imagem;
+	}
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
+	}
 	public Integer getIdusuario() {
 		return idusuario;
 	}

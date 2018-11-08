@@ -1,8 +1,6 @@
 .error{
-
 	
 }
-
 
 #email-error, 
 #conf_email-error,
@@ -23,7 +21,9 @@
 #bairro-error,
 #cidade-error,
 #estado-error,
-#cep-error {
+#cep-error,
+#telefone-error,
+#celular-error {
     color: red;
     font-size: 0.8rem;
     padding: 0.2rem;

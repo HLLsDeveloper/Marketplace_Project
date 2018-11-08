@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import br.com.crashsolutions.Conexao.Factory;
 import br.com.crashsolutions.SG.CadastroFisicoSG;
+import br.com.crashsolutions.SG.ProdutoSG;
 
 public class CadastroFisicoDAO {
 	
@@ -183,6 +184,46 @@ public class CadastroFisicoDAO {
 		}
 		return listartodos;
 	}
+	
+	
+	// CONSULTA PELA BARRA DE PESQUISA DO GERENCIAMENTO FISICO
+    public ArrayList<CadastroFisicoSG> gerenciamentofisico(String geral) throws SQLException {
+		
+    	con = new Factory().conBD1();
+		
+		ArrayList<CadastroFisicoSG> lista = new ArrayList<>();
+		sql = "select * from FISICO where nome like ?";
+		
+		try {
+			stmConsulta = con.prepareStatement(sql);
+			respConsulta = stmConsulta.executeQuery();
+			
+			while (respConsulta.next()) {
+				
+				CadastroFisicoSG retornoLista = new CadastroFisicoSG();
+				retornoLista.setIdusuario(respConsulta.getInt("idusuario"));
+				retornoLista.setEmail(respConsulta.getString("email"));
+				retornoLista.setCpf(respConsulta.getString("cpf"));
+				retornoLista.setNome(respConsulta.getString("nome"));
+				retornoLista.setSobrenome(respConsulta.getString("sobrenome"));
+				retornoLista.setDatanascimento(respConsulta.getString("datanascimento"));
+				retornoLista.setSexo(respConsulta.getString("sexo"));
+				retornoLista.setTelefone(respConsulta.getBigDecimal("telefone"));
+				retornoLista.setCelular(respConsulta.getBigDecimal("celular"));
+				lista.add(retornoLista);
+	
+			}
+			
+			stmConsulta.close();
+			con.close();
+			
+		} catch (Exception ex) {
+			System.out.println("Erro ao consultar todos "+ ex);
+			con.close();
+		}
+		return lista; 
+	}
+	
 	
 	//PEGA O ÚLTIMO ID GERADO PELO BANCO DE DADOS
 	public CadastroFisicoSG buscarultimo() throws SQLException {

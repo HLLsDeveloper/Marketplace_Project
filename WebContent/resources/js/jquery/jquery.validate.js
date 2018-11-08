@@ -364,7 +364,7 @@ $.extend( $.validator, {
 		remote: "Please fix this field.",
 		email: "Please enter a valid email address.",
 		url: "Please enter a valid URL.",
-		date: "Please enter a valid date.",
+		date: "Data Inválida.",
 		dateISO: "Please enter a valid date (ISO).",
 		number: "Please enter a valid number.",
 		digits: "Please enter only digits.",
@@ -1406,7 +1406,7 @@ $.extend( $.validator, {
 
 		// https://jqueryvalidation.org/number-method/
 		number: function( value, element ) {
-			return this.optional( element ) || /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test( value );
+			return this.optional( element ) || /\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}/.test( value );
 		},
 
 		// https://jqueryvalidation.org/digits-method/
