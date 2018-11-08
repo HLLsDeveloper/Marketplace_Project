@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.crashsolutions.SG.CadastroFisicoSG;
 import br.com.crashsolutions.SG.CadastroJuridicoSG;
 import br.com.crashsolutions.Conexao.Factory;
 
@@ -126,7 +125,7 @@ public class CadastroJuridicoDAO {
 			while (respConsulta.next()) {
 				
 				CadastroJuridicoSG retornoLista = new CadastroJuridicoSG();
-				retornoLista.setIdempresa(respConsulta.getInt("endereco_juridico.idendereco"));
+				retornoLista.setIdendereco(respConsulta.getInt("endereco_juridico.idendereco"));
 				retornoLista.setNomeendereco(respConsulta.getString("endereco_juridico.nomeendereco"));
 				retornoLista.setEndereco(respConsulta.getString("endereco_juridico.endereco"));
 				retornoLista.setNumero(respConsulta.getInt("endereco_juridico.numero"));

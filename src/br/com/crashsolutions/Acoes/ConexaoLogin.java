@@ -25,14 +25,10 @@ public class ConexaoLogin {
 			 respFisico = stmFisico.executeQuery();
 
 			 // VALIDAÇÃO DE ACESSO FISICO
-			 if(respFisico.next()){
-
+			 if(respFisico.next()) {
 				 acesso = true;
-				 
 			 } else {
-				 
 				 acesso = false;
-				 
 			 }
 
 			 stmFisico.close();
@@ -41,7 +37,6 @@ public class ConexaoLogin {
 		 } catch (Exception ex) {
 			 System.out.println("Erro no Login: "+ ex);
 		 }
-		
 		return acesso;
 	 }
 	 
@@ -57,14 +52,10 @@ public class ConexaoLogin {
 			respJuridico = stmJuridico.executeQuery();
 
 			 // VALIDAÇÃO DE ACESSO JURIDICO
-			 if(respJuridico.next()){
-				 
+			 if(respJuridico.next()){ 
 				 acesso = true;
-				 
 			 } else {
-				 
 				 acesso = false;
-				 
 			 }
 			 
 			 stmJuridico.close();
@@ -73,7 +64,6 @@ public class ConexaoLogin {
 		 } catch (Exception ex) {
 			 System.out.println("Erro no Login: "+ ex);
 		 }
-		 
 		return acesso;
 	 }
 }

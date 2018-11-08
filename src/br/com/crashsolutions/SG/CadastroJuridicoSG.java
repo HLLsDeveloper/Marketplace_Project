@@ -11,6 +11,7 @@ public class CadastroJuridicoSG {
 	private String razao = null;
 	private String nomefantasia = null;
 	private String ie = null;
+	private Integer idendereco = 0;
 	private Integer idenderecojuridico = 0;
 	private String nomeendereco = null;
 	private String endereco = null;
@@ -46,8 +47,8 @@ public class CadastroJuridicoSG {
 	public String getCnpj() {
 		return cnpj;
 	}
-	public void setCnpj(String string) {
-		this.cnpj = string;
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
 	}
 	public String getRazao() {
 		return razao;
@@ -66,6 +67,12 @@ public class CadastroJuridicoSG {
 	}
 	public void setIe(String ie) {
 		this.ie = ie;
+	}
+	public Integer getIdendereco() {
+		return idendereco;
+	}
+	public void setIdendereco(Integer idendereco) {
+		this.idendereco = idendereco;
 	}
 	public Integer getIdenderecojuridico() {
 		return idenderecojuridico;
@@ -118,8 +125,8 @@ public class CadastroJuridicoSG {
 	public String getCep() {
 		return cep;
 	}
-	public void setCep(String string) {
-		this.cep = string;
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 	public BigDecimal getTelefone() {
 		return telefone;

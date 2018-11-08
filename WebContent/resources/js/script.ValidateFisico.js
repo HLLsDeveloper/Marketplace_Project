@@ -35,6 +35,7 @@ $(document).ready(function () {
             },        
             datanascimento:{
                 required:true,
+                minlength: 10
             },
             endereco:{
                 required:true,
@@ -54,6 +55,14 @@ $(document).ready(function () {
             },
             sexo:{
                 required:true,
+            },
+            telefone:{
+            	required: true,
+                minlength: 14
+            },
+            celular:{
+            	required: true,
+                minlength: 15
             },
 },
 
@@ -89,6 +98,7 @@ $(document).ready(function () {
             },          
             datanascimento:{
                 required: "Campo obrigatório",
+                minlength: "Formato inválido",
             },
             endereco:{
                 required: "Campo obrigatório",
@@ -115,6 +125,15 @@ $(document).ready(function () {
             sexo:{
                 required: "*",
             },
+            telefone:{
+                required: "Campo obrigatório",
+                minlength: "Telefone inválido"
+            },
+            celular:{
+                required: "Campo obrigatório",
+                minlength: "Celular inválido"
+            },
+            
     },
             
         highlight: function (element) {

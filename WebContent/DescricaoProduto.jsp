@@ -15,7 +15,6 @@
 	<script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
 	<script type="text/javascript" src="resources/js/script.DescricaoProduto.js"></script>
 	<script type="text/javascript" src="resources/js/script.ExibirModal.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
 

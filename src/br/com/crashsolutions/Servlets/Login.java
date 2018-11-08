@@ -27,9 +27,9 @@ public class Login extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getSession().invalidate();
-        response.sendRedirect("Home");
-		
+		request.setAttribute("mensagem", request.getAttribute("mensagemlogin"));
+		RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
+		enviar.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,57 +40,31 @@ public class Login extends HttpServlet {
 			String senha = request.getParameter("senha");
 			String url = null;
 			
-			ConexaoLogin conexaologin = new ConexaoLogin();
-			Boolean acesso = conexaologin.LoginFisico(email, senha);
+			CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();
 			
-			if(acesso == true) {
-				
-				CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();
-				CadastroFisicoSG fisico = fisicodao.ConsultarUsuario(email);
-				
-				sessao = request.getSession();
-				sessao.setAttribute("idsessao", sessao.getId());
-				sessao.setAttribute("idusuario", fisico.getIdusuario());
-				sessao.setAttribute("email", fisico.getEmail());
-				sessao.setAttribute("cpf", fisico.getCpf());
-				sessao.setAttribute("nome", fisico.getNome());
-				sessao.setAttribute("sobrenome", fisico.getSobrenome());
-				sessao.setAttribute("datanascimento", fisico.getDatanascimento());
-				sessao.setAttribute("sexo", fisico.getSexo());
-				sessao.setAttribute("telefone", fisico.getTelefone());
-				sessao.setAttribute("celular", fisico.getCelular());
-				sessao.setAttribute("condicao", fisico.getCondicao());
-				
-				if(sessao.getAttribute("url") != null) {
-					url = (String) sessao.getAttribute("url");
-					sessao.removeAttribute("url");
-				}
-				if (url != null) {
-					response.sendRedirect(url);
-				}
-				else {
-					response.sendRedirect("http://localhost:8080/TShirtGames/Home");
-				}
-			}
+			CadastroFisicoSG fisico = fisicodao.ConsultarUsuario(email);
 			
-			if(acesso == false) {
+			if(fisico.getEmail() != null) {
 				
-				acesso = conexaologin.LoginJuridico(email, senha);
+				ConexaoLogin conexaologin = new ConexaoLogin();
+				Boolean acessofisico = conexaologin.LoginFisico(email, senha);
 				
-				if(acesso == true) {
+				if(acessofisico == true) {
 					
-					CadastroJuridicoDAO juridicodao = new CadastroJuridicoDAO();
-					CadastroJuridicoSG juridico = juridicodao.ConsultarUsuario(email);
+					fisico = fisicodao.ConsultarUsuario(email);
 					
 					sessao = request.getSession();
 					sessao.setAttribute("idsessao", sessao.getId());
-					sessao.setAttribute("idempresa", juridico.getIdempresa());
-					sessao.setAttribute("email", juridico.getEmail());
-					sessao.setAttribute("cnpj", juridico.getCnpj());
-					sessao.setAttribute("razao", juridico.getRazao());
-					sessao.setAttribute("nomefantasia", juridico.getNomefantasia());
-					sessao.setAttribute("ie", juridico.getIe());
-					sessao.setAttribute("condicao", juridico.getCondicao());
+					sessao.setAttribute("idusuario", fisico.getIdusuario());
+					sessao.setAttribute("email", fisico.getEmail());
+					sessao.setAttribute("cpf", fisico.getCpf());
+					sessao.setAttribute("nome", fisico.getNome());
+					sessao.setAttribute("sobrenome", fisico.getSobrenome());
+					sessao.setAttribute("datanascimento", fisico.getDatanascimento());
+					sessao.setAttribute("sexo", fisico.getSexo());
+					sessao.setAttribute("telefone", fisico.getTelefone());
+					sessao.setAttribute("celular", fisico.getCelular());
+					sessao.setAttribute("condicao", fisico.getCondicao());
 					
 					if(sessao.getAttribute("url") != null) {
 						url = (String) sessao.getAttribute("url");
@@ -103,17 +77,61 @@ public class Login extends HttpServlet {
 						response.sendRedirect("http://localhost:8080/TShirtGames/Home");
 					}
 				}
-			}
-			else {
-				
-				String texto = "O usuário ou a senha está incorreto, por favor, tente novamente!";
-				request.setAttribute("mensagem", texto);
-				/*RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
-				enviar.forward(request, response);*/
-				
+				else {
+					
+					request.setAttribute("mensagemlogin", "Email ou Senha incorretos, verifique se foi digitado corretamente");
+					doGet(request, response);
+				}
 			}
 			
-		} catch(Exception e) {
+			if(fisico.getEmail() == null) {
+				
+				CadastroJuridicoDAO juridicodao = new CadastroJuridicoDAO();
+				
+				CadastroJuridicoSG juridico = juridicodao.ConsultarUsuario(email);
+				
+				if(juridico.getEmail() != null) {
+					
+					ConexaoLogin conexaologin = new ConexaoLogin();
+					Boolean acessojuridico = conexaologin.LoginJuridico(email, senha);
+					
+					if(acessojuridico == true) {
+						
+						sessao = request.getSession();
+						sessao.setAttribute("idsessao", sessao.getId());
+						sessao.setAttribute("idempresa", juridico.getIdempresa());
+						sessao.setAttribute("email", juridico.getEmail());
+						sessao.setAttribute("cnpj", juridico.getCnpj());
+						sessao.setAttribute("razao", juridico.getRazao());
+						sessao.setAttribute("nomefantasia", juridico.getNomefantasia());
+						sessao.setAttribute("ie", juridico.getIe());
+						sessao.setAttribute("condicao", juridico.getCondicao());
+						
+						if(sessao.getAttribute("url") != null) {
+							url = (String) sessao.getAttribute("url");
+							sessao.removeAttribute("url");
+						}
+						if (url != null) {
+							response.sendRedirect(url);
+						}
+						else {
+							response.sendRedirect("http://localhost:8080/TShirtGames/Home");
+						}
+					}
+					else {
+						
+						request.setAttribute("mensagemlogin", "Email ou Senha incorretos, verifique se foi digitado corretamente");
+						doGet(request, response);
+					}
+				}
+				if(juridico.getEmail() == null) {
+					
+					request.setAttribute("mensagemlogin", "Usuário não cadastrado, por favor faça o cadastro!");
+					doGet(request, response);
+				}
+			}
+		} 
+		catch(Exception e) {
 			System.out.println("Erro doido " + e);
 		}
 	}

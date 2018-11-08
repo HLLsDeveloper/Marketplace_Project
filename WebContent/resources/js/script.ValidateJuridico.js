@@ -58,6 +58,14 @@ $(document).ready(function () {
                 required:true,
                 minlength: 9
             },
+            telefone:{
+            	required: true,
+                minlength: 14
+            },
+            celular:{
+            	required: true,
+                minlength: 15
+            },
 },
 
         messages: {
@@ -121,6 +129,16 @@ $(document).ready(function () {
                 required: "Campo obrigatório",
                 minlength: "Formato inválido"
             },
+            telefone:{
+                required: "Campo obrigatório",
+                minlength: "Telefone inválido"
+            },
+            celular:{
+                required: "Campo obrigatório",
+                minlength: "Celular inválido"
+            },
+            
+            
     },
             
         highlight: function (element) {
@@ -211,3 +229,13 @@ jQuery.validator.addMethod("cnpj", function(cnpj, element) {
       return this.optional(element) || false;
    }
 }, "Informe um CNPJ válido.");
+
+
+var SPMaskBehavior = function (val) {
+	  return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+	},
+	spOptions = {
+	  onKeyPress: function(val, e, field, options) {
+	      field.mask(SPMaskBehavior.apply({}, arguments), options);
+	    }
+	};
