@@ -9,18 +9,11 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   
 	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
-	<link rel="stylesheet" href="resources/css/style.home.css">
-    <link rel="stylesheet" href="resources/css/owl.carousel.css">
-    <link rel="stylesheet" href="resources/css/owl.theme.default.css">
-	<link rel="stylesheet" href="resources/css/style.cadastro-fisico.css">
-	<link rel="stylesheet" href="resources/css/style.cadastro-produto.css">
-	<link rel="stylesheet" href="resources/css/style.cadastro-juridico-login.css">
-  
-  	<script src="resources/js/jquery.min.js"></script>
-  	<script src="resources/js/popper.min.js"></script>
-  	<script src="resources/js/bootstrap.min.js"></script>
-  	<script src="resources/js/script.js"></script>
-	<script src="resources/js/script-cadastro_produto.js"></script>
+	
+	<script src="resources/js/jquery/jquery.min.js" type="text/javascript"></script>
+	<script src="resources/js/bootstrap/popper.min.js" type="text/javascript"></script>
+	<script src="resources/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="resources/js/script.ExibirModal.js"></script>
 </head>
 <body>
 
@@ -53,31 +46,9 @@
             </form>
         </div>
     </section>
-    
-    <!-- MODAL PARA MOSTRAR SE FOI ADICIONADO NO CARRINHO OU NÃO -->
-<div class="modal fade" id="mensagem" tabindex="" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title">Carrinho</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h4 class="center" id="textcarrinho">
-        	<c:out  value="${mensagem}"></c:out>
-        </h4>
-      </div>
-      <div class="modal-footer">
-      	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-    
-<!-- NAVBAR -->
-<c:import url="resources/template/footer.jsp"/>
-
+        
+	<!-- NAVBAR -->
+	<c:import url="resources/template/footer.jsp"/>
+	<c:import url="resources/template/modal.Mensagem.jsp"/>
 </body>
 </html>

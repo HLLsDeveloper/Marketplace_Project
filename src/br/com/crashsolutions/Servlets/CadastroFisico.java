@@ -3,6 +3,7 @@ package br.com.crashsolutions.Servlets;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,20 @@ public class CadastroFisico extends HttpServlet {
     	super();
     }
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(request.getAttribute("mensagemcadastro") != null) {
+			
+			request.setAttribute("mensagem", request.getAttribute("mensagemcadastro"));
+			RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
+			enviar.forward(request, response);
+		}
+		else {
+			
+			RequestDispatcher enviar = request.getRequestDispatcher("CadastroFisico.jsp");
+			enviar.forward(request, response);
+		}
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -79,10 +93,12 @@ public class CadastroFisico extends HttpServlet {
 		    // UTILIZA O METODO CADASTRARENDERECO DO DAO
 		    dao.cadastrarEndereco(sg);
 		    
+		    request.setAttribute("mensagemcadastro", "Login cadastrado com sucesso!");
+		    
 		} catch (Exception ex) {
+			request.setAttribute("mensagemcadastro", "Ocorreu um erro no cadastro, verifique os campos!");
 			System.out.println("Erro no CadastroFisico: "+ ex);
 		}
-	    // EXIBI A TELA JSP
-	    response.sendRedirect("http://localhost:8080/TShirtGames/CadastroFisico.jsp");
+	    doGet(request, response);
 	}
 }

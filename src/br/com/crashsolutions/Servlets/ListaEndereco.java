@@ -36,14 +36,14 @@ public class ListaEndereco extends HttpServlet {
 			
 			ArrayList<CadastroFisicoSG> enderecos_fisico = fisicodao.listarEnderecos(email);
 			
-			if(enderecos_fisico != null) {
-				
-				request.setAttribute("enderecos", enderecos_fisico);
-				
-			} else {
+			if(enderecos_fisico.isEmpty()) {
 				
 				ArrayList<CadastroJuridicoSG> enderecos_juridico = juridicodao.listarEnderecos(email);
 				request.setAttribute("enderecos", enderecos_juridico);
+				
+			} else {
+				
+				request.setAttribute("enderecos", enderecos_fisico);
 			}
 			
 			RequestDispatcher enviar = request.getRequestDispatcher("ListaEndereco.jsp");
@@ -52,7 +52,6 @@ public class ListaEndereco extends HttpServlet {
 		} catch(Exception e) {
 			System.out.println(e);
 		}
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

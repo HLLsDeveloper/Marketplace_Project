@@ -4,8 +4,8 @@ import br.com.crashsolutions.DAO.CadastroJuridicoDAO;
 import br.com.crashsolutions.SG.CadastroJuridicoSG;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,17 +23,16 @@ public class CadastroJuridico extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		try {
+if(request.getAttribute("mensagemcadastro") != null) {
 			
-			CadastroJuridicoDAO dao = new CadastroJuridicoDAO();
-			ArrayList<CadastroJuridicoSG> lista = dao.listar();
+			request.setAttribute("mensagem", request.getAttribute("mensagemcadastro"));
+			RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
+			enviar.forward(request, response);
+		}
+		else {
 			
-			request.setAttribute("lista", lista);
-			
-			request.getRequestDispatcher("CadastroJuridico.jsp").forward(request, response);
-			
-		} catch(Exception e) {
-			System.out.println(e);
+			RequestDispatcher enviar = request.getRequestDispatcher("CadastroJuridico.jsp");
+			enviar.forward(request, response);
 		}
 	}
 
@@ -87,12 +86,12 @@ public class CadastroJuridico extends HttpServlet {
 		    // UTILIZA O METODO CADASTRARENDERECO DO DAO
 		    juridicodao.CadastrarEndereco(juridicosg);
 		    
-		    request.setAttribute("mensagem", "Empresa cadastrada com sucesso!");
-		    
-		    response.sendRedirect("CadastroJuridico.jsp");
+		    request.setAttribute("mensagemcadastro", "Empresa cadastrada com sucesso!");
 		    
 		} catch (Exception ex) {
+			request.setAttribute("mensagemcadastro", "Ocorreu um erro no cadastro, verifique os campos!");
 			System.out.println("Erro no CadastroJuridico: " + ex);
 		}
+		doGet(request, response);
 	}
 }
