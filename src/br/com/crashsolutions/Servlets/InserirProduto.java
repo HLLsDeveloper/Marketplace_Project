@@ -28,6 +28,9 @@ public class InserirProduto extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String t = "t";
+		System.out.println(t);
+		
 		// DIRECIONAR PARA PÁGINA JSP
 		response.sendRedirect("InserirProduto.jsp");
 	}
@@ -54,7 +57,7 @@ public class InserirProduto extends HttpServlet {
 	                	String Imagem = caminho.substring(caminho.lastIndexOf("\\")+1);
 	                	
 	                	// LOCAL DE UPLOAD 
-	                	item.write(new File(("Resolver com Luan!!!!!!!!!") + File.separator + Imagem));
+	                	item.write(new File(("C:\\Users\\luanl\\git\\Projeto\\TShirtGames\\WebContent\\resources\\img\\img-produtos") + File.separator + Imagem));
 	                	
 	                	// CADASTRAR IMAGEM NO BANCO
 	                	produtosg.setImagem(Imagem);

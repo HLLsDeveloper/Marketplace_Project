@@ -8,7 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
- 	<link rel="stylesheet" href="resources/css/style.nav.css">
     <link rel="stylesheet" href="resources/css/owlcarousel/owl.carousel.css">
     <link rel="stylesheet" href="resources/css/owlcarousel/owl.theme.default.css">
 	

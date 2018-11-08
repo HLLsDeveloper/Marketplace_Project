@@ -46,19 +46,19 @@
 								<table class="table text-center mt-3 table-hover">
 									<tbody>
 										<tr>	
-											<td><input type="radio" class="custom-control-input" name="fornecedor" value="1"></td>					
+											<td><input class="custom-control-input"></td>					
 											<td>Loja</td>
 											<td><strong><c:out value="${valorf1}"></c:out></strong><br>em até ${parcela1}x de ${valorparcelado1}</td>																			
 										</tr>
 																			
 										<tr>
-											<td><input type="radio" class="custom-control-input" name="fornecedor" value="2"></td>
+											<td><input class="custom-control-input"></td>
 											<td>Loja</td>
 											<td><strong><c:out value="${valorf2}"></c:out></strong><br> em até ${parcela2}x de ${valorparcelado2}</td>
 										</tr>
 										
 										<tr>
-										 	<td><input type="radio" class="custom-control-input" name="fornecedor" value="3"></td>
+										 	<td><input class="custom-control-input"></td>
 											<td>Loja</td>
 											<td><strong><c:out value="${valorf3}"></c:out></strong><br> em até ${parcela3}x de ${valorparcelado3}</td>
 										</tr>

@@ -57,7 +57,7 @@ public class ProdutoDAO {
 		} 
 	}
 	
-	// CONSULTAR TAMANHO PELA REFERENCIA
+	// MONTA UMA LISTA DE TAMANHO PELA REFERENCIA
 	public ArrayList<ProdutoSG> consultarTamanho(Integer referencia) throws SQLException{
 		
 		con = new Factory().conBD1();
@@ -99,7 +99,7 @@ public class ProdutoDAO {
 	public ProdutoSG consultar(String geral) throws SQLException{
 		
 		con = new Factory().conBD1();
-		sql = "select * from PRODUTO where idproduto = ? or referencia = ?";
+		sql = "select * from PRODUTO where idproduto=? or produto=?";
 		retornoLista = new ProdutoSG();
 		
 		try {
@@ -135,6 +135,46 @@ public class ProdutoDAO {
 		}
 		return retornoLista;
 	}
+	
+	// CONSULTAR PRODUTO PELA REFERENCIA
+		public ProdutoSG consultarReferencia(Integer referencia) throws SQLException{
+			
+			con = new Factory().conBD1();
+			sql = "select * from PRODUTO where referencia=?";
+			retornoLista = new ProdutoSG();
+			
+			try {
+				stmConsulta = con.prepareStatement(sql);
+				stmConsulta.setInt(1, referencia);
+				resConsulta = stmConsulta.executeQuery();
+				
+				while(resConsulta.next()) {
+									
+						retornoLista.setIdproduto(resConsulta.getInt("idproduto"));
+						retornoLista.setProduto(resConsulta.getString("produto"));
+						retornoLista.setImagem(resConsulta.getString("imagem"));
+						retornoLista.setDescricao(resConsulta.getString("descricao"));
+						retornoLista.setModelo(resConsulta.getString("modelo"));
+						retornoLista.setGenero(resConsulta.getString("genero"));
+						retornoLista.setTamanho(resConsulta.getString("tamanho"));
+						retornoLista.setCor(resConsulta.getString("cor"));
+						retornoLista.setCategoria(resConsulta.getString("categoria"));
+						retornoLista.setValor_custo(resConsulta.getFloat("valor_custo"));
+						retornoLista.setValor_venda(resConsulta.getFloat("valor_venda"));
+						retornoLista.setQuantidade(resConsulta.getInt("quantidade"));
+						retornoLista.setReferencia(resConsulta.getInt("referencia"));
+						retornoLista.setCondicao(resConsulta.getString("condicao"));
+				}
+				
+				stmConsulta.close();
+				con.close();
+				
+			} catch (Exception  e) {
+				System.out.println("Erro no consultar: "+ e);
+				con.close();
+			}
+			return retornoLista;
+		}
 	
 	// ALTERA PRODUTO 
 	public void alterar(ProdutoSG sgproduto) throws SQLException {
@@ -177,6 +217,52 @@ public class ProdutoDAO {
 	
 	// BUSCA TODOS OS PRODUTOS
 	public ArrayList<ProdutoSG> buscaTodos() throws SQLException {
+		
+		con = new Factory().conBD1();
+		sql = "select * from PRODUTO";
+		
+		ArrayList <ProdutoSG> listartodos = new ArrayList<>();
+		
+		try {
+			
+			stmListaConsulta = con.prepareStatement(sql); 
+			listaConsulta = stmListaConsulta.executeQuery();
+			
+			while (listaConsulta.next()) {
+				
+				ProdutoSG retornoLista = new ProdutoSG();
+				
+				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
+				retornoLista.setProduto(listaConsulta.getString("produto"));
+				retornoLista.setImagem(listaConsulta.getString("imagem"));
+				retornoLista.setDescricao(listaConsulta.getString("descricao"));
+				retornoLista.setModelo(listaConsulta.getString("modelo"));
+				retornoLista.setGenero(listaConsulta.getString("genero"));
+				retornoLista.setTamanho(listaConsulta.getString("tamanho"));
+				retornoLista.setCor(listaConsulta.getString("cor"));
+				retornoLista.setCategoria(listaConsulta.getString("categoria"));
+				retornoLista.setValor_custo(listaConsulta.getFloat("valor_custo"));
+				retornoLista.setValor_venda(listaConsulta.getFloat("valor_venda"));
+				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
+				retornoLista.setReferencia(listaConsulta.getInt("referencia"));
+				retornoLista.setCondicao(listaConsulta.getString("condicao"));
+				
+				listartodos.add(retornoLista);
+			}
+			
+			stmListaConsulta.close();
+			con.close();
+			
+		} catch (Exception e) {
+			System.out.println("Erro " + e);
+			con.close();
+			return null;
+		}
+		return listartodos; 
+	}
+	
+	// BUSCA TODOS OS PRODUTOS
+	public ArrayList<ProdutoSG> buscaTodasReferencias() throws SQLException {
 		
 		con = new Factory().conBD1();
 		sql = "select * from PRODUTO";
