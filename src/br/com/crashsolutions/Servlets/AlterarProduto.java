@@ -131,7 +131,7 @@ public class AlterarProduto extends HttpServlet {
 			                Imagem = caminho.substring(caminho.lastIndexOf("\\")+1);
 		                    	
 		                	// ENVIA O ARQUIVO PARA A PASTA DESEJADA
-		                	item.write(new File(("Resolver com Luan!!!!!!!!!") + File.separator + Imagem));		                	
+		                	item.write(new File(("C:\\\\Users\\\\luanl\\\\git\\\\Projeto\\\\TShirtGames\\\\WebContent\\\\resources\\\\img\\\\img-produtos") + File.separator + Imagem));		                	
 	                    } 
 	                }
 	                

@@ -89,11 +89,49 @@ public class Fornecedor2DAO {
 		}
 		return retornoLista;
 	}
+
+	// MONTA UMA LISTA DE TAMANHO PELA REFERENCIA
+	public ArrayList<ProdutoSG> consultarTamanho(Integer referencia) throws SQLException{
+			
+		con = new Factory().conBD3();
+		sql = "select idproduto, tamanho, referencia from PRODUTO";
+		
+		ArrayList<ProdutoSG> listartamanho = new ArrayList<>();
+		
+		try {
+			stmListaConsulta = con.prepareStatement(sql); 
+			listaConsulta = stmListaConsulta.executeQuery();
+			
+			while (listaConsulta.next()) {
+				
+				ProdutoSG retornoLista = new ProdutoSG();
+							
+				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
+				retornoLista.setReferencia(listaConsulta.getInt("referencia"));	
+				retornoLista.setTamanho(listaConsulta.getString("tamanho"));
+				
+				if (referencia == listaConsulta.getInt("referencia")) {
+					
+					listartamanho.add(retornoLista);
+				}		
+			}
+			
+			stmListaConsulta.close();
+			con.close();
+			
+			
+		} catch (Exception e) {
+			System.out.println("Erro no consultarTamanho: "+ e);
+			con.close();
+		}
+		
+		return listartamanho;
+	}
 	
 	// CONSULTA O PRODUTO NO BANCO PELA REFERENCIA
 	public ProdutoSG consultarReferencia(Integer referencia) throws SQLException{
 		
-		con = new Factory().conBD1();
+		con = new Factory().conBD3();
 		sql = "select * from PRODUTO where referencia =?";
 		retornoLista = new ProdutoSG();
 		
