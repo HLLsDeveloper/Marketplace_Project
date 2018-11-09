@@ -37,8 +37,11 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Meus Dados</a>
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/InserirProduto">Cadastrar Produto</a>
+                  <a class="dropdown-item" href="http://Localhost:8080/TShirtGames/CadastroFisico">Cadastro Físico</a>                  
+                  <a class="dropdown-item" href="http://Localhost:8080/TShirtGames/CadastroJuridico">Cadastro Jurídico</a>
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/GerenciamentoEstoque">Gerenciamento Estoque</a>                  
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/GerenciamentoFisico">Gerenciamento Fisico</a>
+
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/Logout">Sair</a>
                 </div>
