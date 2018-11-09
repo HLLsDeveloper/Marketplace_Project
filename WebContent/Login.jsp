@@ -14,6 +14,7 @@
 	<script src="resources/js/bootstrap/popper.min.js" type="text/javascript"></script>
 	<script src="resources/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="resources/js/script.ExibirModal.js"></script>
+	<script type="text/javascript" src="resources/js/script.LoginFace.js" ></script>
 </head>
 <body>
 
@@ -39,6 +40,9 @@
                         <div class="form-group col-md-6">
 	                        <button id="login_button" type="submit" formaction="Login" formmethod="post" class="btn btn-primary btn-lg btn-block mt-5 color-btn">Continuar</button>
 	                        <hr>
+	                        	                        
+							<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>	                        
+	                        
 	                        <p class="text-center cadastrar">Não tem cadastro?<a href="CadastroFisico.jsp">Cadastre-se</a></p>
                         </div>
                     </div>
