@@ -41,7 +41,7 @@
 	                        <button id="login_button" type="submit" formaction="Login" formmethod="post" class="btn btn-primary btn-lg btn-block mt-5 color-btn">Continuar</button>
 	                        <hr>
 	                        	                        
-							<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>	                        
+							<div class="fb-login-button" data-width="325" data-max-rows="30" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>	                        
 	                        
 	                        <p class="text-center cadastrar">Não tem cadastro?<a href="CadastroFisico.jsp">Cadastre-se</a></p>
                         </div>
