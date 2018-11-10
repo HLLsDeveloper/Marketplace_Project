@@ -11,6 +11,16 @@ body {
  padding: 0;
 }
 
+.anuncios {
+	position: absolute; 
+	background-color: white;
+}
+
+.card-img-top {
+  width: 200px;
+  height: 220px;
+}
+
 .tipbar {
   background-color: #272727;
   border-top: 2px solid #fd7e14;

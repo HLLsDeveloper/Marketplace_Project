@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.crashsolutions.DAO.Fornecedor2DAO;
-import br.com.crashsolutions.DAO.FornecedorDAO;
 import br.com.crashsolutions.DAO.ProdutoDAO;
 import br.com.crashsolutions.SG.ProdutoSG;
 
@@ -28,16 +26,12 @@ public class Home extends HttpServlet {
 		
 		// DAO'S INSTANCIADOS
 		ProdutoDAO listar = new ProdutoDAO();
-		FornecedorDAO listar1 = new FornecedorDAO();
-		Fornecedor2DAO listar2 = new Fornecedor2DAO();
 		
 		// LISTAS PARA RECEBER
 		ArrayList<ProdutoSG> lista;
-		ArrayList<ProdutoSG> lista1;
-		ArrayList<ProdutoSG> lista2;
 		
 		try {
-			lista = listar.buscaTodos();
+			lista = listar.buscaTodasReferencias();
 			request.setAttribute("lista_produto", lista);
 			
 		} catch (SQLException e) {

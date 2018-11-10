@@ -19,6 +19,7 @@ import br.com.crashsolutions.DAO.FornecedorDAO;
 import br.com.crashsolutions.DAO.ProdutoDAO;
 import br.com.crashsolutions.SG.ProdutoSG;
 
+
 @WebServlet("/Descricao")
 public class DescricaoProduto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,98 +32,85 @@ public class DescricaoProduto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// VARIAVEIS ID E REFERENCIA
-		String id = request.getParameter("id");
 		Integer referencia = Integer.parseInt(request.getParameter("referencia"));
 		
 		try {
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("url", request.getRequestURI()+"?id="+id+"&referencia="+referencia);
+			session.setAttribute("url", request.getRequestURI()+"?referencia="+referencia);
 			
-			ProdutoDAO pdao = new ProdutoDAO();
-			FornecedorDAO fdao = new FornecedorDAO();
-			Fornecedor2DAO f2dao = new Fornecedor2DAO();
-			ProdutoSG unico = pdao.consultar(id);
+			// BUSCA NO BANCO DE DADOS 1
+			ProdutoDAO dao = new ProdutoDAO(); 
+			ProdutoSG sg = dao.consultarReferencia(referencia);
 			
 			// BUSCA O TAMANHO PELA REFERENCIA E MONTA A LISTA
-			ArrayList<ProdutoSG> listatamanho = pdao.consultarTamanho(referencia);
+			ArrayList<ProdutoSG> listatamanho = dao.consultarTamanho(referencia);
 			request.setAttribute("listatamanho", listatamanho);
 			
-			request.setAttribute("produto", unico.getProduto());
-			request.setAttribute("imagem", unico.getImagem());
-			request.setAttribute("descricao", unico.getDescricao());
-			request.setAttribute("modelo", unico.getModelo());
-			request.setAttribute("cor", unico.getCor());
-			request.setAttribute("genero", unico.getGenero());
-			request.setAttribute("categoria", unico.getCategoria());
-			request.setAttribute("id", unico.getIdproduto());
-			request.setAttribute("referencia", unico.getReferencia());
-						
-			// VARIAVEIS DOS VALORES E LOGÍCA DE ORDENAÇÃO
-			Float valor1 = null, valor2 = null, valor3 = null, x = null;
-			
-			valor1 = unico.getValor_venda();
-			
-			unico = fdao.consultar(id);
-			valor2 = unico.getValor_venda();
-			
-			unico = f2dao.consultar(id);
-			valor3 = unico.getValor_venda();
-			
-			if(valor1 > valor2) {
-				
-				x = valor1;
-				valor1 = valor2;
-				valor2 = x;
-				x = null;
-			}
-			
-			if(valor1 > valor3) {
-				
-				x = valor1;
-				valor1 = valor3;
-				valor3 = x;
-				x = null;
-			}
-			
-			if(valor2 < valor1) {
-				
-				x = valor2;
-				valor2 = valor1;
-				valor1 = x;
-				x = null;
-			}
-			
-			if(valor2 > valor3) {
-				
-				x = valor2;
-				valor2 = valor3;
-				valor3 = x;
-				x = null;
-			}
-			
-			// FORMATAR VALOR REAL
+			request.setAttribute("produto", sg.getProduto());
+			request.setAttribute("imagem", sg.getImagem());
+			request.setAttribute("descricao", sg.getDescricao());
+			request.setAttribute("modelo", sg.getModelo());
+			request.setAttribute("cor", sg.getCor());
+			request.setAttribute("genero", sg.getGenero());
+			request.setAttribute("categoria", sg.getCategoria());
+			request.setAttribute("id", sg.getIdproduto());
+			request.setAttribute("referencia", sg.getReferencia());
+
+			// FORMATAR VALOR REAL E PARCELS
 			FormatarReal fr = new FormatarReal();
-			
-			request.setAttribute("valorf1", fr.formatar(valor1));
-			request.setAttribute("valorf2", fr.formatar(valor2));
-			request.setAttribute("valorf3", fr.formatar(valor3));
-			
-			// VALORES PARCELADOS E PARCELAS
 			CalculoParcelas cp = new CalculoParcelas();
 			
-			request.setAttribute("valorparcelado1", fr.formatar(cp.Calcular(valor1)));
+			Float valor = sg.getValor_venda();
+			
+			request.setAttribute("valorf1", fr.formatar(valor));
+			request.setAttribute("valorparcelado1", fr.formatar(cp.Calcular(valor)));
+			request.setAttribute("parcela1", cp.Parcela(valor));
+			
+			// BUSCA NO BANCO DE DADOS 2
+			FornecedorDAO dao2 = new FornecedorDAO();
+			ProdutoSG sg2 = dao2.consultarReferencia(referencia);
+			
+			// BUSCA O TAMANHO PELA REFERENCIA E MONTA A LISTA
+			ArrayList<ProdutoSG> listatamanho2 = dao2.consultarTamanho(referencia);
+			request.setAttribute("listatamanho2", listatamanho2);
+			
+			request.setAttribute("produto2", sg2.getProduto());
+			request.setAttribute("modelo2", sg2.getModelo());
+			request.setAttribute("id2", sg2.getIdproduto());
+			request.setAttribute("referencia2", sg2.getReferencia());
+			
+			// FORMATAR VALOR REAL E PARCELS	
+			Float valor2 = sg2.getValor_venda();
+						
+			request.setAttribute("valorf2", fr.formatar(valor2));
 			request.setAttribute("valorparcelado2", fr.formatar(cp.Calcular(valor2)));
-			request.setAttribute("valorparcelado3", fr.formatar(cp.Calcular(valor3)));
-			
-			request.setAttribute("parcela1", cp.Parcela(valor1));
 			request.setAttribute("parcela2", cp.Parcela(valor2));
+			
+			// BUSCA NO BANCO DE DADOS 3
+			Fornecedor2DAO dao3 = new Fornecedor2DAO();
+			ProdutoSG sg3 = dao3.consultarReferencia(referencia);
+			
+			// BUSCA O TAMANHO PELA REFERENCIA E MONTA A LISTA
+			ArrayList<ProdutoSG> listatamanho3 = dao3.consultarTamanho(referencia);
+			request.setAttribute("listatamanho3", listatamanho3);
+			
+			request.setAttribute("produto3", sg3.getProduto());
+			request.setAttribute("modelo3", sg3.getModelo());
+			request.setAttribute("id3", sg3.getIdproduto());
+			request.setAttribute("referencia3", sg3.getReferencia());
+			
+			// FORMATAR VALOR REAL E PARCELS	
+			Float valor3 = sg3.getValor_venda();
+						
+			request.setAttribute("valorf3", fr.formatar(valor3));
+			request.setAttribute("valorparcelado3", fr.formatar(cp.Calcular(valor3)));
 			request.setAttribute("parcela3", cp.Parcela(valor3));
-			
+
 			// BUSCA A AÇÃO NO DAO QUE BUSCA OS DADOS DO PRODUTO DO CARD
-			ArrayList<ProdutoSG> lista = pdao.buscaTodos();
+			ArrayList<ProdutoSG> lista = dao.buscaTodos();
 			request.setAttribute("lista_produto", lista);
-			
+								
 			RequestDispatcher enviar = request.getRequestDispatcher("DescricaoProduto.jsp");
 			enviar.forward(request, response);
 			
@@ -137,19 +125,62 @@ public class DescricaoProduto extends HttpServlet {
 			
 			sessao = request.getSession();
 			
-			ProdutoDAO produtodao = new ProdutoDAO();
-			String id = request.getParameter("idtamanho");
-			ProdutoSG colocarcarrinho = produtodao.consultar(id);
+			Integer fornecedor = Integer.parseInt(request.getParameter("fornecedor"));
+			String id = request.getParameter("idproduto");
 			
-			Integer idproduto = colocarcarrinho.getIdproduto();
-			String produto = colocarcarrinho.getProduto();
-			String imagem = colocarcarrinho.getImagem();
-			String tamanho = colocarcarrinho.getTamanho();
-			String cor = colocarcarrinho.getCor();
-			String categoria = colocarcarrinho.getCategoria();
-			Integer quantidade_dig = 1;
-			Integer quantidade = colocarcarrinho.getQuantidade();
-			Float valor = colocarcarrinho.getValor_venda();
+			ProdutoSG colocarcarrinho = new ProdutoSG();
+			Integer idproduto = null;
+			String produto = null;
+			String imagem = null;
+			String tamanho = null;
+			String cor = null;
+			String categoria = null;
+			Integer quantidade = null;
+			Float valor = null;
+			
+			if(fornecedor == 1) {
+				
+				ProdutoDAO produtodao = new ProdutoDAO();
+				colocarcarrinho = produtodao.consultar(id);
+				
+				idproduto = colocarcarrinho.getIdproduto();
+				produto = colocarcarrinho.getProduto();
+				imagem = colocarcarrinho.getImagem();
+				tamanho = colocarcarrinho.getTamanho();
+				cor = colocarcarrinho.getCor();
+				categoria = colocarcarrinho.getCategoria();
+				quantidade = colocarcarrinho.getQuantidade();
+				valor = colocarcarrinho.getValor_venda();
+			} else { 
+				
+				if(fornecedor == 2) {
+				
+				FornecedorDAO produtodao = new FornecedorDAO();
+				colocarcarrinho = produtodao.consultar(id);
+				
+				idproduto = colocarcarrinho.getIdproduto();
+				produto = colocarcarrinho.getProduto();
+				imagem = colocarcarrinho.getImagem();
+				tamanho = colocarcarrinho.getTamanho();
+				cor = colocarcarrinho.getCor();
+				categoria = colocarcarrinho.getCategoria();
+				quantidade = colocarcarrinho.getQuantidade();
+				valor = colocarcarrinho.getValor_venda();				
+				} else {
+				
+				Fornecedor2DAO produtodao = new Fornecedor2DAO();
+				colocarcarrinho = produtodao.consultar(id);
+				
+				idproduto = colocarcarrinho.getIdproduto();
+				produto = colocarcarrinho.getProduto();
+				imagem = colocarcarrinho.getImagem();
+				tamanho = colocarcarrinho.getTamanho();
+				cor = colocarcarrinho.getCor();
+				categoria = colocarcarrinho.getCategoria();
+				quantidade = colocarcarrinho.getQuantidade();
+				valor = colocarcarrinho.getValor_venda();	
+				}	
+			}
 			
 			Carrinho carrinho = new Carrinho();
 			
@@ -169,7 +200,6 @@ public class DescricaoProduto extends HttpServlet {
 					sg.getCor();
 					sg.getCategoria();
 					sg.getQuantidade();
-					sg.getQuantidade_dig();
 					sg.getValor_venda();
 					carrinho.AdicionarCarrinho(sg);
 				}
@@ -185,7 +215,6 @@ public class DescricaoProduto extends HttpServlet {
 					colocarcarrinho.setCor(cor);
 					colocarcarrinho.setCategoria(categoria);
 					colocarcarrinho.setQuantidade(quantidade);
-					colocarcarrinho.setQuantidade_dig(quantidade_dig);
 					colocarcarrinho.setValor_venda(valor);
 					carrinho.AdicionarCarrinho(colocarcarrinho);
 					
@@ -204,7 +233,6 @@ public class DescricaoProduto extends HttpServlet {
 				colocarcarrinho.setCor(cor);
 				colocarcarrinho.setCategoria(categoria);
 				colocarcarrinho.setQuantidade(quantidade);
-				colocarcarrinho.setQuantidade_dig(quantidade_dig);
 				colocarcarrinho.setValor_venda(valor);
 				carrinho.AdicionarCarrinho(colocarcarrinho);
 				

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
 
 <link rel="stylesheet" href="resources/css/style.Principal.css">
 <script type="text/javascript" src="resources/js/script.Nav.js"></script>
@@ -36,8 +37,11 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Meus Dados</a>
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/InserirProduto">Cadastrar Produto</a>
+                  <a class="dropdown-item" href="http://Localhost:8080/TShirtGames/CadastroFisico">Cadastro Físico</a>                  
+                  <a class="dropdown-item" href="http://Localhost:8080/TShirtGames/CadastroJuridico">Cadastro Jurídico</a>
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/GerenciamentoEstoque">Gerenciamento Estoque</a>                  
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/GerenciamentoFisico">Gerenciamento Fisico</a>
+
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/Logout">Sair</a>
                 </div>

@@ -15,7 +15,6 @@
 			</ul>
 		    <div class="btn-group card-body mx-auto d-block mt-4">
 		    	<form>
-		    		<input name="id" value="${lista.idproduto}" type="hidden">
 		    		<input name="referencia" value="${lista.referencia}" type="hidden">
 					<button type="submit" formaction="Descricao" formmethod="get" class="btn btn-success btn-lg btn_sh btn_tam">Comprar</button>
 			    	<button type="button" class="btn btn-outline-danger btn-lg btn_cor btn_sh border-0">♥</button>

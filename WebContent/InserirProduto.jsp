@@ -11,7 +11,7 @@
 
 	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
 
-	<script type="text/javascript" src="resources/js/jquery/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="resources/js/jquery/jquery.mask.js"></script>
 	<script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
 	<script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>

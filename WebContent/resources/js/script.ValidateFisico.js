@@ -161,10 +161,9 @@ $(document).ready(function () {
 });
 
 $.validator.methods.email = function (value, element) {
-    return this.optional(element) || /[a-z]+@[a-z]+\.[a-z]+/.test(value);
+    return this.optional(element) || /[A-Za-z0-9]+@[a-z]+\.[a-z]+/.test(value);
 
 };
-
 
 
 jQuery.validator.addMethod("cpf", function(value, element) {

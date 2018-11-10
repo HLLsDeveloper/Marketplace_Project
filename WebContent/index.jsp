@@ -8,7 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
- 	<link rel="stylesheet" href="resources/css/style.nav.css">
     <link rel="stylesheet" href="resources/css/owlcarousel/owl.carousel.css">
     <link rel="stylesheet" href="resources/css/owlcarousel/owl.theme.default.css">
 	
@@ -84,7 +83,7 @@
           </div>
       </div>
   	</section>
-  	<section class="header-site ">
+  	<section class="header-site pb-4 ">
 	    <div class="container">
 		   	<div class="row mb-3">
 		        <div class="col-sm-12">
