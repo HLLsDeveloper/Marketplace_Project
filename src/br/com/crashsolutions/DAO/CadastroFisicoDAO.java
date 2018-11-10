@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import br.com.crashsolutions.Conexao.Factory;
 import br.com.crashsolutions.SG.CadastroFisicoSG;
-import br.com.crashsolutions.SG.ProdutoSG;
 
 public class CadastroFisicoDAO {
 	
@@ -196,6 +195,7 @@ public class CadastroFisicoDAO {
 		
 		try {
 			stmConsulta = con.prepareStatement(sql);
+			stmConsulta.setString(1, "%"+ geral +"%");
 			respConsulta = stmConsulta.executeQuery();
 			
 			while (respConsulta.next()) {

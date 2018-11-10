@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.crashsolutions.DAO.CadastroFisicoDAO;
-import br.com.crashsolutions.DAO.ProdutoDAO;
 import br.com.crashsolutions.SG.CadastroFisicoSG;
-import br.com.crashsolutions.SG.ProdutoSG;
 
 @WebServlet("/BuscaGerenciamentoFisico")
 public class BuscaGerenciamentoFisico extends HttpServlet {

@@ -21,6 +21,7 @@ public class Carrinho {
 			sgproduto.getCor();
 			sgproduto.getCategoria();
 			sgproduto.getQuantidade();
+			sgproduto.getQuantidade_dig();
 			sgproduto.getValor_custo();
 			lista.add(sgproduto);
 			
@@ -32,12 +33,12 @@ public class Carrinho {
 		
 	}
 	
-	public ArrayList<ProdutoSG> AlterarCarrinho(ProdutoSG sgproduto) {
+	public ArrayList<ProdutoSG> AlterarCarrinho(Integer idproduto, Integer quantidade) {
 		
 		for(ProdutoSG sg: lista) {
-			if(sg.getIdproduto() == sgproduto.getIdproduto()) {
-				int quant = sg.getQuantidade() + sgproduto.getQuantidade();
-				sg.setQuantidade(quant);
+			if(sg.getIdproduto() == idproduto) {
+				int quant = /*sg.getQuantidade_dig() +*/ quantidade;
+				sg.setQuantidade_dig(quant);
 				lista.set(lista.indexOf(sg), sg);
 			}
 		}
@@ -59,6 +60,7 @@ public class Carrinho {
 				sg.getCor();
 				sg.getCategoria();
 				sg.getQuantidade();
+				sg.getQuantidade_dig();
 				sg.getValor_custo();
 				mostrarcarrinho.add(sg);
 				

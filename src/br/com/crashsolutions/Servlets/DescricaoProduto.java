@@ -147,6 +147,7 @@ public class DescricaoProduto extends HttpServlet {
 			String tamanho = colocarcarrinho.getTamanho();
 			String cor = colocarcarrinho.getCor();
 			String categoria = colocarcarrinho.getCategoria();
+			Integer quantidade_dig = 1;
 			Integer quantidade = colocarcarrinho.getQuantidade();
 			Float valor = colocarcarrinho.getValor_venda();
 			
@@ -160,6 +161,7 @@ public class DescricaoProduto extends HttpServlet {
 				
 				for(ProdutoSG sg: carrinhosessao) {
 					
+					sg.setQuantidade(1);
 					sg.getIdproduto();
 					sg.getProduto();
 					sg.getImagem();
@@ -167,6 +169,7 @@ public class DescricaoProduto extends HttpServlet {
 					sg.getCor();
 					sg.getCategoria();
 					sg.getQuantidade();
+					sg.getQuantidade_dig();
 					sg.getValor_venda();
 					carrinho.AdicionarCarrinho(sg);
 				}
@@ -182,12 +185,13 @@ public class DescricaoProduto extends HttpServlet {
 					colocarcarrinho.setCor(cor);
 					colocarcarrinho.setCategoria(categoria);
 					colocarcarrinho.setQuantidade(quantidade);
+					colocarcarrinho.setQuantidade_dig(quantidade_dig);
 					colocarcarrinho.setValor_venda(valor);
 					carrinho.AdicionarCarrinho(colocarcarrinho);
 					
 					ArrayList<ProdutoSG> carrinhoSessao = carrinho.MostrarCarrinho();
-					sessao.setAttribute("carrinho", carrinhoSessao);
 					
+					sessao.setAttribute("carrinho", carrinhoSessao);
 				} 
 			} 
 			
@@ -200,12 +204,13 @@ public class DescricaoProduto extends HttpServlet {
 				colocarcarrinho.setCor(cor);
 				colocarcarrinho.setCategoria(categoria);
 				colocarcarrinho.setQuantidade(quantidade);
+				colocarcarrinho.setQuantidade_dig(quantidade_dig);
 				colocarcarrinho.setValor_venda(valor);
 				carrinho.AdicionarCarrinho(colocarcarrinho);
 				
 				ArrayList<ProdutoSG> carrinhoSessao = carrinho.MostrarCarrinho();
-				sessao.setAttribute("carrinho", carrinhoSessao);
 				
+				sessao.setAttribute("carrinho", carrinhoSessao);
 			}
 
 			response.sendRedirect("http://localhost:8080/TShirtGames/Carrinho");
