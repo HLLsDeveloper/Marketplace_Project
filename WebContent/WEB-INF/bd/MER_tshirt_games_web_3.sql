@@ -15,7 +15,7 @@ valor_custo float(8,2),
 valor_venda float(8,2),
 quantidade int(8),
 referencia varchar(6) not null,
-condicao varchar(7)
+condicao char(7)
 );
 
 insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 1", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Animes", "P", 60.99, 60.99, 59, "123456", "ativo");

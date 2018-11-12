@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class FormatarReal {
 	
-	public String formatar(Float valor) {
+	public String formatar(Float valor1) {
 		
 		// IDIOMA PARA FORMATAÇÃO
 		Locale br = new Locale("pt","BR");
@@ -15,7 +15,7 @@ public class FormatarReal {
 		String formatado  = null;
 		
 		// FORMATAÇÃO DE VALORES MONETARIOS
-		formatado = real.format(valor);
+		formatado = real.format(valor1);
 		
 		return formatado;
 	}

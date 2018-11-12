@@ -15,14 +15,14 @@ valor_custo float(8,2),
 valor_venda float(8,2),
 quantidade int(8),
 referencia varchar(6) not null,
-condicao varchar(7)
+condicao char(7)
 );
 
 create table FISICO (
 idusuario int not null auto_increment primary key,
 email varchar(50),
 senha varchar(16),
-cpf bigint(11),
+cpf varchar(11),
 nome varchar(40),
 sobrenome varchar(20),
 datanascimento bigint(8),
@@ -36,7 +36,7 @@ create table JURIDICO (
 idempresa int not null auto_increment primary key,
 email varchar(50),
 senha varchar(16),
-cnpj bigint(13),
+cnpj varchar(13),
 razao varchar(20),
 nomefantasia varchar(20),
 ie varchar(30),
@@ -55,7 +55,7 @@ complemento varchar(50),
 bairro varchar(50),
 cidade varchar(40),
 estado varchar(30),
-cep bigint(7)
+cep varchar(9)
 );
 
 create table ENDERECO_JURIDICO (
@@ -68,7 +68,7 @@ complemento varchar(50),
 bairro varchar(50),
 cidade varchar(40),
 estado varchar(30),
-cep bigint(7)
+cep varchar(9)
 );
 
 create table COMPRA (

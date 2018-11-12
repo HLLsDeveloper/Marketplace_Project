@@ -14,15 +14,15 @@
     <link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="resources/css/style.ValidateFisico.css">
 
-    <script src="resources/js/bootstrap/popper.min.js"></script>
-    <script src="resources/js/bootstrap/bootstrap.min.js"></script>
-    <script src="resources/js/jquery/jquery.min.js"></script>
-    <script src="resources/js/jquery/jquery.validate.js"></script>
-    <script src="resources/js/script.ValidateFisico.js"></script>
-    <script src="resources/js/jquery/jquery.mask.js"></script>
-    <script src="resources/js/jquery/jquery.cpfcnpj.js"></script>
-    <script src="resources/js/script.Buscacep.js"></script>
-    <script src="resources/js/script.Mask.js"></script>
+    <script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
+	<script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/jquery/jquery.validate.js"></script>
+    <script type="text/javascript" src="resources/js/script.ValidateFisico.js"></script>
+    <script type="text/javascript" src="resources/js/jquery/jquery.mask.js"></script>
+    <script type="text/javascript" src="resources/js/jquery/jquery.cpfcnpj.js"></script>
+    <script type="text/javascript" src="resources/js/script.Buscacep.js"></script>
+    <script type="text/javascript" src="resources/js/script.Mask.js"></script>
     
 </head>
 

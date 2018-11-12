@@ -13,9 +13,12 @@ public class ProdutoSG {
 	private String tamanho = null;
 	private String cor = null;
 	private String categoria = null;
-	private Float valor_custo = null;
-	private Float valor_venda = null;
+	private Float valor_custo = 0f;
+	private Float valor_venda = 0f;
+	private Float resultado = 0f;
+	private Float valor_total = 0f;
 	private Integer quantidade = 0;
+	private Integer quantidade_dig = 0;
 	private BigDecimal numeropedido = null;
 	private Integer referencia = null;
 	private String condicao = null;
@@ -96,11 +99,29 @@ public class ProdutoSG {
 	public void setValor_venda(Float valor_venda) {
 		this.valor_venda = valor_venda;
 	}
+	public Float getResultado() {
+		return resultado;
+	}
+	public void setResultado(Float resultado) {
+		this.resultado = resultado;
+	}
+	public Float getValor_total() {
+		return valor_total;
+	}
+	public void setValor_total(Float valor_total) {
+		this.valor_total = valor_total;
+	}
 	public Integer getQuantidade() {
 		return quantidade;
 	}
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+	public Integer getQuantidade_dig() {
+		return quantidade_dig;
+	}
+	public void setQuantidade_dig(Integer quantidade_dig) {
+		this.quantidade_dig = quantidade_dig;
 	}
 	public BigDecimal getNumeropedido() {
 		return numeropedido;

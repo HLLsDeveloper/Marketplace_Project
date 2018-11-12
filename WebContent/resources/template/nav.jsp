@@ -6,7 +6,7 @@
 <script type="text/javascript" src="resources/js/script.Nav.js"></script>
 
 <!-- NAV -->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top ">
+<nav id="nav" class="navbar navbar-expand-md navbar-dark bg-dark">
 	<div class="container">	
 		<a href="http://localhost:8080/TShirtGames/Home"><img src="resources/img/logo.png" class="d-inline-block align-top logo-size" width="40" height="40" alt=""></a>  
 		
@@ -21,10 +21,14 @@
             </form>
             
             <ul class="nav nav-pills">
-              <li class="nav-item ">
-                <a class="nav-link dropdown-toggle font-weight-bold text-light" href="http://localhost:8080/TShirtGames/Carrinho" role="button" aria-haspopup="true" aria-expanded="false"><img src="resources/img/icones/Shopping-cart.png" width="20" height="20" alt="Carrinho"> <span class="badge badge-pill badge-danger">3</span></a>
-              </li>
-              
+            	<c:if test="${not empty idsessao}">
+              	<li class="nav-item ">
+                	<a class="nav-link font-weight-bold text-light" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target=".bd-example-modal-lg">
+	                	<img src="resources/img/icones/Shopping-cart.png" width="20" height="20" alt="Carrinho">
+	                	<span class="badge badge-pill badge-danger"><c:out value="${contador}"></c:out></span>
+                	</a>
+              	</li>
+              </c:if>
               <c:if test="${not empty idsessao}">
               	<li class="nav-item dropdown">
                 <c:if test="${not empty nome}">
@@ -37,8 +41,11 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Meus Dados</a>
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/InserirProduto">Cadastrar Produto</a>
+                  <a class="dropdown-item" href="http://Localhost:8080/TShirtGames/CadastroFisico">Cadastro Físico</a>                  
+                  <a class="dropdown-item" href="http://Localhost:8080/TShirtGames/CadastroJuridico">Cadastro Jurídico</a>
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/GerenciamentoEstoque">Gerenciamento Estoque</a>                  
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/GerenciamentoFisico">Gerenciamento Fisico</a>
+
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="http://localhost:8080/TShirtGames/Logout">Sair</a>
                 </div>
