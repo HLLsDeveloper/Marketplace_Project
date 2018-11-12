@@ -51,9 +51,7 @@
 														src="resources/img/img-produtos/<c:out value="${carrinho.imagem}"></c:out>"></td>
 													<td><c:out value="${carrinho.produto}"></c:out></td>
 													<td><c:out value="${carrinho.tamanho}"></c:out></td>
-													<td><input type="number" name="quantidade"
-														value="${carrinho.quantidade_dig}" min="1"
-														max="${carrinho.quantidade}"></td>
+													<td><input type="number" name="quantidade" min="1" max="${carrinho.quantidade}"></td>
 													<td><c:out value="${carrinho.valor_venda}"></c:out></td>
 													<td>
 														<button name="excluir" value="${carrinho.idproduto}" class="btn btn-success d-block mb-1 mx-auto" formaction="ExcluirCarrinho" formmethod="post" type="submit">Excluir</button>
@@ -101,7 +99,6 @@
 
 							<div class="card-footer small text-muted">
 								<button type="submit" data-toggle="modal" data-target="#" class="btn btn-danger btn-lg float-left" formaction="Home">Continuar Comprando</button>
-								<button type="submit" data-toggle="modal" data-target="#" class="btn btn-danger btn-lg float-left" formaction="AlterarCarrinho" formmethod="post">Alterar Quantidade</button>
 								<button type="submit" data-toggle="modal" data-target="#" class="btn btn-danger btn-lg float-right" formaction="Enderecos">Finalizar Compra</button>
 							</div>
 						</form>

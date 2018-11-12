@@ -16,8 +16,6 @@ import br.com.crashsolutions.SG.ProdutoSG;
 @WebServlet("/ExcluirCarrinho")
 public class ExcluirdoCarrinho extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Float valortotal = null;
-	private Float resultado = null;
 
     public ExcluirdoCarrinho() {
         super();
@@ -49,7 +47,6 @@ public class ExcluirdoCarrinho extends HttpServlet {
 				sg.getCor();
 				sg.getCategoria();
 				sg.getQuantidade();
-				sg.getQuantidade_dig();
 				sg.getValor_venda();
 				carrinho.AdicionarCarrinho(sg);
 			}
@@ -57,20 +54,6 @@ public class ExcluirdoCarrinho extends HttpServlet {
 			carrinho.DeletarCarrinho(idproduto);
 			
 			mostrarcarrinho = carrinho.MostrarCarrinho();
-			
-			valortotal = 0f;
-			
-			for(ProdutoSG produtosg: mostrarcarrinho) {
-				
-				resultado = produtosg.getValor_venda() * produtosg.getQuantidade_dig();
-				
-				if(valortotal == null) {
-					valortotal = resultado;
-				}
-				else {
-					valortotal += resultado;
-				}
-			}
 			
 			sessao.setAttribute("carrinho", mostrarcarrinho);
 			

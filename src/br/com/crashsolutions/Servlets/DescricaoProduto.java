@@ -129,14 +129,14 @@ public class DescricaoProduto extends HttpServlet {
 			String id = request.getParameter("idproduto");
 			
 			ProdutoSG colocarcarrinho = new ProdutoSG();
-			Integer idproduto = null;
+			Integer idproduto = 0;
 			String produto = null;
 			String imagem = null;
 			String tamanho = null;
 			String cor = null;
 			String categoria = null;
-			Integer quantidade = null;
-			Float valor = null;
+			Integer quantidade = 0;
+			Float valor = 0f;
 			
 			if(fornecedor == 1) {
 				
@@ -192,7 +192,6 @@ public class DescricaoProduto extends HttpServlet {
 				
 				for(ProdutoSG sg: carrinhosessao) {
 					
-					sg.setQuantidade(1);
 					sg.getIdproduto();
 					sg.getProduto();
 					sg.getImagem();

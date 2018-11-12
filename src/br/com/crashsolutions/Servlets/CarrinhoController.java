@@ -18,7 +18,8 @@ public class CarrinhoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Float valortotal = 0f;
 	private Float resultado = 0f;
-
+	private Integer quantidade = 0;
+	private Integer contador = 0;
     public CarrinhoController() {
         super();
     }
@@ -31,10 +32,12 @@ public class CarrinhoController extends HttpServlet {
 		ArrayList<ProdutoSG> mostrarcarrinho = (ArrayList<ProdutoSG>) sessao.getAttribute("carrinho");
 		
 		valortotal = 0f;
+		quantidade = 1;
+		contador = 0;
 		
 		for(ProdutoSG produtosg: mostrarcarrinho) {
 			
-			resultado = produtosg.getValor_venda() * produtosg.getQuantidade_dig();
+			resultado = produtosg.getValor_venda() * quantidade;
 			
 			if(valortotal == 0f) {
 				valortotal = resultado;
@@ -42,9 +45,11 @@ public class CarrinhoController extends HttpServlet {
 			else {
 				valortotal += resultado;
 			}
+			contador ++;
 		}
 		
 		sessao.setAttribute("carrinho", mostrarcarrinho);
+		sessao.setAttribute("contador", contador);
 		request.setAttribute("valortotal", valortotal);
 		
 		RequestDispatcher enviar = request.getRequestDispatcher("Carrinho.jsp");

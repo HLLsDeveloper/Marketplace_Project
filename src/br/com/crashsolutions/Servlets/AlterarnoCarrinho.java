@@ -16,8 +16,6 @@ import br.com.crashsolutions.SG.ProdutoSG;
 @WebServlet("/AlterarCarrinho")
 public class AlterarnoCarrinho extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Float valortotal = null;
-	private Float resultado = null;
 	
     public AlterarnoCarrinho() {
         super();
@@ -34,9 +32,6 @@ public class AlterarnoCarrinho extends HttpServlet {
 			
 			Carrinho carrinho = new Carrinho();
 			
-			Integer idproduto = Integer.parseInt(request.getParameter("id"));
-			Integer quantidade = Integer.parseInt(request.getParameter("quantidade"));
-			
 			@SuppressWarnings("unchecked")
 			ArrayList<ProdutoSG> mostrarcarrinho = (ArrayList<ProdutoSG>) sessao.getAttribute("carrinho");
 			
@@ -49,25 +44,8 @@ public class AlterarnoCarrinho extends HttpServlet {
 				sg.getCor();
 				sg.getCategoria();
 				sg.getQuantidade();
-				sg.getQuantidade_dig();
 				sg.getValor_venda();
 				carrinho.AdicionarCarrinho(sg);
-			}
-			
-			carrinho.AlterarCarrinho(idproduto, quantidade);
-			
-			valortotal = 0f;
-			
-			for(ProdutoSG produtosg: mostrarcarrinho) {
-				
-				resultado = produtosg.getValor_venda() * produtosg.getQuantidade_dig();
-				
-				if(valortotal == null) {
-					valortotal = resultado;
-				}
-				else {
-					valortotal += resultado;
-				}
 			}
 			
 			sessao.setAttribute("carrinho", mostrarcarrinho);
