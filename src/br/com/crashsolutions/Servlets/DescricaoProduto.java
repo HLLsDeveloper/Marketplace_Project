@@ -56,6 +56,9 @@ public class DescricaoProduto extends HttpServlet {
 			request.setAttribute("categoria", sg.getCategoria());
 			request.setAttribute("id", sg.getIdproduto());
 			request.setAttribute("referencia", sg.getReferencia());
+			request.setAttribute("fornecedor1", dao.consultarFornecedor(1).getRazao());
+			request.setAttribute("fornecedor2", dao.consultarFornecedor(2).getRazao());
+			request.setAttribute("fornecedor3", dao.consultarFornecedor(3).getRazao());
 
 			// FORMATAR VALOR REAL E PARCELS
 			FormatarReal fr = new FormatarReal();

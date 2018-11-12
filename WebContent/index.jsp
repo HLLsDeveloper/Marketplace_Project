@@ -83,17 +83,15 @@
           </div>
       </div>
   	</section>
-  	<section class="header-site ">
+  	<section class="header-site">
 	    <div class="container">
 		   	<div class="row mb-3">
 		        <div class="col-sm-12">
 		          <h2 class="title line-title   border-bottom mt-4 ">Mais vendidos</h2>
 		    	</div>
+		    	
+		    	<c:import url="resources/template/carrossel.Camisetas.jsp"/>
 			</div>
-	
-		<c:import url="resources/template/carrossel.Camisetas.jsp"/>
-		<script type="text/javascript" src="resources/js/owlcarousel/conf.owl.carousel.js"></script>
-	
 		</div>
 	</section> 
 

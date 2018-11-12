@@ -10,11 +10,14 @@
 	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
 	<link rel="stylesheet" href="resources/css/style.Descricao.css">
 	<link rel="stylesheet" href="resources/css/style.Principal.css">
+    <link rel="stylesheet" href="resources/css/owlcarousel/owl.carousel.css">
+    <link rel="stylesheet" href="resources/css/owlcarousel/owl.theme.default.css">
 	
 	<script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="resources/js/jquery/jquery.mlens.min.js"></script>
 	<script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
 	<script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="resources/js/owlcarousel/owl.carousel.js"></script>
 	<script type="text/javascript" src="resources/js/script.DescricaoProduto.js"></script>
 	<script type="text/javascript" src="resources/js/script.ExibirModal.js"></script>
 	<script type="text/javascript" src="resources/js/script.SelecionarAnuncio.js"></script>
@@ -50,19 +53,19 @@
 										<tbody>
 											<tr onclick="SelecionarAnuncio1()" style="border: 2px solid black; background-color: #ff6600">	
 												<td><input class="custom-control-input"></td>					
-												<td><strong>Loja</strong></td>
+												<td><strong>${fornecedor1}</strong></td>
 												<td><strong><c:out value="${valorf1}"></c:out></strong><br><span class="text-white">em até ${parcela1}x de ${valorparcelado1}</span></td>																			
 											</tr>
 																				
 											<tr onclick="SelecionarAnuncio2()">
 												<td><input class="custom-control-input"></td>
-												<td><strong>Loja</strong></td>
+												<td><strong>${fornecedor2}</strong></td>
 												<td><strong><c:out value="${valorf2}"></c:out></strong><br> em até ${parcela2}x de ${valorparcelado2}</td>
 											</tr>
 											
 											<tr  onclick="SelecionarAnuncio3()">
 											 	<td><input class="custom-control-input"></td>
-												<td><strong>Loja</strong></td>
+												<td><strong>${fornecedor3}</strong></td>
 												<td><strong><c:out value="${valorf3}"></c:out></strong><br> em até ${parcela3}x de ${valorparcelado3}</td>
 											</tr>
 										</tbody>
@@ -86,6 +89,7 @@
 										<input type="hidden" name="fornecedor" value="1">
 										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
+										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor1}</strong></p>
 									</div>
 								</form>
 							</div>
@@ -132,19 +136,19 @@
 										<tbody>
 											<tr onclick="SelecionarAnuncio1()" >	
 												<td><input class="custom-control-input text-white"></td>					
-												<td><strong>Loja</strong></td>
+												<td><strong>${fornecedor1}</strong></td>
 												<td><strong><c:out value="${valorf1}"></c:out></strong><br>em até ${parcela1}x de ${valorparcelado1}</td>																			
 											</tr>
 																				
 											<tr onclick="SelecionarAnuncio2()" style="border: 2px solid black; background-color: #ff6600">	
 												<td><input class="custom-control-input"></td>					
-												<td><strong>Loja</strong></td>
+												<td><strong>${fornecedor2}</strong></td>
 												<td><strong><c:out value="${valorf2}"></c:out></strong><br><span class="text-white">em até ${parcela2}x de ${valorparcelado2}</span></td>																			
 											</tr>
 											
 											<tr onclick="SelecionarAnuncio3()">
 											 	<td><input class="custom-control-input"></td>
-												<td><strong>Loja</strong></td>
+												<td><strong>${fornecedor3}</strong></td>
 												<td><strong><c:out value="${valorf3}"></c:out></strong><br> em até ${parcela3}x de ${valorparcelado3}</td>
 											</tr>
 										</tbody>
@@ -168,6 +172,7 @@
 										<input type="hidden" name="fornecedor" value="2">
 										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
+										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor2}</strong></p>
 									</div>
 								</form>
 							</div>
@@ -214,19 +219,19 @@
 										<tbody>
 											<tr onclick="SelecionarAnuncio1()">	
 												<td><input class="custom-control-input"></td>					
-												<td><strong>Loja</strong></td>
+												<td><strong>${fornecedor1}</strong></td>
 												<td><strong><c:out value="${valorf1}"></c:out></strong><br>em até ${parcela1}x de ${valorparcelado1}</td>																			
 											</tr>
 																				
 											<tr onclick="SelecionarAnuncio2()">
 												<td><input class="custom-control-input"></td>
-												<td><strong>Loja</strong></td>
+												<td><strong>${fornecedor2}</strong></td>
 												<td><strong><c:out value="${valorf2}"></c:out></strong><br> em até ${parcela2}x de ${valorparcelado2}</td>
 											</tr>
 											
 											<tr onclick="SelecionarAnuncio3()" style="border: 2px solid black; background-color: #ff6600">	
 												<td><input class="custom-control-input"></td>					
-												<td><strong>Loja</strong></td>
+												<td><strong>${fornecedor3}</strong></td>
 												<td><strong><c:out value="${valorf3}"></c:out></strong><br><span class="text-white">em até ${parcela3}x de ${valorparcelado3}</span></td>																			
 											</tr>
 										</tbody>
@@ -250,6 +255,7 @@
 										<input type="hidden" name="fornecedor" value="3">
 										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
+										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor3}</strong></p>
 									</div>
 								</form>
 							</div>
@@ -279,63 +285,49 @@
 				</div>
 			</div>
 		</div>
-		<div class="mt-5 mb-3">
-			<h3>Quem viu esta camiseta, também viu estas outras iradas, saca só</h3>
-		</div>
-
-		<!-- CARROSEL -->
-		<div class="container">
-			<div class="row">
-				<c:forEach var="produto" items="${lista_produto}">
-					<div class="col-md-6 col-lg-3 mt-3">
-						<div class="card">
-							<div class="card-body">
-								<img class="card-img" src="resources/img/img-produtos/${produto.imagem}">
-								<h4 class="card-title pt-3 text-center" style="font-size: 1.2rem;">${produto.produto}</h4>
-								<p class="card-text text-center font-italic">R$ ${produto.valor_venda}</p>
-								<form action="Descricao" method="get" class="center">
-									<button type="submit" class="btn btn-success btn-lg btn_sh btn_tam" name="id" value="${produto.idproduto}">Comprar</button>
-									<button type="button" class=" btn btn-outline-danger btn-lg btn_cor btn_sh border-0">♥</button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
+		<div>
+			<div class="mt-5 mb-3">
+				<h3>Quem viu esta camiseta, também viu estas outras iradas, saca só</h3>
 			</div>
-		</div>
-
-		<div class="my-5">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<td colspan="2"><h4 class="center text-tshirt">Detalhes do Produto</h4></td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td colspan="2">
-							<h5>Descrição:</h5>
-							<p>${descricao}</p>
-						</td>
-					</tr>
-					<tr>
-						<th class="w-25 text-tshirt">Modelo:</th>
-						<td>${modelo}</td>
-					</tr>
-					<tr>
-						<th class="w-25 text-tshirt">Cor:</th>
-						<td>${cor}</td>
-					</tr>
-					<tr>
-						<th class="w-25 text-tshirt">Genero:</th>
-						<td>${genero}</td>
-					</tr>
-					<tr>
-						<th class="w-25 text-tshirt">Categoria:</th>
-						<td>${categoria}</td>
-					</tr>
-				</tbody>
-			</table>
+	
+			<c:import url="resources/template/carrossel.Camisetas.jsp"/>
+	
+			<div class="my-5">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<td colspan="3"><h4 class="center text-tshirt">Detalhes do Produto</h4></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="3">
+								<div class="rounded float-left">
+									<h5>Descrição:</h5>
+									<p>${descricao}</p>
+								</div>
+								<img class="w-50 img-fluid rounded float-right" src="resources/img/utilitarios/tabela-medidas.jpg" alt="tabela de medidas da camiseta">
+							</td>	
+						</tr>
+						<tr>
+							<th class="text-tshirt">Modelo:</th>
+							<td colspan="2">${modelo}</td>
+						</tr>
+						<tr>
+							<th class="w-25 text-tshirt">Cor:</th>
+							<td colspan="2">${cor}</td>
+						</tr>
+						<tr>
+							<th class="w-25 text-tshirt">Genero:</th>
+							<td colspan="2">${genero}</td>
+						</tr>
+						<tr>
+							<th class="w-25 text-tshirt">Categoria:</th>
+							<td colspan="2">${categoria}</td>
+						</tr>		
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 	<c:import url="resources/template/footer.jsp" />
