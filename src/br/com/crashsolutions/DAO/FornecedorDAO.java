@@ -52,13 +52,14 @@ public class FornecedorDAO {
 	public ProdutoSG consultar(String geral) throws SQLException{
 		
 		con = new Factory().conBD2();
-		sql = "select * from PRODUTO where idproduto = ? or produto = ?";
+		sql = "select * from PRODUTO where idproduto = ? or produto = ? or referencia = ?";
 		retornoLista = new ProdutoSG();
 		
 		try {
 			stmConsulta = con.prepareStatement(sql);
 			stmConsulta.setString(1, geral);
 			stmConsulta.setString(2, geral);
+			stmConsulta.setString(3, geral);
 			resConsulta = stmConsulta.executeQuery();
 			
 			while(resConsulta.next()) {

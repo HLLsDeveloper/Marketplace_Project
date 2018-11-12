@@ -57,9 +57,7 @@ public class DescricaoProduto extends HttpServlet {
 			request.setAttribute("id", sg.getIdproduto());
 			request.setAttribute("referencia", sg.getReferencia());
 			request.setAttribute("fornecedor1", dao.consultarFornecedor(1).getRazao());
-			request.setAttribute("fornecedor2", dao.consultarFornecedor(2).getRazao());
-			request.setAttribute("fornecedor3", dao.consultarFornecedor(3).getRazao());
-
+			
 			// FORMATAR VALOR REAL E PARCELS
 			FormatarReal fr = new FormatarReal();
 			CalculoParcelas cp = new CalculoParcelas();
@@ -78,6 +76,11 @@ public class DescricaoProduto extends HttpServlet {
 			ArrayList<ProdutoSG> listatamanho2 = dao2.consultarTamanho(referencia);
 			request.setAttribute("listatamanho2", listatamanho2);
 			
+			// CASO NÃO EXISTA O PRODUTO NÃO EXIBE O FORNECEDOR2
+			if (dao2.consultar(String.valueOf((referencia))).getProduto() != null) {
+				request.setAttribute("fornecedor2", dao.consultarFornecedor(2).getRazao());
+			}
+				
 			request.setAttribute("produto2", sg2.getProduto());
 			request.setAttribute("modelo2", sg2.getModelo());
 			request.setAttribute("id2", sg2.getIdproduto());
@@ -97,6 +100,11 @@ public class DescricaoProduto extends HttpServlet {
 			// BUSCA O TAMANHO PELA REFERENCIA E MONTA A LISTA
 			ArrayList<ProdutoSG> listatamanho3 = dao3.consultarTamanho(referencia);
 			request.setAttribute("listatamanho3", listatamanho3);
+				
+			// CASO NÃO EXISTA O PRODUTO NÃO EXIBE O FORNECEDOR3
+			if(dao3.consultar(String.valueOf((referencia))).getProduto() != null) {
+				request.setAttribute("fornecedor3", dao.consultarFornecedor(3).getRazao());
+			}
 			
 			request.setAttribute("produto3", sg3.getProduto());
 			request.setAttribute("modelo3", sg3.getModelo());

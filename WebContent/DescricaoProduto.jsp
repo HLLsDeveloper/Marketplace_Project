@@ -51,23 +51,27 @@
 								<div class="custom-control custom-checkbox">
 									<table class="table text-center mt-3 table-hover">
 										<tbody>
+										<c:if test="${not empty fornecedor1}">
 											<tr onclick="SelecionarAnuncio1()" style="border: 2px solid black; background-color: #ff6600">	
 												<td><input class="custom-control-input"></td>					
 												<td><strong>${fornecedor1}</strong></td>
 												<td><strong><c:out value="${valorf1}"></c:out></strong><br><span class="text-white">em até ${parcela1}x de ${valorparcelado1}</span></td>																			
 											</tr>
-																				
+										</c:if>	
+										<c:if test="${not empty fornecedor2}">								
 											<tr onclick="SelecionarAnuncio2()">
 												<td><input class="custom-control-input"></td>
 												<td><strong>${fornecedor2}</strong></td>
 												<td><strong><c:out value="${valorf2}"></c:out></strong><br> em até ${parcela2}x de ${valorparcelado2}</td>
 											</tr>
-											
+										</c:if>
+										<c:if test="${not empty fornecedor3}">
 											<tr  onclick="SelecionarAnuncio3()">
 											 	<td><input class="custom-control-input"></td>
 												<td><strong>${fornecedor3}</strong></td>
 												<td><strong><c:out value="${valorf3}"></c:out></strong><br> em até ${parcela3}x de ${valorparcelado3}</td>
 											</tr>
+										</c:if>
 										</tbody>
 									</table>
 								</div>
@@ -134,23 +138,27 @@
 								<div class="custom-control custom-checkbox">
 									<table class="table text-center mt-3 table-hover">
 										<tbody>
+										<c:if test="${not empty fornecedor1}">
 											<tr onclick="SelecionarAnuncio1()" >	
 												<td><input class="custom-control-input text-white"></td>					
 												<td><strong>${fornecedor1}</strong></td>
 												<td><strong><c:out value="${valorf1}"></c:out></strong><br>em até ${parcela1}x de ${valorparcelado1}</td>																			
 											</tr>
-																				
+										</c:if>	
+										<c:if test="${not empty fornecedor2}">									
 											<tr onclick="SelecionarAnuncio2()" style="border: 2px solid black; background-color: #ff6600">	
 												<td><input class="custom-control-input"></td>					
 												<td><strong>${fornecedor2}</strong></td>
 												<td><strong><c:out value="${valorf2}"></c:out></strong><br><span class="text-white">em até ${parcela2}x de ${valorparcelado2}</span></td>																			
 											</tr>
-											
+										</c:if>
+										<c:if test="${not empty fornecedor3}">	
 											<tr onclick="SelecionarAnuncio3()">
 											 	<td><input class="custom-control-input"></td>
 												<td><strong>${fornecedor3}</strong></td>
 												<td><strong><c:out value="${valorf3}"></c:out></strong><br> em até ${parcela3}x de ${valorparcelado3}</td>
 											</tr>
+										</c:if>
 										</tbody>
 									</table>
 								</div>
@@ -217,23 +225,27 @@
 								<div class="custom-control custom-checkbox">
 									<table class="table text-center mt-3 table-hover">
 										<tbody>
+										<c:if test="${not empty fornecedor1}">	
 											<tr onclick="SelecionarAnuncio1()">	
 												<td><input class="custom-control-input"></td>					
 												<td><strong>${fornecedor1}</strong></td>
 												<td><strong><c:out value="${valorf1}"></c:out></strong><br>em até ${parcela1}x de ${valorparcelado1}</td>																			
 											</tr>
-																				
+										</c:if>	
+										<c:if test="${not empty fornecedor2}">									
 											<tr onclick="SelecionarAnuncio2()">
 												<td><input class="custom-control-input"></td>
 												<td><strong>${fornecedor2}</strong></td>
 												<td><strong><c:out value="${valorf2}"></c:out></strong><br> em até ${parcela2}x de ${valorparcelado2}</td>
 											</tr>
-											
+										</c:if>
+										<c:if test="${not empty fornecedor3}">	
 											<tr onclick="SelecionarAnuncio3()" style="border: 2px solid black; background-color: #ff6600">	
 												<td><input class="custom-control-input"></td>					
 												<td><strong>${fornecedor3}</strong></td>
 												<td><strong><c:out value="${valorf3}"></c:out></strong><br><span class="text-white">em até ${parcela3}x de ${valorparcelado3}</span></td>																			
 											</tr>
+										</c:if>
 										</tbody>
 									</table>
 								</div>
