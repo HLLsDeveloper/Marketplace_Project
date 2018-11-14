@@ -137,7 +137,7 @@ public class ProdutoDAO {
 	}
 	
 	// CONSULTAR PRODUTO PELA REFERENCIA
-		public ProdutoSG consultarReferencia(Integer referencia) throws SQLException{
+	public ProdutoSG consultarReferencia(Integer referencia) throws SQLException{
 			
 			con = new Factory().conBD1();
 			sql = "select * from PRODUTO where referencia=?";
@@ -454,4 +454,36 @@ public class ProdutoDAO {
 			con.close();
 		}
 	}
+    
+    // CONSULTA FORNECEDOR 
+    public ProdutoSG consultarFornecedor(Integer id) throws SQLException {
+		
+    	con = new Factory().conBD1();
+    	sql = "select * from FORNECEDORES where idfornecedor=?";
+    	
+    	try {
+    		stmConsulta = con.prepareStatement(sql);
+			stmConsulta.setInt(1, id);
+			resConsulta = stmConsulta.executeQuery();
+			
+			while (resConsulta.next()) {
+				
+				retornoLista.setIdfornecedor(resConsulta.getInt("idfornecedor"));
+				retornoLista.setRazao(resConsulta.getString("razao"));
+				retornoLista.setCnpj(resConsulta.getString("cnpj"));
+				retornoLista.setIe(resConsulta.getString("ie"));
+				retornoLista.setTelefone(resConsulta.getString("telefone"));
+				retornoLista.setEndereco(resConsulta.getString("endereco"));
+				retornoLista.setBairro(resConsulta.getString("bairro"));
+				retornoLista.setCidade(resConsulta.getString("cidade"));
+				retornoLista.setEstado(resConsulta.getString("estado"));
+				retornoLista.setCep(resConsulta.getString("cep"));
+			}
+    		
+    	} catch (Exception e){
+    		System.out.println("Erro no ProdutoDAO em consultarFornecedor: "+e);
+    	}
+    	
+    	return retornoLista;
+    }
 }

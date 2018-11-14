@@ -15,14 +15,14 @@ valor_custo float(8,2),
 valor_venda float(8,2),
 quantidade int(8),
 referencia varchar(6) not null,
-condicao varchar(7)
+condicao char(7)
 );
 
 create table FISICO (
 idusuario int not null auto_increment primary key,
 email varchar(50),
 senha varchar(16),
-cpf bigint(11),
+cpf varchar(11),
 nome varchar(40),
 sobrenome varchar(20),
 datanascimento bigint(8),
@@ -36,7 +36,7 @@ create table JURIDICO (
 idempresa int not null auto_increment primary key,
 email varchar(50),
 senha varchar(16),
-cnpj bigint(13),
+cnpj varchar(13),
 razao varchar(20),
 nomefantasia varchar(20),
 ie varchar(30),
@@ -55,7 +55,7 @@ complemento varchar(50),
 bairro varchar(50),
 cidade varchar(40),
 estado varchar(30),
-cep bigint(7)
+cep varchar(9)
 );
 
 create table ENDERECO_JURIDICO (
@@ -68,7 +68,7 @@ complemento varchar(50),
 bairro varchar(50),
 cidade varchar(40),
 estado varchar(30),
-cep bigint(7)
+cep varchar(9)
 );
 
 create table COMPRA (
@@ -81,6 +81,23 @@ tamanho varchar(10),
 cor varchar(20),
 quantidade int(8)
 );
+
+create table FORNECEDORES (
+idfornecedor int not null auto_increment primary key,
+razao varchar(20),
+cnpj varchar(20),
+ie varchar(20),
+telefone varchar(20),
+endereco varchar(50),
+bairro varchar(50),
+cidade varchar(40),
+estado varchar(10),
+cep varchar(10)
+);
+
+insert into FORNECEDORES(razao,cnpj,ie,telefone,endereco,bairro,cidade,estado,cep) value ('Eldrick','55.624.644/0001-42','739.602.736.129','(11) 4326-0091','R. Célso Egídio Souza Santos, 399','Jardim Chapadão','Campinas','SP','13070-057');
+insert into FORNECEDORES(razao,cnpj,ie,telefone,endereco,bairro,cidade,estado,cep) value ('Herslag','12.770.269/0001-36','636.354.536.870','(11) 4251-0236','R. Caetés, 482','Conceição','Diadema','SP','09991-110');
+insert into FORNECEDORES(razao,cnpj,ie,telefone,endereco,bairro,cidade,estado,cep) value ('Hyra Suits','79.355.056/0001-19','966.698.360.102','(11) 3452-0094','Estr. Luiz Marson, 366','Batistini','São Bernardo do Campo','SP','09842-000');
 
 insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 1", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Animes", "P", 60.99, 60.99, 59, "123456", "ativo");
 insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 2", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Games", "M", 50.99, 50.99, 52, "234567", "ativo");

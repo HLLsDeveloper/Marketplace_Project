@@ -11,6 +11,20 @@ body {
  padding: 0;
 }
 
+.anuncios {
+	position: absolute; 
+	background-color: white;
+}
+
+.fixed {
+	position: fixed;
+	margin-top: 0px !important;
+  	top: 0;
+ 	right: 0;
+  	left: 0;
+  	z-index: 2;
+}
+
 .card-img-top {
   width: 200px;
   height: 220px;

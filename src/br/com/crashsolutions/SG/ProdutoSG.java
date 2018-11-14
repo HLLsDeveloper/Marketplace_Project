@@ -13,12 +13,25 @@ public class ProdutoSG {
 	private String tamanho = null;
 	private String cor = null;
 	private String categoria = null;
-	private Float valor_custo = null;
-	private Float valor_venda = null;
+	private Float valor_custo = 0f;
+	private Float valor_venda = 0f;
+	private Float resultado = 0f;
+	private Float valor_total = 0f;
 	private Integer quantidade = 0;
+	private Integer quantidade_dig = 0;
 	private BigDecimal numeropedido = null;
 	private Integer referencia = null;
 	private String condicao = null;
+	private Integer idfornecedor = 0;
+	private String razao = null;
+	private String cnpj = null;
+	private String ie = null;
+	private String telefone = null;
+	private String endereco = null;
+	private String bairro = null;
+	private String cidade = null;
+	private String estado = null;
+	private String cep = null;
 	
 	public Integer getIdproduto() {
 		return idproduto;
@@ -86,11 +99,29 @@ public class ProdutoSG {
 	public void setValor_venda(Float valor_venda) {
 		this.valor_venda = valor_venda;
 	}
+	public Float getResultado() {
+		return resultado;
+	}
+	public void setResultado(Float resultado) {
+		this.resultado = resultado;
+	}
+	public Float getValor_total() {
+		return valor_total;
+	}
+	public void setValor_total(Float valor_total) {
+		this.valor_total = valor_total;
+	}
 	public Integer getQuantidade() {
 		return quantidade;
 	}
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+	public Integer getQuantidade_dig() {
+		return quantidade_dig;
+	}
+	public void setQuantidade_dig(Integer quantidade_dig) {
+		this.quantidade_dig = quantidade_dig;
 	}
 	public BigDecimal getNumeropedido() {
 		return numeropedido;
@@ -109,5 +140,65 @@ public class ProdutoSG {
 	}
 	public void setCondicao(String condicao) {
 		this.condicao = condicao;
+	}
+	public Integer getIdfornecedor() {
+		return idfornecedor;
+	}
+	public void setIdfornecedor(Integer idfornecedor) {
+		this.idfornecedor = idfornecedor;
+	}
+	public String getRazao() {
+		return razao;
+	}
+	public void setRazao(String razao) {
+		this.razao = razao;
+	}
+	public String getCnpj() {
+		return cnpj;
+	}
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+	public String getIe() {
+		return ie;
+	}
+	public void setIe(String ie) {
+		this.ie = ie;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public String getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 }

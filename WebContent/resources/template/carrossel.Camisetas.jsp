@@ -24,3 +24,6 @@
 		</div>
 	</c:forEach>    
 </div>
+
+<!-- CONFIGURAÇÕES DO CARROSSEL -->
+<script type="text/javascript" src="resources/js/owlcarousel/conf.owl.carousel.js"></script>
