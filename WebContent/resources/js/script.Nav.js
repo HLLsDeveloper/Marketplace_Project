@@ -2,7 +2,3 @@
 $(".menu").click(function(){
     $(this).toggleClass("ativo")
 });
-
-$(document).ready(function () {
-	$('#nav').affix();
-});

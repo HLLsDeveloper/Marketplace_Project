@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="resources/css/style.ValidateJuridico.css">
 
     <script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="resources/js/jquery/jquery.validate.js"></script>
     <script type="text/javascript" src="resources/js/script.ValidateFisico.js"></script>
     <script type="text/javascript" src="resources/js/jquery/jquery.mask.js"></script>

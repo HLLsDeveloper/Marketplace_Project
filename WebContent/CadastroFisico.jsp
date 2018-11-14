@@ -15,15 +15,15 @@
     <link rel="stylesheet" href="resources/css/style.ValidateFisico.css">
 
     <script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="resources/js/jquery/jquery.validate.js"></script>
     <script type="text/javascript" src="resources/js/script.ValidateFisico.js"></script>
     <script type="text/javascript" src="resources/js/jquery/jquery.mask.js"></script>
     <script type="text/javascript" src="resources/js/jquery/jquery.cpfcnpj.js"></script>
     <script type="text/javascript" src="resources/js/script.Buscacep.js"></script>
     <script type="text/javascript" src="resources/js/script.Mask.js"></script>
-    
+
 </head>
 
 <body>
@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="cadastro_nascimento">Data nascimento:</label> <input type="text" class="form-control" name="datanascimento" id="datanascimento"  placeholder="dd/mm/aaaa" required>
+                            <label for="cadastro_nascimento">Data nascimento:</label> <input type="text" class="form-control" name="datanascimento" id="datanascimento" placeholder="dd/mm/aaaa" required>
                         </div>
                     </div>
                     <div class="col-lg-6">
