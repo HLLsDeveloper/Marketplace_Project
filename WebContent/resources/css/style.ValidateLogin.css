@@ -1,0 +1,10 @@
+.error{
+	
+}
+
+#login_email-error,
+#login_senha-error {
+    color: red;
+	font-size: 0.8rem;
+    padding: 0.2rem;
+}

@@ -35,8 +35,8 @@ public class Login extends HttpServlet {
 		
 		try {
 			
-			String email = request.getParameter("email");
-			String senha = request.getParameter("senha");
+			String email = request.getParameter("login_email");
+			String senha = request.getParameter("login_senha");
 			String url = null;
 			
 			CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();

@@ -15,15 +15,15 @@
     <link rel="stylesheet" href="resources/css/style.ValidateFisico.css">
 
     <script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
-	<script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="resources/js/jquery/jquery.validate.js"></script>
     <script type="text/javascript" src="resources/js/script.ValidateFisico.js"></script>
     <script type="text/javascript" src="resources/js/jquery/jquery.mask.js"></script>
     <script type="text/javascript" src="resources/js/jquery/jquery.cpfcnpj.js"></script>
     <script type="text/javascript" src="resources/js/script.Buscacep.js"></script>
     <script type="text/javascript" src="resources/js/script.Mask.js"></script>
-    
+
 </head>
 
 <body>
@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="cadastro_nascimento">Data nascimento:</label> <input type="text" class="form-control" name="datanascimento" id="datanascimento"  placeholder="dd/mm/aaaa" required>
+                            <label for="cadastro_nascimento">Data nascimento:</label> <input type="text" class="form-control" name="datanascimento" id="datanascimento" placeholder="dd/mm/aaaa" required>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -98,7 +98,7 @@
                         <label for="inputAddress">Nº</label> <input type="text" class="form-control" name="numero" id="numero" placeholder="Ex: 2001" required>
                     </div>
                     <div class="form-group col-md-3">
-                        <label for="inputAddress">Comp.</label> <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Ex: 5 Andar" required>
+                        <label for="inputAddress">Comp.</label> <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Ex: 5 Andar">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputCity">Bairro</label> <input type="text" class="form-control" name="bairro" id="bairro" placeholder="Ex: Centro" required>
@@ -143,10 +143,10 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputCity">Telefone</label> <input type="text" class="form-control telefone" name="telefone" id="telefone" placeholder="Ex: (99)99999999" required>
+                        <label for="inputCity">Telefone</label> <input type="text" class="form-control telefone" name="telefone" id="telefone" placeholder="Ex: (99) 9999-9999">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputCity">Celular</label> <input type="text" class="form-control celular" name="celular" id="celular" placeholder="Ex: (99)999999999" required>
+                        <label for="inputCity">Celular</label> <input type="text" class="form-control celular" name="celular" id="celular" placeholder="Ex: (99) 99999-9999" required>
                     </div>
                 </div>
                 <br>
