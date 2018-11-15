@@ -6,7 +6,7 @@
 <script type="text/javascript" src="resources/js/script.Nav.js"></script>
 
 <!-- NAV -->
-<nav id="nav" class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
 	<div class="container">	
 		<a href="http://localhost:8080/TShirtGames/Home"><img src="resources/img/logo.png" class="d-inline-block align-top logo-size" width="40" height="40" alt=""></a>  
 		

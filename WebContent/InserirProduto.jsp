@@ -17,8 +17,8 @@
 	<script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
 	
 	<script type="text/javascript" src="resources/js/script.PreImagem.js"></script>
-	<script type="text/javascript" src="resources/js/script.ValidacaoCampos.js"></script>
-	<script type="text/javascript" src="resources/js/script.FormatacaoCampos.js"></script>
+<!-- 	<script type="text/javascript" src="resources/js/script.ValidacaoCampos.js"></script> -->
+<!-- 	<script type="text/javascript" src="resources/js/script.FormatacaoCampos.js"></script> -->
 	<script type="text/javascript" src="resources/js/script.ExibirModal.js"></script>
 </head>
 
@@ -30,7 +30,7 @@
 	<div class="container">
 
 		<!-- FORMULÁRIO DE CASTRO DO PRODUTO -->
-		<form id="form-produto" enctype="multipart/form-data" accept-charset="ISO-8859-1">
+		<form name="form-produto" enctype="multipart/form-data" accept-charset="ISO-8859-1">
 		<div class="row">
 			<div class="col-md-4 mt-4">
 				<div class="card m-2 mb-4">

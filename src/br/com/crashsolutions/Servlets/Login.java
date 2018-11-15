@@ -27,7 +27,6 @@ public class Login extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setAttribute("mensagem", request.getAttribute("mensagemlogin"));
 		RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
 		enviar.forward(request, response);
 	}
