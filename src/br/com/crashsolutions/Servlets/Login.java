@@ -27,7 +27,6 @@ public class Login extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setAttribute("mensagem", request.getAttribute("mensagemlogin"));
 		RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
 		enviar.forward(request, response);
 	}
@@ -36,8 +35,8 @@ public class Login extends HttpServlet {
 		
 		try {
 			
-			String email = request.getParameter("email");
-			String senha = request.getParameter("senha");
+			String email = request.getParameter("login_email");
+			String senha = request.getParameter("login_senha");
 			String url = null;
 			
 			CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();

@@ -25,7 +25,8 @@ public class addCarrinho extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.doPost(request, response);
+		
+		
 	}
 
 	@SuppressWarnings("unchecked")
@@ -73,7 +74,7 @@ public class addCarrinho extends HttpServlet {
 				if(encontrado == true) {
 					
 					request.setAttribute("mensagem", "O produto já foi adicionado no carrinho");
-					response.sendRedirect("http://localhost:8080/TShirtGames/Descricao?id=" + idproduto);
+					doGet(request, response);
 				}
 				
 				if(encontrado == false) {
@@ -94,7 +95,7 @@ public class addCarrinho extends HttpServlet {
 					sessao.setAttribute("carrinho", carrinhoSessao);
 					
 					request.setAttribute("mensagem", "Produto adicionado no carrinho com sucesso!");
-					response.sendRedirect("http://localhost:8080/TShirtGames/Descricao?id=" + idproduto);
+					doGet(request, response);
 				}
 			}
 			
@@ -115,10 +116,9 @@ public class addCarrinho extends HttpServlet {
 				sessao.setAttribute("carrinho", carrinhoSessao);
 				
 				request.setAttribute("mensagem", "Produto adicionado no carrinho com sucesso!");
-				response.sendRedirect("http://localhost:8080/TShirtGames/Descricao?id=" + idproduto);
+				doGet(request, response);
 				
 			}
-			
 			
 		} catch(Exception e) {
 			System.out.println(e);

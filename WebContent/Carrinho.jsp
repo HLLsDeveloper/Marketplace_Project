@@ -9,13 +9,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
-<link rel="stylesheet" href="resources/css/owlcarousel/owl.carousel.css">
-<link rel="stylesheet"
-	href="resources/css/owlcarousel/owl.theme.default.css">
 
-<script src="resources/js/jquery.min.js"></script>
-<script src="resources/js/popper.min.js"></script>
-<script src="resources/js/jquery/bootstrap.min.js"></script>
+<script src="resources/js/jquery/jquery.min.js"></script>
+<script src="resources/js/bootstrap/popper.min.js"></script>
+<script src="resources/js/bootstrap/bootstrap.min.js"></script>
 </head>
 <body>
 	<c:import url="resources/template/nav.jsp" />

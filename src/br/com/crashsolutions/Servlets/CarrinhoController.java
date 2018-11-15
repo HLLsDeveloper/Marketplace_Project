@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import br.com.crashsolutions.Acoes.Carrinho;
 import br.com.crashsolutions.SG.ProdutoSG;
 
 @WebServlet("/Carrinho")
@@ -59,5 +60,34 @@ public class CarrinhoController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		try {
+			
+			HttpSession sessao = request.getSession();
+			
+			Carrinho carrinho = new Carrinho();
+			
+			@SuppressWarnings("unchecked")
+			ArrayList<ProdutoSG> mostrarcarrinho = (ArrayList<ProdutoSG>) sessao.getAttribute("carrinho");
+			
+			for(ProdutoSG sg: mostrarcarrinho) {
+				
+				sg.getIdproduto();
+				sg.getProduto();
+				sg.getImagem();
+				sg.getTamanho();
+				sg.getCor();
+				sg.getCategoria();
+				sg.getQuantidade();
+				sg.getValor_venda();
+				carrinho.AdicionarCarrinho(sg);
+			}
+			
+			request.setAttribute("carrinho", mostrarcarrinho);
+			
+			doGet(request, response);
+			
+		} catch(Exception e) {
+			System.out.println("Erro nessa caralha: " + e);
+		}	
 	}
 }

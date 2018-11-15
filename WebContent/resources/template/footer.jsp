@@ -81,5 +81,4 @@
         <!-- FIM - Modal com as Informações do Certificado de Segurança -->
       </div>
     </div>
-    <c:import url="resources/template/modal.LargeCarrinho.jsp"></c:import>
 </footer>
