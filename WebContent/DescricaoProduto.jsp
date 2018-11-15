@@ -78,24 +78,52 @@
 							</div>
 							
 							<div class="col-md-5 py-4 center">
+								<c:if test="${quantidade1 > 0}">
 								<form>	
 									<h5 class="text-center">Tamanho</h5>
 									<div class="custom-control center custom-radio custom-control-inline mt-4">
 										<c:forEach var="lista" items="${listatamanho}">
-											<label>
-												<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
-												<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
-											</label>
+										<label>
+											<c:if test="${lista.quantidade > 0}">										
+											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
+											</c:if>
+											<c:if test="${lista.quantidade <= 0}">
+											<input type="text" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<strike class="btn btn-outline-light mr-1">${lista.tamanho}</strike>
+											</c:if>
+										</label>
 										</c:forEach>
 									</div>
 									
 									<div class="mt-5">
-										<input type="hidden" name="fornecedor" value="1">
+										<input type="hidden" name="fornecedor" value="${idfornecedor1}">
 										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
-										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor1}</strong></p>
+										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor1}</strong></p>										
 									</div>
 								</form>
+								</c:if>
+								<c:if test="${quantidade1 <= 0}">
+								<div class="mt-5">
+									<form>
+										<p>Para ser avisado quando o produto estiver disponível, preencha os campos abaixo:<p>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+										    	<span class="input-group-text" id="basic-addon1">E-mail:</span>
+										  	</div>
+										  	<input name="email" type="text" class="form-control" placeholder="Digite seu e-mail..." aria-label="Username" aria-describedby="basic-addon1">
+										</div>
+										<div class="input-group mb-3">	
+											<div class="input-group-prepend">
+										    	<span class="input-group-text" id="basic-addon1">Nome:</span>
+										  	</div>	
+										  	<input name="nome" type="text" class="form-control" placeholder="Digite seu nome..." aria-label="Username" aria-describedby="basic-addon1">								
+										</div>
+										<button type="button" class="btn btn-warning">Avise-me</button>
+									</form>
+								</div>
+								</c:if>
 							</div>
 						</div>
 						<div class="row border my-4 p-4">
@@ -103,7 +131,7 @@
 								<p>Digite aqui para saber o valor do frete e prazo</p>
 							</div>
 							<div class="form-inline col-md-12">
-								<input class="form-control col-sm-9 col-md-9 col-lg-6" name="cep" id="cep" type="text">
+								<input class="form-control col-sm-9 col-md-9 col-lg-6" name="frete" id="cep" type="text">
 								<button type="button" class="btn btn-tshirt col-sm-3 col-md-3 col-lg-2" data-loading-text="Carregando..." onclick="calculafrete()">Calcular</button>
 							</div>
 							<table class="table text-center mt-3">
@@ -165,24 +193,52 @@
 							</div>
 							
 							<div class="col-md-5 py-4 center">
+								<c:if test="${quantidade2 > 0}">
 								<form>	
 									<h5 class="text-center">Tamanho</h5>
 									<div class="custom-control center custom-radio custom-control-inline mt-4">
 										<c:forEach var="lista" items="${listatamanho2}">
-											<label>
-												<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
-												<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
-											</label>
+										<label>
+											<c:if test="${lista.quantidade > 0}">										
+											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
+											</c:if>
+											<c:if test="${lista.quantidade <= 0}">
+											<input type="text" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<strike class="btn btn-outline-light mr-1">${lista.tamanho}</strike>
+											</c:if>
+										</label>
 										</c:forEach>
 									</div>
 									
 									<div class="mt-5">
-										<input type="hidden" name="fornecedor" value="2">
+										<input type="hidden" name="fornecedor" value="${idfornecedor2	}">
 										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
 										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor2}</strong></p>
 									</div>
 								</form>
+								</c:if>
+								<c:if test="${quantidade2 <= 0}">
+								<div class="mt-5">
+									<form>
+										<p>Para ser avisado quando o produto estiver disponível, preencha os campos abaixo:<p>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+										    	<span class="input-group-text" id="basic-addon1">E-mail:</span>
+										  	</div>
+										  	<input name="email" type="text" class="form-control" placeholder="Digite seu e-mail..." aria-label="Username" aria-describedby="basic-addon1">
+										</div>
+										<div class="input-group mb-3">	
+											<div class="input-group-prepend">
+										    	<span class="input-group-text" id="basic-addon1">Nome:</span>
+										  	</div>	
+										  	<input name="nome" type="text" class="form-control" placeholder="Digite seu nome..." aria-label="Username" aria-describedby="basic-addon1">								
+										</div>
+										<button type="button" class="btn btn-warning">Avise-me</button>
+									</form>
+								</div>
+								</c:if>
 							</div>
 						</div>
 						<div class="row border my-4 p-4">
@@ -252,24 +308,52 @@
 							</div>
 							
 							<div class="col-md-5 py-4 center">
+								<c:if test="${quantidade3 > 0}">
 								<form>	
 									<h5 class="text-center">Tamanho</h5>
 									<div class="custom-control center custom-radio custom-control-inline mt-4">
 										<c:forEach var="lista" items="${listatamanho3}">
-											<label>
-												<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
-												<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
-											</label>
+										<label>
+											<c:if test="${lista.quantidade > 0}">										
+											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
+											</c:if>
+											<c:if test="${lista.quantidade <= 0}">
+											<input type="text" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<strike class="btn btn-outline-light mr-1">${lista.tamanho}</strike>
+											</c:if>
+										</label>
 										</c:forEach>
 									</div>
 									
 									<div class="mt-5">
-										<input type="hidden" name="fornecedor" value="3">
+										<input type="hidden" name="fornecedor" value="${idfornecedor3}">
 										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
 										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor3}</strong></p>
 									</div>
 								</form>
+								</c:if>
+								<c:if test="${quantidade3 <= 0}">
+								<div class="mt-5">
+									<form>
+										<p>Para ser avisado quando o produto estiver disponível, preencha os campos abaixo:<p>
+										<div class="input-group mb-3">
+											<div class="input-group-prepend">
+										    	<span class="input-group-text" id="basic-addon1">E-mail:</span>
+										  	</div>
+										  	<input name="email" type="text" class="form-control" placeholder="Digite seu e-mail..." aria-label="Username" aria-describedby="basic-addon1">
+										</div>
+										<div class="input-group mb-3">	
+											<div class="input-group-prepend">
+										    	<span class="input-group-text" id="basic-addon1">Nome:</span>
+										  	</div>	
+										  	<input name="nome" type="text" class="form-control" placeholder="Digite seu nome..." aria-label="Username" aria-describedby="basic-addon1">								
+										</div>
+										<button type="button" class="btn btn-warning">Avise-me</button>
+									</form>
+								</div>
+								</c:if>
 							</div>
 						</div>
 						<div class="row border my-4 p-4">

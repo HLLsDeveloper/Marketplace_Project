@@ -19,6 +19,7 @@ public class ProdutoDAO {
 	private ResultSet listaConsulta, resConsulta;
 	private ProdutoSG retornoLista;
 	public String Mensagem = null;
+	public Integer Quantidade = 0;
 	
 	// CADASTRAR O PRODUTO
 	public void inserir(ProdutoSG sgproduto) throws SQLException{
@@ -61,7 +62,7 @@ public class ProdutoDAO {
 	public ArrayList<ProdutoSG> consultarTamanho(Integer referencia) throws SQLException{
 		
 		con = new Factory().conBD1();
-		sql = "select idproduto, tamanho, referencia from PRODUTO";
+		sql = "select idproduto, tamanho, referencia, quantidade from PRODUTO";
 		
 		ArrayList<ProdutoSG> listartamanho = new ArrayList<>();
 		
@@ -76,9 +77,10 @@ public class ProdutoDAO {
 				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
 				retornoLista.setReferencia(listaConsulta.getInt("referencia"));	
 				retornoLista.setTamanho(listaConsulta.getString("tamanho"));
+				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
 				
-				if (referencia == listaConsulta.getInt("referencia")) {
-					
+				if (referencia == listaConsulta.getInt("referencia")) {					
+					Quantidade = listaConsulta.getInt("quantidade") + Quantidade;
 					listartamanho.add(retornoLista);
 				}		
 			}
@@ -295,13 +297,21 @@ public class ProdutoDAO {
 				retornoLista.setReferencia(listaConsulta.getInt("referencia"));
 				retornoLista.setCondicao(listaConsulta.getString("condicao"));
 				
+				String condicao = listaConsulta.getString("condicao");
+				String ativo = "ativo";
+				
 				// VERIFICA SE A MAIS DE UM PRODUTO COM A REFERENCIA E ADICIONA APENAS UM
 				if(referencia != listaConsulta.getInt("referencia")) {
-					referencia = listaConsulta.getInt("referencia");
-					listartodos.add(retornoLista);					
+					
+					// VERIFICA SE ESTA ATIVO PARA ENVIAR 
+					if (condicao.equals(ativo)) {
+						referencia = listaConsulta.getInt("referencia");
+						listartodos.add(retornoLista);					
+					}
 				}
 				
 			}
+					
 			stmListaConsulta.close();
 			con.close();
 			

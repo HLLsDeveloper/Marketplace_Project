@@ -17,6 +17,7 @@ public class FornecedorDAO {
 	private PreparedStatement stmInserir, stmConsulta, stmAlterar, stmListaConsulta;
 	private ResultSet listaConsulta, resConsulta;
 	private ProdutoSG retornoLista;
+	public Integer Quantidade = 0;
 	
 	public void inserir(ProdutoSG sgproduto) throws SQLException{
 		
@@ -94,7 +95,7 @@ public class FornecedorDAO {
 	public ArrayList<ProdutoSG> consultarTamanho(Integer referencia) throws SQLException{
 			
 		con = new Factory().conBD2();
-		sql = "select idproduto, tamanho, referencia from PRODUTO";
+		sql = "select idproduto, tamanho, referencia, quantidade from PRODUTO";
 		
 		ArrayList<ProdutoSG> listartamanho = new ArrayList<>();
 		
@@ -109,9 +110,10 @@ public class FornecedorDAO {
 				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
 				retornoLista.setReferencia(listaConsulta.getInt("referencia"));	
 				retornoLista.setTamanho(listaConsulta.getString("tamanho"));
+				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
 				
 				if (referencia == listaConsulta.getInt("referencia")) {
-					
+					Quantidade = listaConsulta.getInt("quantidade") + Quantidade;
 					listartamanho.add(retornoLista);
 				}		
 			}

@@ -24,16 +24,15 @@ public class Home extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// DAO'S INSTANCIADOS
-		ProdutoDAO listar = new ProdutoDAO();
+		// DAO INSTANCIADOS
+		ProdutoDAO dao = new ProdutoDAO(); 
 		
 		// LISTAS PARA RECEBER
-		ArrayList<ProdutoSG> lista;
+		ArrayList<ProdutoSG> lista = null;
 		
 		try {
-			lista = listar.buscaTodasReferencias();
+			lista = dao.buscaTodasReferencias();
 			request.setAttribute("lista_produto", lista);
-			
 		} catch (SQLException e) {
 			System.out.println("Erro na lista do Home: "+ e);
 		}  

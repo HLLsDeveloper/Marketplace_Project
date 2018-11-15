@@ -57,6 +57,7 @@ public class DescricaoProduto extends HttpServlet {
 			request.setAttribute("id", sg.getIdproduto());
 			request.setAttribute("referencia", sg.getReferencia());
 			request.setAttribute("fornecedor1", dao.consultarFornecedor(1).getRazao());
+			request.setAttribute("idfornecedor1", dao.consultarFornecedor(1).getIdfornecedor());
 			
 			// FORMATAR VALOR REAL E PARCELS
 			FormatarReal fr = new FormatarReal();
@@ -64,6 +65,7 @@ public class DescricaoProduto extends HttpServlet {
 			
 			Float valor = sg.getValor_venda();
 			
+			request.setAttribute("quantidade1", dao.Quantidade);
 			request.setAttribute("valorf1", fr.formatar(valor));
 			request.setAttribute("valorparcelado1", fr.formatar(cp.Calcular(valor)));
 			request.setAttribute("parcela1", cp.Parcela(valor));
@@ -79,6 +81,7 @@ public class DescricaoProduto extends HttpServlet {
 			// CASO NÃO EXISTA O PRODUTO NÃO EXIBE O FORNECEDOR2
 			if (dao2.consultar(String.valueOf((referencia))).getProduto() != null) {
 				request.setAttribute("fornecedor2", dao.consultarFornecedor(2).getRazao());
+				request.setAttribute("idfornecedor2", dao.consultarFornecedor(2).getIdfornecedor());
 			}
 				
 			request.setAttribute("produto2", sg2.getProduto());
@@ -88,7 +91,8 @@ public class DescricaoProduto extends HttpServlet {
 			
 			// FORMATAR VALOR REAL E PARCELS	
 			Float valor2 = sg2.getValor_venda();
-						
+			
+			request.setAttribute("quantidade2", dao2.Quantidade);
 			request.setAttribute("valorf2", fr.formatar(valor2));
 			request.setAttribute("valorparcelado2", fr.formatar(cp.Calcular(valor2)));
 			request.setAttribute("parcela2", cp.Parcela(valor2));
@@ -104,6 +108,7 @@ public class DescricaoProduto extends HttpServlet {
 			// CASO NÃO EXISTA O PRODUTO NÃO EXIBE O FORNECEDOR3
 			if(dao3.consultar(String.valueOf((referencia))).getProduto() != null) {
 				request.setAttribute("fornecedor3", dao.consultarFornecedor(3).getRazao());
+				request.setAttribute("idfornecedor3", dao.consultarFornecedor(3).getIdfornecedor());
 			}
 			
 			request.setAttribute("produto3", sg3.getProduto());
@@ -113,7 +118,8 @@ public class DescricaoProduto extends HttpServlet {
 			
 			// FORMATAR VALOR REAL E PARCELS	
 			Float valor3 = sg3.getValor_venda();
-						
+			
+			request.setAttribute("quantidade3", dao3.Quantidade);
 			request.setAttribute("valorf3", fr.formatar(valor3));
 			request.setAttribute("valorparcelado3", fr.formatar(cp.Calcular(valor3)));
 			request.setAttribute("parcela3", cp.Parcela(valor3));
