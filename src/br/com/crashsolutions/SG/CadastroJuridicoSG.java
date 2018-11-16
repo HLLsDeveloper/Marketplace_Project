@@ -10,6 +10,7 @@ public class CadastroJuridicoSG {
 	private String cnpj = null;
 	private String razao = null;
 	private String nomefantasia = null;
+	private String destinatario = null;
 	private String ie = null;
 	private Integer idendereco = 0;
 	private Integer idenderecojuridico = 0;
@@ -61,6 +62,12 @@ public class CadastroJuridicoSG {
 	}
 	public void setNomefantasia(String nomefantasia) {
 		this.nomefantasia = nomefantasia;
+	}
+	public String getDestinatario() {
+		return destinatario;
+	}
+	public void setDestinatario(String destinatario) {
+		this.destinatario = destinatario;
 	}
 	public String getIe() {
 		return ie;

@@ -45,7 +45,7 @@
 											<td><p id="categoria"><c:out value="${carrinho.categoria}"></c:out></p></td>
 											<td><p id="tamanho"><c:out value="${carrinho.tamanho}"></c:out></p></td>
 											<td><p id="valor"><c:out value="R$ ${carrinho.valor_venda}"></c:out></p></td>
-											<td><p id="quantidade"><c:out value="${carrinho.quantidade}"></c:out></p></td>
+											<td><p id="quantidade"><c:out value="${carrinho.quantidade_dig}"></c:out></p></td>
 									</c:forEach>
 								</tbody>
 							</table>
@@ -56,7 +56,7 @@
 
 			<div class="col-md-6 mt-5">
 				<div class="card">
-					<h5 class="card-header">Dados Cadastrados</h5>
+					<h5 class="card-header">Dados de Cadastrados</h5>
 					<div class="card-body">
 						<ul class="list-group">
 							<li class="list-group-item list-group-item-dark">Nome:<c:out value=" ${nome}"></c:out></li>

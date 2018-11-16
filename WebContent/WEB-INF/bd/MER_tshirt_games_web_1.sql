@@ -27,8 +27,8 @@ nome varchar(40),
 sobrenome varchar(20),
 datanascimento bigint(8),
 sexo varchar(9),
-telefone bigint(10),
-celular bigint(11),
+telefone varchar(13),
+celular varchar(14),
 condicao char(7)
 );
 
@@ -40,8 +40,8 @@ cnpj varchar(13),
 razao varchar(20),
 nomefantasia varchar(20),
 ie varchar(30),
-telefone bigint(10),
-celular bigint(11),
+telefone varchar(13),
+celular varchar(14),
 condicao char(7)
 );
 
@@ -71,10 +71,21 @@ estado varchar(30),
 cep varchar(9)
 );
 
-create table COMPRA (
+create table COMPRAFISICO (
 idcompra int not null auto_increment primary key,
 numeropedido bigint(20) not null,
 idusuario int not null,
+destinatario varchar(20),
+idproduto int not null,
+tamanho varchar(10),
+cor varchar(20),
+quantidade int(8)
+);
+
+create table COMPRAJURIDICO (
+idcompra int not null auto_increment primary key,
+numeropedido bigint(20) not null,
+idempresa int not null,
 destinatario varchar(20),
 idproduto int not null,
 tamanho varchar(10),
@@ -104,20 +115,25 @@ insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, 
 insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 3", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Filmes", "G", 40.99, 40.99, 125, "345678", "ativo");
 insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 4", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Series", "GG", 30.99, 30.99, 125, "456789", "ativo");
 
-insert into FISICO(email, senha, cpf, nome, sobrenome, datanascimento, sexo, telefone, celular, condicao) values("hugonsantos03@gmail.com", "1234", 43258977801, "Hugo", "Nascimento", "22031995", "Masculino", 1145236996, 11948523236, "Ativo");
-insert into FISICO(email, senha, cpf, nome, sobrenome, datanascimento, sexo, telefone, celular, condicao) values("fabiananascimento@gmail.com", "1234", 15498752305, "Fabiana", "Nascimento", "22031995", "Feminino", 1145234416, 11952892146, "Ativo");
+insert into FISICO(email, senha, cpf, nome, sobrenome, datanascimento, sexo, telefone, celular, condicao) values("hugonsantos03@gmail.com", "123456", 43258977801, "Hugo", "Nascimento", "22031995", "Masculino", 1145236996, 11948523236, "Ativo");
+insert into FISICO(email, senha, cpf, nome, sobrenome, datanascimento, sexo, telefone, celular, condicao) values("fabiananascimento@gmail.com", "123456", 15498752305, "Fabiana", "Nascimento", "22031995", "Feminino", 1145234416, 11952892146, "Ativo");
 
 insert into ENDERECO_FISICO(idenderecofisico, endereco, numero, complemento, bairro, cidade, estado, cep) values(1, "Rua João dias", 8978, "Casa 2", "Vila Maria Matilda da Conceição Barros", "São Bernardo do Campo", "São Paulo", 09758520);
 insert into ENDERECO_FISICO(idenderecofisico, endereco, numero, complemento, bairro, cidade, estado, cep) values(1, "Rua Ramelhão", 12, "", "Vila Matilda", "São Bernardo do Campo", "São Paulo", 09750225);
 insert into ENDERECO_FISICO(idenderecofisico, endereco, numero, complemento, bairro, cidade, estado, cep) values(2, "Rua Coronel Prestes", 53, "", "Vila Leopoldina", "Santo Andre", "São Paulo", 09780447);
 insert into ENDERECO_FISICO(idenderecofisico, endereco, numero, complemento, bairro, cidade, estado, cep) values(2, "Rua Miguel Sampaio", 168, "", "Vila Galvez", "São Caetano do Sul", "São Paulo", 09687558);
 
-insert into JURIDICO(email, senha, cnpj, razao, nomefantasia, ie, telefone, celular, condicao) values("hllsdeveloper@gmail.com", "1234", 1000123552135, "HLLs Developer", "HLLs", "Não Consta", 1145879620, 11958623658, "Ativo");
+insert into JURIDICO(email, senha, cnpj, razao, nomefantasia, ie, telefone, celular, condicao) values("hllsdeveloper@gmail.com", "123456", 1000123552135, "HLLs Developer", "HLLs", "Não Consta", 1145879620, 11958623658, "Ativo");
 
 alter table ENDERECO_FISICO add foreign key (idenderecofisico) references FISICO(idusuario);
 alter table ENDERECO_JURIDICO add foreign key (idenderecojuridico) references JURIDICO(idempresa);
-alter table COMPRA add foreign key (idusuario) references FISICO(idusuario);
-alter table COMPRA add foreign key (idproduto) references PRODUTO(idproduto);
+alter table COMPRAFISICO add foreign key (idusuario) references FISICO(idusuario);
+alter table COMPRAFISICO add foreign key (idproduto) references PRODUTO(idproduto);
+alter table COMPRAJURIDICO add foreign key (idempresa) references JURIDICO(idempresa);
+alter table COMPRAJURIDICO add foreign key (idproduto) references PRODUTO(idproduto);
+
+select * from comprajuridico;
+select * from produto;
 
 /* INFORMAÇÕES
 

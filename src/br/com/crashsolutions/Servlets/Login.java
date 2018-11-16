@@ -73,7 +73,7 @@ public class Login extends HttpServlet {
 						response.sendRedirect(url);
 					}
 					else {
-						response.sendRedirect("http://localhost:8080/TShirtGames/Home");
+						response.sendRedirect("Home");
 					}
 				}
 				else {
@@ -114,7 +114,7 @@ public class Login extends HttpServlet {
 							response.sendRedirect(url);
 						}
 						else {
-							response.sendRedirect("http://localhost:8080/TShirtGames/Home");
+							response.sendRedirect("Home");
 						}
 					}
 					else {

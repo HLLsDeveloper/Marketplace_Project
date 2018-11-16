@@ -53,7 +53,7 @@
               </c:if>
               <c:if test="${empty idsessao}">
               	<li class="nav-item">
-	               <a class="nav-link font-weight-bold text-light" href="http://localhost:8080/TShirtGames/Login.jsp"><img src="resources/img/icones/logout.svg" class="mr-1" width="20" height="20">LOGIN</a>
+	               <a class="nav-link font-weight-bold text-light" href="Login"><img src="resources/img/icones/logout.svg" class="mr-1" width="20" height="20">LOGIN</a>
 	            </li>
               </c:if>
             </ul>

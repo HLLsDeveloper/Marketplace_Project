@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.crashsolutions.DAO.CadastroFisicoDAO;
+import br.com.crashsolutions.DAO.CadastroJuridicoDAO;
 import br.com.crashsolutions.SG.CadastroFisicoSG;
+import br.com.crashsolutions.SG.CadastroJuridicoSG;
 
 @WebServlet("/Finalizacao")
 public class FinalizacaoCompra extends HttpServlet {
@@ -23,40 +25,54 @@ public class FinalizacaoCompra extends HttpServlet {
 
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
 			
 			HttpSession session = request.getSession();
-			request.setAttribute("carrinho", session.getAttribute("carrinho"));;
-			
 			CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();
-			CadastroFisicoSG fisicosg = fisicodao.ConsultarUsuario((String) session.getAttribute("email"));
-			request.setAttribute("nome", fisicosg.getNome());
-			request.setAttribute("email", fisicosg.getEmail());
-			request.setAttribute("celular", fisicosg.getCelular());
-			request.setAttribute("telefone", fisicosg.getTelefone());
-			request.setAttribute("tipocadastro", null);
-			request.setAttribute("cpf", fisicosg.getCpf());
+			CadastroJuridicoDAO juridicodao = new CadastroJuridicoDAO();
 			
 			Integer validaendereco = Integer.parseInt(request.getParameter("check_endereco"));
 			
-			ArrayList<CadastroFisicoSG> endereco = fisicodao.listarEnderecos((String) session.getAttribute("email"));
-			for(CadastroFisicoSG sg: endereco) {
-				if(sg.getIdendereco() == validaendereco) {
-					
-					request.setAttribute("cep", sg.getCep());
-					request.setAttribute("valorfrete", null);
-					request.setAttribute("complemento", sg.getComplemento());
-					request.setAttribute("destinatario", null);
-					request.setAttribute("endereco", sg.getEndereco());
-					request.setAttribute("numero", sg.getNumero());
-					request.setAttribute("bairro", sg.getBairro());
-					request.setAttribute("cidade", sg.getCidade());
-					request.setAttribute("estado", sg.getEstado());
-					
+			if(session.getAttribute("idusuario") != null) {
+				
+				ArrayList<CadastroFisicoSG> endereco = fisicodao.listarEnderecos((String) session.getAttribute("email"));
+				for(CadastroFisicoSG sg: endereco) {
+					if(sg.getIdendereco() == validaendereco) {
+						
+						request.setAttribute("cep", sg.getCep());
+						request.setAttribute("valorfrete", null);
+						request.setAttribute("complemento", sg.getComplemento());
+						request.setAttribute("destinatario", null);
+						request.setAttribute("endereco", sg.getEndereco());
+						request.setAttribute("numero", sg.getNumero());
+						request.setAttribute("bairro", sg.getBairro());
+						request.setAttribute("cidade", sg.getCidade());
+						request.setAttribute("estado", sg.getEstado());
+					}
+				}
+			} else if(session.getAttribute("idempresa") != null) {
+				
+				ArrayList<CadastroJuridicoSG> endereco = juridicodao.listarEnderecos((String) session.getAttribute("email"));
+				for(CadastroJuridicoSG sg: endereco) {
+					if(sg.getIdendereco() == validaendereco) {
+						
+						request.setAttribute("cep", sg.getCep());
+						request.setAttribute("valorfrete", null);
+						request.setAttribute("complemento", sg.getComplemento());
+						request.setAttribute("destinatario", null);
+						request.setAttribute("endereco", sg.getEndereco());
+						request.setAttribute("numero", sg.getNumero());
+						request.setAttribute("bairro", sg.getBairro());
+						request.setAttribute("cidade", sg.getCidade());
+						request.setAttribute("estado", sg.getEstado());
+					}
 				}
 			}
 			
@@ -66,6 +82,5 @@ public class FinalizacaoCompra extends HttpServlet {
 		} catch(Exception e) {
 			System.out.println(e);
 		}
-		
 	}
 }

@@ -77,6 +77,7 @@ public class CarrinhoController extends HttpServlet {
 				sg.getTamanho();
 				sg.getCor();
 				sg.getCategoria();
+				sg.getQuantidade_dig();
 				sg.getQuantidade();
 				sg.getValor_venda();
 				carrinho.AdicionarCarrinho(sg);

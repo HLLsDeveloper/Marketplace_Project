@@ -48,7 +48,7 @@
 														src="resources/img/img-produtos/<c:out value="${carrinho.imagem}"></c:out>"></td>
 													<td><c:out value="${carrinho.produto}"></c:out></td>
 													<td><c:out value="${carrinho.tamanho}"></c:out></td>
-													<td><input type="number" name="quantidade" min="1" max="${carrinho.quantidade}"></td>
+													<td><input type="number" name="quantidade_dig" value="1" min="1" max="${carrinho.quantidade}"></td>
 													<td><c:out value="${carrinho.valor_venda}"></c:out></td>
 													<td>
 														<button name="excluir" value="${carrinho.idproduto}" class="btn btn-success d-block mb-1 mx-auto" formaction="ExcluirCarrinho" formmethod="post" type="submit">Excluir</button>
