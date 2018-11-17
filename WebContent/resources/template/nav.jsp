@@ -23,10 +23,31 @@
             <ul class="nav nav-pills">
             	<c:if test="${not empty idsessao}">
               	<li class="nav-item ">
-                	<a class="nav-link font-weight-bold text-light" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target=".bd-example-modal-lg">
-	                	<img src="resources/img/icones/Shopping-cart.png" width="20" height="20" alt="Carrinho">
-	                	<span class="badge badge-pill badge-danger"><c:out value="${contador}"></c:out></span>
-                	</a>
+              		<c:if test="${contador le 0 or empty contador}">
+	                	<a class="nav-link font-weight-bold text-light" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target=".bd-example-modal-lg">
+		                	<img src="resources/img/icones/Shopping-cart.png" width="20" height="20" alt="Carrinho">
+		                	<span class="badge badge-pill badge-danger"><c:out value="0"></c:out></span>
+	                	</a>
+                	</c:if>
+                	<c:if test="${contador gt 0}">
+	                	<div class="dropdown">
+	                		<div class="nav-link font-weight-bold text-light dropdown-toggle" role="button" data-container="body" id="dropmenucarrinho" data-toggle="dropdown" data-placement="bottom" aria-haspopup="true" aria-expanded="false">
+			                	<img src="resources/img/icones/Shopping-cart.png" width="20" height="20" alt="Carrinho">
+			                	<span class="badge badge-pill badge-danger"><c:out value="${contador}"></c:out></span>
+			                	<div class="dropdown-menu" aria-labelledby="dropmenucarrinho">
+			                		<div class="dropdown-item">
+									  <div class="card" style="width: 18rem;">
+										  <img class="card-img-top" src="resources\img\img-produtos\camisa_dragonball_04.png" alt="Card image cap">
+										  <div class="card-body">
+										    <h5 class="card-title"></h5>
+										    <p class="card-text"></p>
+										  </div>
+										</div>
+									</div>
+			                	</div>
+		                	</div>
+	                	</div>
+	                </c:if>
               	</li>
               </c:if>
               <c:if test="${not empty idsessao}">

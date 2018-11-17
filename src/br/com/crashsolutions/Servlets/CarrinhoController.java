@@ -17,10 +17,6 @@ import br.com.crashsolutions.SG.ProdutoSG;
 @WebServlet("/Carrinho")
 public class CarrinhoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Float valortotal = 0f;
-	private Float resultado = 0f;
-	private Integer quantidade = 0;
-	private Integer contador = 0;
     public CarrinhoController() {
         super();
     }
@@ -29,66 +25,83 @@ public class CarrinhoController extends HttpServlet {
 		
 		HttpSession sessao = request.getSession();
 		
-		@SuppressWarnings("unchecked")
-		ArrayList<ProdutoSG> mostrarcarrinho = (ArrayList<ProdutoSG>) sessao.getAttribute("carrinho");
-		
-		valortotal = 0f;
-		quantidade = 1;
-		contador = 0;
-		
-		for(ProdutoSG produtosg: mostrarcarrinho) {
-			
-			resultado = produtosg.getValor_venda() * quantidade;
-			
-			if(valortotal == 0f) {
-				valortotal = resultado;
-			}
-			else {
-				valortotal += resultado;
-			}
-			contador ++;
-		}
-		
-		sessao.setAttribute("carrinho", mostrarcarrinho);
-		sessao.setAttribute("contador", contador);
-		request.setAttribute("valortotal", valortotal);
-		
-		RequestDispatcher enviar = request.getRequestDispatcher("Carrinho.jsp");
-		enviar.forward(request, response);
-		
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		try {
-			
-			HttpSession sessao = request.getSession();
-			
-			Carrinho carrinho = new Carrinho();
+		if(sessao.getAttribute("carrinho") != null) {
 			
 			@SuppressWarnings("unchecked")
 			ArrayList<ProdutoSG> mostrarcarrinho = (ArrayList<ProdutoSG>) sessao.getAttribute("carrinho");
 			
-			for(ProdutoSG sg: mostrarcarrinho) {
+			Float valortotal = 0f;
+			Integer contador = 0;
+			
+			for(ProdutoSG produtosg: mostrarcarrinho) {
 				
-				sg.getIdproduto();
-				sg.getProduto();
-				sg.getImagem();
-				sg.getTamanho();
-				sg.getCor();
-				sg.getCategoria();
-				sg.getQuantidade_dig();
-				sg.getQuantidade();
-				sg.getValor_venda();
-				carrinho.AdicionarCarrinho(sg);
+				Float resultado = produtosg.getValor_venda() * produtosg.getQuantidade_dig();
+				
+				if(valortotal == 0f) {
+					valortotal = resultado;
+				}
+				else {
+					valortotal += resultado;
+				}
+				contador ++;
 			}
 			
-			request.setAttribute("carrinho", mostrarcarrinho);
+			sessao.setAttribute("carrinho", mostrarcarrinho);
+			sessao.setAttribute("contador", contador);
+			request.setAttribute("valortotal", valortotal);
 			
-			doGet(request, response);
+			RequestDispatcher enviar = request.getRequestDispatcher("Carrinho.jsp");
+			enviar.forward(request, response);
+		}
+		else {
 			
-		} catch(Exception e) {
-			System.out.println("Erro nessa caralha: " + e);
-		}	
+			RequestDispatcher enviar = request.getRequestDispatcher("Carrinho.jsp");
+			enviar.forward(request, response);
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		Integer idproduto = 0;
+		Integer quantidade = 0;
+		
+		HttpSession sessao = request.getSession();
+		
+		Carrinho carrinho = new Carrinho();
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<ProdutoSG> carrinhoalterado = (ArrayList<ProdutoSG>) sessao.getAttribute("carrinho");
+		
+		for(ProdutoSG produtosg: carrinhoalterado) {
+			
+			produtosg.getIdproduto();
+			produtosg.getProduto();
+			produtosg.getImagem();
+			produtosg.getTamanho();
+			produtosg.getCor();
+			produtosg.getCategoria();
+			produtosg.getQuantidade_dig();
+			produtosg.getQuantidade();
+			produtosg.getValor_venda();
+			carrinho.AdicionarCarrinho(produtosg);
+			
+		}
+		
+		if(request.getParameter("amount").equals("more")) {
+			
+			idproduto = Integer.parseInt(request.getParameter("id"));
+			carrinho.GreaterAmount(idproduto);
+			
+		} else if(request.getParameter("amount").equals("anyless")) {
+			
+			idproduto = Integer.parseInt(request.getParameter("id"));
+			carrinho.SmallerAmount(idproduto);
+		}
+		
+		carrinhoalterado = carrinho.MostrarCarrinho();
+		
+		sessao.setAttribute("carrinho", carrinhoalterado);
+		
+		doGet(request, response);	
 	}
 }

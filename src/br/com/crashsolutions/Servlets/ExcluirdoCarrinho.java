@@ -33,7 +33,7 @@ public class ExcluirdoCarrinho extends HttpServlet {
 			
 			Carrinho carrinho = new Carrinho();
 			
-			Integer idproduto = Integer.parseInt(request.getParameter("excluir"));
+			Integer idproduto = Integer.parseInt(request.getParameter("id"));
 			
 			@SuppressWarnings("unchecked")
 			ArrayList<ProdutoSG> mostrarcarrinho = (ArrayList<ProdutoSG>) sessao.getAttribute("carrinho");
