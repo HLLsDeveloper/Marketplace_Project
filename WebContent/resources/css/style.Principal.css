@@ -232,18 +232,19 @@ footer a:hover {
 
 .drop {
 	position: relative;
+	-webkit-transition: all .35s ease-in-out;
+  	transition: all .35s ease-in-out;
 }
 
 
 .dropdown-pers {
 	position: absolute;
-	top: 118%;
+	top: 115%;
 	right: 0;
-	width: 24rem;
+	width: 23.3rem;
 	z-index: 1000;
-	display: block;
+	display: none;
 	min-width: 10rem;
-	padding: 0.5rem 0;
 	font-size: 1rem;
 	color: #212529;
 	list-style: none;
@@ -251,10 +252,16 @@ footer a:hover {
 	background-clip: padding-box;
 	border: 1px solid rgba(0, 0, 0, 0.15);
 	border-radius: 0.25rem;
+	-webkit-transition: all .10s ease-in-out;
+  	transition: all .10s ease-in-out;
 }
 
 .show-menu {
 	display: block;
+}
+
+.show-menu:after {
+	transform: translateY(20px);
 }
 
 .line {
@@ -262,10 +269,7 @@ footer a:hover {
 }
 
 .edit {
-	position: absolute;
-	right: 0;
-	bottom: 10px;
-	background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 8 8"> <path d="M6 0l-1 1 2 2 1-1-2-2zm-2 2l-4 4v2h2l4-4-2-2z" /> </svg>') non-repeat;
+	border-radius: 0.25rem;
 }
 
 @media (max-width: 991px) {

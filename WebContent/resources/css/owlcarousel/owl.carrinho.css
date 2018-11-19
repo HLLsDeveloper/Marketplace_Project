@@ -56,11 +56,13 @@
     -ms-backface-visibility: hidden;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0); }
+    -ms-transform: translate3d(0, 0, 0);
+     }
   .owl-carrinho .owl-item {
     position: relative;
     min-height: 1px;
     float: left;
+    width: 100%;
     -webkit-backface-visibility: hidden;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none; }

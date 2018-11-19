@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
+<?xml version="1.0" encoding="utf-8"?>
 
 <link rel="stylesheet" href="resources/css/style.Principal.css">
 <link rel="stylesheet" href="resources/css/owlcarousel/owl.carrinho.css">
@@ -34,9 +35,11 @@
 	                	</div>
                 	</c:if>
                 	<c:if test="${contador gt 0}">
-	                	<div class="font-weight-bold text-light btn btn-dark drop dropdown-toggle" onclick="tohide()">
-		                	<img src="resources/img/icones/Shopping-cart.png" width="25" height="25" alt="Carrinho">
-		                	<span class="badge badge-pill badge-tshirt"><c:out value="${contador}"></c:out></span>
+	                	<div class="drop">
+	                		<div class="font-weight-bold text-light btn btn-dark" onclick="tohide()">
+			                	<img src="resources/img/icones/Shopping-cart.png" width="25" height="25" alt="Carrinho">
+			                	<span class="badge badge-pill badge-tshirt"><c:out value="${contador}"></c:out></span>
+		                	</div>
 		                	<div class="dropdown-pers">
 		                		<c:import url="resources/template/carrossel.Carrinho.jsp"/>
 		                	</div>
