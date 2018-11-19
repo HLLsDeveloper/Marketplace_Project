@@ -2532,7 +2532,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .btn:not(:disabled):not(.disabled) {
-  cursor: pointer;
+	cursor:pointer
 }
 
 .btn:not(:disabled):not(.disabled):active, .btn:not(:disabled):not(.disabled).active {
@@ -3295,10 +3295,6 @@ tbody.collapse.show {
   border-right: 0.3em solid transparent;
   border-bottom: 0;
   border-left: 0.3em solid transparent;
-}
-
-.dropdown-toggle:empty::after {
-  margin-left: 0;
 }
 
 .dropdown-menu {
@@ -5088,6 +5084,17 @@ tbody.collapse.show {
   color: #fff;
   text-decoration: none;
   background-color: #1d2124;
+}
+
+.badge-tshirt {
+  color: #fff;
+  background-color: #ff6600;
+}
+
+.badge-tshirt[href]:hover, .badge-tshirt[href]:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #a74300;
 }
 
 .jumbotron {

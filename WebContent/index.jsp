@@ -8,8 +8,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" href="resources/css/owlcarousel/owl.carousel.css">
-    <link rel="stylesheet" href="resources/css/owlcarousel/owl.theme.default.css">
+	<link rel="stylesheet" href="resources/css/owlcarousel/owl.carousel.css">
+	<link rel="stylesheet" href="resources/css/owlcarousel/owl.theme.default.css">
 	
 	<script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="resources/js/bootstrap/popper.min.js"></script>
@@ -89,7 +89,6 @@
 		        <div class="col-sm-12">
 		          <h2 class="title line-title   border-bottom mt-4 ">Mais vendidos</h2>
 		    	</div>
-		    	
 		    	<c:import url="resources/template/carrossel.Camisetas.jsp"/>
 			</div>
 		</div>

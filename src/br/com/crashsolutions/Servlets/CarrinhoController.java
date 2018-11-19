@@ -63,7 +63,6 @@ public class CarrinhoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Integer idproduto = 0;
-		Integer quantidade = 0;
 		
 		HttpSession sessao = request.getSession();
 		

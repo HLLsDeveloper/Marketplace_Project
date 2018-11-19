@@ -102,6 +102,7 @@ public class Pedido extends HttpServlet {
 			}
 			
 			sessao.removeAttribute("carrinho");
+			sessao.removeAttribute("contador");
 			
 			RequestDispatcher enviar = request.getRequestDispatcher("NumeroPedido.jsp");
 			enviar.forward(request, response);
