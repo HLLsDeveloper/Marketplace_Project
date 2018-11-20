@@ -45,7 +45,7 @@
 											<td><p id="categoria"><c:out value="${carrinho.categoria}"></c:out></p></td>
 											<td><p id="tamanho"><c:out value="${carrinho.tamanho}"></c:out></p></td>
 											<td><p id="valor"><c:out value="R$ ${carrinho.valor_venda}"></c:out></p></td>
-											<td><p id="quantidade"><c:out value="${carrinho.quantidade}"></c:out></p></td>
+											<td><p id="quantidade"><c:out value="${carrinho.quantidade_dig}"></c:out></p></td>
 									</c:forEach>
 								</tbody>
 							</table>
@@ -56,15 +56,26 @@
 
 			<div class="col-md-6 mt-5">
 				<div class="card">
-					<h5 class="card-header">Dados Cadastrados</h5>
+					<h5 class="card-header">Dados de Cadastrados</h5>
 					<div class="card-body">
 						<ul class="list-group">
-							<li class="list-group-item list-group-item-dark">Nome:<c:out value=" ${nome}"></c:out></li>
-							<li class="list-group-item list-group-item-dark">Email:<c:out value=" ${email}"></c:out></li>
-							<li class="list-group-item list-group-item-dark">Celular:<c:out value=" ${celular}"></c:out></li>
-							<li class="list-group-item list-group-item-dark">Telefone:<c:out value=" ${telefone}"></c:out></li>
-							<li class="list-group-item list-group-item-dark">Tipo de cadastro:<c:out value=""></c:out></li>
-							<li class="list-group-item list-group-item-dark">CPF:<c:out value=" ${cpf}"></c:out></li>
+							<c:if test="${not empty idusuario}">
+								<li class="list-group-item list-group-item-dark">Nome:<c:out value=" ${nome}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Email:<c:out value=" ${email}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Celular:<c:out value=" ${celular}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Telefone:<c:out value=" ${telefone}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Tipo de cadastro:<c:out value="Fisico"></c:out></li>
+								<li class="list-group-item list-group-item-dark">CPF:<c:out value=" ${cpf}"></c:out></li>
+							</c:if>
+							<c:if test="${not empty idempresa}">
+								<li class="list-group-item list-group-item-dark">Razão Social:<c:out value=" ${razao}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Nome Fantasia:<c:out value=" ${nomefantasia}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Email:<c:out value=" ${email}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Celular:<c:out value=" ${celular}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Telefone:<c:out value=" ${telefone}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Tipo de cadastro:<c:out value="Juridico"></c:out></li>
+								<li class="list-group-item list-group-item-dark">CNPJ:<c:out value=" ${cnpj}"></c:out></li>
+							</c:if>
 						</ul>
 					</div>
 

@@ -122,13 +122,8 @@ body {
   background-color: #ff6600;
 }
 
-.card-img-top {
-
-}
-
 .letramaiucula{
-	
-text-transform: uppercase!important;
+	text-transform: uppercase!important;
 }
 
 .center {
@@ -150,7 +145,6 @@ overflow: hidden;
 footer a:hover {
   color: rgb(255, 102, 0) !important;
 }
-
 
 .product-price {
   position: absolute;
@@ -179,8 +173,6 @@ footer a:hover {
 .bordasection{
 	border-top: 9px solid #fd7e14;
 }
-
-
 
 .cadastrar {
     padding: 1.5rem 0;
@@ -216,6 +208,68 @@ footer a:hover {
 .produto-sobreposicao:hover {
     background: url("img/sobreposicao.png") center center no-repeat;
     background-size: 100%;
+}
+
+.amount {
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+}
+
+.btn-smalleramount {
+	position: relative;
+	top: -0.64em;
+	left: -0.14em;
+	font-size: 38px;
+}
+
+.btn-greateramount {
+	position: relative;
+	top: -0.58em;
+	left: -0.24em;
+	font-size: 25px;
+}
+
+.drop {
+	position: relative;
+	-webkit-transition: all .35s ease-in-out;
+  	transition: all .35s ease-in-out;
+}
+
+
+.dropdown-pers {
+	position: absolute;
+	top: 115%;
+	right: 0;
+	width: 23.3rem;
+	z-index: 1000;
+	display: none;
+	min-width: 10rem;
+	font-size: 1rem;
+	color: #212529;
+	list-style: none;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 0.25rem;
+	-webkit-transition: all .10s ease-in-out;
+  	transition: all .10s ease-in-out;
+}
+
+.show-menu {
+	display: block;
+}
+
+.show-menu:after {
+	transform: translateY(20px);
+}
+
+.line {
+	line-height: 0.4cm;
+}
+
+.edit {
+	border-radius: 0.25rem;
 }
 
 @media (max-width: 991px) {
@@ -261,8 +315,6 @@ footer a:hover {
     width: 40px;
     height: 40px;
     margin: 0;
-
-    
   }
 
   .menu {

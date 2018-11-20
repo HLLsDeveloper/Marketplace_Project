@@ -73,7 +73,7 @@ public class Login extends HttpServlet {
 						response.sendRedirect(url);
 					}
 					else {
-						response.sendRedirect("http://localhost:8080/TShirtGames/Home");
+						response.sendRedirect("Home");
 					}
 				}
 				else {
@@ -104,6 +104,8 @@ public class Login extends HttpServlet {
 						sessao.setAttribute("razao", juridico.getRazao());
 						sessao.setAttribute("nomefantasia", juridico.getNomefantasia());
 						sessao.setAttribute("ie", juridico.getIe());
+						sessao.setAttribute("telefone", juridico.getTelefone());
+						sessao.setAttribute("celular", juridico.getCelular());
 						sessao.setAttribute("condicao", juridico.getCondicao());
 						
 						if(sessao.getAttribute("url") != null) {
@@ -114,7 +116,7 @@ public class Login extends HttpServlet {
 							response.sendRedirect(url);
 						}
 						else {
-							response.sendRedirect("http://localhost:8080/TShirtGames/Home");
+							response.sendRedirect("Home");
 						}
 					}
 					else {

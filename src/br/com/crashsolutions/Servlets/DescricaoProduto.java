@@ -215,6 +215,7 @@ public class DescricaoProduto extends HttpServlet {
 					sg.getTamanho();
 					sg.getCor();
 					sg.getCategoria();
+					sg.getQuantidade_dig();
 					sg.getQuantidade();
 					sg.getValor_venda();
 					carrinho.AdicionarCarrinho(sg);
@@ -230,6 +231,7 @@ public class DescricaoProduto extends HttpServlet {
 					colocarcarrinho.setTamanho(tamanho);
 					colocarcarrinho.setCor(cor);
 					colocarcarrinho.setCategoria(categoria);
+					colocarcarrinho.setQuantidade_dig(1);
 					colocarcarrinho.setQuantidade(quantidade);
 					colocarcarrinho.setValor_venda(valor);
 					carrinho.AdicionarCarrinho(colocarcarrinho);
@@ -248,6 +250,7 @@ public class DescricaoProduto extends HttpServlet {
 				colocarcarrinho.setTamanho(tamanho);
 				colocarcarrinho.setCor(cor);
 				colocarcarrinho.setCategoria(categoria);
+				colocarcarrinho.setQuantidade_dig(1);
 				colocarcarrinho.setQuantidade(quantidade);
 				colocarcarrinho.setValor_venda(valor);
 				carrinho.AdicionarCarrinho(colocarcarrinho);
@@ -257,7 +260,7 @@ public class DescricaoProduto extends HttpServlet {
 				sessao.setAttribute("carrinho", carrinhoSessao);
 			}
 
-			response.sendRedirect("http://localhost:8080/TShirtGames/Carrinho");
+			response.sendRedirect("Carrinho");
 			
 		} catch(Exception e) {
 			System.out.println("Erro na DescriçãoProduto ação de comprar:"+ e);

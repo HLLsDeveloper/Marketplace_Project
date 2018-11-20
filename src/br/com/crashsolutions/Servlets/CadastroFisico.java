@@ -25,7 +25,6 @@ public class CadastroFisico extends HttpServlet {
 		
 		if(request.getAttribute("mensagemcadastro") != null) {
 			
-			request.setAttribute("mensagem", request.getAttribute("mensagemcadastro"));
 			RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
 			enviar.forward(request, response);
 		}
@@ -96,7 +95,7 @@ public class CadastroFisico extends HttpServlet {
 		    request.setAttribute("mensagemcadastro", "Login cadastrado com sucesso!");
 		    
 		} catch (Exception ex) {
-			request.setAttribute("mensagemcadastro", "Ocorreu um erro no cadastro, verifique os campos!");
+			request.setAttribute("mensagemerro", "Ocorreu um erro no cadastro, verifique os campos!");
 			System.out.println("Erro no CadastroFisico: "+ ex);
 		}
 	    doGet(request, response);

@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt"%>
+<?xml version="1.0" encoding="utf-8"?>
 
 <link rel="stylesheet" href="resources/css/style.Principal.css">
+<link rel="stylesheet" href="resources/css/owlcarousel/owl.carrinho.css">
+<link rel="stylesheet" href="resources/css/owlcarousel/owl.theme.carrinho.css">
+
 <script type="text/javascript" src="resources/js/script.Nav.js"></script>
+<script type="text/javascript" src="resources/js/owlcarousel/owl.carrinho.js"></script>
 
 <!-- NAV -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
@@ -20,22 +25,35 @@
                 <button class="btn my-3 mr-1 my-sm-0 btn-tshirt" type="submit"><img src="resources/img/icones/search.svg" width="20" height="25" alt="procurar"></button>
             </form>
             
-            <ul class="nav nav-pills">
+            <ul class="nav form-inline my-2 my-lg-0">
             	<c:if test="${not empty idsessao}">
-              	<li class="nav-item ">
-                	<a class="nav-link font-weight-bold text-light" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target=".bd-example-modal-lg">
-	                	<img src="resources/img/icones/Shopping-cart.png" width="20" height="20" alt="Carrinho">
-	                	<span class="badge badge-pill badge-danger"><c:out value="${contador}"></c:out></span>
-                	</a>
+              	<li class="nav-item">
+              		<c:if test="${contador le 0 or empty contador}">
+	                	<div class="my-sm-0 font-weight-bold text-light btn btn-dark" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target=".bd-example-modal-lg">
+		                	<img src="resources/img/icones/Shopping-cart.png" width="25" height="25" alt="Carrinho">
+		                	<span class="badge badge-pill badge-tshirt"><c:out value="0"></c:out></span>
+	                	</div>
+                	</c:if>
+                	<c:if test="${contador gt 0}">
+	                	<div class="drop">
+	                		<div class="font-weight-bold text-light btn btn-dark" onclick="tohide()">
+			                	<img src="resources/img/icones/Shopping-cart.png" width="25" height="25" alt="Carrinho">
+			                	<span class="badge badge-pill badge-tshirt"><c:out value="${contador}"></c:out></span>
+		                	</div>
+		                	<div class="dropdown-pers">
+		                		<c:import url="resources/template/carrossel.Carrinho.jsp"/>
+		                	</div>
+	                	</div>
+	                </c:if>
               	</li>
               </c:if>
               <c:if test="${not empty idsessao}">
               	<li class="nav-item dropdown">
                 <c:if test="${not empty nome}">
-                	<a class="nav-link dropdown-toggle font-weight-bold text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><strong class="mr-2"><c:out value="Olá ${nome}"></c:out></strong><img src="resources/img/icones/user.svg" class="d-inline-block minhaconta-size" width="30" height="30"></a>
+                	<a class="nav-link btn btn-dark dropdown-toggle font-weight-bold text-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="mr-2"><c:out value="Olá, ${nome}"></c:out></strong><img src="resources/img/icones/user.svg" class="d-inline-block minhaconta-size" width="30" height="30"></a>
                 </c:if>
                 <c:if test="${empty nome}">
-                	<a class="nav-link dropdown-toggle font-weight-bold text-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><strong class="mr-2"><c:out value="${nomefantasia}"></c:out></strong><img src="resources/img/icones/user.svg" class="d-inline-block minhaconta-size" width="30" height="30"></a>
+                	<a class="nav-link btn btn-dark dropdown-toggle font-weight-bold text-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="mr-2"><c:out value="${nomefantasia}"></c:out></strong><img src="resources/img/icones/user.svg" class="d-inline-block minhaconta-size" width="30" height="30"></a>
                 </c:if>
                 <div class="dropdown-menu">
                   <div class="dropdown-divider"></div>
@@ -53,7 +71,7 @@
               </c:if>
               <c:if test="${empty idsessao}">
               	<li class="nav-item">
-	               <a class="nav-link font-weight-bold text-light" href="http://localhost:8080/TShirtGames/Login.jsp"><img src="resources/img/icones/logout.svg" class="mr-1" width="20" height="20">LOGIN</a>
+	               <a class="nav-link font-weight-bold text-light" href="Login"><img src="resources/img/icones/logout.svg" class="mr-1" width="20" height="20">LOGIN</a>
 	            </li>
               </c:if>
             </ul>

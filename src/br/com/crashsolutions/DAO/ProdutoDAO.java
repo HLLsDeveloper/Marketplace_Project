@@ -438,10 +438,10 @@ public class ProdutoDAO {
 	}
     
     // CADASTRA PEDIDO PESSOA FISICA
-    public void comprarFisico(ProdutoSG sgproduto, CadastroFisicoSG sgfisico) throws SQLException{
+    public void PedidoFisico(ProdutoSG sgproduto, CadastroFisicoSG sgfisico) throws SQLException{
 		
     	con = new Factory().conBD1();
-		sql = "insert into COMPRA (numeropedido, idusuario, destinatario, idproduto, tamanho, cor, quantidade) values (?,?,?,?,?,?,?)";
+		sql = "insert into COMPRAFISICO (numeropedido, idusuario, destinatario, idproduto, tamanho, cor, quantidade) values (?,?,?,?,?,?,?)";
 		
 		try {
 			
@@ -452,7 +452,7 @@ public class ProdutoDAO {
 			stmInserir.setInt(4,sgproduto.getIdproduto());
 			stmInserir.setString(5,sgproduto.getTamanho());
 			stmInserir.setString(6,sgproduto.getCor());
-			stmInserir.setInt(7,sgproduto.getQuantidade());
+			stmInserir.setInt(7,sgproduto.getQuantidade_dig());
 			
 			stmInserir.execute();
 			stmInserir.close();
@@ -465,10 +465,10 @@ public class ProdutoDAO {
 	}
     
     // CADASTRA PEDIDO PESSOA JURIDICA
-    public void comprarJuridico(ProdutoSG sgproduto, CadastroJuridicoSG sgjuridico) throws SQLException{
+    public void PedidoJuridico(ProdutoSG sgproduto, CadastroJuridicoSG sgjuridico) throws SQLException{
 		
     	con = new Factory().conBD1();
-		sql = "insert into COMPRA (numeropedido, idempresa, destinatario, idproduto, tamanho, cor, quantidade) values (?,?,?,?,?,?,?)";
+		sql = "insert into COMPRAJURIDICO (numeropedido, idempresa, destinatario, idproduto, tamanho, cor, quantidade) values (?,?,?,?,?,?,?)";
 		
 		try {
 			
@@ -479,7 +479,7 @@ public class ProdutoDAO {
 			stmInserir.setInt(4,sgproduto.getIdproduto());
 			stmInserir.setString(5,sgproduto.getTamanho());
 			stmInserir.setString(6,sgproduto.getCor());
-			stmInserir.setInt(7,sgproduto.getQuantidade());
+			stmInserir.setInt(7,sgproduto.getQuantidade_dig());
 			
 			stmInserir.execute();
 			stmInserir.close();
@@ -495,7 +495,7 @@ public class ProdutoDAO {
     public ProdutoSG consultarFornecedor(Integer id) throws SQLException {
 		
     	con = new Factory().conBD1();
-    	sql = "select * from FORNECEDORES where idfornecedor=?";
+    	sql = "select * from FORNECEDORES where idfornecedor = ?";
     	
     	try {
     		stmConsulta = con.prepareStatement(sql);

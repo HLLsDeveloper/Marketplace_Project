@@ -15,6 +15,7 @@ public class Carrinho {
 	public ArrayList<ProdutoSG> AdicionarCarrinho(ProdutoSG sgproduto) throws IOException, ServletException {
 		
 		try {
+			
 			sgproduto.getIdproduto();
 			sgproduto.getProduto();
 			sgproduto.getTamanho();
@@ -33,11 +34,24 @@ public class Carrinho {
 		
 	}
 	
-	public ArrayList<ProdutoSG> AlterarCarrinho(Integer idproduto, Integer quantidade) {
+	public ArrayList<ProdutoSG> SmallerAmount(Integer idproduto) {
 		
 		for(ProdutoSG sg: lista) {
 			if(sg.getIdproduto() == idproduto) {
-				int quant = /*sg.getQuantidade_dig() +*/ quantidade;
+				Integer quant = sg.getQuantidade_dig() - 1;
+				sg.setQuantidade_dig(quant);
+				lista.set(lista.indexOf(sg), sg);
+			}
+		}
+		
+		return lista;
+	}
+	
+	public ArrayList<ProdutoSG> GreaterAmount(Integer idproduto) {
+		
+		for(ProdutoSG sg: lista) {
+			if(sg.getIdproduto() == idproduto) {
+				Integer quant = sg.getQuantidade_dig() + 1;
 				sg.setQuantidade_dig(quant);
 				lista.set(lista.indexOf(sg), sg);
 			}

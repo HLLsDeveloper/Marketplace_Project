@@ -60,24 +60,44 @@ public class ListaEndereco extends HttpServlet {
 		
 		try {
 			
-			CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();
-			
-			CadastroFisicoSG sgfisico = new CadastroFisicoSG();
-			sgfisico.setIdenderecofisico((Integer) session.getAttribute("idusuario"));
-			sgfisico.setNomeendereco(request.getParameter("nomeendereco"));
-			sgfisico.setEndereco(request.getParameter("endereco"));
-			sgfisico.setNumero(Integer.parseInt(request.getParameter("numero")));
-			sgfisico.setComplemento(request.getParameter("complemento"));
-			sgfisico.setBairro(request.getParameter("bairro"));
-			sgfisico.setCidade(request.getParameter("cidade"));
-			sgfisico.setEstado(request.getParameter("estado"));
-			sgfisico.setCep(request.getParameter("cep"));
-			fisicodao.cadastrarEndereco(sgfisico);
+			if(session.getAttribute("idusuario") != null) {
+				
+				CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();
+				CadastroFisicoSG sgfisico = new CadastroFisicoSG();
+				
+				sgfisico.setIdenderecofisico((Integer) session.getAttribute("idusuario"));
+				sgfisico.setNomeendereco(request.getParameter("nomeendereco"));
+				sgfisico.setEndereco(request.getParameter("endereco"));
+				sgfisico.setNumero(Integer.parseInt(request.getParameter("numero")));
+				sgfisico.setComplemento(request.getParameter("complemento"));
+				sgfisico.setBairro(request.getParameter("bairro"));
+				sgfisico.setCidade(request.getParameter("cidade"));
+				sgfisico.setEstado(request.getParameter("estado"));
+				sgfisico.setCep(request.getParameter("cep"));
+				fisicodao.cadastrarEndereco(sgfisico);
+				
+			} else if(session.getAttribute("idempresa") != null) {
+				
+				CadastroJuridicoDAO juridicodao = new CadastroJuridicoDAO();
+				CadastroJuridicoSG sgjuridico = new CadastroJuridicoSG();
+				
+				sgjuridico.setIdenderecojuridico((Integer) session.getAttribute("idempresa"));
+				sgjuridico.setNomeendereco(request.getParameter("nomeendereco"));
+				sgjuridico.setEndereco(request.getParameter("endereco"));
+				sgjuridico.setNumero(Integer.parseInt(request.getParameter("numero")));
+				sgjuridico.setComplemento(request.getParameter("complemento"));
+				sgjuridico.setBairro(request.getParameter("bairro"));
+				sgjuridico.setCidade(request.getParameter("cidade"));
+				sgjuridico.setEstado(request.getParameter("estado"));
+				sgjuridico.setCep(request.getParameter("cep"));
+				juridicodao.CadastrarEndereco(sgjuridico);
+				
+			}
 			
 		} catch (Exception e) {
 			System.out.println("Erro ao cadastrar " + e);
 		}
 		
-		response.sendRedirect("http://localhost:8080/TShirtGames/Enderecos");
+		doGet(request, response);
 	}
 }
