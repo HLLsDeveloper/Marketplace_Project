@@ -58,6 +58,33 @@ public class ProdutoDAO {
 		} 
 	}
 	
+	public ProdutoSG totalTamanho(Integer referencia){
+		
+		con = new Factory().conBD1();
+		sql = "select sum(quantidade) from PRODUTO where referencia=?";
+		retornoLista = new ProdutoSG();
+		
+		try {
+			
+			stmConsulta = con.prepareStatement(sql);
+			stmConsulta.setInt(1, referencia);
+			resConsulta = stmConsulta.executeQuery();
+			
+			while (resConsulta.next()) {
+				
+				retornoLista.setQuantidade(resConsulta.getInt("quantidade"));
+			}
+			
+			stmConsulta.close();
+			con.close();
+			
+		} catch (Exception e) {
+			System.out.println("Erro no totalTamanho"+e);
+		}
+		
+		return retornoLista;
+	}
+	
 	// MONTA UMA LISTA DE TAMANHO PELA REFERENCIA
 	public ArrayList<ProdutoSG> consultarTamanho(Integer referencia) throws SQLException{
 		
@@ -309,7 +336,6 @@ public class ProdutoDAO {
 						listartodos.add(retornoLista);					
 					}
 				}
-				
 			}
 					
 			stmListaConsulta.close();
