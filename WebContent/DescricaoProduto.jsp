@@ -41,7 +41,7 @@
 							<c:out value="COD: ${referencia}"></c:out>
 						</span>
 						
-						<div class="row border mb-4">
+						<div class="row mb-4">
 							<div class="col-md-6 pt-4 pb-3">
 								<h1 class="text-center font-weight-bold">
 									<c:out value="${valorf1}"></c:out>
@@ -126,7 +126,7 @@
 								</c:if>
 							</div>
 						</div>
-						<div class="row border my-4 p-4">
+						<div class="row my-4 p-4">
 							<div class="pl-3">
 								<p>Digite aqui para saber o valor do frete e prazo</p>
 							</div>
@@ -156,7 +156,7 @@
 							<c:out value="COD: ${referencia2}"></c:out>
 						</span>
 						
-						<div class="row border mb-4">
+						<div class="row  mb-4">
 							<div class="col-md-6 pt-4 pb-3">
 								<h1 class="text-center font-weight-bold">
 									<c:out value="${valorf2}"></c:out>
@@ -241,7 +241,7 @@
 								</c:if>
 							</div>
 						</div>
-						<div class="row border my-4 p-4">
+						<div class="row  my-4 p-4">
 							<div class="pl-3">
 								<p>Digite aqui para saber o valor do frete e prazo</p>
 							</div>
@@ -271,7 +271,7 @@
 							<c:out value="COD: ${referencia3}"></c:out>
 						</span>
 						
-						<div class="row border mb-4">
+						<div class="row  mb-4">
 							<div class="col-md-6 pt-4 pb-3">
 								<h1 class="text-center font-weight-bold">
 									<c:out value="${valorf3}"></c:out>
@@ -356,7 +356,7 @@
 								</c:if>
 							</div>
 						</div>
-						<div class="row border my-4 p-4">
+						<div class="row  my-4 p-4">
 							<div class="pl-3">
 								<p>Digite aqui para saber o valor do frete e prazo</p>
 							</div>
@@ -381,7 +381,8 @@
 				</div>
 			</div>
 		</div>
-		<div>
+		
+		<div style="margin-top: 300px">
 			<div class="mt-5 mb-3">
 				<h3>Quem viu esta camiseta, também viu estas outras iradas, saca só</h3>
 			</div>

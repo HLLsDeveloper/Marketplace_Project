@@ -10,9 +10,9 @@
 				<div class="card-body">
 			    	<h4 class="card-title letramaiucula text-center">${lista.produto}</h4>
 				</div>
-				<c:if test="${lista.quantidade > 0}">
+				<c:if test="${lista.quantidadetotal > 0}">
 					<ul class="list-group list-group-flush text center">
-						<li class="product-price">R$ ${lista.valor_venda}</li>
+						<li class="product-price">${lista.valor_venda_fr}</li>
 					</ul>
 				    <div class="btn-group card-body mx-auto d-block mt-4">
 				    	<form>
@@ -22,7 +22,7 @@
 				    	</form>
 				    </div>
 			    </c:if>
-			    <c:if test="${lista.quantidade <= 0}">
+			    <c:if test="${lista.quantidadetotal <= 0}">
 					<div class="btn-group card-body mx-auto d-block mt-1">
 						<form>
 							<input name="referencia" value="${lista.referencia}" type="hidden">
