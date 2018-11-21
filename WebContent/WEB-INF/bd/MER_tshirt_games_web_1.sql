@@ -133,6 +133,7 @@ alter table COMPRAJURIDICO add foreign key (idempresa) references JURIDICO(idemp
 alter table COMPRAJURIDICO add foreign key (idproduto) references PRODUTO(idproduto);
 
 select * from comprajuridico;
+select * from comprafisico;
 select * from produto;
 
 /* INFORMAÇÕES
