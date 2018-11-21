@@ -15,9 +15,12 @@ public class ProdutoSG {
 	private String categoria = null;
 	private Float valor_custo = 0f;
 	private Float valor_venda = 0f;
+	private String valor_custo_fr = null;
+	private String valor_venda_fr = null;
 	private Float resultado = 0f;
 	private Float valor_total = 0f;
 	private Integer quantidade = 0;
+	private Integer quantidadetotal = 0;
 	private Integer quantidade_dig = 0;
 	private BigDecimal numeropedido = null;
 	private Integer referencia = null;
@@ -99,6 +102,18 @@ public class ProdutoSG {
 	public void setValor_venda(Float valor_venda) {
 		this.valor_venda = valor_venda;
 	}
+	public String getValor_custo_fr() {
+		return valor_custo_fr;
+	}
+	public void setValor_custo_fr(String valor_custo_fr) {
+		this.valor_custo_fr = valor_custo_fr;
+	}
+	public String getValor_venda_fr() {
+		return valor_venda_fr;
+	}
+	public void setValor_venda_fr(String valor_venda_fr) {
+		this.valor_venda_fr = valor_venda_fr;
+	}
 	public Float getResultado() {
 		return resultado;
 	}
@@ -116,6 +131,12 @@ public class ProdutoSG {
 	}
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
+	}
+	public Integer getQuantidadetotal() {
+		return quantidadetotal;
+	}
+	public void setQuantidadetotal(Integer quantidadetotal) {
+		this.quantidadetotal = quantidadetotal;
 	}
 	public Integer getQuantidade_dig() {
 		return quantidade_dig;

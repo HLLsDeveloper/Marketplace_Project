@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.crashsolutions.Acoes.FormatarReal;
 import br.com.crashsolutions.Conexao.Factory;
 import br.com.crashsolutions.SG.CadastroFisicoSG;
 import br.com.crashsolutions.SG.CadastroJuridicoSG;
@@ -58,33 +59,6 @@ public class ProdutoDAO {
 		} 
 	}
 	
-	public ProdutoSG totalTamanho(Integer referencia){
-		
-		con = new Factory().conBD1();
-		sql = "select sum(quantidade) from PRODUTO where referencia=?";
-		retornoLista = new ProdutoSG();
-		
-		try {
-			
-			stmConsulta = con.prepareStatement(sql);
-			stmConsulta.setInt(1, referencia);
-			resConsulta = stmConsulta.executeQuery();
-			
-			while (resConsulta.next()) {
-				
-				retornoLista.setQuantidade(resConsulta.getInt("quantidade"));
-			}
-			
-			stmConsulta.close();
-			con.close();
-			
-		} catch (Exception e) {
-			System.out.println("Erro no totalTamanho"+e);
-		}
-		
-		return retornoLista;
-	}
-	
 	// MONTA UMA LISTA DE TAMANHO PELA REFERENCIA
 	public ArrayList<ProdutoSG> consultarTamanho(Integer referencia) throws SQLException{
 		
@@ -100,13 +74,14 @@ public class ProdutoDAO {
 			while (listaConsulta.next()) {
 				
 				ProdutoSG retornoLista = new ProdutoSG();
-							
+						
 				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
-				retornoLista.setReferencia(listaConsulta.getInt("referencia"));	
 				retornoLista.setTamanho(listaConsulta.getString("tamanho"));
+				retornoLista.setReferencia(listaConsulta.getInt("referencia"));	
 				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
 				
-				if (referencia == listaConsulta.getInt("referencia")) {					
+				if (referencia == listaConsulta.getInt("referencia")) {
+					
 					Quantidade = listaConsulta.getInt("quantidade") + Quantidade;
 					listartamanho.add(retornoLista);
 				}		
@@ -290,6 +265,34 @@ public class ProdutoDAO {
 		return listartodos; 
 	}
 	
+	// CONSULTAR QUANTIDADE TOTAL DA REFERENCIA
+	public Integer quantidadeTotal(Integer referencia){
+		
+		Integer quantidadetotal = 0;
+		
+		con = new Factory().conBD1();
+		sql = "select quantidade from PRODUTO where referencia=?";
+		
+		try {
+			
+			stmConsulta = con.prepareStatement(sql);
+			stmConsulta.setInt(1, referencia);
+			resConsulta = stmConsulta.executeQuery();
+			
+			while (resConsulta.next()) {
+				quantidadetotal = quantidadetotal + resConsulta.getInt("quantidade");
+			}
+			
+			stmConsulta.close();
+			con.close();
+			
+		} catch (Exception e) {
+			System.out.println("Erro no quantidadeTotal: "+e);
+		}
+		
+		return quantidadetotal;
+	}
+	
 	// BUSCA TODOS OS PRODUTOS
 	public ArrayList<ProdutoSG> buscaTodasReferencias() throws SQLException {
 		
@@ -300,14 +303,17 @@ public class ProdutoDAO {
 		
 		try {
 			
+			Integer referencia = 0;
+			
 			stmListaConsulta = con.prepareStatement(sql); 
 			listaConsulta = stmListaConsulta.executeQuery();
-			
-			Integer referencia = 0;
 			
 			while (listaConsulta.next()) {
 				
 				ProdutoSG retornoLista = new ProdutoSG();
+				
+				// FORMATAR PARA REAL
+				FormatarReal fr = new FormatarReal();
 				
 				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
 				retornoLista.setProduto(listaConsulta.getString("produto"));
@@ -319,7 +325,7 @@ public class ProdutoDAO {
 				retornoLista.setCor(listaConsulta.getString("cor"));
 				retornoLista.setCategoria(listaConsulta.getString("categoria"));
 				retornoLista.setValor_custo(listaConsulta.getFloat("valor_custo"));
-				retornoLista.setValor_venda(listaConsulta.getFloat("valor_venda"));
+				retornoLista.setValor_venda_fr(fr.formatar(listaConsulta.getFloat("valor_venda")));
 				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
 				retornoLista.setReferencia(listaConsulta.getInt("referencia"));
 				retornoLista.setCondicao(listaConsulta.getString("condicao"));
@@ -331,11 +337,13 @@ public class ProdutoDAO {
 				if(referencia != listaConsulta.getInt("referencia")) {
 					
 					// VERIFICA SE ESTA ATIVO PARA ENVIAR 
-					if (condicao.equals(ativo)) {
+					if (condicao.equals(ativo)) {			
 						referencia = listaConsulta.getInt("referencia");
-						listartodos.add(retornoLista);					
+						
+						retornoLista.setQuantidadetotal(quantidadeTotal(referencia));
+						listartodos.add(retornoLista);	
 					}
-				}
+				} 
 			}
 					
 			stmListaConsulta.close();

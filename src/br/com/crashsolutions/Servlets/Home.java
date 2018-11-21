@@ -27,7 +27,7 @@ public class Home extends HttpServlet {
 		// DAO INSTANCIADOS
 		ProdutoDAO dao = new ProdutoDAO(); 
 		
-		// LISTAS PARA RECEBER
+		// LISTAS PARA RECEBER0
 		ArrayList<ProdutoSG> lista = null;
 		
 		try {
