@@ -1,6 +1,5 @@
 package br.com.crashsolutions.SG;
 
-import java.math.BigDecimal;
 
 public class CadastroJuridicoSG {
 	
@@ -22,8 +21,8 @@ public class CadastroJuridicoSG {
 	private String cidade = null;
 	private String estado = null;
 	private String cep = null;
-	private BigDecimal telefone = null;
-	private BigDecimal celular = null;
+	private String telefone = null;
+	private String celular = null;
 	private String condicao = null;
 	
 	
@@ -135,16 +134,16 @@ public class CadastroJuridicoSG {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	public BigDecimal getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(BigDecimal telefone) {
-		this.telefone = telefone;
+	public void setTelefone(String telefone2) {
+		this.telefone = telefone2;
 	}
-	public BigDecimal getCelular() {
+	public String getCelular() {
 		return celular;
 	}
-	public void setCelular(BigDecimal celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 	public String getCondicao() {

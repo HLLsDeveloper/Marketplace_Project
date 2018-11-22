@@ -31,8 +31,8 @@ public class CadastroJuridicoDAO {
 			stmtInserir.setString(4, sg.getRazao());
 			stmtInserir.setString(5, sg.getNomefantasia());
 			stmtInserir.setString(6, sg.getIe());
-			stmtInserir.setBigDecimal(7, sg.getTelefone());
-			stmtInserir.setBigDecimal(8, sg.getCelular());
+			stmtInserir.setString(7, sg.getTelefone());
+			stmtInserir.setString(8, sg.getCelular());
 			
 			stmtInserir.execute();
 			stmtInserir.close();
@@ -94,8 +94,8 @@ public class CadastroJuridicoDAO {
 				retornoConsulta.setRazao(respConsulta.getString("razao"));
 				retornoConsulta.setNomefantasia(respConsulta.getString("nomefantasia"));
 				retornoConsulta.setIe(respConsulta.getString("ie"));
-				retornoConsulta.setTelefone(respConsulta.getBigDecimal("telefone"));
-				retornoConsulta.setCelular(respConsulta.getBigDecimal("celular"));
+				retornoConsulta.setTelefone(respConsulta.getString("telefone"));
+				retornoConsulta.setCelular(respConsulta.getString("celular"));
 				retornoConsulta.setCondicao(respConsulta.getString("condicao"));
 					
 			}

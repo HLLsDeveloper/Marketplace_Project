@@ -32,8 +32,8 @@ public class CadastroFisicoDAO {
 			stmCadastrar.setString(5, sg.getSobrenome());
 			stmCadastrar.setString(6, sg.getDatanascimento());
 			stmCadastrar.setString(7, sg.getSexo());
-			stmCadastrar.setBigDecimal(8, sg.getTelefone());
-			stmCadastrar.setBigDecimal(9, sg.getCelular());
+			stmCadastrar.setString(8, sg.getTelefone());
+			stmCadastrar.setString(9, sg.getCelular());
 			
 			stmCadastrar.execute();
 			stmCadastrar.close();
@@ -89,8 +89,8 @@ public class CadastroFisicoDAO {
 			stmAlterarusu.setString(4, sgfisico.getSobrenome());
 			stmAlterarusu.setString(5, sgfisico.getDatanascimento());
 			stmAlterarusu.setString(6, sgfisico.getSexo());
-			stmAlterarusu.setBigDecimal(7, sgfisico.getTelefone());
-			stmAlterarusu.setBigDecimal(8, sgfisico.getCelular());
+			stmAlterarusu.setString(7, sgfisico.getTelefone());
+			stmAlterarusu.setString(8, sgfisico.getCelular());
 			stmAlterarusu.setString(9, sgfisico.getCondicao());
 			stmAlterarusu.setInt(10,sgfisico.getIdusuario());
 			
@@ -124,8 +124,8 @@ public class CadastroFisicoDAO {
 				retornoLista.setSobrenome(respConsulta.getString("sobrenome"));
 				retornoLista.setDatanascimento(respConsulta.getString("datanascimento"));
 				retornoLista.setSexo(respConsulta.getString("sexo"));
-				retornoLista.setTelefone(respConsulta.getBigDecimal("telefone"));
-				retornoLista.setCelular(respConsulta.getBigDecimal("celular"));
+				retornoLista.setTelefone(respConsulta.getString("telefone"));
+				retornoLista.setCelular(respConsulta.getString("celular"));
 				retornoLista.setCondicao(respConsulta.getString("condicao"));
 
 			}
@@ -161,8 +161,8 @@ public class CadastroFisicoDAO {
 				retornoLista.setSobrenome(respConsulta.getString("sobrenome"));
 				retornoLista.setDatanascimento(respConsulta.getString("datanascimento"));
 				retornoLista.setSexo(respConsulta.getString("sexo"));
-				retornoLista.setTelefone(respConsulta.getBigDecimal("telefone"));
-				retornoLista.setCelular(respConsulta.getBigDecimal("celular"));
+				retornoLista.setTelefone(respConsulta.getString("telefone"));
+				retornoLista.setCelular(respConsulta.getString("celular"));
 				retornoLista.setCondicao(respConsulta.getString("condicao"));
 				lista.add(retornoLista);
 	
@@ -240,8 +240,8 @@ public class CadastroFisicoDAO {
 				retornoLista.setSobrenome(respConsulta.getString("sobrenome"));
 				retornoLista.setDatanascimento(respConsulta.getString("datanascimento"));
 				retornoLista.setSexo(respConsulta.getString("sexo"));
-				retornoLista.setTelefone(respConsulta.getBigDecimal("telefone"));
-				retornoLista.setCelular(respConsulta.getBigDecimal("celular"));
+				retornoLista.setTelefone(respConsulta.getString("telefone"));
+				retornoLista.setCelular(respConsulta.getString("celular"));
 				lista.add(retornoLista);
 	
 			}

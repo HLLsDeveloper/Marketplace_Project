@@ -3,8 +3,6 @@ package br.com.crashsolutions.Servlets;
 import br.com.crashsolutions.DAO.CadastroJuridicoDAO;
 import br.com.crashsolutions.SG.CadastroJuridicoSG;
 import java.io.IOException;
-import java.math.BigDecimal;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,8 +47,8 @@ if(request.getAttribute("mensagemcadastro") != null) {
 		    String razao = request.getParameter("razao");
 		    String nomefantasia = request.getParameter("nomefantasia");
 		    String ie = request.getParameter("ie");
-		    BigDecimal telefone = (new BigDecimal(request.getParameter("telefone")));
-		    BigDecimal celular = (new BigDecimal(request.getParameter("celular")));
+		    String telefone = request.getParameter("telefone");
+		    String celular = request.getParameter("celular");
 		    
 		    juridicosg.setEmail(email);
 		    juridicosg.setSenha(senha);

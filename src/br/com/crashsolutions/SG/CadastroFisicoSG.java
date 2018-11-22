@@ -1,6 +1,5 @@
 package br.com.crashsolutions.SG;
 
-import java.math.BigDecimal;
 
 public class CadastroFisicoSG {
 	
@@ -23,8 +22,8 @@ public class CadastroFisicoSG {
 	private String cidade = null;
 	private String estado  = null;
 	private String cep = null;
-	private BigDecimal telefone = null;
-	private BigDecimal celular = null;
+	private String telefone = null;
+	private String celular = null;
 	private String condicao = null;
 	private String imagem = null;
 	
@@ -149,16 +148,16 @@ public class CadastroFisicoSG {
 	public void setCep(String cep2) {
 		this.cep = cep2;
 	}
-	public BigDecimal getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(BigDecimal telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public BigDecimal getCelular() {
+	public String getCelular() {
 		return celular;
 	}
-	public void setCelular(BigDecimal celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 	public String getCondicao() {
