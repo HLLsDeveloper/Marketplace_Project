@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>T-Shirt Games - Alterar Produtos</title>
+	<title>T-Shirt Games - Alterar Cadastro</title>
 	<meta http-equiv="Content-Type" content="text/html">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	

@@ -24,8 +24,7 @@ public class CadastroFisicoDAO {
 		
 		try {
 			
-			stmCadastrar = con.prepareStatement(sql);
-			
+			stmCadastrar = con.prepareStatement(sql);			
 			stmCadastrar.setString(1, sg.getEmail() );
 			stmCadastrar.setString(2, sg.getSenha());
 			stmCadastrar.setString(3, sg.getCpf());

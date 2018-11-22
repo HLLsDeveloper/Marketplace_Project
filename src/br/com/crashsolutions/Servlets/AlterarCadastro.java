@@ -112,7 +112,6 @@ public class AlterarCadastro extends HttpServlet {
 			System.out.println("Erro ao alterar os dados:"+ e);
 			request.setAttribute("mensagem", "Erro ao alterar!");
 		}
-
 		doGet(request, response);
 	}
 
