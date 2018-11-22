@@ -89,7 +89,7 @@
 											<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
 											</c:if>
 											<c:if test="${lista.quantidade <= 0}">
-											<input type="text" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
 											<strike class="btn btn-outline-light mr-1">${lista.tamanho}</strike>
 											</c:if>
 										</label>
@@ -97,9 +97,8 @@
 									</div>
 									
 									<div class="mt-5">
-										<input type="hidden" name="fornecedor" value="${idfornecedor1}">
-										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
-										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
+										<button name="fornecedor" value="${idfornecedor1}" class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
+										<button name="referencia" value="${referencia}" class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
 										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor1}</strong></p>										
 									</div>
 								</form>
@@ -204,7 +203,7 @@
 											<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
 											</c:if>
 											<c:if test="${lista.quantidade <= 0}">
-											<input type="text" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
 											<strike class="btn btn-outline-light mr-1">${lista.tamanho}</strike>
 											</c:if>
 										</label>
@@ -212,8 +211,7 @@
 									</div>
 									
 									<div class="mt-5">
-										<input type="hidden" name="fornecedor" value="${idfornecedor2	}">
-										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
+										<button name="fornecedor" value="${idfornecedor2}" class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
 										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor2}</strong></p>
 									</div>
@@ -319,7 +317,7 @@
 											<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
 											</c:if>
 											<c:if test="${lista.quantidade <= 0}">
-											<input type="text" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
 											<strike class="btn btn-outline-light mr-1">${lista.tamanho}</strike>
 											</c:if>
 										</label>
@@ -327,8 +325,7 @@
 									</div>
 									
 									<div class="mt-5">
-										<input type="hidden" name="fornecedor" value="${idfornecedor3}">
-										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
+										<button name="fornecedor" value="${idfornecedor3}" class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
 										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor3}</strong></p>
 									</div>

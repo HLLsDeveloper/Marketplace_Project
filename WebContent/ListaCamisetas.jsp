@@ -27,7 +27,7 @@
 						    	<h4 class="card-title letramaiucula text-center">${produto.produto}</h4>
 							</div>
 							<ul class="list-group list-group-flush text center">
-								<li class="product-price">R$ ${produto.valor_venda}</li>
+								<li class="product-price">${produto.valor_venda_fr}</li>
 							</ul>
 						    <div class="btn-group card-body mx-auto d-block mt-4">
 						    	<form>
