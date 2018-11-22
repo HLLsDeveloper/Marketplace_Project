@@ -32,24 +32,15 @@
 		<!-- FORMULÁRIO DE ALTERAR PRODUTO -->
 		<form id="form-produto" enctype="multipart/form-data" accept-charset="ISO-8859-1">
 		<div class="row">
-			<div class="col-md-4 mt-4">
-				<div class="card m-2">
-					<div class="form-group m-2">
-						<h4>Descrição do Usuário</h4>
-						<textarea name="descricao" id="descricao" class="form-control" rows="4" required>${nome}</textarea>
-					</div>
-				</div>
-			</div>
-
-			<div class="card col-md-8 mt-4">
+			<div class="card col-md-12 mt-4">
 				<div class="row mt-3">
 					<div class="form-group col-md">
 						<h5>Nome</h5> 
-						<input name="usuario" value="${nome}" id="usuario" type="text" class="form-control" required>
+						<input name="anome" value="${anome}" id="usuario" type="text" class="form-control" required>
 					</div>
 					<div class="form-group col-md">
 						<h5>Sobrenome</h5>
-						<input name="sobrenome" value="${sobrenome}" id="sobrenome" type="text" class="form-control" required>
+						<input name="asobrenome" value="${asobrenome}" id="sobrenome" type="text" class="form-control" required>
 					</div>
 				</div>
 
@@ -57,34 +48,45 @@
 				
 					<div class="form-group col-md">
 						<h5>CPF</h5> 
-						<input name="cpf" value="${cpf}" id="cpf" type="text" class="form-control" disabled required>
+						<input name="acpf" value="${acpf}" id="cpf" type="text" class="form-control" disabled required>
 					</div>
 
 					<div class="form-group col-md">
 						<h5>Email</h5>
-						<input name="email" value="${email}" id="email" type="text" class="form-control" disabled required>
+						<input name="aemail" value="${aemail}" id="email" type="text" class="form-control"  required>
 					</div>
 				</div>
 			
 				<div class="row">
 				
 					<div class="form-group col-md">
-						<h5>Idade:</h5> 
-						<input name="idade" value="${idade}" id="cpf" type="text" class="form-control" disabled required>
+						<h5>Celular:</h5> 
+						<input name="acelular" value="${acelular}" id="cpf" type="text" class="form-control"  required>
 					</div>
 
 					<div class="form-group col-md">
-						<h5>Idade</h5>
-						<input name="idade" value="${idade}" id="email" type="text" class="form-control" disabled required>
+						<h5>Telefone</h5>
+						<input name="atelefone" value="${atelefone}" id="email" type="text" class="form-control"  required>
+					</div>
+				</div>
+				
+				<div class="row">
+				
+					<div class="form-group col-md-3">
+						<h5>Data de Nascimento:</h5> 
+						<input name="adatanascimento" value="${adatanascimento}" id="datanascimento" type="text" class="form-control"  required>
+					</div>
+
+					<div class="form-group col-xs-1">
+						<h5>Condicao</h5>
+						<input name="acondicao" value="${acondicao}" id="condicao" type="text" class="form-control"  required>
 					</div>
 				</div>
 			
 				<div class="row">
 					<div class="col-md-4 mt-3 mb-3 float-right">
 						<div class="col-md-6 mt-3 mb-3 ">
-							<a href="CadastroFisico.jsp">
-								<label class="btn btn-warning">Cadastrar Pessoa Física ➔</label>
-							</a>
+							<button class="btn btn-warning" name="aidusuario" value="${aidusuario}" type="submit" formaction="AlterarCadastro" formmethod="Post">Salvar ➔</button>
 						</div>
 					</div>
 				</div>

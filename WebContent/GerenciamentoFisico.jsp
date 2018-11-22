@@ -60,8 +60,7 @@
 								    <td>
 									    <div class="d-inline">
 									    	<form>
-												<input type="hidden" name="idusuario" value="${lista.idusuario}">
-								      			<button type="submit" formaction="AlterarCadastro" formmethod="get" class="btn btn-tshirt"><img src="resources/img/icones/pencil.svg"></button>						      			
+								      			<button name="idusuario" value="${lista.idusuario}" type="submit" formaction="AlterarCadastro" formmethod="get" class="btn btn-tshirt"><img src="resources/img/icones/pencil.svg"></button>						      			
 								      			<button class="btn btn-secundary">Ativo</button>
 							      			</form>
 							      		</div>
