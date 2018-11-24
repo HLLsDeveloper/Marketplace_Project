@@ -156,7 +156,7 @@
 		</div>
 	</section>
 
-	<c:import url="resources/template/footer.jsp" />
+	<c:import url="resources/template/footer.jsp"/>
 
 	<!-- MODAL PARA EXCLUSÃO DA LISTA DE PRODUTOS -->
 <div class="modal fade" id="mensagemcarrinho" tabindex="" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

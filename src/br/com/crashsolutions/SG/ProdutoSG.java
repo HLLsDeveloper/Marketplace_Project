@@ -1,8 +1,10 @@
 package br.com.crashsolutions.SG;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class ProdutoSG {
+public class ProdutoSG implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	private Integer idproduto = 0;
 	private String produto = null;

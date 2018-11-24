@@ -20,7 +20,7 @@ public class CadastroJuridicoDAO {
 	public void CadastrarUsuario(CadastroJuridicoSG sg) throws SQLException {
 		
 		con = new Factory().conBD1();
-		sql = "insert into JURIDICO (email,senha,cnpj,razao,nomefantasia,ie,telefone,celular,condicao) value (?,?,?,?,?,?,?,?,'Ativo')";
+		sql = "insert into JURIDICO (email,senha,cnpj,logo,razao,nomefantasia,ie,telefone,celular,condicao) value (?,?,?,?,?,?,?,?,?,'Ativo')";
 		
 		try {
 			
@@ -28,11 +28,12 @@ public class CadastroJuridicoDAO {
 			stmtInserir.setString(1, sg.getEmail());
 			stmtInserir.setString(2, sg.getSenha());
 			stmtInserir.setString(3, sg.getCnpj());
-			stmtInserir.setString(4, sg.getRazao());
-			stmtInserir.setString(5, sg.getNomefantasia());
-			stmtInserir.setString(6, sg.getIe());
-			stmtInserir.setBigDecimal(7, sg.getTelefone());
-			stmtInserir.setBigDecimal(8, sg.getCelular());
+			stmtInserir.setString(4, sg.getLogo());
+			stmtInserir.setString(5, sg.getRazao());
+			stmtInserir.setString(6, sg.getNomefantasia());
+			stmtInserir.setString(7, sg.getIe());
+			stmtInserir.setBigDecimal(8, sg.getTelefone());
+			stmtInserir.setBigDecimal(9, sg.getCelular());
 			
 			stmtInserir.execute();
 			stmtInserir.close();
@@ -91,6 +92,7 @@ public class CadastroJuridicoDAO {
 				retornoConsulta.setEmail(respConsulta.getString("email"));
 				retornoConsulta.setSenha(respConsulta.getString("senha"));
 				retornoConsulta.setCnpj(respConsulta.getString("cnpj"));
+				retornoConsulta.setLogo(respConsulta.getString("logo"));
 				retornoConsulta.setRazao(respConsulta.getString("razao"));
 				retornoConsulta.setNomefantasia(respConsulta.getString("nomefantasia"));
 				retornoConsulta.setIe(respConsulta.getString("ie"));
@@ -168,7 +170,8 @@ public class CadastroJuridicoDAO {
 				retornoConsulta.setEmail(respConsulta.getString("email"));
 				retornoConsulta.setSenha(respConsulta.getString("senha"));
 				retornoConsulta.setCnpj(respConsulta.getString("cnpj"));
-				retornoConsulta.setRazao(respConsulta.getString("razaos"));
+				retornoConsulta.setLogo(respConsulta.getString("logo"));
+				retornoConsulta.setRazao(respConsulta.getString("razao"));
 				retornoConsulta.setNomefantasia(respConsulta.getString("nomefantasia"));
 				retornoConsulta.setIe(respConsulta.getString("ie"));
 				retornoConsulta.setCondicao(respConsulta.getString("condicao"));

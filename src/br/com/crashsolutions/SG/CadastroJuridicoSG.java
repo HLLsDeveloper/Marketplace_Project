@@ -1,8 +1,10 @@
 package br.com.crashsolutions.SG;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class CadastroJuridicoSG {
+public class CadastroJuridicoSG implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	private Integer idempresa = 0;
 	private String email = null;
@@ -25,7 +27,7 @@ public class CadastroJuridicoSG {
 	private BigDecimal telefone = null;
 	private BigDecimal celular = null;
 	private String condicao = null;
-	
+	private String logo = null;
 	
 	public Integer getIdempresa() {
 		return idempresa;
@@ -152,6 +154,12 @@ public class CadastroJuridicoSG {
 	}
 	public void setCondicao(String condicao) {
 		this.condicao = condicao;
+	}
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 }
 	

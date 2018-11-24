@@ -20,7 +20,7 @@ public class CadastroFisicoDAO {
 	public void cadastrarUsuario(CadastroFisicoSG sg) throws SQLException {
 		
 		con = new Factory().conBD1();
-		sql = "insert into FISICO (email,senha,cpf,nome,sobrenome,datanascimento,sexo,telefone,celular,condicao) value (?,?,?,?,?,?,?,?,?,'Ativo')";
+		sql = "insert into FISICO (email,senha,cpf,imagem,nome,sobrenome,datanascimento,sexo,telefone,celular,condicao) value (?,?,?,?,?,?,?,?,?,?,'Ativo')";
 		
 		try {
 			
@@ -29,12 +29,13 @@ public class CadastroFisicoDAO {
 			stmCadastrar.setString(1, sg.getEmail() );
 			stmCadastrar.setString(2, sg.getSenha());
 			stmCadastrar.setString(3, sg.getCpf());
-			stmCadastrar.setString(4, sg.getNome());
-			stmCadastrar.setString(5, sg.getSobrenome());
-			stmCadastrar.setString(6, sg.getDatanascimento());
-			stmCadastrar.setString(7, sg.getSexo());
-			stmCadastrar.setBigDecimal(8, sg.getTelefone());
-			stmCadastrar.setBigDecimal(9, sg.getCelular());
+			stmCadastrar.setString(4, sg.getImagem());
+			stmCadastrar.setString(5, sg.getNome());
+			stmCadastrar.setString(6, sg.getSobrenome());
+			stmCadastrar.setString(7, sg.getDatanascimento());
+			stmCadastrar.setString(8, sg.getSexo());
+			stmCadastrar.setBigDecimal(9, sg.getTelefone());
+			stmCadastrar.setBigDecimal(10, sg.getCelular());
 			
 			stmCadastrar.execute();
 			stmCadastrar.close();
@@ -90,6 +91,7 @@ public class CadastroFisicoDAO {
 				retornoLista.setIdusuario(respConsulta.getInt("idusuario"));
 				retornoLista.setEmail(respConsulta.getString("email"));
 				retornoLista.setCpf(respConsulta.getString("cpf"));
+				retornoLista.setImagem(respConsulta.getString("imagem"));
 				retornoLista.setNome(respConsulta.getString("nome"));
 				retornoLista.setSobrenome(respConsulta.getString("sobrenome"));
 				retornoLista.setDatanascimento(respConsulta.getString("datanascimento"));
@@ -126,6 +128,7 @@ public class CadastroFisicoDAO {
 				retornoLista.setIdusuario(respConsulta.getInt("idusuario"));
 				retornoLista.setEmail(respConsulta.getString("email"));
 				retornoLista.setCpf(respConsulta.getString("cpf"));
+				retornoLista.setImagem(respConsulta.getString("imagem"));
 				retornoLista.setNome(respConsulta.getString("nome"));
 				retornoLista.setSobrenome(respConsulta.getString("sobrenome"));
 				retornoLista.setDatanascimento(respConsulta.getString("datanascimento"));
@@ -204,6 +207,7 @@ public class CadastroFisicoDAO {
 				retornoLista.setIdusuario(respConsulta.getInt("idusuario"));
 				retornoLista.setEmail(respConsulta.getString("email"));
 				retornoLista.setCpf(respConsulta.getString("cpf"));
+				retornoLista.setImagem(respConsulta.getString("imagem"));
 				retornoLista.setNome(respConsulta.getString("nome"));
 				retornoLista.setSobrenome(respConsulta.getString("sobrenome"));
 				retornoLista.setDatanascimento(respConsulta.getString("datanascimento"));

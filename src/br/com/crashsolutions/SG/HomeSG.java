@@ -1,7 +1,10 @@
 package br.com.crashsolutions.SG;
 
+import java.io.Serializable;
+
 // Todas as variaveis do banco de dados irão receber os valores atraves dessa classe
-public class HomeSG {
+public class HomeSG implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	private String produto = null;
 	private String imagem = null;
