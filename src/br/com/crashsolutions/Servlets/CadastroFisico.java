@@ -1,7 +1,7 @@
 package br.com.crashsolutions.Servlets;
 
 import java.io.IOException;
-import java.math.BigDecimal;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,6 +25,7 @@ public class CadastroFisico extends HttpServlet {
 		
 		if(request.getAttribute("mensagemcadastro") != null) {
 			
+			request.setAttribute("mensagem", request.getAttribute("mensagemcadastro"));
 			RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
 			enviar.forward(request, response);
 		}
@@ -45,14 +46,21 @@ public class CadastroFisico extends HttpServlet {
 			
 			// BUSCA OS DADOS DO FORM JSP
 			String Email = request.getParameter("email");
-		    String Senha = request.getParameter("senha");
+			System.out.println(Email);		    String Senha = request.getParameter("senha");
 		    String CPF = request.getParameter("cpf");
+		    System.out.println(CPF);
 		    String Nome = request.getParameter("nome");
+		    System.out.println(Nome);
 		    String Sobrenome = request.getParameter("sobrenome");
+		    System.out.println(Sobrenome);
 		    String Datanascimento = request.getParameter("datanascimento");
+		    System.out.println(Datanascimento);
 		    String Sexo = request.getParameter("sexo");
-		    BigDecimal telefone = (new BigDecimal(request.getParameter("telefone")));
-		    BigDecimal celular = (new BigDecimal(request.getParameter("celular")));
+		    System.out.println(Sexo);
+		    String telefone = (request.getParameter("telefone"));
+		    System.out.println(telefone);
+		    String celular = (request.getParameter("celular"));
+		    System.out.println(celular);
 		    
 		    
 		    // ENVIA OS DADOS DA PAGINA JSP PARA O SG
@@ -92,10 +100,10 @@ public class CadastroFisico extends HttpServlet {
 		    // UTILIZA O METODO CADASTRARENDERECO DO DAO
 		    dao.cadastrarEndereco(sg);
 		    
-		    request.setAttribute("mensagemcadastro", "Login cadastrado com sucesso!");
+		    request.setAttribute("mensagemcadastro", "Usuário cadastrado com sucesso!");
 		    
 		} catch (Exception ex) {
-			request.setAttribute("mensagemerro", "Ocorreu um erro no cadastro, verifique os campos!");
+			request.setAttribute("mensagemcadastro", "Ocorreu um erro no cadastro, verifique os campos!");
 			System.out.println("Erro no CadastroFisico: "+ ex);
 		}
 	    doGet(request, response);

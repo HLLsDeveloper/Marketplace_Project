@@ -1,7 +1,6 @@
 package br.com.crashsolutions.SG;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 public class CadastroJuridicoSG implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -24,8 +23,8 @@ public class CadastroJuridicoSG implements Serializable{
 	private String cidade = null;
 	private String estado = null;
 	private String cep = null;
-	private BigDecimal telefone = null;
-	private BigDecimal celular = null;
+	private String telefone = null;
+	private String celular = null;
 	private String condicao = null;
 	private String logo = null;
 	
@@ -137,16 +136,16 @@ public class CadastroJuridicoSG implements Serializable{
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	public BigDecimal getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setTelefone(BigDecimal telefone) {
-		this.telefone = telefone;
+	public void setTelefone(String telefone2) {
+		this.telefone = telefone2;
 	}
-	public BigDecimal getCelular() {
+	public String getCelular() {
 		return celular;
 	}
-	public void setCelular(BigDecimal celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 	public String getCondicao() {

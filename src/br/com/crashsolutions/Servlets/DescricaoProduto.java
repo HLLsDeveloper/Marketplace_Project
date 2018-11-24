@@ -125,7 +125,7 @@ public class DescricaoProduto extends HttpServlet {
 			request.setAttribute("parcela3", cp.Parcela(valor3));
 
 			// BUSCA A AÇÃO NO DAO QUE BUSCA OS DADOS DO PRODUTO DO CARD
-			ArrayList<ProdutoSG> lista = dao.buscaTodos();
+			ArrayList<ProdutoSG> lista = dao.buscaTodasReferencias();
 			request.setAttribute("lista_produto", lista);
 								
 			RequestDispatcher enviar = request.getRequestDispatcher("DescricaoProduto.jsp");
@@ -145,15 +145,11 @@ public class DescricaoProduto extends HttpServlet {
 			Integer fornecedor = Integer.parseInt(request.getParameter("fornecedor"));
 			String id = request.getParameter("idproduto");
 			
+			// VARIAVEIS PARA ADICIONAR NO CARRINHO
 			ProdutoSG colocarcarrinho = new ProdutoSG();
-			Integer idproduto = 0;
-			String produto = null;
-			String imagem = null;
-			String tamanho = null;
-			String cor = null;
-			String categoria = null;
-			Integer quantidade = 0;
 			Float valor = 0f;
+			Integer idproduto = 0, quantidade = 0;
+			String produto = null, imagem = null, tamanho = null, cor = null, categoria = null; 
 			
 			if(fornecedor == 1) {
 				
@@ -201,7 +197,7 @@ public class DescricaoProduto extends HttpServlet {
 			
 			Carrinho carrinho = new Carrinho();
 			
-			// PEGA  CARRINHO ATUAL E SE PREPARA PARA ADICIONAR O PRÓXIMO PRODUTO
+			// PEGA CARRINHO ATUAL E SE PREPARA PARA ADICIONAR O PRÓXIMO PRODUTO
 			if(sessao.getAttribute("carrinho") != null) {
 				
 				@SuppressWarnings("unchecked")
@@ -259,7 +255,7 @@ public class DescricaoProduto extends HttpServlet {
 				
 				sessao.setAttribute("carrinho", carrinhoSessao);
 			}
-
+					
 			response.sendRedirect("Carrinho");
 			
 		} catch(Exception e) {

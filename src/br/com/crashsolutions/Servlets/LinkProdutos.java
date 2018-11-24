@@ -27,23 +27,21 @@ public class LinkProdutos extends HttpServlet {
 		
 		// RECEBE A CATEGORIA PARA BUSCA
 		String busca = request.getParameter("busca");
-		
-		// BUSCA OS DADOS NO BANCO DE ACORDO COM A CATEGORIA
-		ProdutoDAO produtodao = new ProdutoDAO();
-		ArrayList<ProdutoSG> resultadoLinkProduto;
-		
+	 
 		try {
+			// BUSCA OS DADOS NO BANCO DE ACORDO COM A CATEGORIA
+			ProdutoDAO dao = new ProdutoDAO();
+			ArrayList<ProdutoSG> resultadoLinkProduto;
 			
-			resultadoLinkProduto = produtodao.produtoLink(busca);
+			resultadoLinkProduto = dao.produtoLink(busca);
 			request.setAttribute("lista", resultadoLinkProduto);
 			
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher enviarResultado = request.getRequestDispatcher("ListaCamisetas.jsp");
-		enviarResultado.forward(request, response);
+		RequestDispatcher r = request.getRequestDispatcher("ListaCamisetas.jsp");
+		r.forward(request, response);
 		
 	}
 

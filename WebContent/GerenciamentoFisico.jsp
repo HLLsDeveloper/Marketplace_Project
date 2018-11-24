@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>T-Shirt Games - Gerenciamento de Estoque</title>
+	<title>T-Shirt Games - Gerenciamento Fisico</title>
 	<meta http-equiv="Content-Type" content="text/html">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -60,8 +60,7 @@
 								    <td>
 									    <div class="d-inline">
 									    	<form>
-												<input type="hidden" name="idusuario" value="${lista.idusuario}">
-								      			<button type="submit" formaction="AlterarCadastro" formmethod="get" class="btn btn-tshirt"><img src="resources/img/icones/pencil.svg"></button>						      			
+								      			<button name="idusuario" value="${lista.idusuario}" type="submit" formaction="AlterarCadastro" formmethod="get" class="btn btn-tshirt"><img src="resources/img/icones/pencil.svg"></button>						      			
 								      			<button class="btn btn-secundary">Ativo</button>
 							      			</form>
 							      		</div>

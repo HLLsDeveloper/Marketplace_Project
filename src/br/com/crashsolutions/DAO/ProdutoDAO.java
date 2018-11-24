@@ -19,6 +19,7 @@ public class ProdutoDAO {
 	private PreparedStatement stmInserir, stmConsulta, stmAlterar, stmListaConsulta;
 	private ResultSet listaConsulta, resConsulta;
 	private ProdutoSG retornoLista;
+	 
 	public String Mensagem = null;
 	public Integer Quantidade = 0;
 	
@@ -311,8 +312,6 @@ public class ProdutoDAO {
 			while (listaConsulta.next()) {
 				
 				ProdutoSG retornoLista = new ProdutoSG();
-				
-				// FORMATAR PARA REAL
 				FormatarReal fr = new FormatarReal();
 				
 				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
@@ -406,32 +405,33 @@ public class ProdutoDAO {
     	con = new Factory().conBD1();
 		ArrayList<ProdutoSG> produtolink = new ArrayList<>();
 		
-		sql = "select * from PRODUTO where genero= ? or categoria= ?";
+		sql = "select * from PRODUTO where categoria= ?";
 		
 		try {
 			stmConsulta = con.prepareStatement(sql);
 			stmConsulta.setString(1, geral);
-			stmConsulta.setString(2, geral);
-			resConsulta = stmConsulta.executeQuery();
+			listaConsulta = stmConsulta.executeQuery();
 			
-			while (resConsulta.next()) {
+			while (listaConsulta.next()) {
 				
 				ProdutoSG retornoLista = new ProdutoSG();
+				FormatarReal fr = new FormatarReal();
 				
-				retornoLista.setIdproduto(resConsulta.getInt("idproduto"));
-				retornoLista.setProduto(resConsulta.getString("produto"));
-				retornoLista.setImagem(resConsulta.getString("imagem"));
-				retornoLista.setDescricao(resConsulta.getString("descricao"));
-				retornoLista.setModelo(resConsulta.getString("modelo"));
-				retornoLista.setGenero(resConsulta.getString("genero"));
-				retornoLista.setCor(resConsulta.getString("cor"));
-				retornoLista.setCategoria(resConsulta.getString("categoria"));
-				retornoLista.setValor_custo(resConsulta.getFloat("valor_custo"));
-				retornoLista.setValor_venda(resConsulta.getFloat("valor_venda"));
-				retornoLista.setQuantidade(resConsulta.getInt("quantidade"));
+				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
+				retornoLista.setProduto(listaConsulta.getString("produto"));
+				retornoLista.setImagem(listaConsulta.getString("imagem"));
+				retornoLista.setDescricao(listaConsulta.getString("descricao"));
+				retornoLista.setModelo(listaConsulta.getString("modelo"));
+				retornoLista.setGenero(listaConsulta.getString("genero"));
+				retornoLista.setTamanho(listaConsulta.getString("tamanho"));
+				retornoLista.setCor(listaConsulta.getString("cor"));
+				retornoLista.setCategoria(listaConsulta.getString("categoria"));
+				retornoLista.setValor_custo(listaConsulta.getFloat("valor_custo"));
+				retornoLista.setValor_venda_fr(fr.formatar(listaConsulta.getFloat("valor_venda")));
+				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
 				retornoLista.setReferencia(listaConsulta.getInt("referencia"));
 				retornoLista.setCondicao(listaConsulta.getString("condicao"));
-				
+								
 				produtolink.add(retornoLista);
 	
 			}

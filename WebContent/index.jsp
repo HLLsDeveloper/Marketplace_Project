@@ -98,25 +98,25 @@
 		<div class="container">
 		  <div class="row mt-3">	
 		    <div class="col-xs-6  col-md-3 my-3 text-center">
-		      <a href="http://localhost:8080/TShirtGames/LinkProduto?busca=Series">
+		      <a href="LinkProduto?busca=Series">
 		        <img class="img-fluid mx-auto d-block" src="resources/img/utilitarios/footerseries.png" alt="Card image cap">
 		       </a>     
 		    </div>
 		
 		    <div class="col-xs-6  col-md-3 my-3">
-		      <a href="http://localhost:8080/TShirtGames/LinkProduto?busca=Animes">
+		      <a href="LinkProduto?busca=Animes">
 		        <img class="img-fluid mx-auto d-block" src="resources/img/utilitarios/footeranimes.png" alt="Card image cap">
 		       </a>     
 		    </div>
 		
 		    <div class="col-xs-6  col-md-3 my-3">
-		      <a href="http://localhost:8080/TShirtGames/LinkProduto?busca=Filmes">
+		      <a href="LinkProduto?busca=Filmes">
 		        <img class="img-fluid mx-auto d-block" src="resources/img/utilitarios/footerfilmes.png" alt="Card image cap">
 		       </a>     
 		    </div>
 		
 		    <div class="col-xs-6  col-md-3 my-3">
-		      <a href="http://localhost:8080/TShirtGames/LinkProduto?busca=Games">
+		      <a href="LinkProduto?busca=Games">
 		        <img class="img-fluid mx-auto d-block" src="resources/img/utilitarios/footergames.png" alt="Card footergames">
 		       </a>     
 		    </div>
