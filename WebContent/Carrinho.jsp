@@ -66,53 +66,45 @@
 											</form>
 											</c:forEach>
 										</tbody>
-									</table>
-									<h1>
-										<c:out value="${valortotal}"></c:out>
-									</h1>
+									</table>							
 								</div>
 							</div>
 
 							<!--RODAPE CARRINHO-->
-							<div class="card-footer  small text-muted ">
-								<div class="container-fluid ">
+							<div class="card-footer  small text-muted float-right ">
+								<div class="container-fluid  ">
 									<div class="row">
-										<div class="col-xs-6 ">Produto(s)</div>
-										<div class="col-xs-6 ">1</div>
+										<div class="col-4 "><h4>Produto(s)</h4></div>
+										<div class="col-8"><h4>${contador}</h4></div>
 									</div>
 									<div class="row">
-										<div class="col-xs-6">Valor</div>
-										<input type='hidden' value='' />
-										<div class="col-xs-6">R$ 724,50</div>
+										<div class="col-4"><h4>Valor:  </h4> </div>
+										<div class="col-8"><h4> R$ ${valortotal}</h4></div>
 									</div>
 									<div class="row">
-										<div class="col-xs-6">Frete</div>
-										<div class="col-xs-6" id='divValorFreteCarrinho'>A
-											calcular</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-6">Peso</div>
-										<div class="col-xs-6">4,420</div>
-									</div>
-									<div class="row primary-color">
-										<div class="col-xs-6">Total</div>
-										<div class="col-xs-6" id='divValorTotalGeralCarrinho'>R$
-											724,50</div>
+										<div class="col-4"><h4>Frete</h4></div>
+										<div class="col-8" id='divValorFreteCarrinho'><h5>À calcular</h5></div>
 									</div>
 								</div>
 							</div>
+							
+							
 						<!--FIM RODAPE CARRINHO-->
-						<form>
-							<div class="card-footer small text-muted">
-								<button type="submit" class="btn btn-danger btn-lg float-left" formaction="Home">Continuar Comprando</button>
-								<button type="submit" class="btn btn-danger btn-lg float-right" formaction="Enderecos">Finalizar Compra</button>
+						
+						<div class="card-footer  small text-muted float-right ">					
+							<form>
+								<div class=" small text-muted">
+									<button type="submit" class="btn btn-danger btn-lg float-left" formaction="Home">Continuar Comprando</button>
+									<button type="submit" class="btn btn-danger btn-lg float-right" formaction="Enderecos">Finalizar Compra</button>
+								</div>
+							</form>
 							</div>
-						</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+
 
 	<c:import url="resources/template/footer.jsp" />
 </body>

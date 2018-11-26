@@ -1,7 +1,6 @@
 package br.com.crashsolutions.Servlets;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -13,19 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.crashsolutions.DAO.CadastroFisicoDAO;
 import br.com.crashsolutions.SG.CadastroFisicoSG;
-import br.com.crashsolutions.SG.ProdutoSG;
-/**
- * Servlet implementation class AlterarCadastro
- */
+
 @WebServlet("/AlterarCadastro")
 public class AlterarCadastro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-  
     public AlterarCadastro() {
         super();
     }
-
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -62,8 +56,8 @@ public class AlterarCadastro extends HttpServlet {
 						String acpf = sg.getCpf();
 						String aemail = sg.getEmail();
 						String adatanascimento = sg.getDatanascimento();
-						BigDecimal atelefone = sg.getTelefone();
-						BigDecimal acelular = sg.getCelular();
+						String atelefone = sg.getTelefone();
+						String acelular = sg.getCelular();
 						String acondicao = sg.getCondicao();
 						
 						
@@ -99,8 +93,8 @@ public class AlterarCadastro extends HttpServlet {
 			sgfisico.setNome(request.getParameter("anome"));
 			sgfisico.setSobrenome(request.getParameter("asobrenome"));
 			sgfisico.setEmail(request.getParameter("aemail"));
-			sgfisico.setCelular(new BigDecimal(request.getParameter("acelular")));
-			sgfisico.setTelefone(new BigDecimal(request.getParameter("atelefone")));
+			sgfisico.setCelular(request.getParameter("acelular"));
+			sgfisico.setTelefone(request.getParameter("atelefone"));
 			sgfisico.setDatanascimento(request.getParameter("adatanascimento"));
 			sgfisico.setCondicao(request.getParameter("acondicao"));
 			sgfisico.setIdusuario(Integer.parseInt(request.getParameter("aidusuario")));

@@ -41,8 +41,8 @@ public class ProdutoDAO {
 			stmInserir.setString(6,sgproduto.getTamanho());
 			stmInserir.setString(7,sgproduto.getCor());
 			stmInserir.setString(8,sgproduto.getCategoria());
-			stmInserir.setDouble(9,sgproduto.getValor_custo());
-			stmInserir.setDouble(10,sgproduto.getValor_venda());
+			stmInserir.setFloat(9,sgproduto.getValor_custo());
+			stmInserir.setFloat(10,sgproduto.getValor_venda());
 			stmInserir.setInt(11,sgproduto.getQuantidade());
 			stmInserir.setInt(12,sgproduto.getReferencia());
 			
@@ -431,7 +431,7 @@ public class ProdutoDAO {
 				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
 				retornoLista.setReferencia(listaConsulta.getInt("referencia"));
 				retornoLista.setCondicao(listaConsulta.getString("condicao"));
-								
+				
 				produtolink.add(retornoLista);
 	
 			}

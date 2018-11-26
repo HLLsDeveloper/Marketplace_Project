@@ -39,7 +39,6 @@ public class InserirProduto extends HttpServlet {
 		// INSTANCIO DAO E SG
 		ProdutoDAO produtodao = new ProdutoDAO();
 		ProdutoSG produtosg = new ProdutoSG();
-		Validacao validacao = new Validacao();
 		
 		// UPLOAD DA IMAGEM 
 		if (ServletFileUpload.isMultipartContent(request)) {
@@ -57,150 +56,59 @@ public class InserirProduto extends HttpServlet {
 	                	String Imagem = caminho.substring(caminho.lastIndexOf("\\")+1);
 	                	
 	                	// LOCAL DE UPLOAD 
-	                	item.write(new File(("D:\\Users\\Hugo\\Documents\\Workspace\\TShirtGames\\WebContent\\resources\\img\\img-produtos") + File.separator + Imagem));
+	                	item.write(new File(("C:\\Users\\luanl\\git\\Projeto\\TShirtGames\\WebContent\\resources\\img\\img-produtos") + File.separator + Imagem));
 	                	
 	                	// CADASTRAR IMAGEM NO BANCO
 	                	produtosg.setImagem(Imagem);
 	                } 
 	                
-	                // PROCESSO DE DADOS
+	             // PROCESSO DE DADOS
 	                if (item.isFormField()) {
 	                	
 	                	// CADASTRO DE DADOS NO BANCO
 	                	if (item.getFieldName().equals("produto")) {
 	                		
-	                		if(validacao.SpecialCaracter(item.getString()) == true) {
-	                			produtosg.setProduto(item.getString());
-	                		}
-	                		else if(validacao.SpecialCaracter(item.getString()) == false) {
-	                			request.setAttribute("mensagem", "Erro no nome do Produto");
-	                			doGet(request, response);
-	                		}
-	                		
+	                		produtosg.setProduto(item.getString()); 
 	                	}
 	                	if (item.getFieldName().equals("descricao")) {
 	                		
-	                		if(validacao.Full(item.getString()).equals(true)) {
-	                			produtosg.setDescricao(item.getString()); 
-	                			
-	                		}
-	                		else if(validacao.Full(item.getString()).equals(false)) {
-	                			request.setAttribute("mensagem", "Erro ao preencher a Descrição");
-	                			doGet(request, response);
-	                		}
-	                		
+	                		produtosg.setDescricao(item.getString());
 	                	}
 	                	if (item.getFieldName().equals("modelo")) {
 	                		
-	                		if(validacao.Caracter(item.getString()) == true) {
-	                			produtosg.setModelo(item.getString()); 
-	                			
-	                		}
-	                		else if(validacao.Caracter(item.getString()) == false) {
-	                			request.setAttribute("mensagem", "Erro ao preencher a Modelo");
-	                			doGet(request, response);
-	                		}
-	                		
+	                		produtosg.setModelo(item.getString());
 	                	}
 	                	if (item.getFieldName().equals("genero")) {
-	                		if(validacao.Caracter(item.getString()) == true) {
-	                			
-	                			produtosg.setGenero(item.getString()); 
-	                			
-	                		}
-	                		else if(validacao.Caracter(item.getString()) == false) {
-	                			request.setAttribute("mensagem", "Erro ao preencher a Genero");
-	                			doGet(request, response);
-	                		}
 	                		
+	                		produtosg.setGenero(item.getString());
 	                	}
 	                	if (item.getFieldName().equals("categoria")) {
 	                		
-	                		if(validacao.Caracter(item.getString()) == true) {
-	                			
-	                			produtosg.setCategoria(item.getString());
-	                			
-	                		}
-	                		else if(validacao.Caracter(item.getString()) == false) {
-	                			request.setAttribute("mensagem", "Erro ao preencher a Categoria");
-	                			doGet(request, response);
-	                		}
-	                		
+	                		produtosg.setCategoria(item.getString());
 	                	}
 	                	if (item.getFieldName().equals("tamanho")) {
 	                		
-	                		if(validacao.Caracter(item.getString()) == true) {
-	                			
-	                			produtosg.setTamanho(item.getString());
-	                			
-	                		}
-	                		else if(validacao.Caracter(item.getString()) == false) {
-	                			request.setAttribute("mensagem", "Erro ao preencher a Tamanho");
-	                			doGet(request, response);
-	                		}
-	                		
+	                		produtosg.setTamanho(item.getString());
 	                	}
 	                	if (item.getFieldName().equals("cor")) {
 	                		
-	                		if(validacao.Caracter(item.getString()) == true) {
-	                			
-	                			produtosg.setCor(item.getString());
-	                			
-	                		}
-	                		else if(validacao.Caracter(item.getString()) == false) {
-	                			request.setAttribute("mensagem", "Erro ao preencher a Cor");
-	                			doGet(request, response);
-	                		}
-	                		
+	                		produtosg.setCor(item.getString());
 	                	}
 	                	if (item.getFieldName().equals("quantidade")) {
 	                		
-	                		if(validacao.NumberInt(item.getString()) == true) {
-	                			
-	                			produtosg.setQuantidade(Integer.parseInt(item.getString()));
-	                			
-	                		}
-	                		else if(validacao.NumberInt(item.getString()) == false) {
-	                			request.setAttribute("mensagem", "Erro ao preencher a Quantidade");
-	                			doGet(request, response);
-	                		}
-	                		
+	                		produtosg.setQuantidade(Integer.parseInt(item.getString()));
 	                	}
 	                	if (item.getFieldName().equals("valor_custo")) {
 	                		
-	                		if(validacao.NumberDecimal(item.getString()) == true) {
-	                			
-	                			produtosg.setValor_custo(Float.parseFloat(item.getString()));
-	                			
-	                		}
-	                		else if(validacao.NumberInt(item.getString()) == false) {
-	                			request.setAttribute("mensagem", "Erro ao preencher a Valor Custo");
-	                			doGet(request, response);
-	                		}
-	                		
+	                		produtosg.setValor_custo(Float.parseFloat(item.getString()));
 	                	}
 	                	if (item.getFieldName().equals("valor_venda")) {
 	                		
-	                		if(validacao.NumberDecimal(item.getString()) == true) {
-	                			produtosg.setValor_venda(Float.parseFloat(item.getString()));
-	                			
-	                		}
-	                		else if(validacao.NumberDecimal(item.getString()) == false) {
-	                			request.setAttribute("mensagem", "Erro ao preencher a Valor venda");
-	                			doGet(request, response);
-	                		}
-	                		
+	                		produtosg.setValor_venda(Float.parseFloat(item.getString()));
 	                	}
 	                	if (item.getFieldName().equals("referencia")) {
 	                		
-	                		if(validacao.NumberInt(item.getString()) == true) {
-	                			produtosg.setReferencia(Integer.parseInt(item.getString()));
-	                			
-	                		}
-	                		else if(validacao.NumberInt(item.getString()) == false) {
-	                			request.setAttribute("mensagem", "Erro ao preencher a Referência");
-	                			doGet(request, response);
-	                		}
+	                		produtosg.setReferencia(Integer.parseInt(item.getString()));
 	                	}
 	                } 
 	            }

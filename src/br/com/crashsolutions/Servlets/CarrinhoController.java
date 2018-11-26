@@ -43,7 +43,7 @@ public class CarrinhoController extends HttpServlet {
 				else {
 					valortotal += resultado;
 				}
-				contador ++;
+				contador += produtosg.getQuantidade_dig();
 			}
 			
 			sessao.setAttribute("carrinho", mostrarcarrinho);

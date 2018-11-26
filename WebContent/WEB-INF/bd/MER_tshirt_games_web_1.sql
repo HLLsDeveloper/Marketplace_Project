@@ -22,13 +22,13 @@ create table FISICO (
 idusuario int not null auto_increment primary key,
 email varchar(50),
 senha varchar(16),
-cpf varchar(11),
+cpf varchar(20),
 nome varchar(40),
 sobrenome varchar(20),
-datanascimento bigint(8),
+datanascimento varchar(20),
 sexo varchar(9),
-telefone varchar(13),
-celular varchar(14),
+telefone varchar(20),
+celular varchar(20),
 condicao char(7)
 );
 
@@ -36,12 +36,12 @@ create table JURIDICO (
 idempresa int not null auto_increment primary key,
 email varchar(50),
 senha varchar(16),
-cnpj varchar(13),
+cnpj varchar(20),
 razao varchar(20),
 nomefantasia varchar(20),
 ie varchar(30),
-telefone varchar(13),
-celular varchar(14),
+telefone varchar(20),
+celular varchar(20),
 condicao char(7)
 );
 

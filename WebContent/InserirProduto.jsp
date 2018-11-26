@@ -17,8 +17,8 @@
 	<script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
 	
 	<script type="text/javascript" src="resources/js/script.PreImagem.js"></script>
-<!-- 	<script type="text/javascript" src="resources/js/script.ValidacaoCampos.js"></script> -->
-<!-- 	<script type="text/javascript" src="resources/js/script.FormatacaoCampos.js"></script> -->
+	<script type="text/javascript" src="resources/js/script.ValidacaoCampos.js"></script>
+	<script type="text/javascript" src="resources/js/script.FormatacaoCampos.js"></script>
 	<script type="text/javascript" src="resources/js/script.ExibirModal.js"></script>
 </head>
 
@@ -144,6 +144,6 @@
 		</form>
 	</div>
 
-	<c:import url="resources/template/footer.jsp" />
+	<c:import url="resources/template/footer.jsp"/>
 </body>
 </html>

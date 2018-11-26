@@ -98,7 +98,7 @@
 
 					<div class="form-group col-md">
 						<h5>Quantidade</h5>
-						<input name="quantidade" value="${quantidade}" id="quantidade" type="number" class="form-control" min="1" required>
+						<input name="quantidade" value="${quantidade}" id="quantidade" type="number" class="form-control" min="1">
 					</div>
 				</div>
 				<hr>
