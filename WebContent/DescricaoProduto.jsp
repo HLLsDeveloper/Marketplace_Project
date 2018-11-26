@@ -26,7 +26,7 @@
 
  <c:import url="resources/template/nav.jsp"/>
 	<div class="container">
-		<div class="row">
+		<div class="row p-relative">
 			<div class="col-md-12 col-lg-5 d-block mx-auto mt-5 ">
 				<div class="card-img">
 					<img class="w-100" id="lupa" src="resources/img/img-produtos/${imagem}">

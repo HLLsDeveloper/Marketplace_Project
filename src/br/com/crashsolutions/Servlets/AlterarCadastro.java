@@ -12,7 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.crashsolutions.DAO.CadastroFisicoDAO;
 import br.com.crashsolutions.SG.CadastroFisicoSG;
+<<<<<<< HEAD
 
+=======
+/**
+ * Servlet implementation class AlterarCadastro
+ */
+>>>>>>> dd9d4c87fe4c17acd235981ff8ac98a17e86cdf3
 @WebServlet("/AlterarCadastro")
 public class AlterarCadastro extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -8,6 +8,6 @@ $(".menu").click(function(){
     $(this).toggleClass("ativo");
 });
 
-function tohide(){
-    $(".dropdown-pers").toggleClass("show-menu");
+function tohide() {
+	$(".dropdown-pers").toggleClass("show-menu");
 }

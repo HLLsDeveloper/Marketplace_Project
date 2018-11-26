@@ -57,6 +57,7 @@ public class Login extends HttpServlet {
 					sessao.setAttribute("idusuario", fisico.getIdusuario());
 					sessao.setAttribute("email", fisico.getEmail());
 					sessao.setAttribute("cpf", fisico.getCpf());
+					sessao.setAttribute("imagemuser", fisico.getImagem());
 					sessao.setAttribute("nome", fisico.getNome());
 					sessao.setAttribute("sobrenome", fisico.getSobrenome());
 					sessao.setAttribute("datanascimento", fisico.getDatanascimento());
@@ -101,6 +102,7 @@ public class Login extends HttpServlet {
 						sessao.setAttribute("idempresa", juridico.getIdempresa());
 						sessao.setAttribute("email", juridico.getEmail());
 						sessao.setAttribute("cnpj", juridico.getCnpj());
+						sessao.setAttribute("logo", juridico.getLogo());
 						sessao.setAttribute("razao", juridico.getRazao());
 						sessao.setAttribute("nomefantasia", juridico.getNomefantasia());
 						sessao.setAttribute("ie", juridico.getIe());
