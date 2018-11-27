@@ -22,12 +22,8 @@ create table FISICO (
 idusuario int not null auto_increment primary key,
 email varchar(50),
 senha varchar(16),
-<<<<<<< HEAD
 cpf varchar(20),
-=======
-cpf varchar(14),
 imagem varchar(50),
->>>>>>> dd9d4c87fe4c17acd235981ff8ac98a17e86cdf3
 nome varchar(40),
 sobrenome varchar(20),
 datanascimento varchar(20),
@@ -41,12 +37,8 @@ create table JURIDICO (
 idempresa int not null auto_increment primary key,
 email varchar(50),
 senha varchar(16),
-<<<<<<< HEAD
 cnpj varchar(20),
-=======
-cnpj varchar(17),
 logo varchar(50),
->>>>>>> dd9d4c87fe4c17acd235981ff8ac98a17e86cdf3
 razao varchar(20),
 nomefantasia varchar(20),
 ie varchar(30),
@@ -120,10 +112,10 @@ insert into FORNECEDORES(razao,cnpj,ie,telefone,endereco,bairro,cidade,estado,ce
 insert into FORNECEDORES(razao,cnpj,ie,telefone,endereco,bairro,cidade,estado,cep) value ('Herslag','12.770.269/0001-36','636.354.536.870','(11) 4251-0236','R. Caetés, 482','Conceição','Diadema','SP','09991-110');
 insert into FORNECEDORES(razao,cnpj,ie,telefone,endereco,bairro,cidade,estado,cep) value ('Hyra Suits','79.355.056/0001-19','966.698.360.102','(11) 3452-0094','Estr. Luiz Marson, 366','Batistini','São Bernardo do Campo','SP','09842-000');
 
-insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 1", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Animes", "P", 60.99, 60.99, 59, "123456", "ativo");
-insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 2", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Games", "M", 50.99, 50.99, 52, "234567", "ativo");
-insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 3", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Filmes", "G", 40.99, 40.99, 125, "345678", "ativo");
-insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 4", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Series", "GG", 30.99, 30.99, 125, "456789", "ativo");
+insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 1", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Animes", "P", 30.00, 30.00, 59, "123456", "ativo");
+insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 2", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Animes", "M", 30.00, 30.00, 52, "123456", "ativo");
+insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 3", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Animes", "G", 30.00, 30.00, 125, "123456", "ativo");
+insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 4", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Animes", "GG", 30.00, 30.00, 125, "123456", "ativo");
 
 insert into FISICO(email, senha, cpf, imagem, nome, sobrenome, datanascimento, sexo, telefone, celular, condicao) values("hugonsantos03@gmail.com", "123456", 43258977801, "image-1254.jpg", "Hugo", "Nascimento", "22031995", "Masculino", 1145236996, 11948523236, "Ativo");
 
@@ -138,10 +130,6 @@ alter table COMPRAFISICO add foreign key (idusuario) references FISICO(idusuario
 alter table COMPRAFISICO add foreign key (idproduto) references PRODUTO(idproduto);
 alter table COMPRAJURIDICO add foreign key (idempresa) references JURIDICO(idempresa);
 alter table COMPRAJURIDICO add foreign key (idproduto) references PRODUTO(idproduto);
-
-select * from comprajuridico;
-select * from comprafisico;
-select * from produto;
 
 /* INFORMAÇÕES
 

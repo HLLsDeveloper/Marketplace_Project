@@ -79,7 +79,7 @@
 									</div>
 									<div class="row">
 										<div class="col-4"><h4>Valor:  </h4> </div>
-										<div class="col-8"><h4> R$ ${valortotal}</h4></div>
+										<div class="col-8"><h4>${valortotal}</h4></div>
 									</div>
 									<div class="row">
 										<div class="col-4"><h4>Frete</h4></div>

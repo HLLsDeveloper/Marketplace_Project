@@ -98,7 +98,7 @@
 									
 									<div class="mt-5">
 										<button name="fornecedor" value="${idfornecedor1}" class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
-<%-- 										<button name="referencia" value="${referencia}" class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button> --%>
+										<button name="referencia" value="${referencia}" class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
 										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor1}</strong></p>										
 									</div>
 								</form>
@@ -212,7 +212,7 @@
 									
 									<div class="mt-5">
 										<button name="fornecedor" value="${idfornecedor2}" class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
-<!-- 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button> -->
+										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
 										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor2}</strong></p>
 									</div>
 								</form>
@@ -326,7 +326,7 @@
 									
 									<div class="mt-5">
 										<button name="fornecedor" value="${idfornecedor3}" class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
-<!-- 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button> -->
+										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
 										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor3}</strong></p>
 									</div>
 								</form>

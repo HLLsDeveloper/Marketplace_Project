@@ -46,22 +46,14 @@ public class CadastroFisico extends HttpServlet {
 			
 			// BUSCA OS DADOS DO FORM JSP
 			String Email = request.getParameter("email");
-			System.out.println(Email);		    String Senha = request.getParameter("senha");
+			String Senha = request.getParameter("senha");
 		    String CPF = request.getParameter("cpf");
-		    System.out.println(CPF);
 		    String Nome = request.getParameter("nome");
-		    System.out.println(Nome);
 		    String Sobrenome = request.getParameter("sobrenome");
-		    System.out.println(Sobrenome);
 		    String Datanascimento = request.getParameter("datanascimento");
-		    System.out.println(Datanascimento);
 		    String Sexo = request.getParameter("sexo");
-		    System.out.println(Sexo);
-		    String telefone = (request.getParameter("telefone"));
-		    System.out.println(telefone);
-		    String celular = (request.getParameter("celular"));
-		    System.out.println(celular);
-		    
+		    String telefone = request.getParameter("telefone");
+		    String celular = request.getParameter("celular");		    
 		    
 		    // ENVIA OS DADOS DA PAGINA JSP PARA O SG
 		    sg.setEmail(Email);
