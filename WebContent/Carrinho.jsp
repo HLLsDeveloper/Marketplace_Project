@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -23,20 +22,19 @@
 				<div class="container-fluid">
 					<div class="card">
 						<div class="card-header">
-							<i class="fa fa-table"></i>Carrinho
+							<h5>Carrinho</h5>
 						</div>
-						<!-- tabela do carrinho -->
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-bordered" id="dataTable">
 										<thead>
 											<tr>
-												<th>IMAGEM</th>
-												<th>PRODUTO</th>
-												<th>TAMANHO</th>
-												<th>QUANTIDADE</th>
-												<th>VALOR UNITÁRIO</th>
-												<th>EXCLUIR</th>
+												<th>Imagem</th>
+												<th>Produto</th>
+												<th>Tamanho</th>
+												<th>Quantidade</th>
+												<th>Valor Unitário</th>
+												<th>Excluir</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -60,7 +58,7 @@
 													</td>
 													<td>${carrinho.valor_venda}</td>
 													<td>
-														<button class="btn btn-success d-block mb-1 mx-auto" formaction="ExcluirCarrinho" formmethod="post" type="submit">Excluir</button>
+														<button class="btn btn-success d-block mx-auto" formaction="ExcluirCarrinho" formmethod="post" type="submit">Excluir</button>
 													</td>
 												</tr>
 											</form>
@@ -71,33 +69,23 @@
 							</div>
 
 							<!--RODAPE CARRINHO-->
-							<div class="card-footer  small text-muted float-right ">
-								<div class="container-fluid  ">
-									<div class="row">
-										<div class="col-4 "><h4>Produto(s)</h4></div>
-										<div class="col-8"><h4>${contador}</h4></div>
-									</div>
-									<div class="row">
-										<div class="col-4"><h4>Valor:  </h4> </div>
-										<div class="col-8"><h4>${valortotal}</h4></div>
-									</div>
-									<div class="row">
-										<div class="col-4"><h4>Frete</h4></div>
-										<div class="col-8" id='divValorFreteCarrinho'><h5>À calcular</h5></div>
-									</div>
+							<div class="row pr-4">
+								<div class="col-5 ml-auto">
+									<ul class="list-group list-group-flush">
+										<li class="list-group-item disabled">Detalhes:</li>
+									  	<li class="list-group-item">Quantidade:<strong> ${contador}</strong></li>
+									  	<li class="list-group-item">Valor Total:<strong> ${valortotal}</strong></li>
+									</ul>
 								</div>
 							</div>
 							
-							
-						<!--FIM RODAPE CARRINHO-->
-						
-						<div class="card-footer  small text-muted float-right ">					
-							<form>
-								<div class=" small text-muted">
-									<button type="submit" class="btn btn-danger btn-lg float-left" formaction="Home">Continuar Comprando</button>
-									<button type="submit" class="btn btn-danger btn-lg float-right" formaction="Enderecos">Finalizar Compra</button>
-								</div>
-							</form>
+							<div class="card-footer small text-muted float-right">					
+								<form>
+									<div class="small text-muted">
+										<button type="submit" class="btn btn-danger btn-lg float-left" formaction="Home">Continuar Comprando</button>
+										<button type="submit" class="btn btn-danger btn-lg float-right" formaction="Enderecos">Finalizar Compra</button>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>

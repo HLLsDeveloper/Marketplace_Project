@@ -81,7 +81,7 @@ public class Carrinho {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("Não foi possível mostrar a tabela. " + e);
+			System.out.println("Não foi possível mostrar a tabela: " + e);
 			return null;
 		}
 		
