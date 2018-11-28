@@ -25,8 +25,7 @@ public class GerenciamentoFisico extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	try {
-			
+	try {			
 			CadastroFisicoDAO dao = new CadastroFisicoDAO();
 			
 			ArrayList<CadastroFisicoSG> lista = dao.buscartodos();

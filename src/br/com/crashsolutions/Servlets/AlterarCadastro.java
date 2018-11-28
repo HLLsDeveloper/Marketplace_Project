@@ -12,14 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.crashsolutions.DAO.CadastroFisicoDAO;
 import br.com.crashsolutions.SG.CadastroFisicoSG;
-
+/**
+ * Servlet implementation class AlterarCadastro
+ */
 @WebServlet("/AlterarCadastro")
 public class AlterarCadastro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+  
     public AlterarCadastro() {
         super();
     }
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -54,6 +58,7 @@ public class AlterarCadastro extends HttpServlet {
 						String anome = sg.getNome(); 
 						String asobrenome = sg.getSobrenome();
 						String acpf = sg.getCpf();
+						String asexo = sg.getSexo();
 						String aemail = sg.getEmail();
 						String adatanascimento = sg.getDatanascimento();
 						String atelefone = sg.getTelefone();
@@ -67,6 +72,7 @@ public class AlterarCadastro extends HttpServlet {
 						request.setAttribute("anome", anome);
 						request.setAttribute("asobrenome", asobrenome);
 						request.setAttribute("acpf", acpf);
+						request.setAttribute("asexo", asexo);
 						request.setAttribute("aemail", aemail);
 						request.setAttribute("adatanascimento", adatanascimento);
 						request.setAttribute("atelefone", atelefone);
@@ -87,26 +93,37 @@ public class AlterarCadastro extends HttpServlet {
 
 		CadastroFisicoSG sgfisico = new CadastroFisicoSG();
 		CadastroFisicoDAO daofisico = new CadastroFisicoDAO();
-		
-		try {
+
+			try {
 			
+		    sgfisico.setEmail(request.getParameter("aemail"));
 			sgfisico.setNome(request.getParameter("anome"));
 			sgfisico.setSobrenome(request.getParameter("asobrenome"));
-			sgfisico.setEmail(request.getParameter("aemail"));
-			sgfisico.setCelular(request.getParameter("acelular"));
-			sgfisico.setTelefone(request.getParameter("atelefone"));
 			sgfisico.setDatanascimento(request.getParameter("adatanascimento"));
+			sgfisico.setSexo(request.getParameter("asexo"));
+			sgfisico.setTelefone(request.getParameter("atelefone"));
+			sgfisico.setCelular(request.getParameter("acelular"));
 			sgfisico.setCondicao(request.getParameter("acondicao"));
 			sgfisico.setIdusuario(Integer.parseInt(request.getParameter("aidusuario")));
+						
+			daofisico.AlterarUsuario(sgfisico);	
 			
-			daofisico.AlterarUsuario(sgfisico);
-			request.setAttribute("mensagem", "Alterado com sucesso!");
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			System.out.println("Erro ao alterar os dados:"+ e1);
+			request.setAttribute("mensagem", "Erro ao alterar!");			
+		}				
+		
+		ArrayList<CadastroFisicoSG> lista;
+		try {
+			lista = daofisico.buscartodos();
+			request.setAttribute("lista_usuario", lista);
 			
-		} catch (Exception e) {
-			System.out.println("Erro ao alterar os dados:"+ e);
-			request.setAttribute("mensagem", "Erro ao alterar!");
-		}
-		doGet(request, response);
+		} catch (SQLException e2) {
+			e2.printStackTrace();
+		}  
+		
+		request.setAttribute("mensagem", "Alterado com sucesso!");
+		request.getRequestDispatcher("GerenciamentoFisico").forward(request, response);	
 	}
-
 }
