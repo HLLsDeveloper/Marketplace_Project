@@ -32,7 +32,7 @@ public class DescricaoProduto extends HttpServlet {
 		
 		// VARIAVEIS ID E REFERENCIA
 		Integer referencia = Integer.parseInt(request.getParameter("referencia"));
-		
+				
 		try {
 			
 			HttpSession session = request.getSession();
@@ -259,6 +259,7 @@ public class DescricaoProduto extends HttpServlet {
 				Boolean encontrado = carrinho.ProcurarnoCarrinho(idproduto, tamanho);
 				
 				if(encontrado == false) {
+					
 					// ADICIONA NO CARRINHO
 					colocarcarrinho.setIdproduto(idproduto);
 					colocarcarrinho.setProduto(produto);
@@ -294,11 +295,11 @@ public class DescricaoProduto extends HttpServlet {
 				
 				sessao.setAttribute("carrinho", carrinhoSessao);
 			}
-					
+						
 			response.sendRedirect("Carrinho");
 			
 		} catch(Exception e) {
-			System.out.println("Erro na DescriçãoProduto ação de comprar:"+ e);
+			System.out.println("Erro na DescriçãoProduto ação de comprar: "+ e);
 		}
 	}
 }

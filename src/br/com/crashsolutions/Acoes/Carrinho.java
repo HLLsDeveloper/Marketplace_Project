@@ -39,7 +39,12 @@ public class Carrinho {
 		for(ProdutoSG sg: lista) {
 			if(sg.getIdproduto() == idproduto) {
 				Integer quant = sg.getQuantidade_dig() - 1;
+				if(quant > 1) {
 				sg.setQuantidade_dig(quant);
+				} else {
+					quant = 1;
+					sg.setQuantidade_dig(quant);
+				}
 				lista.set(lista.indexOf(sg), sg);
 			}
 		}

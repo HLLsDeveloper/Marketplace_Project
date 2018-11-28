@@ -29,19 +29,19 @@ public class addCarrinho extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher enviar = request.getRequestDispatcher(request.getRequestURL()+"?referencia="+request.getParameter("referencia"));
-		enviar.forward(request, response);
+		response.encodeRedirectURL("Descricao?referencia=123456");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// VARIAVEIS DE BUSCA
+		Integer fornecedor = Integer.parseInt(request.getParameter("fornecedor"));
+		Integer referencia = Integer.parseInt(request.getParameter("referencia"));
+		String id = request.getParameter("idproduto");
+		
 		try {
 			
 			sessao = request.getSession();
-			
-			// VARIAVEIS DE BUSCA
-			Integer fornecedor = Integer.parseInt(request.getParameter("fornecedor"));
-			String id = request.getParameter("idproduto");
 						
 			// VARIAVEIS PARA ADICIONAR NO CARRINHO
 			ProdutoSG colocarcarrinho = new ProdutoSG();
@@ -155,9 +155,9 @@ public class addCarrinho extends HttpServlet {
 				sessao.setAttribute("carrinho", carrinhoSessao);
 			}
 			
-			request.setAttribute("mensagem", "Produto adicionado no carrinho com sucesso!");
-			doGet(request, response);
-			
+			request.setAttribute("mensagem", "Produto adicionado no carrinho com sucesso!");            
+			request.getRequestDispatcher("Descricao?referencia="+referencia).forward(request, response);
+            
 		} catch(Exception e) {
 			System.out.println("Erro no addCarrinho: "+ e);
 		}

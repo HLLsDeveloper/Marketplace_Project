@@ -3,7 +3,6 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Realize o Login - T-Shirt Games</title>
     <meta http-equiv="Content-Type" content="text/html">
@@ -21,49 +20,41 @@
 </head>
 
 <body>
-    <!-- NAVBAR -->
     <c:import url="resources/template/nav.jsp" />
-
-    <section id="form_login" class="container">
-        <div class="col-lg-12 offset-lg-2">
-            <!-- INICIO DO FORMULÁRIO -->
-			 <form id="LoginValidate" accept-charset="ISO-8859-1">
-			            
-			                <div class="row">               
-			                
-			                    <h2 class="text-center col-8 mb-5">Login:</h2>
-			                    <div class="col-lg-8 mx-auto">
-			                    
-			                    
-			                        <div class="form-group col-md-6">
-			                            <label for="login_email">Email:</label><input type="email" class="form-control"  name="login_email" id="login_email" aria-describedby="login_email_ajuda" placeholder="" required>
-			                        </div>
-			                        
-			                        
-			                        <div class="form-group col-md-6">
-			                            <label for="login_senha">Senha:</label><input type="password" class="form-control" name="login_senha" id="login_senha"  placeholder="" required>
-			                            <small id="login_email_ajuda" class="form-text text-muted">Nunca compartilhe sua senha!</small>
-			                        </div>
-			                        
-			                        
-			                        <div class="form-group col-md-6">
+	
+	<div class="header-site">
+    	<section id="form_login" class="container">
+        	<div class="col-12">
+        	
+				<form id="LoginValidate" accept-charset="ISO-8859-1">
+			    	<div class="row">               
+			        	<div class="card col-md-5 mx-auto">
+			            	<div class="card-body">
+			                	<h2 class="text-center">Login:</h2>
+			                    <div class="col">
+			                        <div class="form-group">
+			                            <label for="login_email">E-mail:</label>
+			                            <input type="email" class="form-control" name="login_email" id="login_email" aria-describedby="login_email_ajuda" required>			                        
+			                            <label for="login_senha">Senha:</label>
+			                            <input type="password" class="form-control" name="login_senha" id="login_senha" required>
+			                         	<small id="login_email_ajuda" class="form-text text-muted">Nunca compartilhe sua senha!</small>
+			                         </div>
+			                         <div class="form-group">
 			                            <button id="login_button" type="submit" formaction="Login" formmethod="post" class="btn btn-lg btn-block btn-tshirt">Continuar</button>
-			                            <hr>
-			
-			                            <!-- Facetruck Botao                      
-										<div class="fb-login-button"  data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>	                        
-				                        -->
-			                            <p class="text-center cadastrar">Não tem cadastro?<a href="CadastroFisico.jsp"> Cadastre-se</a></p>
+			                            <hr>                   
+										<!-- Facetruck Botao <div class="fb-login-button"  data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>-->
+			                            <p class="text-center cadastrar">Não é cadastrado?<a href="CadastroFisico.jsp"> Cadastre-se</a></p>
 			                        </div>
 			                    </div>
-			                </div>
-			            </form>
-        </div>
-    </section>
+			              	</div>
+			          	</div>
+			        </div>
+			 	</form>
+       		</div>
+    	</section>
+    </div>
 
-    <!-- NAVBAR -->
     <c:import url="resources/template/footer.jsp" />
     <c:import url="resources/template/modal.Mensagem.jsp" />
 </body>
-
 </html>

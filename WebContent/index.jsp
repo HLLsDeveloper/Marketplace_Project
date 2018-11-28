@@ -83,11 +83,11 @@
           </div>
       </div>
   	</section>
-  	<section class="header-site pb-4 ">
+  	<section class="header-site pb-4">
 	    <div class="container">
 		   	<div class="row mb-3">
 		        <div class="col-sm-12">
-		          <h2 class="title line-title   border-bottom mt-4 ">Mais vendidos</h2>
+		          <h2 class="title line-title border-bottom mt-4">Mais vendidos</h2>
 		    	</div>
 		    	<c:import url="resources/template/carrossel.Camisetas.jsp"/>
 			</div>

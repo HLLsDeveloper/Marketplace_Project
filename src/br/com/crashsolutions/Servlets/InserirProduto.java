@@ -18,7 +18,6 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import br.com.crashsolutions.DAO.ProdutoDAO;
 import br.com.crashsolutions.SG.ProdutoSG;
-import br.com.crashsolutions.Acoes.Validacao;
 
 @WebServlet("/InserirProduto")
 public class InserirProduto extends HttpServlet {
