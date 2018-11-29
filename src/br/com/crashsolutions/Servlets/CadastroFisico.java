@@ -2,9 +2,9 @@ package br.com.crashsolutions.Servlets;
 
 import java.io.IOException;
 
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +14,7 @@ import br.com.crashsolutions.DAO.CadastroFisicoDAO;
 import br.com.crashsolutions.SG.CadastroFisicoSG;
 
 @WebServlet("/CadastroFisico")
+@MultipartConfig
 public class CadastroFisico extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      
@@ -46,27 +47,21 @@ public class CadastroFisico extends HttpServlet {
 			
 			// BUSCA OS DADOS DO FORM JSP
 			String Email = request.getParameter("email");
-			System.out.println(Email);		    String Senha = request.getParameter("senha");
+			String Senha = request.getParameter("senha");
 		    String CPF = request.getParameter("cpf");
-		    System.out.println(CPF);
+		    String imagem = request.getParameter("image");
 		    String Nome = request.getParameter("nome");
-		    System.out.println(Nome);
 		    String Sobrenome = request.getParameter("sobrenome");
-		    System.out.println(Sobrenome);
 		    String Datanascimento = request.getParameter("datanascimento");
-		    System.out.println(Datanascimento);
 		    String Sexo = request.getParameter("sexo");
-		    System.out.println(Sexo);
 		    String telefone = (request.getParameter("telefone"));
-		    System.out.println(telefone);
 		    String celular = (request.getParameter("celular"));
-		    System.out.println(celular);
-		    
 		    
 		    // ENVIA OS DADOS DA PAGINA JSP PARA O SG
 		    sg.setEmail(Email);
 		    sg.setSenha(Senha);
 		    sg.setCpf(CPF);
+		    sg.setImagem(imagem);
 		    sg.setNome(Nome);
 		    sg.setSobrenome(Sobrenome);
 		    sg.setDatanascimento(Datanascimento);

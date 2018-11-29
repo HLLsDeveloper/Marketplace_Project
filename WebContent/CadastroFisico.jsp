@@ -23,6 +23,7 @@
     <script type="text/javascript" src="resources/js/jquery/jquery.cpfcnpj.js"></script>
     <script type="text/javascript" src="resources/js/script.Buscacep.js"></script>
     <script type="text/javascript" src="resources/js/script.Mask.js"></script>
+    <script type="text/javascript" src="resources/js/script.UploadImage.js"></script>
 
 </head>
 
@@ -35,7 +36,14 @@
             <h2 class="text-center">Cadastre-se</h2>
             <p class="lead text-center">Fique tranquilo, nossa loja é segura</p>
             <hr>
+            <form id="imagetype" enctype="multipart/form-data">
+            	<div class="form-group">
+            		<img src="" id="visual_image" width="300" height="300">
+                    <label for="cadastro_imagem">Imagem:</label> <input type="file" class="form-control" name="image" placeholder="Insira uma Imagem..." onchange="uploadfile()" required>
+                </div>
+            </form>
             <form id="ValidacaoCampos" accept-charset="ISO-8859-1">
+            	<input type="hidden" class="form-control" id="nameimage" name="image">
                 <div class="form-group">
                     <label for="cadastro_email">E-mail:</label> <input type="email" class="form-control" name="conf_email" id="conf_email" placeholder="seuemail@seuemail.com" required>
                 </div>

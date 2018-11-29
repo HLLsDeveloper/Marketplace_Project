@@ -117,11 +117,6 @@ insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, 
 insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 3", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Filmes", "G", 40.99, 40.99, 125, "345678", "ativo");
 insert into PRODUTO(produto, imagem, descricao, modelo, genero, cor, categoria, tamanho, valor_custo, valor_venda, quantidade, referencia, condicao) values("Camiseta Dragon Ball 4", "camisa dragonball 04.png", "Camiseta Dragon Ball de alta qualidade estampado direto na camiseta", "Manga longa", "Masculino", "Branco e Preto", "Series", "GG", 30.99, 30.99, 125, "456789", "ativo");
 
-insert into FISICO(email, senha, cpf, imagem, nome, sobrenome, datanascimento, sexo, telefone, celular, condicao) values("hugonsantos03@gmail.com", "123456", 43258977801, "image-1254.jpg", "Hugo", "Nascimento", "22031995", "Masculino", 1145236996, 11948523236, "Ativo");
-
-insert into ENDERECO_FISICO(idenderecofisico, endereco, numero, complemento, bairro, cidade, estado, cep) values(1, "Rua João dias", 8978, "Casa 2", "Vila Maria Matilda da Conceição Barros", "São Bernardo do Campo", "São Paulo", 09758520);
-insert into ENDERECO_FISICO(idenderecofisico, endereco, numero, complemento, bairro, cidade, estado, cep) values(1, "Rua Ramelhão", 12, "", "Vila Matilda", "São Bernardo do Campo", "São Paulo", 09750225);
-
 insert into JURIDICO(email, senha, cnpj, logo, razao, nomefantasia, ie, telefone, celular, condicao) values("hllsdeveloper@gmail.com", "123456", 1000123552135, null, "HLLs Developer", "HLLs", "Não Consta", 1145879620, 11958623658, "Ativo");
 
 alter table ENDERECO_FISICO add foreign key (idenderecofisico) references FISICO(idusuario);

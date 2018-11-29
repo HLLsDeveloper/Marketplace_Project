@@ -9,14 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.SimpleEmail;
+import org.apache.commons.mail.HtmlEmail;
 
 @WebServlet("/Email")
-public class Email extends HttpServlet {
+public class SendEmail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    public Email() {
+    public SendEmail() {
         super();
     }
 
@@ -32,20 +31,22 @@ public class Email extends HttpServlet {
 		try {
 			
 			String email = request.getParameter("email");
+			String remetente = "Hugo";
 			
-			SimpleEmail simpleemail = new SimpleEmail();
-			simpleemail.setHostName("smtp.gmail.com");
-			simpleemail.setAuthenticator(new DefaultAuthenticator("hllsdeveloper@gmail.com", "HLLs1622"));
-			simpleemail.setSSLOnConnect(true);
+			HtmlEmail sendemail = new HtmlEmail();
+			sendemail.setHostName("smtp.gmail.com");
+			sendemail.setSmtpPort(465);
+			sendemail.setSSLOnConnect(true);
+			sendemail.setAuthentication("hllsdeveloper@gmail.com", "HLLs1622");
 			
 			//EMAIL DO CLIENTE, ASSUNTO E MENSAGEM
-			simpleemail.setFrom(email);
-			simpleemail.setSubject("Camiseta DragonBall");
-			simpleemail.setMsg("Eu queria saber se as camisetas são de ótima qualidade.");
+			sendemail.addTo("hllsdeveloper@gmail.com");
+			sendemail.setFrom(email, remetente);
+			sendemail.setSubject("Camiseta DragonBall");
+			sendemail.setMsg("Eu queria saber se as camisetas são de ótima qualidade.");
 			//////////////////////////////////////
 			
-			simpleemail.addTo("hllsdeveloper@gmail.com");
-			simpleemail.send();
+			sendemail.send();
 			
 			request.setAttribute("mensagem", "Obrigado pelo contato!");
 			
