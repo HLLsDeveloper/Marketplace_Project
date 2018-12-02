@@ -39,7 +39,7 @@
             <form id="imagetype" enctype="multipart/form-data">
             	<div class="form-group">
             		<label for="cadastro_imagem">Imagem de Perfil:</label>
-            		<img src="resources/img/icones/user.svg" id="visual_image" class="d-block mx-auto mb-3" width="300" height="300" style="border-radius: 50%;">
+            		<img src="resources/img/imagens/user.svg" id="visual_image" class="d-block mx-auto mb-3" width="300" height="300" style="border-radius: 50%;">
                     <input type="file" class="form-control" name="image" placeholder="Insira uma Imagem..." onchange="uploadfile()" required>
                 </div>
             </form>
@@ -120,33 +120,33 @@
                     <div class="form-group col-md-6">
                         <label>Estado</label> <select id="estado" name="estado" class="form-control" required>
                             <option value="" selected>Selecione</option>
-                            <option value="1">Acre</option>
-                            <option value="2">Alagoas</option>
-                            <option value="3">Amazonas</option>
-                            <option value="4">Amapá</option>
-                            <option value="5">Bahia</option>
-                            <option value="6">Ceará</option>
-                            <option value="7">Distrito Federal</option>
-                            <option value="8">Espírito Santo</option>
-                            <option value="9">Goiás</option>
-                            <option value="10">Maranhão</option>
-                            <option value="11">Minas Gerais</option>
-                            <option value="12">Mato Grosso Do Sul</option>
-                            <option value="13">Mato Grosso</option>
-                            <option value="14">Pará</option>
-                            <option value="15">Paraíba</option>
-                            <option value="16">Pernambuco</option>
-                            <option value="17">Piauí</option>
-                            <option value="18">Paraná</option>
-                            <option value="19">Rio De Janeiro</option>
-                            <option value="20">Rio Grande Do Norte</option>
-                            <option value="21">Rondônia</option>
-                            <option value="22">Roraima</option>
-                            <option value="23">Rio Grande Do Sul</option>
-                            <option value="24">Santa Catarina</option>
-                            <option value="25">Sergipe</option>
-                            <option value="26">São Paulo</option>
-                            <option value="27">Tocantins</option>
+                            <option value="Acre">Acre</option>
+                            <option value="Alagoas">Alagoas</option>
+                            <option value="Amazonas">Amazonas</option>
+                            <option value="Amapá">Amapá</option>
+                            <option value="Bahia">Bahia</option>
+                            <option value="Ceará">Ceará</option>
+                            <option value="Distrito Federal">Distrito Federal</option>
+                            <option value="Espírito Santo">Espírito Santo</option>
+                            <option value="Goiás">Goiás</option>
+                            <option value="Maranhão">Maranhão</option>
+                            <option value="Minas Gerais">Minas Gerais</option>
+                            <option value="Mato Grosso Do Sul">Mato Grosso Do Sul</option>
+                            <option value="Mato Grosso">Mato Grosso</option>
+                            <option value="Pará">Pará</option>
+                            <option value="Paraíba">Paraíba</option>
+                            <option value="Pernambuco">Pernambuco</option>
+                            <option value="Piauí">Piauí</option>
+                            <option value="Paraná">Paraná</option>
+                            <option value="Rio De Janeiro">Rio De Janeiro</option>
+                            <option value="Rio Grande Do Norte">Rio Grande Do Norte</option>
+                            <option value="Rondônia">Rondônia</option>
+                            <option value="Roraima">Roraima</option>
+                            <option value="Rio Grande Do Sul">Rio Grande Do Sul</option>
+                            <option value="Santa Catarina">Santa Catarina</option>
+                            <option value="Sergipe">Sergipe</option>
+                            <option value="São Paulo">São Paulo</option>
+                            <option value="Tocantins">Tocantins</option>
                         </select>
                     </div>
                 </div>

@@ -43,17 +43,9 @@ function calculafrete() {
 				var Array = JSON.parse(data);
 		    	for(var i = 0; i < Array.length; i++) {
 		    		var tipo = null;
-		    		if(i < 1) {
-						tipo = "Sedex";
-					}
-					else if(i == 1) {
-						tipo = "PAC";
-					}
 		    		$("#resultfrete").append("<tr class='linhafrete'>" + 
-							"						<td><input type='radio' name='frete' id='"+tipo+"' value='"+Array[i].valor+"'></td>" + 
-							"						<td><label for='"+tipo+"'>"+tipo+"</label></td>" + 
-							"						<td><label for='"+tipo+"'>R$ "+Array[i].valor+"</label></td>" + 
-							"						<td><label for='"+tipo+"'>Em até "+Array[i].prazoEntrega+" dias úteis</label></td>" + 
+							"						<td><label>R$ "+Array[i].valor+"</label></td>" +
+							"						<td><label>Em até "+Array[i].prazoEntrega+" dias úteis</label></td>" +
 							"				</tr>");
 		    	}
 		    });
@@ -64,17 +56,9 @@ function calculafrete() {
 				var Array = JSON.parse(data);
 		    	for(var i = 0; i < Array.length; i++) {
 		    		var tipo = null;
-		    		if(i < 1) {
-						tipo = "Sedex";
-					}
-					else if(i == 1) {
-						tipo = "PAC";
-					}
-		    		$("#resultfrete").append("<tr class='linhafrete'>" + 
-							"						<td><input type='radio' name='frete' id='"+tipo+"' value='"+Array[i].valor+"'></td>" + 
-							"						<td><label for='"+tipo+"'>"+tipo+"</label></td>" + 
-							"						<td><label for='"+tipo+"'>R$ "+Array[i].valor+"</label></td>" + 
-							"						<td><label for='"+tipo+"'>Em até "+Array[i].prazoEntrega+" dias úteis</label></td>" + 
+		    		$("#resultfrete").append("<tr class='linhafrete'>" +
+							"						<td><label for='"+tipo+"'>R$ "+Array[i].valor+"</label></td>" +
+							"						<td><label for='"+tipo+"'>Em até "+Array[i].prazoEntrega+" dias úteis</label></td>" +
 							"				</tr>");
 		    	}
 		    });

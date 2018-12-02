@@ -39,9 +39,9 @@ public class Pedido extends HttpServlet {
 			
 			sessao = request.getSession();
 			
-			if(sessao.getAttribute("idusuario") != null) {
+			if(sessao.getAttribute("idusuariouser") != null) {
 				
-				Integer idusuario = (Integer) sessao.getAttribute("idusuario");
+				Integer idusuario = (Integer) sessao.getAttribute("idusuariouser");
 				
 				fisico.setIdusuario(idusuario);
 				fisico.setDestinatario(request.getParameter("destinatario"));
@@ -70,9 +70,9 @@ public class Pedido extends HttpServlet {
 				}
 			}
 			
-			if(sessao.getAttribute("idempresa") != null) {
+			if(sessao.getAttribute("idempresauser") != null) {
 				
-				Integer idempresa = (Integer) sessao.getAttribute("idempresa");
+				Integer idempresa = (Integer) sessao.getAttribute("idempresauser");
 				
 				juridico.setIdempresa(idempresa);
 				juridico.setDestinatario(request.getParameter("destinatario"));

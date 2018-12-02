@@ -52,7 +52,7 @@
 															<button class="btn btn-dark amount my-auto mr-1" type="submit" formaction="Carrinho" formmethod="post" name="amount" value="anyless">
 																<p class="text-white btn-smalleramount">-</p>
 															</button>
-															<input type="text" class="form-control text-center" name="quantidade_dig" onkeypress="return ApenasNumeros(event)" value="${carrinho.quantidade_dig}" min="1" max="${carrinho.quantidade}" style="width: 30px;" disabled>
+															<input type="text" class="form-control text-center" name="quantidade_dig" onkeypress="return ApenasNumeros(event)" value="${carrinho.quantidade_dig}" style="width: 30px;" disabled>
 															<button class="btn btn-dark amount my-auto ml-1" type="submit" formaction="Carrinho" formmethod="post" name="amount" value="more">
 																<p class="text-white btn-greateramount">+</p>
 															</button>

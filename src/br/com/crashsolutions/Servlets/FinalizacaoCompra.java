@@ -40,9 +40,9 @@ public class FinalizacaoCompra extends HttpServlet {
 			
 			Integer validaendereco = Integer.parseInt(request.getParameter("check_endereco"));
 			
-			if(session.getAttribute("idusuario") != null) {
+			if(session.getAttribute("idusuariouser") != null) {
 				
-				ArrayList<CadastroFisicoSG> endereco = fisicodao.listarEnderecos((String) session.getAttribute("email"));
+				ArrayList<CadastroFisicoSG> endereco = fisicodao.listarEnderecos((String) session.getAttribute("emailuser"));
 				for(CadastroFisicoSG sg: endereco) {
 					if(sg.getIdendereco() == validaendereco) {
 						
@@ -57,9 +57,9 @@ public class FinalizacaoCompra extends HttpServlet {
 						request.setAttribute("estado", sg.getEstado());
 					}
 				}
-			} else if(session.getAttribute("idempresa") != null) {
+			} else if(session.getAttribute("idempresauser") != null) {
 				
-				ArrayList<CadastroJuridicoSG> endereco = juridicodao.listarEnderecos((String) session.getAttribute("email"));
+				ArrayList<CadastroJuridicoSG> endereco = juridicodao.listarEnderecos((String) session.getAttribute("emailuser"));
 				for(CadastroJuridicoSG sg: endereco) {
 					if(sg.getIdendereco() == validaendereco) {
 						

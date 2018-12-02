@@ -29,7 +29,7 @@ public class ListaEndereco extends HttpServlet {
 		try {
 			
 			HttpSession session = request.getSession();
-			String email = (String) session.getAttribute("email");
+			String email = (String) session.getAttribute("emailuser");
 			
 			CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();
 			CadastroJuridicoDAO juridicodao = new CadastroJuridicoDAO();

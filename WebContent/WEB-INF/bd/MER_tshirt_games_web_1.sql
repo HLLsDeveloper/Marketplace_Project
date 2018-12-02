@@ -128,6 +128,8 @@ alter table COMPRAJURIDICO add foreign key (idproduto) references PRODUTO(idprod
 
 select * from FISICO;
 select * from ENDERECO_FISICO;
+select * from ENDERECO_JURIDICO;
+select * from PRODUTO;
 
 /* INFORMAÇÕES
 

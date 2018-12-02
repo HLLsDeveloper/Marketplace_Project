@@ -138,8 +138,6 @@
 							<table class="table text-center mt-3">
 								<thead class="thead-dark">
 									<tr>
-										<th scope="col"></th>
-										<th scope="col">Serviço</th>
 										<th scope="col">Valor</th>
 										<th scope="col">Prazo</th>
 									</tr>
@@ -252,8 +250,6 @@
 							<table class="table text-center mt-3">
 								<thead class="thead-dark">
 									<tr>
-										<th scope="col"></th>
-										<th scope="col">Serviço</th>
 										<th scope="col">Valor</th>
 										<th scope="col">Prazo</th>
 									</tr>
@@ -366,8 +362,6 @@
 							<table class="table text-center mt-3">
 								<thead class="thead-dark">
 									<tr>
-										<th scope="col"></th>
-										<th scope="col">Serviço</th>
 										<th scope="col">Valor</th>
 										<th scope="col">Prazo</th>
 									</tr>

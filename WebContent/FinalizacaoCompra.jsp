@@ -59,27 +59,25 @@
 					<h5 class="card-header">Dados de Cadastrados</h5>
 					<div class="card-body">
 						<ul class="list-group">
-							<c:if test="${not empty idusuario}">
-								<li class="list-group-item list-group-item-dark">Nome:<c:out value=" ${nome}"></c:out></li>
-								<li class="list-group-item list-group-item-dark">Email:<c:out value=" ${email}"></c:out></li>
-								<li class="list-group-item list-group-item-dark">Celular:<c:out value=" ${celular}"></c:out></li>
-								<li class="list-group-item list-group-item-dark">Telefone:<c:out value=" ${telefone}"></c:out></li>
+							<c:if test="${not empty idusuariouser}">
+								<li class="list-group-item list-group-item-dark">Nome:<c:out value=" ${nomeuser}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Email:<c:out value=" ${emailuser}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Celular:<c:out value=" ${celularuser}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Telefone:<c:out value=" ${telefoneuser}"></c:out></li>
 								<li class="list-group-item list-group-item-dark">Tipo de cadastro:<c:out value="Fisico"></c:out></li>
-								<li class="list-group-item list-group-item-dark">CPF:<c:out value=" ${cpf}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">CPF:<c:out value=" ${cpfuser}"></c:out></li>
 							</c:if>
-							<c:if test="${not empty idempresa}">
-								<li class="list-group-item list-group-item-dark">Razão Social:<c:out value=" ${razao}"></c:out></li>
-								<li class="list-group-item list-group-item-dark">Nome Fantasia:<c:out value=" ${nomefantasia}"></c:out></li>
-								<li class="list-group-item list-group-item-dark">Email:<c:out value=" ${email}"></c:out></li>
-								<li class="list-group-item list-group-item-dark">Celular:<c:out value=" ${celular}"></c:out></li>
-								<li class="list-group-item list-group-item-dark">Telefone:<c:out value=" ${telefone}"></c:out></li>
+							<c:if test="${not empty idempresauser}">
+								<li class="list-group-item list-group-item-dark">Razão Social:<c:out value=" ${razaouser}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Nome Fantasia:<c:out value=" ${nomefantasiauser}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Email:<c:out value=" ${emailuser}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Celular:<c:out value=" ${celularuser}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Telefone:<c:out value=" ${telefoneuser}"></c:out></li>
 								<li class="list-group-item list-group-item-dark">Tipo de cadastro:<c:out value="Juridico"></c:out></li>
-								<li class="list-group-item list-group-item-dark">CNPJ:<c:out value=" ${cnpj}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">CNPJ:<c:out value=" ${cnpjuser}"></c:out></li>
 							</c:if>
 						</ul>
 					</div>
-
-					<h5 class="card-header mt-4">Endereço</h5>
 				</div>
 			</div>
 

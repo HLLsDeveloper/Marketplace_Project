@@ -27,7 +27,7 @@ public class Filtros implements Filter {
 		String url = servletrequest.getRequestURI();
 		HttpSession s = servletrequest.getSession();
 		
-		if(s.getAttribute("idsessao")!=null || url.lastIndexOf("Login.jsp")>-1 || url.lastIndexOf("Login")>-1) {
+		if(s.getAttribute("idsessaouser")!=null || url.lastIndexOf("Login.jsp")>-1 || url.lastIndexOf("Login")>-1) {
 			chain.doFilter(request, response);
 		}
 		else {
