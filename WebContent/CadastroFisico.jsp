@@ -38,12 +38,13 @@
             <hr>
             <form id="imagetype" enctype="multipart/form-data">
             	<div class="form-group">
-            		<img src="" id="visual_image" width="300" height="300">
-                    <label for="cadastro_imagem">Imagem:</label> <input type="file" class="form-control" name="image" placeholder="Insira uma Imagem..." onchange="uploadfile()" required>
+            		<label for="cadastro_imagem">Imagem de Perfil:</label>
+            		<img src="resources/img/icones/user.svg" id="visual_image" class="d-block mx-auto mb-3" width="300" height="300" style="border-radius: 50%;">
+                    <input type="file" class="form-control" name="image" placeholder="Insira uma Imagem..." onchange="uploadfile()" required>
                 </div>
             </form>
             <form id="ValidacaoCampos" accept-charset="ISO-8859-1">
-            	<input type="hidden" class="form-control" id="nameimage" name="image">
+            	<input type="hidden" class="form-control" id="nameimage" name="image" value="user.svg">
                 <div class="form-group">
                     <label for="cadastro_email">E-mail:</label> <input type="email" class="form-control" name="conf_email" id="conf_email" placeholder="seuemail@seuemail.com" required>
                 </div>
@@ -77,7 +78,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="cadastro_nascimento">Data nascimento:</label> <input type="text" class="form-control" name="datanascimento" id="datanascimento" placeholder="dd/mm/aaaa" required>
+                            <label for="cadastro_nascimento">Data nascimento:</label> <input type="text" class="form-control" name="datanascimentouser" id="datanascimento" placeholder="dd/mm/aaaa" required>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -109,12 +110,12 @@
                         <label for="inputAddress">Comp.</label> <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Ex: 5 Andar">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputCity">Bairro</label> <input type="text" class="form-control" name="bairro" id="bairro" placeholder="Ex: Centro" required>
+                        <label>Bairro</label> <input type="text" class="form-control" name="bairro" id="bairro" placeholder="Ex: Centro" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputCity">Cidade</label> <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Ex: São Paulo" required>
+                        <label>Cidade</label> <input type="text" class="form-control" name="cidade" placeholder="Ex: São Paulo" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label>Estado</label> <select id="estado" name="estado" class="form-control" required>

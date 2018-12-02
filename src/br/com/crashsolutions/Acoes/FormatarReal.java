@@ -1,7 +1,6 @@
 package br.com.crashsolutions.Acoes;
 
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Locale;
 
 public class FormatarReal {
@@ -18,25 +17,5 @@ public class FormatarReal {
 		formatado = real.format(valor1);
 		
 		return formatado;
-	}
-	
-	// EM PRODUÇÃO 
-	public ArrayList<?> formatarLista(ArrayList<?> lista) {
-		
-		// IDIOMA PARA FORMATAÇÃO
-		Locale br = new Locale("pt","BR");
-		NumberFormat real = NumberFormat.getCurrencyInstance(br);
-		
-		ArrayList<?> listaformatado = null;
-		
-		// FORMATAÇÃO DE VALORES DA LISTA
-		for(int i = 0; i < lista.size(); i++) {
-			
-			
-		}
-		
-		real.format(lista.get(1));
-		
-		return listaformatado;
 	}
 }

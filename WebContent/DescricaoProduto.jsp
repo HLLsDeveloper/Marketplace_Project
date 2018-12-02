@@ -85,11 +85,11 @@
 										<c:forEach var="lista" items="${listatamanho}">
 										<label>
 											<c:if test="${lista.quantidade > 0}">										
-											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<input required type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
 											<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
 											</c:if>
 											<c:if test="${lista.quantidade <= 0}">
-											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<input required disabled type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
 											<strike class="btn btn-outline-light mr-1">${lista.tamanho}</strike>
 											</c:if>
 										</label>
@@ -97,8 +97,10 @@
 									</div>
 									
 									<div class="mt-5">
-										<button name="fornecedor" value="${idfornecedor1}" class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
-										<button name="referencia" value="${referencia}" class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
+										<input type="hidden" name="fornecedor" value="${idfornecedor1}">
+										<input type="hidden" name="referencia" value="${referencia}" >
+										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
+										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
 										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor1}</strong></p>										
 									</div>
 								</form>
@@ -109,17 +111,17 @@
 										<p>Para ser avisado quando o produto estiver disponível, preencha os campos abaixo:<p>
 										<div class="input-group mb-3">
 											<div class="input-group-prepend">
-										    	<span class="input-group-text" id="basic-addon1">E-mail:</span>
+										    	<span class="input-group-text" id="email1">E-mail:</span>
 										  	</div>
-										  	<input name="email" type="text" class="form-control" placeholder="Digite seu e-mail..." aria-label="Username" aria-describedby="basic-addon1">
+										  	<input name="email" type="text" class="form-control" placeholder="Digite seu e-mail..." aria-label="Username" aria-describedby="email1">
 										</div>
 										<div class="input-group mb-3">	
 											<div class="input-group-prepend">
-										    	<span class="input-group-text" id="basic-addon1">Nome:</span>
+										    	<span class="input-group-text" id="nome1">Nome:</span>
 										  	</div>	
-										  	<input name="nome" type="text" class="form-control" placeholder="Digite seu nome..." aria-label="Username" aria-describedby="basic-addon1">								
+										  	<input name="nome" type="text" class="form-control" placeholder="Digite seu nome..." aria-label="Username" aria-describedby="nome1">								
 										</div>
-										<button type="button" class="btn btn-warning">Avise-me</button>
+										<button type="button" class="btn btn-warning btn-block">Avise-me</button>
 									</form>
 								</div>
 								</c:if>
@@ -199,11 +201,11 @@
 										<c:forEach var="lista" items="${listatamanho2}">
 										<label>
 											<c:if test="${lista.quantidade > 0}">										
-											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<input required type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
 											<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
 											</c:if>
 											<c:if test="${lista.quantidade <= 0}">
-											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<input required disabled type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
 											<strike class="btn btn-outline-light mr-1">${lista.tamanho}</strike>
 											</c:if>
 										</label>
@@ -223,17 +225,17 @@
 										<p>Para ser avisado quando o produto estiver disponível, preencha os campos abaixo:<p>
 										<div class="input-group mb-3">
 											<div class="input-group-prepend">
-										    	<span class="input-group-text" id="basic-addon1">E-mail:</span>
+										    	<span class="input-group-text" id="email2">E-mail:</span>
 										  	</div>
-										  	<input name="email" type="text" class="form-control" placeholder="Digite seu e-mail..." aria-label="Username" aria-describedby="basic-addon1">
+										  	<input name="email" type="text" class="form-control" placeholder="Digite seu e-mail..." aria-label="Username" aria-describedby="email2">
 										</div>
 										<div class="input-group mb-3">	
 											<div class="input-group-prepend">
-										    	<span class="input-group-text" id="basic-addon1">Nome:</span>
+										    	<span class="input-group-text" id="nome2">Nome:</span>
 										  	</div>	
-										  	<input name="nome" type="text" class="form-control" placeholder="Digite seu nome..." aria-label="Username" aria-describedby="basic-addon1">								
+										  	<input name="nome" type="text" class="form-control" placeholder="Digite seu nome..." aria-label="Username" aria-describedby="nome2">								
 										</div>
-										<button type="button" class="btn btn-warning">Avise-me</button>
+										<button type="button" class="btn btn-warning btn-block">Avise-me</button>
 									</form>
 								</div>
 								</c:if>
@@ -313,11 +315,11 @@
 										<c:forEach var="lista" items="${listatamanho3}">
 										<label>
 											<c:if test="${lista.quantidade > 0}">										
-											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<input required type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
 											<span class="btn btn-outline-tshirt mr-1">${lista.tamanho}</span>
 											</c:if>
 											<c:if test="${lista.quantidade <= 0}">
-											<input type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
+											<input required disabled type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
 											<strike class="btn btn-outline-light mr-1">${lista.tamanho}</strike>
 											</c:if>
 										</label>
@@ -337,17 +339,17 @@
 										<p>Para ser avisado quando o produto estiver disponível, preencha os campos abaixo:<p>
 										<div class="input-group mb-3">
 											<div class="input-group-prepend">
-										    	<span class="input-group-text" id="basic-addon1">E-mail:</span>
+										    	<span class="input-group-text" id="email3">E-mail:</span>
 										  	</div>
-										  	<input name="email" type="text" class="form-control" placeholder="Digite seu e-mail..." aria-label="Username" aria-describedby="basic-addon1">
+										  	<input name="email" type="text" class="form-control" placeholder="Digite seu e-mail..." aria-label="Username" aria-describedby="email3">
 										</div>
 										<div class="input-group mb-3">	
 											<div class="input-group-prepend">
-										    	<span class="input-group-text" id="basic-addon1">Nome:</span>
+										    	<span class="input-group-text" id="nome3">Nome:</span>
 										  	</div>	
-										  	<input name="nome" type="text" class="form-control" placeholder="Digite seu nome..." aria-label="Username" aria-describedby="basic-addon1">								
+										  	<input name="nome" type="text" class="form-control" placeholder="Digite seu nome..." aria-label="Username" aria-describedby="nome3">								
 										</div>
-										<button type="button" class="btn btn-warning">Avise-me</button>
+										<button type="button" class="btn btn-warning btn-block">Avise-me</button>
 									</form>
 								</div>
 								</c:if>

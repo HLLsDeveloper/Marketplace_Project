@@ -21,6 +21,7 @@
     <script type="text/javascript" src="resources/js/jquery/jquery.cpfcnpj.js"></script>
     <script type="text/javascript" src="resources/js/script.Buscacep.js"></script>
     <script type="text/javascript" src="resources/js/script.Mask.js"></script>
+    <script type="text/javascript" src="resources/js/script.UploadImage.js"></script>
 </head>
 
 <body>
@@ -32,7 +33,15 @@
             <h2 class="text-center">Cadastre-se</h2>
             <p class="lead text-center">Venha fazer parte </p>
             <hr>
+            <form id="imagetype" enctype="multipart/form-data">
+            	<div class="form-group">
+            		<label>Logotipo da Empresa:</label>
+            		<img src="resources/img/icones/user.svg" id="visual_image" class="d-block mx-auto mb-3" width="300" height="300" style="border-radius: 50%;">
+                    <input type="file" class="form-control" name="image" placeholder="Insira uma Imagem..." onchange="uploadfile()" required>
+                </div>
+            </form>
             <form id="ValidacaoCampos" accept-charset="ISO-8859-1">
+            	<input type="hidden" class="form-control" id="nameimage" name="logo" value="user.svg">
                 <div class="form-group">
                     <label for="inputEmail">E-mail:</label>
                     <input type="email" class="form-control" id="conf_email" name="conf_email" placeholder="email@email.com" onchange="form.confirmar_email.pattern = this.value;" required>

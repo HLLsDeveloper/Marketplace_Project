@@ -26,7 +26,7 @@
             </form>
             
             <ul class="nav form-inline my-2 my-lg-0">
-            	<c:if test="${not empty idsessao}">
+            	<c:if test="${not empty idsessaouser}">
               	<li class="nav-item">
               		<c:if test="${contador le 0 or empty contador}">
 	                	<div class="my-sm-0 font-weight-bold text-light btn btn-dark" role="button" aria-haspopup="true" aria-expanded="false" data-toggle="modal" data-target=".bd-example-modal-lg">
@@ -47,13 +47,13 @@
 	                </c:if>
               	</li>
               </c:if>
-              <c:if test="${not empty idsessao}">
+              <c:if test="${not empty idsessaouser}">
               	<li class="nav-item dropdown">
-                <c:if test="${not empty nome}">
-                	<a class="nav-link btn btn-dark dropdown-toggle font-weight-bold text-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="mr-2"><c:out value="Olá, ${nome}"></c:out></strong><img src="C:/Images/org.apache.catalina.core.ApplicationPart@${imagemuser}" class="d-inline-block minhaconta-size" width="45" height="45" style="border-radius: 50%;"></a>
+                <c:if test="${not empty nomeuser}">
+                	<a class="nav-link btn btn-dark dropdown-toggle font-weight-bold text-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="mr-2"><c:out value="Olá, ${nomeuser}"></c:out></strong><img src="resources/img/imagens/${imagemuser}" class="d-inline-block minhaconta-size" width="45" height="45" style="border-radius: 50%;"></a>
                 </c:if>
-                <c:if test="${empty nome}">
-                	<a class="nav-link btn btn-dark dropdown-toggle font-weight-bold text-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="mr-2"><c:out value="${nomefantasia}"></c:out></strong><img src="resources/img/icones/user.svg" class="d-inline-block minhaconta-size" width="30" height="30"></a>
+                <c:if test="${empty nomeuser}">
+                	<a class="nav-link btn btn-dark dropdown-toggle font-weight-bold text-light" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong class="mr-2"><c:out value="${nomefantasiauser}"></c:out></strong><img src="resources/img/imagens/${logouser}" class="d-inline-block minhaconta-size" width="30" height="30"></a>
                 </c:if>
                 <div class="dropdown-menu">
                   <div class="dropdown-divider"></div>
@@ -69,7 +69,7 @@
                 </div>
               </li>
               </c:if>
-              <c:if test="${empty idsessao}">
+              <c:if test="${empty idsessaouser}">
               	<li class="nav-item">
 	               <a class="nav-link font-weight-bold text-light" href="Login"><img src="resources/img/icones/logout.svg" class="mr-1" width="20" height="20">LOGIN</a>
 	            </li>

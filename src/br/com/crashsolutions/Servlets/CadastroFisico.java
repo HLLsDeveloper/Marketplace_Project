@@ -24,10 +24,10 @@ public class CadastroFisico extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(request.getAttribute("mensagemcadastro") != null) {
+		if(request.getAttribute("mensagemcadastro") == "Usuário cadastrado com sucesso!") {
 			
 			request.setAttribute("mensagem", request.getAttribute("mensagemcadastro"));
-			RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
+			RequestDispatcher enviar = request.getRequestDispatcher("/Login");
 			enviar.forward(request, response);
 		}
 		else {
@@ -46,28 +46,30 @@ public class CadastroFisico extends HttpServlet {
 		    CadastroFisicoSG sg = new CadastroFisicoSG();
 			
 			// BUSCA OS DADOS DO FORM JSP
-			String Email = request.getParameter("email");
-			String Senha = request.getParameter("senha");
-		    String CPF = request.getParameter("cpf");
-		    String imagem = request.getParameter("image");
-		    String Nome = request.getParameter("nome");
-		    String Sobrenome = request.getParameter("sobrenome");
-		    String Datanascimento = request.getParameter("datanascimento");
-		    String Sexo = request.getParameter("sexo");
-		    String telefone = (request.getParameter("telefone"));
-		    String celular = (request.getParameter("celular"));
+			String emailuser = request.getParameter("email");
+			String senhauser = request.getParameter("senha");
+		    String cpfuser = request.getParameter("cpf");
+		    String imagemuser = request.getParameter("image");
+		    String nomeuser = request.getParameter("nome");
+		    String sobrenomeuser = request.getParameter("sobrenome");
+		    String datanascimentouser = request.getParameter("datanascimento");
+		    String sexouser = request.getParameter("sexo");
+		    String telefoneuser = request.getParameter("telefone");
+		    String celularuser = request.getParameter("celular");
+		    
+		    
 		    
 		    // ENVIA OS DADOS DA PAGINA JSP PARA O SG
-		    sg.setEmail(Email);
-		    sg.setSenha(Senha);
-		    sg.setCpf(CPF);
-		    sg.setImagem(imagem);
-		    sg.setNome(Nome);
-		    sg.setSobrenome(Sobrenome);
-		    sg.setDatanascimento(Datanascimento);
-		    sg.setSexo(Sexo);
-		    sg.setTelefone(telefone);
-		    sg.setCelular(celular);
+		    sg.setEmail(emailuser);
+		    sg.setSenha(senhauser);
+		    sg.setCpf(cpfuser);
+		    sg.setImagem(imagemuser);
+		    sg.setNome(nomeuser);
+		    sg.setSobrenome(sobrenomeuser);
+		    sg.setDatanascimento(datanascimentouser);
+		    sg.setSexo(sexouser);
+		    sg.setTelefone(telefoneuser);
+		    sg.setCelular(celularuser);
 		    
 		    // UTILIZA O METODO CADASTRARUSUARIO DO DAO
 		    dao.cadastrarUsuario(sg);
@@ -75,22 +77,22 @@ public class CadastroFisico extends HttpServlet {
 		    sg = dao.buscarultimo();
 		    
 		    //PEGA OS DADOS DO JSP PARA GRAVAR NA TABELA ENDERECO
-		    String Endereco = request.getParameter("endereco");
-		    Integer Numero = Integer.parseInt(request.getParameter("numero"));
-		    String Complemento = request.getParameter("complemento");
-		    String Bairro = request.getParameter("bairro");
-		    String Cidade = request.getParameter("cidade");
-		    String Estado = request.getParameter("estado");
-		    String Cep = request.getParameter("cep");
+		    String enderecouser = request.getParameter("endereco");
+		    Integer numerouser = Integer.parseInt(request.getParameter("numero"));
+		    String complementouser = request.getParameter("complemento");
+		    String bairrouser = request.getParameter("bairro");
+		    String cidadeuser = request.getParameter("cidade");
+		    String estadouser = request.getParameter("estado");
+		    String cepuser = request.getParameter("cep");
 		    
 		    sg.setIdenderecofisico(sg.getIdusuario());
-		    sg.setEndereco(Endereco);
-		    sg.setNumero(Numero);
-		    sg.setComplemento(Complemento);
-		    sg.setBairro(Bairro);
-		    sg.setCidade(Cidade);
-		    sg.setEstado(Estado);
-		    sg.setCep(Cep);
+		    sg.setEndereco(enderecouser);
+		    sg.setNumero(numerouser);
+		    sg.setComplemento(complementouser);
+		    sg.setBairro(bairrouser);
+		    sg.setCidade(cidadeuser);
+		    sg.setEstado(estadouser);
+		    sg.setCep(cepuser);
 		    
 		    // UTILIZA O METODO CADASTRARENDERECO DO DAO
 		    dao.cadastrarEndereco(sg);

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.crashsolutions.Acoes.Carrinho;
+import br.com.crashsolutions.Acoes.FormatarReal;
 import br.com.crashsolutions.SG.ProdutoSG;
 
 @WebServlet("/Carrinho")
@@ -24,6 +25,7 @@ public class CarrinhoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession sessao = request.getSession();
+		FormatarReal fr = new FormatarReal();
 		
 		if(sessao.getAttribute("carrinho") != null) {
 			
@@ -48,7 +50,7 @@ public class CarrinhoController extends HttpServlet {
 			
 			sessao.setAttribute("carrinho", mostrarcarrinho);
 			sessao.setAttribute("contador", contador);
-			request.setAttribute("valortotal", valortotal);
+			request.setAttribute("valortotal", fr.formatar(valortotal)); 
 			
 			RequestDispatcher enviar = request.getRequestDispatcher("Carrinho.jsp");
 			enviar.forward(request, response);

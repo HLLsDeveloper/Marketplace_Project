@@ -17,7 +17,7 @@ public class CadastroJuridicoDAO {
 	private PreparedStatement stmtConsultar, stmtInserir;
 	private ResultSet respConsulta;
 
-	public void CadastrarUsuario(CadastroJuridicoSG sg) throws SQLException {
+	public void CadastrarEmpresa(CadastroJuridicoSG sg) throws SQLException {
 		
 		con = new Factory().conBD1();
 		sql = "insert into JURIDICO (email,senha,cnpj,logo,razao,nomefantasia,ie,telefone,celular,condicao) value (?,?,?,?,?,?,?,?,?,'Ativo')";
@@ -75,7 +75,7 @@ public class CadastroJuridicoDAO {
 		}
 	}
 
-	public CadastroJuridicoSG ConsultarUsuario (String geral) throws SQLException {
+	public CadastroJuridicoSG ConsultarEmpresa(String geral) throws SQLException {
 		
 		con = new Factory().conBD1();
 		sql = "select * from JURIDICO where email = ?";
@@ -112,7 +112,7 @@ public class CadastroJuridicoDAO {
 		return retornoConsulta;
 	}
 	
-	public ArrayList<CadastroJuridicoSG> listarEnderecos (String geral) throws SQLException {
+	public ArrayList<CadastroJuridicoSG> listarEnderecos(String geral) throws SQLException {
 		
 		con = new Factory().conBD1();
 		sql = "select JURIDICO.idempresa, ENDERECO_JURIDICO.* from ENDERECO_JURIDICO join JURIDICO on endereco_juridico.idenderecojuridico = juridico.idempresa where email = ?";

@@ -5,12 +5,11 @@ function uploadfile() {
 	var reader = new FileReader();
 	reader.onloadend = function() {
 		visual_image.src = reader.result;
-		console.log(reader.result);
 	}
 	if(file) {
 		//AJAX
 		$.ajax({
-            url: 'UploadImages', // Url do lado server que vai receber o arquivo
+            url: 'UploadImages',
             data: new FormData(imagetype),
             cache: false,
             contentType: false,
@@ -20,7 +19,6 @@ function uploadfile() {
             success: function (data) {
                 var nameimagem = document.getElementById("nameimage");
                 nameimage.value = data;
-                console.log(nameimage.value);
             }
         });
 		///////////////////////////

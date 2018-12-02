@@ -53,18 +53,18 @@ public class Login extends HttpServlet {
 					fisico = fisicodao.ConsultarUsuario(email);
 					
 					sessao = request.getSession();
-					sessao.setAttribute("idsessao", sessao.getId());
-					sessao.setAttribute("idusuario", fisico.getIdusuario());
-					sessao.setAttribute("email", fisico.getEmail());
-					sessao.setAttribute("cpf", fisico.getCpf());
+					sessao.setAttribute("idsessaouser", sessao.getId());
+					sessao.setAttribute("idusuariouser", fisico.getIdusuario());
+					sessao.setAttribute("emailuser", fisico.getEmail());
+					sessao.setAttribute("cpfuser", fisico.getCpf());
 					sessao.setAttribute("imagemuser", fisico.getImagem());
-					sessao.setAttribute("nome", fisico.getNome());
-					sessao.setAttribute("sobrenome", fisico.getSobrenome());
-					sessao.setAttribute("datanascimento", fisico.getDatanascimento());
-					sessao.setAttribute("sexo", fisico.getSexo());
-					sessao.setAttribute("telefone", fisico.getTelefone());
-					sessao.setAttribute("celular", fisico.getCelular());
-					sessao.setAttribute("condicao", fisico.getCondicao());
+					sessao.setAttribute("nomeuser", fisico.getNome());
+					sessao.setAttribute("sobrenomeuser", fisico.getSobrenome());
+					sessao.setAttribute("datanascimentouser", fisico.getDatanascimento());
+					sessao.setAttribute("sexouser", fisico.getSexo());
+					sessao.setAttribute("telefoneuser", fisico.getTelefone());
+					sessao.setAttribute("celularuser", fisico.getCelular());
+					sessao.setAttribute("condicaouser", fisico.getCondicao());
 					
 					if(sessao.getAttribute("url") != null) {
 						url = (String) sessao.getAttribute("url");
@@ -88,7 +88,7 @@ public class Login extends HttpServlet {
 				
 				CadastroJuridicoDAO juridicodao = new CadastroJuridicoDAO();
 				
-				CadastroJuridicoSG juridico = juridicodao.ConsultarUsuario(email);
+				CadastroJuridicoSG juridico = juridicodao.ConsultarEmpresa(email);
 				
 				if(juridico.getEmail() != null) {
 					
@@ -98,17 +98,17 @@ public class Login extends HttpServlet {
 					if(acessojuridico == true) {
 						
 						sessao = request.getSession();
-						sessao.setAttribute("idsessao", sessao.getId());
-						sessao.setAttribute("idempresa", juridico.getIdempresa());
-						sessao.setAttribute("email", juridico.getEmail());
-						sessao.setAttribute("cnpj", juridico.getCnpj());
-						sessao.setAttribute("logo", juridico.getLogo());
-						sessao.setAttribute("razao", juridico.getRazao());
-						sessao.setAttribute("nomefantasia", juridico.getNomefantasia());
-						sessao.setAttribute("ie", juridico.getIe());
-						sessao.setAttribute("telefone", juridico.getTelefone());
-						sessao.setAttribute("celular", juridico.getCelular());
-						sessao.setAttribute("condicao", juridico.getCondicao());
+						sessao.setAttribute("idsessaouser", sessao.getId());
+						sessao.setAttribute("idempresauser", juridico.getIdempresa());
+						sessao.setAttribute("emailuser", juridico.getEmail());
+						sessao.setAttribute("cnpjuser", juridico.getCnpj());
+						sessao.setAttribute("logouser", juridico.getLogo());
+						sessao.setAttribute("razaouser", juridico.getRazao());
+						sessao.setAttribute("nomefantasiauser", juridico.getNomefantasia());
+						sessao.setAttribute("ieuser", juridico.getIe());
+						sessao.setAttribute("telefoneuser", juridico.getTelefone());
+						sessao.setAttribute("celularuser", juridico.getCelular());
+						sessao.setAttribute("condicaouser", juridico.getCondicao());
 						
 						if(sessao.getAttribute("url") != null) {
 							url = (String) sessao.getAttribute("url");

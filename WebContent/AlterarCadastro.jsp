@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
 	<link rel="stylesheet" href="resources/css/style.Principal.css">
 	
-	<script type="text/javascript" src="resources/js/jquery/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="resources/js/jquery/jquery.mask.js"></script>
 	<script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
 	
@@ -26,19 +26,25 @@
 	<c:import url="resources/template/modal.ListaProdutos.jsp"/>
 	
 	<c:import url="resources/template/nav.jsp"/>
-
+	
+<div class="header-site py-5"> 
 	<div class="container">
 	
-		<!-- FORMULÁRIO DE ALTERAR PRODUTO -->
-		<form id="form-produto" enctype="multipart/form-data" accept-charset="ISO-8859-1">
+		<!-- FORMULÁRIO DE ALTERAR USUÁRIO -->
+		<form id="form-produto" accept-charset="ISO-8859-1">
 		<div class="row">
 			<div class="card col-md-12 mt-4">
 				<div class="row mt-3">
-					<div class="form-group col-md">
-						<h5>Nome</h5> 
-						<input name="anome" value="${anome}" id="usuario" type="text" class="form-control" required>
+
+					<div class="form-group col-md-3">
+						<h5>ID</h5> 
+						<input value="${aidusuario}" type="text" class="form-control" disabled required>
 					</div>
-					<div class="form-group col-md">
+					<div class="form-group col-md-3">
+						<h5>Nome</h5>
+						<input name="anome" value="${anome}" id="nome" type="text" class="form-control" required>
+					</div>
+					<div class="form-group col-md-3">
 						<h5>Sobrenome</h5>
 						<input name="asobrenome" value="${asobrenome}" id="sobrenome" type="text" class="form-control" required>
 					</div>
@@ -54,39 +60,43 @@
 					<div class="form-group col-md">
 						<h5>Email</h5>
 						<input name="aemail" value="${aemail}" id="email" type="text" class="form-control"  required>
-					</div>
+					</div>					
 				</div>
 			
 				<div class="row">
 				
 					<div class="form-group col-md">
-						<h5>Celular:</h5> 
-						<input name="acelular" value="${acelular}" id="cpf" type="text" class="form-control"  required>
+						<h5>Celular</h5> 
+						<input name="acelular" value="${acelular}" id="celular" type="text" class="form-control"  required>
 					</div>
 
 					<div class="form-group col-md">
 						<h5>Telefone</h5>
-						<input name="atelefone" value="${atelefone}" id="email" type="text" class="form-control"  required>
+						<input name="atelefone" value="${atelefone}" id="telefone" type="text" class="form-control"  required>
 					</div>
 				</div>
 				
 				<div class="row">
 				
 					<div class="form-group col-md-3">
-						<h5>Data de Nascimento:</h5> 
+						<h5>Data de Nascimento</h5> 
 						<input name="adatanascimento" value="${adatanascimento}" id="datanascimento" type="text" class="form-control"  required>
 					</div>
-
-					<div class="form-group col-xs-1">
-						<h5>Condicao</h5>
-						<input name="acondicao" value="${acondicao}" id="condicao" type="text" class="form-control"  required>
+				
+					<div class="form-group col-md-3">
+						<h5>Sexo</h5> 
+						<input name="asexo" value="${asexo}" id="sexo" type="text" class="form-control"  required>
 					</div>
-				</div>
+					<div class="form-group col-md-3">
+						<h5>Condição</h5>
+						<input name="acondicao" value="${acondicao}" id="condicao" type="text" class="form-control "  required>
+					</div>
+				</div>			
 			
 				<div class="row">
 					<div class="col-md-4 mt-3 mb-3 float-right">
 						<div class="col-md-6 mt-3 mb-3 ">
-							<button class="btn btn-warning" name="aidusuario" value="${aidusuario}" type="submit" formaction="AlterarCadastro" formmethod="Post">Salvar ➔</button>
+							<button class="btn btn-warning" name="aidusuario" value="${aidusuario}" type="submit" formaction="AlterarCadastro" formmethod="post">Salvar ➔</button>
 						</div>
 					</div>
 				</div>
@@ -94,7 +104,7 @@
 		</div>
 		</form>	
 	</div>
-
+</div>
 	<c:import url="resources/template/footer.jsp"/>
 </body>
 </html>

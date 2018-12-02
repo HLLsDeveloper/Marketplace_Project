@@ -21,10 +21,10 @@ public class CadastroJuridico extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-if(request.getAttribute("mensagemcadastro") != null) {
+		if(request.getAttribute("mensagemcadastro") == "Empresa cadastrada com sucesso!") {
 			
 			request.setAttribute("mensagem", request.getAttribute("mensagemcadastro"));
-			RequestDispatcher enviar = request.getRequestDispatcher("Login.jsp");
+			RequestDispatcher enviar = request.getRequestDispatcher("/Login");
 			enviar.forward(request, response);
 		}
 		else {
@@ -41,25 +41,27 @@ if(request.getAttribute("mensagemcadastro") != null) {
 			CadastroJuridicoSG juridicosg = new CadastroJuridicoSG();
 		    CadastroJuridicoDAO juridicodao = new CadastroJuridicoDAO();
 			
-			String email = request.getParameter("email");
-		    String senha = request.getParameter("senha");
-		    String cnpj = request.getParameter("cnpj");
-		    String razao = request.getParameter("razao");
-		    String nomefantasia = request.getParameter("nomefantasia");
-		    String ie = request.getParameter("ie");
-		    String telefone = request.getParameter("telefone");
-		    String celular = request.getParameter("celular");
+			String emailuser = request.getParameter("email");
+		    String senhauser = request.getParameter("senha");
+		    String cnpjuser = request.getParameter("cnpj");
+		    String logouser = request.getParameter("logo");
+		    String razaouser = request.getParameter("razao");
+		    String nomefantasiauser = request.getParameter("nomefantasia");
+		    String ieuser = request.getParameter("ie");
+		    String telefoneuser = request.getParameter("telefone");
+		    String celularuser = request.getParameter("celular");
 		    
-		    juridicosg.setEmail(email);
-		    juridicosg.setSenha(senha);
-		    juridicosg.setCnpj(cnpj);
-		    juridicosg.setRazao(razao);
-		    juridicosg.setNomefantasia(nomefantasia);
-		    juridicosg.setTelefone(telefone);
-		    juridicosg.setCelular(celular);
-		    juridicosg.setIe(ie);
+		    juridicosg.setEmail(emailuser);
+		    juridicosg.setSenha(senhauser);
+		    juridicosg.setCnpj(cnpjuser);
+		    juridicosg.setLogo(logouser);
+		    juridicosg.setRazao(razaouser);
+		    juridicosg.setNomefantasia(nomefantasiauser);
+		    juridicosg.setTelefone(telefoneuser);
+		    juridicosg.setCelular(celularuser);
+		    juridicosg.setIe(ieuser);
 		    
-		    juridicodao.CadastrarUsuario(juridicosg);
+		    juridicodao.CadastrarEmpresa(juridicosg);
 		    
 		    juridicosg = juridicodao.buscarultimo();
 		    

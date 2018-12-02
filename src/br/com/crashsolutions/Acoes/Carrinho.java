@@ -15,7 +15,7 @@ public class Carrinho {
 	public ArrayList<ProdutoSG> AdicionarCarrinho(ProdutoSG sgproduto) throws IOException, ServletException {
 		
 		try {
-			
+		
 			sgproduto.getIdproduto();
 			sgproduto.getProduto();
 			sgproduto.getTamanho();
@@ -23,7 +23,7 @@ public class Carrinho {
 			sgproduto.getCategoria();
 			sgproduto.getQuantidade();
 			sgproduto.getQuantidade_dig();
-			sgproduto.getValor_custo();
+			sgproduto.getValor_venda();
 			lista.add(sgproduto);
 			
 		} catch (Exception e) {
@@ -39,7 +39,12 @@ public class Carrinho {
 		for(ProdutoSG sg: lista) {
 			if(sg.getIdproduto() == idproduto) {
 				Integer quant = sg.getQuantidade_dig() - 1;
+				if(quant > 1) {
 				sg.setQuantidade_dig(quant);
+				} else {
+					quant = 1;
+					sg.setQuantidade_dig(quant);
+				}
 				lista.set(lista.indexOf(sg), sg);
 			}
 		}
@@ -75,13 +80,13 @@ public class Carrinho {
 				sg.getCategoria();
 				sg.getQuantidade();
 				sg.getQuantidade_dig();
-				sg.getValor_custo();
+				sg.getValor_venda();
 				mostrarcarrinho.add(sg);
 				
 			}
 			
 		} catch (Exception e) {
-			System.out.println("Não foi possível mostrar a tabela. " + e);
+			System.out.println("Não foi possível mostrar a tabela: " + e);
 			return null;
 		}
 		
