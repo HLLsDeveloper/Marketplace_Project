@@ -44,7 +44,7 @@ public class AlterarProduto extends HttpServlet {
 		ArrayList<ProdutoSG> lista;
 		
 		try {
-			lista = dao.buscaTodos();
+			lista = dao.buscaTodos(1);
 			request.setAttribute("lista_produto", lista);
 			
 		} catch (SQLException e) {
@@ -53,7 +53,7 @@ public class AlterarProduto extends HttpServlet {
 		
 		// CONSULTA PELO ID DO PRODUTO
 		try {
-			sg = dao.consultar(request.getParameter("idproduto"));
+			sg = dao.consultar(request.getParameter("idproduto"),1);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -203,7 +203,7 @@ public class AlterarProduto extends HttpServlet {
 		// UTILIZA O METODO DE ALTERAR DO DAO 
 		try {
 			
-			produtodao.alterar(produtosg);
+			produtodao.alterar(produtosg,1);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -213,7 +213,7 @@ public class AlterarProduto extends HttpServlet {
 		ArrayList<ProdutoSG> lista;
 		
 		try {
-			lista = listar.buscaTodos();
+			lista = listar.buscaTodos(1);
 			request.setAttribute("lista_produto", lista);
 			
 		} catch (SQLException e) {

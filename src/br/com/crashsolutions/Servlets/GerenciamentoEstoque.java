@@ -29,7 +29,7 @@ public class GerenciamentoEstoque extends HttpServlet {
 			
 			ProdutoDAO dao = new ProdutoDAO();
 			
-			ArrayList<ProdutoSG> lista = dao.buscaTodos();
+			ArrayList<ProdutoSG> lista = dao.buscaTodos(1);
 			request.setAttribute("lista_produto", lista);
 			
 			request.getRequestDispatcher("GerenciamentoEstoque.jsp").forward(request, response);

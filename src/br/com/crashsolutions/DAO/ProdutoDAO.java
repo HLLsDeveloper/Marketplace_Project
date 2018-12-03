@@ -16,38 +16,44 @@ public class ProdutoDAO {
 	
 	private String sql;
 	private Connection con;
-	private PreparedStatement stmInserir, stmConsulta, stmAlterar, stmListaConsulta;
-	private ResultSet listaConsulta, resConsulta;
-	private ProdutoSG retornoLista;
 	 
 	public String Mensagem = null;
 	public Integer Quantidade = 0;
 	
 	// CADASTRAR O PRODUTO
-	public void inserir(ProdutoSG sgproduto) throws SQLException{
+	public void inserir(ProdutoSG sgproduto, Integer bd) throws SQLException{
 		
-		con = new Factory().conBD1();
+		if(bd == 1) { 
+			con = new Factory().conBD1(); 
+		}
+		if(bd == 2) {
+			con = new Factory().conBD2(); 		
+		}
+		if(bd == 3) {
+			con = new Factory().conBD3(); 			
+		}		
+		
 		sql = "insert into PRODUTO (produto,imagem,descricao,modelo,genero,tamanho,cor,categoria,valor_custo,valor_venda,quantidade,referencia,condicao) values (?,?,?,?,?,?,?,?,?,?,?,?,'ativo')";
 		
 		try {
 			
-			stmInserir = con.prepareStatement(sql);
+			PreparedStatement stm = con.prepareStatement(sql);
 			
-			stmInserir.setString(1,sgproduto.getProduto());
-			stmInserir.setString(2,sgproduto.getImagem());
-			stmInserir.setString(3,sgproduto.getDescricao());
-			stmInserir.setString(4,sgproduto.getModelo());
-			stmInserir.setString(5,sgproduto.getGenero());
-			stmInserir.setString(6,sgproduto.getTamanho());
-			stmInserir.setString(7,sgproduto.getCor());
-			stmInserir.setString(8,sgproduto.getCategoria());
-			stmInserir.setFloat(9,sgproduto.getValor_custo());
-			stmInserir.setFloat(10,sgproduto.getValor_venda());
-			stmInserir.setInt(11,sgproduto.getQuantidade());
-			stmInserir.setInt(12,sgproduto.getReferencia());
+			stm.setString(1,sgproduto.getProduto());
+			stm.setString(2,sgproduto.getImagem());
+			stm.setString(3,sgproduto.getDescricao());
+			stm.setString(4,sgproduto.getModelo());
+			stm.setString(5,sgproduto.getGenero());
+			stm.setString(6,sgproduto.getTamanho());
+			stm.setString(7,sgproduto.getCor());
+			stm.setString(8,sgproduto.getCategoria());
+			stm.setFloat(9,sgproduto.getValor_custo());
+			stm.setFloat(10,sgproduto.getValor_venda());
+			stm.setInt(11,sgproduto.getQuantidade());
+			stm.setInt(12,sgproduto.getReferencia());
 			
-			stmInserir.execute();
-			stmInserir.close();
+			stm.execute();
+			stm.close();
 			con.close();
 			
 			Mensagem = "Cadastrado com Sucesso!";
@@ -61,34 +67,43 @@ public class ProdutoDAO {
 	}
 	
 	// MONTA UMA LISTA DE TAMANHO PELA REFERENCIA
-	public ArrayList<ProdutoSG> consultarTamanho(Integer referencia) throws SQLException{
+	public ArrayList<ProdutoSG> consultarTamanho(Integer referencia, Integer bd) throws SQLException{
 		
-		con = new Factory().conBD1();
+		if(bd == 1) { 
+			con = new Factory().conBD1(); 
+		}
+		if(bd == 2) {
+			con = new Factory().conBD2(); 		
+		}
+		if(bd == 3) {
+			con = new Factory().conBD3(); 			
+		}	
+		
 		sql = "select idproduto, tamanho, referencia, quantidade from PRODUTO";
 		
 		ArrayList<ProdutoSG> listartamanho = new ArrayList<>();
 		
 		try {
-			stmListaConsulta = con.prepareStatement(sql); 
-			listaConsulta = stmListaConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql); 
+			ResultSet rs = stm.executeQuery();
 			
-			while (listaConsulta.next()) {
+			while (rs.next()) {
 				
 				ProdutoSG retornoLista = new ProdutoSG();
 						
-				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
-				retornoLista.setTamanho(listaConsulta.getString("tamanho"));
-				retornoLista.setReferencia(listaConsulta.getInt("referencia"));	
-				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
+				retornoLista.setIdproduto(rs.getInt("idproduto"));
+				retornoLista.setTamanho(rs.getString("tamanho"));
+				retornoLista.setReferencia(rs.getInt("referencia"));	
+				retornoLista.setQuantidade(rs.getInt("quantidade"));
 				
-				if (referencia == listaConsulta.getInt("referencia")) {
+				if (referencia == rs.getInt("referencia")) {
 					
-					Quantidade = listaConsulta.getInt("quantidade") + Quantidade;
+					Quantidade = rs.getInt("quantidade") + Quantidade;
 					listartamanho.add(retornoLista);
 				}		
 			}
 			
-			stmListaConsulta.close();
+			stm.close();
 			con.close();
 			
 			
@@ -101,37 +116,46 @@ public class ProdutoDAO {
 	}
 	
 	// CONSULTAR PRODUTO PELO IDPRODUTO OU PRODUTO
-	public ProdutoSG consultar(String geral) throws SQLException{
+	public ProdutoSG consultar(String geral, Integer bd) throws SQLException{
 		
-		con = new Factory().conBD1();
+		if(bd == 1) { 
+			con = new Factory().conBD1(); 
+		}
+		if(bd == 2) {
+			con = new Factory().conBD2(); 		
+		}
+		if(bd == 3) {
+			con = new Factory().conBD3(); 			
+		}	
+		
 		sql = "select * from PRODUTO where idproduto=? or produto=?";
-		retornoLista = new ProdutoSG();
+		ProdutoSG retornoLista = new ProdutoSG();
 		
 		try {
-			stmConsulta = con.prepareStatement(sql);
-			stmConsulta.setString(1, geral);
-			stmConsulta.setString(2, geral);
-			resConsulta = stmConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setString(1, geral);
+			stm.setString(2, geral);
+			ResultSet rs = stm.executeQuery();
 			
-			while(resConsulta.next()) {
+			while(rs.next()) {
 				
-				retornoLista.setIdproduto(resConsulta.getInt("idproduto"));
-				retornoLista.setProduto(resConsulta.getString("produto"));
-				retornoLista.setImagem(resConsulta.getString("imagem"));
-				retornoLista.setDescricao(resConsulta.getString("descricao"));
-				retornoLista.setModelo(resConsulta.getString("modelo"));
-				retornoLista.setGenero(resConsulta.getString("genero"));
-				retornoLista.setTamanho(resConsulta.getString("tamanho"));
-				retornoLista.setCor(resConsulta.getString("cor"));
-				retornoLista.setCategoria(resConsulta.getString("categoria"));
-				retornoLista.setValor_custo(resConsulta.getFloat("valor_custo"));
-				retornoLista.setValor_venda(resConsulta.getFloat("valor_venda"));
-				retornoLista.setQuantidade(resConsulta.getInt("quantidade"));
-				retornoLista.setReferencia(resConsulta.getInt("referencia"));
-				retornoLista.setCondicao(resConsulta.getString("condicao"));
+				retornoLista.setIdproduto(rs.getInt("idproduto"));
+				retornoLista.setProduto(rs.getString("produto"));
+				retornoLista.setImagem(rs.getString("imagem"));
+				retornoLista.setDescricao(rs.getString("descricao"));
+				retornoLista.setModelo(rs.getString("modelo"));
+				retornoLista.setGenero(rs.getString("genero"));
+				retornoLista.setTamanho(rs.getString("tamanho"));
+				retornoLista.setCor(rs.getString("cor"));
+				retornoLista.setCategoria(rs.getString("categoria"));
+				retornoLista.setValor_custo(rs.getFloat("valor_custo"));
+				retornoLista.setValor_venda(rs.getFloat("valor_venda"));
+				retornoLista.setQuantidade(rs.getInt("quantidade"));
+				retornoLista.setReferencia(rs.getInt("referencia"));
+				retornoLista.setCondicao(rs.getString("condicao"));
 			}
 			
-			stmConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception  e) {
@@ -142,71 +166,89 @@ public class ProdutoDAO {
 	}
 	
 	// CONSULTAR PRODUTO PELA REFERENCIA
-	public ProdutoSG consultarReferencia(Integer referencia) throws SQLException{
+	public ProdutoSG consultarReferencia(Integer referencia, Integer bd) throws SQLException{
 			
-			con = new Factory().conBD1();
-			sql = "select * from PRODUTO where referencia=?";
-			retornoLista = new ProdutoSG();
-			
-			try {
-				stmConsulta = con.prepareStatement(sql);
-				stmConsulta.setInt(1, referencia);
-				resConsulta = stmConsulta.executeQuery();
-				
-				while(resConsulta.next()) {
-									
-						retornoLista.setIdproduto(resConsulta.getInt("idproduto"));
-						retornoLista.setProduto(resConsulta.getString("produto"));
-						retornoLista.setImagem(resConsulta.getString("imagem"));
-						retornoLista.setDescricao(resConsulta.getString("descricao"));
-						retornoLista.setModelo(resConsulta.getString("modelo"));
-						retornoLista.setGenero(resConsulta.getString("genero"));
-						retornoLista.setTamanho(resConsulta.getString("tamanho"));
-						retornoLista.setCor(resConsulta.getString("cor"));
-						retornoLista.setCategoria(resConsulta.getString("categoria"));
-						retornoLista.setValor_custo(resConsulta.getFloat("valor_custo"));
-						retornoLista.setValor_venda(resConsulta.getFloat("valor_venda"));
-						retornoLista.setQuantidade(resConsulta.getInt("quantidade"));
-						retornoLista.setReferencia(resConsulta.getInt("referencia"));
-						retornoLista.setCondicao(resConsulta.getString("condicao"));
-				}
-				
-				stmConsulta.close();
-				con.close();
-				
-			} catch (Exception  e) {
-				System.out.println("Erro no consultar: "+ e);
-				con.close();
-			}
-			return retornoLista;
+		if(bd == 1) { 
+			con = new Factory().conBD1(); 
 		}
+		if(bd == 2) {
+			con = new Factory().conBD2(); 		
+		}
+		if(bd == 3) {
+			con = new Factory().conBD3(); 			
+		}	
+		
+		sql = "select * from PRODUTO where referencia=?";
+		ProdutoSG retornoLista = new ProdutoSG();
+		
+		try {
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setInt(1, referencia);
+			ResultSet rs = stm.executeQuery();
+			
+			while(rs.next()) {
+								
+					retornoLista.setIdproduto(rs.getInt("idproduto"));
+					retornoLista.setProduto(rs.getString("produto"));
+					retornoLista.setImagem(rs.getString("imagem"));
+					retornoLista.setDescricao(rs.getString("descricao"));
+					retornoLista.setModelo(rs.getString("modelo"));
+					retornoLista.setGenero(rs.getString("genero"));
+					retornoLista.setTamanho(rs.getString("tamanho"));
+					retornoLista.setCor(rs.getString("cor"));
+					retornoLista.setCategoria(rs.getString("categoria"));
+					retornoLista.setValor_custo(rs.getFloat("valor_custo"));
+					retornoLista.setValor_venda(rs.getFloat("valor_venda"));
+					retornoLista.setQuantidade(rs.getInt("quantidade"));
+					retornoLista.setReferencia(rs.getInt("referencia"));
+					retornoLista.setCondicao(rs.getString("condicao"));
+			}
+			
+			stm.close();
+			con.close();
+			
+		} catch (Exception  e) {
+			System.out.println("Erro no consultar: "+ e);
+			con.close();
+		}
+		return retornoLista;
+	}
 	
 	// ALTERA PRODUTO 
-	public void alterar(ProdutoSG sgproduto) throws SQLException {
+	public void alterar(ProdutoSG sgproduto, Integer bd) throws SQLException {
 		
-		con = new Factory().conBD1();
+		if(bd == 1) { 
+			con = new Factory().conBD1(); 
+		}
+		if(bd == 2) {
+			con = new Factory().conBD2(); 		
+		}
+		if(bd == 3) {
+			con = new Factory().conBD3(); 			
+		}	
+		
 		sql = "update PRODUTO set produto =?, imagem =?, descricao =?, modelo =?, genero =?, tamanho =?, cor =?, categoria =?, valor_custo =?, valor_venda =?, quantidade =?, referencia =? where idproduto =?";
 		
 		try {
 			
-			stmAlterar = con.prepareStatement(sql);
+			PreparedStatement stm = con.prepareStatement(sql);
 			
-			stmAlterar.setString(1,sgproduto.getProduto());
-			stmAlterar.setString(2,sgproduto.getImagem());
-			stmAlterar.setString(3,sgproduto.getDescricao());
-			stmAlterar.setString(4,sgproduto.getModelo());
-			stmAlterar.setString(5,sgproduto.getGenero());
-			stmAlterar.setString(6,sgproduto.getTamanho());
-			stmAlterar.setString(7,sgproduto.getCor());
-			stmAlterar.setString(8,sgproduto.getCategoria());
-			stmAlterar.setDouble(9,sgproduto.getValor_custo());
-			stmAlterar.setDouble(10,sgproduto.getValor_venda());
-			stmAlterar.setInt(11,sgproduto.getQuantidade());
-			stmAlterar.setInt(12,sgproduto.getReferencia());
-			stmAlterar.setInt(13,sgproduto.getIdproduto());
+			stm.setString(1,sgproduto.getProduto());
+			stm.setString(2,sgproduto.getImagem());
+			stm.setString(3,sgproduto.getDescricao());
+			stm.setString(4,sgproduto.getModelo());
+			stm.setString(5,sgproduto.getGenero());
+			stm.setString(6,sgproduto.getTamanho());
+			stm.setString(7,sgproduto.getCor());
+			stm.setString(8,sgproduto.getCategoria());
+			stm.setDouble(9,sgproduto.getValor_custo());
+			stm.setDouble(10,sgproduto.getValor_venda());
+			stm.setInt(11,sgproduto.getQuantidade());
+			stm.setInt(12,sgproduto.getReferencia());
+			stm.setInt(13,sgproduto.getIdproduto());
 			
-			stmAlterar.execute();
-			stmAlterar.close();
+			stm.execute();
+			stm.close();
 			con.close();
 			
 			Mensagem = "Alterado com Sucesso!";
@@ -221,41 +263,50 @@ public class ProdutoDAO {
 	}
 	
 	// BUSCA TODOS OS PRODUTOS
-	public ArrayList<ProdutoSG> buscaTodos() throws SQLException {
+	public ArrayList<ProdutoSG> buscaTodos(Integer bd) throws SQLException {
 		
-		con = new Factory().conBD1();
+		if(bd == 1) { 
+			con = new Factory().conBD1(); 
+		}
+		if(bd == 2) {
+			con = new Factory().conBD2(); 		
+		}
+		if(bd == 3) {
+			con = new Factory().conBD3(); 			
+		}	
+		
 		sql = "select * from PRODUTO";
 		
 		ArrayList <ProdutoSG> listartodos = new ArrayList<>();
 		
 		try {
 			
-			stmListaConsulta = con.prepareStatement(sql); 
-			listaConsulta = stmListaConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql); 
+			ResultSet rs = stm.executeQuery();
 			
-			while (listaConsulta.next()) {
+			while (rs.next()) {
 				
 				ProdutoSG retornoLista = new ProdutoSG();
 				
-				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
-				retornoLista.setProduto(listaConsulta.getString("produto"));
-				retornoLista.setImagem(listaConsulta.getString("imagem"));
-				retornoLista.setDescricao(listaConsulta.getString("descricao"));
-				retornoLista.setModelo(listaConsulta.getString("modelo"));
-				retornoLista.setGenero(listaConsulta.getString("genero"));
-				retornoLista.setTamanho(listaConsulta.getString("tamanho"));
-				retornoLista.setCor(listaConsulta.getString("cor"));
-				retornoLista.setCategoria(listaConsulta.getString("categoria"));
-				retornoLista.setValor_custo(listaConsulta.getFloat("valor_custo"));
-				retornoLista.setValor_venda(listaConsulta.getFloat("valor_venda"));
-				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
-				retornoLista.setReferencia(listaConsulta.getInt("referencia"));
-				retornoLista.setCondicao(listaConsulta.getString("condicao"));
+				retornoLista.setIdproduto(rs.getInt("idproduto"));
+				retornoLista.setProduto(rs.getString("produto"));
+				retornoLista.setImagem(rs.getString("imagem"));
+				retornoLista.setDescricao(rs.getString("descricao"));
+				retornoLista.setModelo(rs.getString("modelo"));
+				retornoLista.setGenero(rs.getString("genero"));
+				retornoLista.setTamanho(rs.getString("tamanho"));
+				retornoLista.setCor(rs.getString("cor"));
+				retornoLista.setCategoria(rs.getString("categoria"));
+				retornoLista.setValor_custo(rs.getFloat("valor_custo"));
+				retornoLista.setValor_venda(rs.getFloat("valor_venda"));
+				retornoLista.setQuantidade(rs.getInt("quantidade"));
+				retornoLista.setReferencia(rs.getInt("referencia"));
+				retornoLista.setCondicao(rs.getString("condicao"));
 				
 				listartodos.add(retornoLista);
 			}
 			
-			stmListaConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception e) {
@@ -267,24 +318,33 @@ public class ProdutoDAO {
 	}
 	
 	// CONSULTAR QUANTIDADE TOTAL DA REFERENCIA
-	public Integer quantidadeTotal(Integer referencia){
+	public Integer quantidadeTotal(Integer referencia, Integer bd){
 		
 		Integer quantidadetotal = 0;
 		
-		con = new Factory().conBD1();
+		if(bd == 1) { 
+			con = new Factory().conBD1(); 
+		}
+		if(bd == 2) {
+			con = new Factory().conBD2(); 		
+		}
+		if(bd == 3) {
+			con = new Factory().conBD3(); 			
+		}	
+		
 		sql = "select quantidade from PRODUTO where referencia=?";
 		
 		try {
 			
-			stmConsulta = con.prepareStatement(sql);
-			stmConsulta.setInt(1, referencia);
-			resConsulta = stmConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setInt(1, referencia);
+			ResultSet rs = stm.executeQuery();
 			
-			while (resConsulta.next()) {
-				quantidadetotal = quantidadetotal + resConsulta.getInt("quantidade");
+			while (rs.next()) {
+				quantidadetotal = quantidadetotal + rs.getInt("quantidade");
 			}
 			
-			stmConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception e) {
@@ -295,9 +355,18 @@ public class ProdutoDAO {
 	}
 	
 	// BUSCA TODOS OS PRODUTOS
-	public ArrayList<ProdutoSG> buscaTodasReferencias() throws SQLException {
+	public ArrayList<ProdutoSG> buscaTodasReferencias(Integer bd) throws SQLException {
 		
-		con = new Factory().conBD1();
+		if(bd == 1) { 
+			con = new Factory().conBD1(); 
+		}
+		if(bd == 2) {
+			con = new Factory().conBD2(); 		
+		}
+		if(bd == 3) {
+			con = new Factory().conBD3(); 			
+		}	
+		
 		sql = "select * from PRODUTO";
 		
 		ArrayList <ProdutoSG> listartodos = new ArrayList<>();
@@ -306,46 +375,46 @@ public class ProdutoDAO {
 			
 			Integer referencia = 0;
 			
-			stmListaConsulta = con.prepareStatement(sql); 
-			listaConsulta = stmListaConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql); 
+			ResultSet rs = stm.executeQuery();
 			
-			while (listaConsulta.next()) {
+			while (rs.next()) {
 				
 				ProdutoSG retornoLista = new ProdutoSG();
 				FormatarReal fr = new FormatarReal();
 				
-				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
-				retornoLista.setProduto(listaConsulta.getString("produto"));
-				retornoLista.setImagem(listaConsulta.getString("imagem"));
-				retornoLista.setDescricao(listaConsulta.getString("descricao"));
-				retornoLista.setModelo(listaConsulta.getString("modelo"));
-				retornoLista.setGenero(listaConsulta.getString("genero"));
-				retornoLista.setTamanho(listaConsulta.getString("tamanho"));
-				retornoLista.setCor(listaConsulta.getString("cor"));
-				retornoLista.setCategoria(listaConsulta.getString("categoria"));
-				retornoLista.setValor_custo(listaConsulta.getFloat("valor_custo"));
-				retornoLista.setValor_venda_fr(fr.formatar(listaConsulta.getFloat("valor_venda")));
-				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
-				retornoLista.setReferencia(listaConsulta.getInt("referencia"));
-				retornoLista.setCondicao(listaConsulta.getString("condicao"));
+				retornoLista.setIdproduto(rs.getInt("idproduto"));
+				retornoLista.setProduto(rs.getString("produto"));
+				retornoLista.setImagem(rs.getString("imagem"));
+				retornoLista.setDescricao(rs.getString("descricao"));
+				retornoLista.setModelo(rs.getString("modelo"));
+				retornoLista.setGenero(rs.getString("genero"));
+				retornoLista.setTamanho(rs.getString("tamanho"));
+				retornoLista.setCor(rs.getString("cor"));
+				retornoLista.setCategoria(rs.getString("categoria"));
+				retornoLista.setValor_custo(rs.getFloat("valor_custo"));
+				retornoLista.setValor_venda_fr(fr.formatar(rs.getFloat("valor_venda")));
+				retornoLista.setQuantidade(rs.getInt("quantidade"));
+				retornoLista.setReferencia(rs.getInt("referencia"));
+				retornoLista.setCondicao(rs.getString("condicao"));
 				
-				String condicao = listaConsulta.getString("condicao");
+				String condicao = rs.getString("condicao");
 				String ativo = "ativo";
 				
 				// VERIFICA SE A MAIS DE UM PRODUTO COM A REFERENCIA E ADICIONA APENAS UM
-				if(referencia != listaConsulta.getInt("referencia")) {
+				if(referencia != rs.getInt("referencia")) {
 					
 					// VERIFICA SE ESTA ATIVO PARA ENVIAR 
 					if (condicao.equals(ativo)) {			
-						referencia = listaConsulta.getInt("referencia");
+						referencia = rs.getInt("referencia");
 						
-						retornoLista.setQuantidadetotal(quantidadeTotal(referencia));
+						retornoLista.setQuantidadetotal(quantidadeTotal(referencia, 1));
 						listartodos.add(retornoLista);	
 					}
 				} 
 			}
 					
-			stmListaConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception e) {
@@ -357,38 +426,48 @@ public class ProdutoDAO {
 	}
     
 	// CONSULTA PELA BARRA DE PESQUISA
-    public ArrayList<ProdutoSG> navbar(String geral) throws SQLException {
+    public ArrayList<ProdutoSG> navbar(String geral, Integer bd) throws SQLException {
 		
-    	con = new Factory().conBD1();
+		if(bd == 1) { 
+			con = new Factory().conBD1(); 
+		}
+		if(bd == 2) {
+			con = new Factory().conBD2(); 		
+		}
+		if(bd == 3) {
+			con = new Factory().conBD3(); 			
+		}	
 		
 		ArrayList<ProdutoSG> lista = new ArrayList<>();
 		sql = "select * from PRODUTO where produto like ?";
 		
 		try {
 			
-			stmConsulta = con.prepareStatement(sql);
-			stmConsulta.setString(1, "%"+ geral +"%");
-			listaConsulta = stmConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setString(1, "%"+ geral +"%");
+			ResultSet rs = stm.executeQuery();
 			
-			while (listaConsulta.next()) {
+			while (rs.next()) {
 				
 				ProdutoSG retornoLista = new ProdutoSG();
-				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
-				retornoLista.setProduto(listaConsulta.getString("produto"));
-				retornoLista.setImagem(listaConsulta.getString("imagem"));
-				retornoLista.setDescricao(listaConsulta.getString("descricao"));
-				retornoLista.setModelo(listaConsulta.getString("modelo"));
-				retornoLista.setGenero(listaConsulta.getString("genero"));
-				retornoLista.setCor(listaConsulta.getString("cor"));
-				retornoLista.setCategoria(listaConsulta.getString("categoria"));
-				retornoLista.setValor_venda(listaConsulta.getFloat("valor_venda"));
-				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
-				retornoLista.setReferencia(listaConsulta.getInt("referencia"));
-				retornoLista.setCondicao(listaConsulta.getString("condicao"));
+				
+				retornoLista.setIdproduto(rs.getInt("idproduto"));
+				retornoLista.setProduto(rs.getString("produto"));
+				retornoLista.setImagem(rs.getString("imagem"));
+				retornoLista.setDescricao(rs.getString("descricao"));
+				retornoLista.setModelo(rs.getString("modelo"));
+				retornoLista.setGenero(rs.getString("genero"));
+				retornoLista.setCor(rs.getString("cor"));
+				retornoLista.setCategoria(rs.getString("categoria"));
+				retornoLista.setValor_venda(rs.getFloat("valor_venda"));
+				retornoLista.setQuantidade(rs.getInt("quantidade"));
+				retornoLista.setReferencia(rs.getInt("referencia"));
+				retornoLista.setCondicao(rs.getString("condicao"));
+				
 				lista.add(retornoLista);
 				
 			}
-			stmConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception e) {
@@ -400,42 +479,51 @@ public class ProdutoDAO {
 	}
     
 	// CONSULTA PRODUTOS PELO GENERO OU CATEGORIA
-    public ArrayList<ProdutoSG> produtoLink(String geral) throws SQLException{
+    public ArrayList<ProdutoSG> produtoLink(String geral, Integer bd) throws SQLException{
 		
-    	con = new Factory().conBD1();
+		if(bd == 1) { 
+			con = new Factory().conBD1(); 
+		}
+		if(bd == 2) {
+			con = new Factory().conBD2(); 		
+		}
+		if(bd == 3) {
+			con = new Factory().conBD3(); 			
+		}	
+		
 		ArrayList<ProdutoSG> produtolink = new ArrayList<>();
 		
 		sql = "select * from PRODUTO where categoria= ?";
 		
 		try {
-			stmConsulta = con.prepareStatement(sql);
-			stmConsulta.setString(1, geral);
-			listaConsulta = stmConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setString(1, geral);
+			ResultSet rs = stm.executeQuery();
 			
-			while (listaConsulta.next()) {
+			while (rs.next()) {
 				
 				ProdutoSG retornoLista = new ProdutoSG();
 				FormatarReal fr = new FormatarReal();
 				
-				retornoLista.setIdproduto(listaConsulta.getInt("idproduto"));
-				retornoLista.setProduto(listaConsulta.getString("produto"));
-				retornoLista.setImagem(listaConsulta.getString("imagem"));
-				retornoLista.setDescricao(listaConsulta.getString("descricao"));
-				retornoLista.setModelo(listaConsulta.getString("modelo"));
-				retornoLista.setGenero(listaConsulta.getString("genero"));
-				retornoLista.setTamanho(listaConsulta.getString("tamanho"));
-				retornoLista.setCor(listaConsulta.getString("cor"));
-				retornoLista.setCategoria(listaConsulta.getString("categoria"));
-				retornoLista.setValor_custo(listaConsulta.getFloat("valor_custo"));
-				retornoLista.setValor_venda_fr(fr.formatar(listaConsulta.getFloat("valor_venda")));
-				retornoLista.setQuantidade(listaConsulta.getInt("quantidade"));
-				retornoLista.setReferencia(listaConsulta.getInt("referencia"));
-				retornoLista.setCondicao(listaConsulta.getString("condicao"));
+				retornoLista.setIdproduto(rs.getInt("idproduto"));
+				retornoLista.setProduto(rs.getString("produto"));
+				retornoLista.setImagem(rs.getString("imagem"));
+				retornoLista.setDescricao(rs.getString("descricao"));
+				retornoLista.setModelo(rs.getString("modelo"));
+				retornoLista.setGenero(rs.getString("genero"));
+				retornoLista.setTamanho(rs.getString("tamanho"));
+				retornoLista.setCor(rs.getString("cor"));
+				retornoLista.setCategoria(rs.getString("categoria"));
+				retornoLista.setValor_custo(rs.getFloat("valor_custo"));
+				retornoLista.setValor_venda_fr(fr.formatar(rs.getFloat("valor_venda")));
+				retornoLista.setQuantidade(rs.getInt("quantidade"));
+				retornoLista.setReferencia(rs.getInt("referencia"));
+				retornoLista.setCondicao(rs.getString("condicao"));
 				
 				produtolink.add(retornoLista);
 	
 			}
-			stmConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception ex) {
@@ -453,17 +541,18 @@ public class ProdutoDAO {
 		
 		try {
 			
-			stmInserir = con.prepareStatement(sql);
-			stmInserir.setBigDecimal(1,sgproduto.getNumeropedido());
-			stmInserir.setInt(2,sgfisico.getIdusuario());
-			stmInserir.setString(3,sgfisico.getDestinatario());
-			stmInserir.setInt(4,sgproduto.getIdproduto());
-			stmInserir.setString(5,sgproduto.getTamanho());
-			stmInserir.setString(6,sgproduto.getCor());
-			stmInserir.setInt(7,sgproduto.getQuantidade_dig());
+			PreparedStatement stm = con.prepareStatement(sql);
 			
-			stmInserir.execute();
-			stmInserir.close();
+			stm.setBigDecimal(1,sgproduto.getNumeropedido());
+			stm.setInt(2,sgfisico.getIdusuario());
+			stm.setString(3,sgfisico.getDestinatario());
+			stm.setInt(4,sgproduto.getIdproduto());
+			stm.setString(5,sgproduto.getTamanho());
+			stm.setString(6,sgproduto.getCor());
+			stm.setInt(7,sgproduto.getQuantidade_dig());
+			
+			stm.execute();
+			stm.close();
 			con.close();
 			
 		} catch (Exception ex) {
@@ -480,17 +569,18 @@ public class ProdutoDAO {
 		
 		try {
 			
-			stmInserir = con.prepareStatement(sql);
-			stmInserir.setBigDecimal(1,sgproduto.getNumeropedido());
-			stmInserir.setInt(2,sgjuridico.getIdempresa());
-			stmInserir.setString(3, sgjuridico.getRazao());
-			stmInserir.setInt(4,sgproduto.getIdproduto());
-			stmInserir.setString(5,sgproduto.getTamanho());
-			stmInserir.setString(6,sgproduto.getCor());
-			stmInserir.setInt(7,sgproduto.getQuantidade_dig());
+			PreparedStatement stm = con.prepareStatement(sql);
 			
-			stmInserir.execute();
-			stmInserir.close();
+			stm.setBigDecimal(1,sgproduto.getNumeropedido());
+			stm.setInt(2,sgjuridico.getIdempresa());
+			stm.setString(3, sgjuridico.getRazao());
+			stm.setInt(4,sgproduto.getIdproduto());
+			stm.setString(5,sgproduto.getTamanho());
+			stm.setString(6,sgproduto.getCor());
+			stm.setInt(7,sgproduto.getQuantidade_dig());
+			
+			stm.execute();
+			stm.close();
 			con.close();
 			
 		} catch (Exception ex) {
@@ -505,23 +595,26 @@ public class ProdutoDAO {
     	con = new Factory().conBD1();
     	sql = "select * from FORNECEDORES where idfornecedor = ?";
     	
+    	ProdutoSG retornoLista = new ProdutoSG();
+    	
     	try {
-    		stmConsulta = con.prepareStatement(sql);
-			stmConsulta.setInt(1, id);
-			resConsulta = stmConsulta.executeQuery();
+    		
+    		PreparedStatement stm = con.prepareStatement(sql);
+			stm.setInt(1, id);
+			ResultSet rs = stm.executeQuery();
 			
-			while (resConsulta.next()) {
-				
-				retornoLista.setIdfornecedor(resConsulta.getInt("idfornecedor"));
-				retornoLista.setRazao(resConsulta.getString("razao"));
-				retornoLista.setCnpj(resConsulta.getString("cnpj"));
-				retornoLista.setIe(resConsulta.getString("ie"));
-				retornoLista.setTelefone(resConsulta.getString("telefone"));
-				retornoLista.setEndereco(resConsulta.getString("endereco"));
-				retornoLista.setBairro(resConsulta.getString("bairro"));
-				retornoLista.setCidade(resConsulta.getString("cidade"));
-				retornoLista.setEstado(resConsulta.getString("estado"));
-				retornoLista.setCep(resConsulta.getString("cep"));
+			while (rs.next()) {
+			
+				retornoLista.setIdfornecedor(rs.getInt("idfornecedor"));
+				retornoLista.setRazao(rs.getString("razao"));
+				retornoLista.setCnpj(rs.getString("cnpj"));
+				retornoLista.setIe(rs.getString("ie"));
+				retornoLista.setTelefone(rs.getString("telefone"));
+				retornoLista.setEndereco(rs.getString("endereco"));
+				retornoLista.setBairro(rs.getString("bairro"));
+				retornoLista.setCidade(rs.getString("cidade"));
+				retornoLista.setEstado(rs.getString("estado"));
+				retornoLista.setCep(rs.getString("cep"));
 			}
     		
     	} catch (Exception e){

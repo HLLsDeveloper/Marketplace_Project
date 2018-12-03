@@ -30,7 +30,7 @@ public class BuscaNavbar extends HttpServlet {
 			
 			ProdutoDAO produtodao = new ProdutoDAO();
 			
-			ArrayList<ProdutoSG> resultadoBusca = produtodao.navbar(busca);
+			ArrayList<ProdutoSG> resultadoBusca = produtodao.navbar(busca,1);
 			
 			request.setAttribute("lista", resultadoBusca);
 			

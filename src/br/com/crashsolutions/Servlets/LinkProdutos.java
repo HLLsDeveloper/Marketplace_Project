@@ -33,7 +33,7 @@ public class LinkProdutos extends HttpServlet {
 			ProdutoDAO dao = new ProdutoDAO();
 			ArrayList<ProdutoSG> resultadoLinkProduto;
 			
-			resultadoLinkProduto = dao.produtoLink(busca);
+			resultadoLinkProduto = dao.produtoLink(busca,1);
 			request.setAttribute("lista", resultadoLinkProduto);
 			
 		} catch (SQLException e) {

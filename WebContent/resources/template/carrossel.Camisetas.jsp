@@ -18,7 +18,6 @@
 				    	<form>
 				    		<input name="referencia" value="${lista.referencia}" type="hidden">
 							<button type="submit" formaction="Descricao" formmethod="get" class="btn btn-success btn-lg btn_sh btn_tam">Comprar</button>
-					    	<button type="submit" class="btn btn-lg btn-tshirt"><img src="resources/img/icones/cart.svg"></button>
 				    	</form>
 				    </div>
 			    </c:if>
