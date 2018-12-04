@@ -16,7 +16,6 @@ public class ProdutoDAO {
 	
 	private String sql;
 	private Connection con;
-	private PreparedStatement stmInserir, stmConsulta, stmAlterar, stmListaConsulta;
 	private ResultSet listaConsulta, resConsulta;
 	private ProdutoSG retornoLista;
 	 
@@ -26,28 +25,27 @@ public class ProdutoDAO {
 	// CADASTRAR O PRODUTO
 	public void inserir(ProdutoSG sgproduto) throws SQLException{
 		
-		con = new Factory().conBD1();
 		sql = "insert into PRODUTO (produto,imagem,descricao,modelo,genero,tamanho,cor,categoria,valor_custo,valor_venda,quantidade,referencia,condicao) values (?,?,?,?,?,?,?,?,?,?,?,?,'ativo')";
 		
 		try {
 			
-			stmInserir = con.prepareStatement(sql);
+			PreparedStatement stm = con.prepareStatement(sql);
 			
-			stmInserir.setString(1,sgproduto.getProduto());
-			stmInserir.setString(2,sgproduto.getImagem());
-			stmInserir.setString(3,sgproduto.getDescricao());
-			stmInserir.setString(4,sgproduto.getModelo());
-			stmInserir.setString(5,sgproduto.getGenero());
-			stmInserir.setString(6,sgproduto.getTamanho());
-			stmInserir.setString(7,sgproduto.getCor());
-			stmInserir.setString(8,sgproduto.getCategoria());
-			stmInserir.setFloat(9,sgproduto.getValor_custo());
-			stmInserir.setFloat(10,sgproduto.getValor_venda());
-			stmInserir.setInt(11,sgproduto.getQuantidade());
-			stmInserir.setInt(12,sgproduto.getReferencia());
+			stm.setString(1,sgproduto.getProduto());
+			stm.setString(2,sgproduto.getImagem());
+			stm.setString(3,sgproduto.getDescricao());
+			stm.setString(4,sgproduto.getModelo());
+			stm.setString(5,sgproduto.getGenero());
+			stm.setString(6,sgproduto.getTamanho());
+			stm.setString(7,sgproduto.getCor());
+			stm.setString(8,sgproduto.getCategoria());
+			stm.setFloat(9,sgproduto.getValor_custo());
+			stm.setFloat(10,sgproduto.getValor_venda());
+			stm.setInt(11,sgproduto.getQuantidade());
+			stm.setInt(12,sgproduto.getReferencia());
 			
-			stmInserir.execute();
-			stmInserir.close();
+			stm.execute();
+			stm.close();
 			con.close();
 			
 			Mensagem = "Cadastrado com Sucesso!";
@@ -69,8 +67,8 @@ public class ProdutoDAO {
 		ArrayList<ProdutoSG> listartamanho = new ArrayList<>();
 		
 		try {
-			stmListaConsulta = con.prepareStatement(sql); 
-			listaConsulta = stmListaConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql); 
+			listaConsulta = stm.executeQuery();
 			
 			while (listaConsulta.next()) {
 				
@@ -88,7 +86,7 @@ public class ProdutoDAO {
 				}		
 			}
 			
-			stmListaConsulta.close();
+			stm.close();
 			con.close();
 			
 			
@@ -108,10 +106,10 @@ public class ProdutoDAO {
 		retornoLista = new ProdutoSG();
 		
 		try {
-			stmConsulta = con.prepareStatement(sql);
-			stmConsulta.setString(1, geral);
-			stmConsulta.setString(2, geral);
-			resConsulta = stmConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setString(1, geral);
+			stm.setString(2, geral);
+			resConsulta = stm.executeQuery();
 			
 			while(resConsulta.next()) {
 				
@@ -131,7 +129,7 @@ public class ProdutoDAO {
 				retornoLista.setCondicao(resConsulta.getString("condicao"));
 			}
 			
-			stmConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception  e) {
@@ -149,9 +147,9 @@ public class ProdutoDAO {
 			retornoLista = new ProdutoSG();
 			
 			try {
-				stmConsulta = con.prepareStatement(sql);
-				stmConsulta.setInt(1, referencia);
-				resConsulta = stmConsulta.executeQuery();
+				PreparedStatement stm = con.prepareStatement(sql);
+				stm.setInt(1, referencia);
+				resConsulta = stm.executeQuery();
 				
 				while(resConsulta.next()) {
 									
@@ -171,7 +169,7 @@ public class ProdutoDAO {
 						retornoLista.setCondicao(resConsulta.getString("condicao"));
 				}
 				
-				stmConsulta.close();
+				stm.close();
 				con.close();
 				
 			} catch (Exception  e) {
@@ -189,24 +187,24 @@ public class ProdutoDAO {
 		
 		try {
 			
-			stmAlterar = con.prepareStatement(sql);
+			PreparedStatement stm = con.prepareStatement(sql);
 			
-			stmAlterar.setString(1,sgproduto.getProduto());
-			stmAlterar.setString(2,sgproduto.getImagem());
-			stmAlterar.setString(3,sgproduto.getDescricao());
-			stmAlterar.setString(4,sgproduto.getModelo());
-			stmAlterar.setString(5,sgproduto.getGenero());
-			stmAlterar.setString(6,sgproduto.getTamanho());
-			stmAlterar.setString(7,sgproduto.getCor());
-			stmAlterar.setString(8,sgproduto.getCategoria());
-			stmAlterar.setDouble(9,sgproduto.getValor_custo());
-			stmAlterar.setDouble(10,sgproduto.getValor_venda());
-			stmAlterar.setInt(11,sgproduto.getQuantidade());
-			stmAlterar.setInt(12,sgproduto.getReferencia());
-			stmAlterar.setInt(13,sgproduto.getIdproduto());
+			stm.setString(1,sgproduto.getProduto());
+			stm.setString(2,sgproduto.getImagem());
+			stm.setString(3,sgproduto.getDescricao());
+			stm.setString(4,sgproduto.getModelo());
+			stm.setString(5,sgproduto.getGenero());
+			stm.setString(6,sgproduto.getTamanho());
+			stm.setString(7,sgproduto.getCor());
+			stm.setString(8,sgproduto.getCategoria());
+			stm.setDouble(9,sgproduto.getValor_custo());
+			stm.setDouble(10,sgproduto.getValor_venda());
+			stm.setInt(11,sgproduto.getQuantidade());
+			stm.setInt(12,sgproduto.getReferencia());
+			stm.setInt(13,sgproduto.getIdproduto());
 			
-			stmAlterar.execute();
-			stmAlterar.close();
+			stm.execute();
+			stm.close();
 			con.close();
 			
 			Mensagem = "Alterado com Sucesso!";
@@ -230,8 +228,8 @@ public class ProdutoDAO {
 		
 		try {
 			
-			stmListaConsulta = con.prepareStatement(sql); 
-			listaConsulta = stmListaConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql); 
+			listaConsulta = stm.executeQuery();
 			
 			while (listaConsulta.next()) {
 				
@@ -255,7 +253,7 @@ public class ProdutoDAO {
 				listartodos.add(retornoLista);
 			}
 			
-			stmListaConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception e) {
@@ -276,15 +274,15 @@ public class ProdutoDAO {
 		
 		try {
 			
-			stmConsulta = con.prepareStatement(sql);
-			stmConsulta.setInt(1, referencia);
-			resConsulta = stmConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setInt(1, referencia);
+			resConsulta = stm.executeQuery();
 			
 			while (resConsulta.next()) {
 				quantidadetotal = quantidadetotal + resConsulta.getInt("quantidade");
 			}
 			
-			stmConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception e) {
@@ -306,8 +304,8 @@ public class ProdutoDAO {
 			
 			Integer referencia = 0;
 			
-			stmListaConsulta = con.prepareStatement(sql); 
-			listaConsulta = stmListaConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql); 
+			listaConsulta = stm.executeQuery();
 			
 			while (listaConsulta.next()) {
 				
@@ -345,7 +343,7 @@ public class ProdutoDAO {
 				} 
 			}
 					
-			stmListaConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception e) {
@@ -366,9 +364,9 @@ public class ProdutoDAO {
 		
 		try {
 			
-			stmConsulta = con.prepareStatement(sql);
-			stmConsulta.setString(1, "%"+ geral +"%");
-			listaConsulta = stmConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setString(1, "%"+ geral +"%");
+			listaConsulta = stm.executeQuery();
 			
 			while (listaConsulta.next()) {
 				
@@ -388,7 +386,7 @@ public class ProdutoDAO {
 				lista.add(retornoLista);
 				
 			}
-			stmConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception e) {
@@ -408,9 +406,9 @@ public class ProdutoDAO {
 		sql = "select * from PRODUTO where categoria= ?";
 		
 		try {
-			stmConsulta = con.prepareStatement(sql);
-			stmConsulta.setString(1, geral);
-			listaConsulta = stmConsulta.executeQuery();
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setString(1, geral);
+			listaConsulta = stm.executeQuery();
 			
 			while (listaConsulta.next()) {
 				
@@ -435,7 +433,7 @@ public class ProdutoDAO {
 				produtolink.add(retornoLista);
 	
 			}
-			stmConsulta.close();
+			stm.close();
 			con.close();
 			
 		} catch (Exception ex) {
@@ -453,17 +451,17 @@ public class ProdutoDAO {
 		
 		try {
 			
-			stmInserir = con.prepareStatement(sql);
-			stmInserir.setBigDecimal(1,sgproduto.getNumeropedido());
-			stmInserir.setInt(2,sgfisico.getIdusuario());
-			stmInserir.setString(3,sgfisico.getDestinatario());
-			stmInserir.setInt(4,sgproduto.getIdproduto());
-			stmInserir.setString(5,sgproduto.getTamanho());
-			stmInserir.setString(6,sgproduto.getCor());
-			stmInserir.setInt(7,sgproduto.getQuantidade_dig());
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setBigDecimal(1,sgproduto.getNumeropedido());
+			stm.setInt(2,sgfisico.getIdusuario());
+			stm.setString(3,sgfisico.getDestinatario());
+			stm.setInt(4,sgproduto.getIdproduto());
+			stm.setString(5,sgproduto.getTamanho());
+			stm.setString(6,sgproduto.getCor());
+			stm.setInt(7,sgproduto.getQuantidade_dig());
 			
-			stmInserir.execute();
-			stmInserir.close();
+			stm.execute();
+			stm.close();
 			con.close();
 			
 		} catch (Exception ex) {
@@ -480,17 +478,17 @@ public class ProdutoDAO {
 		
 		try {
 			
-			stmInserir = con.prepareStatement(sql);
-			stmInserir.setBigDecimal(1,sgproduto.getNumeropedido());
-			stmInserir.setInt(2,sgjuridico.getIdempresa());
-			stmInserir.setString(3, sgjuridico.getRazao());
-			stmInserir.setInt(4,sgproduto.getIdproduto());
-			stmInserir.setString(5,sgproduto.getTamanho());
-			stmInserir.setString(6,sgproduto.getCor());
-			stmInserir.setInt(7,sgproduto.getQuantidade_dig());
+			PreparedStatement stm = con.prepareStatement(sql);
+			stm.setBigDecimal(1,sgproduto.getNumeropedido());
+			stm.setInt(2,sgjuridico.getIdempresa());
+			stm.setString(3, sgjuridico.getRazao());
+			stm.setInt(4,sgproduto.getIdproduto());
+			stm.setString(5,sgproduto.getTamanho());
+			stm.setString(6,sgproduto.getCor());
+			stm.setInt(7,sgproduto.getQuantidade_dig());
 			
-			stmInserir.execute();
-			stmInserir.close();
+			stm.execute();
+			stm.close();
 			con.close();
 			
 		} catch (Exception ex) {
@@ -506,9 +504,9 @@ public class ProdutoDAO {
     	sql = "select * from FORNECEDORES where idfornecedor = ?";
     	
     	try {
-    		stmConsulta = con.prepareStatement(sql);
-			stmConsulta.setInt(1, id);
-			resConsulta = stmConsulta.executeQuery();
+    		PreparedStatement stm = con.prepareStatement(sql);
+			stm.setInt(1, id);
+			resConsulta = stm.executeQuery();
 			
 			while (resConsulta.next()) {
 				

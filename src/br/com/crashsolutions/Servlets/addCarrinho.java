@@ -155,8 +155,10 @@ public class addCarrinho extends HttpServlet {
 				sessao.setAttribute("carrinho", carrinhoSessao);
 			}
 			
-			request.setAttribute("mensagem", "Produto adicionado no carrinho com sucesso!");            
-			request.getRequestDispatcher("Descricao?referencia="+referencia).forward(request, response);
+			request.setAttribute("mensagem", "Produto adicionado no carrinho com sucesso!");
+			request.setAttribute("referencia", referencia);
+			RequestDispatcher enviar = request.getRequestDispatcher("/Descricao");
+			enviar.forward(request, response);
             
 		} catch(Exception e) {
 			System.out.println("Erro no addCarrinho: "+ e);

@@ -60,12 +60,12 @@ public class ListaEndereco extends HttpServlet {
 		
 		try {
 			
-			if(session.getAttribute("idusuario") != null) {
+			if(session.getAttribute("idusuariouser") != null) {
 				
 				CadastroFisicoDAO fisicodao = new CadastroFisicoDAO();
 				CadastroFisicoSG sgfisico = new CadastroFisicoSG();
 				
-				sgfisico.setIdenderecofisico((Integer) session.getAttribute("idusuario"));
+				sgfisico.setIdenderecofisico((Integer) session.getAttribute("idusuariouser"));
 				sgfisico.setNomeendereco(request.getParameter("nomeendereco"));
 				sgfisico.setEndereco(request.getParameter("endereco"));
 				sgfisico.setNumero(Integer.parseInt(request.getParameter("numero")));
@@ -76,12 +76,12 @@ public class ListaEndereco extends HttpServlet {
 				sgfisico.setCep(request.getParameter("cep"));
 				fisicodao.cadastrarEndereco(sgfisico);
 				
-			} else if(session.getAttribute("idempresa") != null) {
+			} else if(session.getAttribute("idempresauser") != null) {
 				
 				CadastroJuridicoDAO juridicodao = new CadastroJuridicoDAO();
 				CadastroJuridicoSG sgjuridico = new CadastroJuridicoSG();
 				
-				sgjuridico.setIdenderecojuridico((Integer) session.getAttribute("idempresa"));
+				sgjuridico.setIdenderecojuridico((Integer) session.getAttribute("idempresauser"));
 				sgjuridico.setNomeendereco(request.getParameter("nomeendereco"));
 				sgjuridico.setEndereco(request.getParameter("endereco"));
 				sgjuridico.setNumero(Integer.parseInt(request.getParameter("numero")));
