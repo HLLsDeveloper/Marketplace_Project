@@ -26,14 +26,14 @@
 	<c:import url="resources/template/modal.ListaProdutos.jsp"/>
 	
 	<c:import url="resources/template/nav.jsp"/>
-
+<div class="header-site">
 	<div class="container">
 	
 		<!-- FORMULÁRIO DE ALTERAR PRODUTO -->
 		<form id="form-produto" enctype="multipart/form-data" accept-charset="ISO-8859-1">
 		<div class="row">
 			<div class="col-md-4 mt-4">
-				<div class="card m-2 mb-4">
+				<div class="card m-0 mb-3">
 					<div class="card m-3">
 						<img id="img-pre-visualiza" class="card-img-top m-4 mx-auto d-inline-block" src="resources/img/img-produtos/${imagem}">
 						<p class="text-center" id="msg_imagem" style="display: none;">Insira uma imagem!</p>
@@ -48,8 +48,8 @@
 					</div>
 				</div>
 
-				<div class="card m-2">
-					<div class="form-group m-2">
+				<div class="card my-4 py-3">
+					<div class="form-group text-center font-weight-bold m-2">
 						<h4>Descrição do Produto</h4>
 						<textarea name="descricao" id="descricao" class="form-control" rows="4" required>${descricao}</textarea>
 					</div>
@@ -75,7 +75,7 @@
 					</div>
 				
 					<div class="form-group col-md">
-						<h5>Genero</h5> 
+						<h5>Gênero</h5> 
 						<input name="genero" value="${genero}" id="genero" type="text" class="form-control" disabled required>
 					</div>
 
@@ -116,7 +116,7 @@
 				<hr>
 				<div class="row">
 					<div class="col-md-4 mt-3 mb-3 center">
-						<div class="col-md-6 mt-3 mb-3 center">
+						<div class="col-md-6  center">
 							<a href="InserirProduto.jsp">
 								<label class="btn btn-warning">Cadastrar Produto ➔</label>
 							</a>
@@ -133,7 +133,6 @@
 						</div>
 					</div>
 					<div class="col-md-3 mt-3 mb-3">
-						<button name="bt-buscar" type="submit" class="btn btn-warning font-size-2" formaction="AlterarProduto" formmethod="get" formnovalidate>Buscar</button>
 						<button name="bt-buscar" type="submit" class="btn btn-warning font-size-2" formaction="AlterarProduto" formmethod="post">Alterar</button>
 					</div>
 				</div>
@@ -141,6 +140,7 @@
 		</div>
 		</form>	
 	</div>
+</div>
 
 	<c:import url="resources/template/footer.jsp"/>
 </body>
