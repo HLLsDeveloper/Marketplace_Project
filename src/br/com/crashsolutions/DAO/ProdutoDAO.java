@@ -16,7 +16,6 @@ public class ProdutoDAO {
 	
 	private String sql;
 	private Connection con;
-	 
 	public String Mensagem = null;
 	public Integer Quantidade = 0;
 	
@@ -167,7 +166,7 @@ public class ProdutoDAO {
 	
 	// CONSULTAR PRODUTO PELA REFERENCIA
 	public ProdutoSG consultarReferencia(Integer referencia, Integer bd) throws SQLException{
-			
+		
 		if(bd == 1) { 
 			con = new Factory().conBD1(); 
 		}
@@ -281,7 +280,7 @@ public class ProdutoDAO {
 		
 		try {
 			
-			PreparedStatement stm = con.prepareStatement(sql); 
+			PreparedStatement stm = con.prepareStatement(sql);
 			ResultSet rs = stm.executeQuery();
 			
 			while (rs.next()) {
@@ -375,7 +374,7 @@ public class ProdutoDAO {
 			
 			Integer referencia = 0;
 			
-			PreparedStatement stm = con.prepareStatement(sql); 
+			PreparedStatement stm = con.prepareStatement(sql);
 			ResultSet rs = stm.executeQuery();
 			
 			while (rs.next()) {

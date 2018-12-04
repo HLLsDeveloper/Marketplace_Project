@@ -8,10 +8,8 @@
 <title>T-Shirt Games - Finalização de Compra</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
-<link rel="stylesheet" href="resources/css/style.nav.css">
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="resources/js/popper.min.js"></script>
-<script src="resources/js/script.js"></script>
+<script src="resources/js/bootstrap/popper.min.js"></script>
 <script src="resources/js/bootstrap/bootstrap.js"></script>
 </head>
 <body>
@@ -46,6 +44,7 @@
 											<td><p id="tamanho"><c:out value="${carrinho.tamanho}"></c:out></p></td>
 											<td><p id="valor"><c:out value="R$ ${carrinho.valor_venda}"></c:out></p></td>
 											<td><p id="quantidade"><c:out value="${carrinho.quantidade_dig}"></c:out></p></td>
+										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
@@ -64,7 +63,7 @@
 								<li class="list-group-item list-group-item-dark">Email:<c:out value=" ${emailuser}"></c:out></li>
 								<li class="list-group-item list-group-item-dark">Celular:<c:out value=" ${celularuser}"></c:out></li>
 								<li class="list-group-item list-group-item-dark">Telefone:<c:out value=" ${telefoneuser}"></c:out></li>
-								<li class="list-group-item list-group-item-dark">Tipo de cadastro:<c:out value="Fisico"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Tipo de cadastro:<c:out value=" Fisico"></c:out></li>
 								<li class="list-group-item list-group-item-dark">CPF:<c:out value=" ${cpfuser}"></c:out></li>
 							</c:if>
 							<c:if test="${not empty idempresauser}">
@@ -73,7 +72,7 @@
 								<li class="list-group-item list-group-item-dark">Email:<c:out value=" ${emailuser}"></c:out></li>
 								<li class="list-group-item list-group-item-dark">Celular:<c:out value=" ${celularuser}"></c:out></li>
 								<li class="list-group-item list-group-item-dark">Telefone:<c:out value=" ${telefoneuser}"></c:out></li>
-								<li class="list-group-item list-group-item-dark">Tipo de cadastro:<c:out value="Juridico"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Tipo de cadastro:<c:out value=" Juridico"></c:out></li>
 								<li class="list-group-item list-group-item-dark">CNPJ:<c:out value=" ${cnpjuser}"></c:out></li>
 							</c:if>
 						</ul>

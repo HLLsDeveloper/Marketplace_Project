@@ -21,6 +21,7 @@ import br.com.crashsolutions.SG.ProdutoSG;
 public class DescricaoProduto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HttpSession sessao;
+	private Integer referencia;
 	
     public DescricaoProduto() {
         super();
@@ -28,9 +29,16 @@ public class DescricaoProduto extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// VARIAVEIS ID E REFERENCIA
-		Integer referencia = Integer.parseInt(request.getParameter("referencia"));
-				
+		System.out.println("Passei pelo metodo get amigo, estava enganado seu porra!");
+		
+		if(request.getParameter("referencia").equals("0") || request.getParameter("referencia").equals(null)) {
+			// VARIAVEIS ID E REFERENCIA
+			referencia = (Integer) request.getAttribute("referencia");
+		} else {
+			// VARIAVEIS ID E REFERENCIA
+			referencia = Integer.parseInt(request.getParameter("referencia"));
+		}
+		
 		try {
 			
 			HttpSession session = request.getSession();
