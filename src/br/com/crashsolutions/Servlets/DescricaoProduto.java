@@ -28,9 +28,7 @@ public class DescricaoProduto extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("Passei pelo metodo get amigo, estava enganado seu porra!");
-		
+				
 		if(request.getParameter("referencia").equals("0") || request.getParameter("referencia").equals(null)) {
 			// VARIAVEIS ID E REFERENCIA
 			referencia = (Integer) request.getAttribute("referencia");
