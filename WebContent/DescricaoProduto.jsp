@@ -82,7 +82,7 @@
 								<form>	
 									<h5 class="text-center">Tamanho</h5>
 									<div class="custom-control center custom-radio custom-control-inline mt-4">
-										<c:forEach var="lista" items="${listatamanho}">
+										<c:forEach var="lista" items="${listatamanho1}">
 										<label>
 											<c:if test="${lista.quantidade > 0}">										
 											<input required type="radio" name="idproduto" class="custom-control-input d-block" value="${lista.idproduto}">
@@ -211,7 +211,9 @@
 									</div>
 									
 									<div class="mt-5">
-										<button name="fornecedor" value="${idfornecedor2}" class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
+										<input type="hidden" name="fornecedor" value="${idfornecedor2}">
+										<input type="hidden" name="referencia" value="${referencia}" >
+										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
 										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor2}</strong></p>
 									</div>
@@ -323,7 +325,9 @@
 									</div>
 									
 									<div class="mt-5">
-										<button name="fornecedor" value="${idfornecedor3}" class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
+										<input type="hidden" name="fornecedor" value="${idfornecedor2}">
+										<input type="hidden" name="referencia" value="${referencia}" >
+										<button class="btn btn-success d-block mb-1 mx-auto" formaction="Descricao" formmethod="post" type="submit">Comprar</button>
 										<button class="btn btn-tshirt d-block mb-1 mx-auto" formaction="addCarrinho" formmethod="post" type="submit">adicionar ao carrinho</button>
 										<p class="text-center mt-4">Vendido e entregue por <strong>${fornecedor3}</strong></p>
 									</div>

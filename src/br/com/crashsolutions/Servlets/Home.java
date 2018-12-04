@@ -31,7 +31,7 @@ public class Home extends HttpServlet {
 		ArrayList<ProdutoSG> lista = null;
 		
 		try {
-			lista = dao.buscaTodasReferencias();
+			lista = dao.buscaTodasReferencias(1);
 			request.setAttribute("lista_produto", lista);
 		} catch (SQLException e) {
 			System.out.println("Erro na lista do Home: "+ e);

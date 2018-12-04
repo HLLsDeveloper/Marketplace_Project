@@ -124,7 +124,7 @@ public class InserirProduto extends HttpServlet {
 
     	// UTILIZA A AÇÃO DE INSERIR
     	try {
-			produtodao.inserir(produtosg);
+			produtodao.inserir(produtosg,1);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

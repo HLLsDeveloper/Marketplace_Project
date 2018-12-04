@@ -25,7 +25,7 @@
 		  		<h5 class="card-title center">Tabela de Usuário</h5>
 		 	</div>
 		 	
-		 	<!-- CAMPO DE PESQUISA -->
+		 	<!-- CAMPO DE PESQUISA --> 
 		 	<div class="col-4 input-group mt-4 m-2 ml-auto">
 	        	<form class="form-inline ml-auto my-2 my-lg-0" action="Busca" >
 	                <input name="pesquisausu" class="form-control search-text" type="text" placeholder="Search" aria-label="Search">                
@@ -49,23 +49,45 @@
 					  	</thead>
 	  					<tbody>
 	  						<c:forEach var="lista" items="${listapessoas}">
-							    <tr>
-							      <th scope="row">${lista.idusuario}</th>
-								  	<td>${lista.nome} ${lista.sobrenome}</td>									  									  	
-								    <td>${lista.cpf}</td>
-								    <td>${lista.sexo}</td>
-								    <td><div class="d-inline">${lista.email}</div></td>								    
-								    <td>${lista.condicao}</td>
-								    <td>
-									    <div class="d-inline">
+	  						<!-- se inativo -->
+							    <tr><c:if test="${lista.condicao == 'Inativo'}">
+							      <th class="text-center  align-middle font-weight-bold" scope="row"><div >${lista.idusuario}</div></th>								  	
+								  	<td class=" align-middle font-weight-bold"><img  height="80" src="resources/img/users/${lista.imagem}">  ${lista.nome} ${lista.sobrenome}</td>							  									  	
+								    <td class="text-center align-middle font-weight-bold">${lista.cpf}</td>
+								    <td class="text-center align-middle font-weight-bold">${lista.sexo}</td>
+								    <td class="text-center align-middle font-weight-bold"><div class="d-inline ">${lista.email}</div></td>								    
+								    <td class="text-center align-middle font-weight-bold"> 
+								      	<div class="d-inline text-center text-danger align-middle font-weight-bold">${lista.condicao}</div>								      	
+								    </td>
+								    <td class=" text-center  align-middle ">
+									    <div class="d-inline text-center align-middle">
 									    	<form>
-								      			<button name="idusuario" value="${lista.idusuario}" type="submit" formaction="AlterarCadastro" formmethod="get" class="btn btn-tshirt"><img src="resources/img/icones/pencil.svg"></button>						      			
+								      			<button name="idusuario" value="${lista.idusuario}" type="submit" formaction="AlterarCadastro" formmethod="get" class="btn btn-tshirt text-center align-middle"><img src="resources/img/icones/pencil.svg"></button>						      			
+							      			</form>
+							      		</div>
+					      			</td></c:if>					      			
+					      			
+					      			<!-- se ativo -->
+					      			<c:if test="${lista.condicao == 'Ativo'}">
+							      <th scope="row">${lista.idusuario}</th>								  	
+								  	<td class=" align-middle font-weight-bold "><img  height="80" src="resources/img/users/${lista.imagem}">  ${lista.nome} ${lista.sobrenome}</td>							  									  	
+								    <td class="text-center align-middle font-weight-bold">${lista.cpf}</td>
+								    <td class="text-center align-middle font-weight-bold">${lista.sexo}</td>
+								    <td class="text-center align-middle font-weight-bold"><div class="d-inline ">${lista.email}</div></td>								    
+								    <td class="text-center align-middle font-weight-bold">									    
+								      	<div class="d-inline text-center  text-success align-middle">${lista.condicao}</div>								      
+								    </td>
+								    <td class=" text-center  align-middle ">
+									    <div class="d-inline text-center align-middle">
+									    	<form>
+								      			<button name="idusuario" value="${lista.idusuario}" type="submit" formaction="AlterarCadastro" formmethod="get" class="btn btn-tshirt text-center align-middle"><img src="resources/img/icones/pencil.svg"></button>						      			
 							      			</form>
 							      		</div>
 					      			</td>
-							    </tr>
+					      			</c:if>
+							    </tr>							    
 						    </c:forEach>
-	  					</tbody>
+	  					</tbody>	  					
 					</table>
 			</div>
 			<!-- FIM: LISTA DE usuário -->

@@ -31,7 +31,7 @@ public class ListaCamisetas extends HttpServlet {
 			ProdutoDAO produtoDAO = new ProdutoDAO();
 			ProdutoSG unico;
 			
-			unico = produtoDAO.consultar(id);
+			unico = produtoDAO.consultar(id, 1);
 					
 			request.setAttribute("produto", unico.getProduto());
 			request.setAttribute("imagem", unico.getImagem());
@@ -56,7 +56,7 @@ public class ListaCamisetas extends HttpServlet {
 			
 			ArrayList<ProdutoSG> lista = null;
 			
-			lista = listar.buscaTodos();
+			lista = listar.buscaTodos(1);
 			
 			request.setAttribute("lista_produto", lista);
 					
