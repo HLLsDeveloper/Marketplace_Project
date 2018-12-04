@@ -21,7 +21,7 @@
 		<div class="row mt-4">
 			<c:if test="${not empty lista}">
 				<c:forEach var="produto" items="${lista}">
-						<div class="card col-3 mb-2">
+						<div class="card col-3 mb-4">
 						    <img class="mt-3 mx-auto d-block" src="resources/img/img-produtos/${produto.imagem}" height="300">
 							<div class="card-body">
 						    	<h4 class="card-title letramaiucula text-center">${produto.produto}</h4>
@@ -34,7 +34,6 @@
 						    		<input name="id" value="${produto.idproduto}" class="d-none">
 						    		<input name="referencia" value="${produto.referencia}" class="d-none">
 									<button type="submit" formaction="Descricao" formmethod="get" class="btn btn-success btn-lg btn_sh btn_tam">Comprar</button>
-							    	<button type="button" class="btn btn-outline-danger btn-lg btn_cor btn_sh border-0">♥</button>
 						    	</form>
 						    </div>
 					    </div>
@@ -42,8 +41,13 @@
 			</c:if>
 
 			<c:if test="${empty lista}">
-				<h3 class="col-12 mt-5 mb-3">Não encontramos o que você procura :(</h3>
-				<h4 class="col-12 mt-3 mb-5">Mas não se preocupe, estamos trabalhando para expandir o estoque com novos produtos.</h4>
+			<div class="card col-12 mb-5 mt-5">
+			    <div class="mb-5 mt-5">
+					<h2 class="text-center mb-5">Não encontramos o que você procura :(</h2>
+					<hr>
+					<h4 class="text-center">Mas não se preocupe, estamos trabalhando para expandir o estoque com novos produtos.</h4>
+			    </div>
+			</div>
 			</c:if>
 		</div>
 	</div>

@@ -447,9 +447,13 @@ public class ProdutoDAO {
 			stm.setString(1, "%"+ geral +"%");
 			ResultSet rs = stm.executeQuery();
 			
+			Boolean mostra = false;
+			Integer referencia = 0;
+			
 			while (rs.next()) {
 				
 				ProdutoSG retornoLista = new ProdutoSG();
+				FormatarReal fr = new FormatarReal();
 				
 				retornoLista.setIdproduto(rs.getInt("idproduto"));
 				retornoLista.setProduto(rs.getString("produto"));
@@ -459,14 +463,22 @@ public class ProdutoDAO {
 				retornoLista.setGenero(rs.getString("genero"));
 				retornoLista.setCor(rs.getString("cor"));
 				retornoLista.setCategoria(rs.getString("categoria"));
-				retornoLista.setValor_venda(rs.getFloat("valor_venda"));
+				retornoLista.setValor_venda_fr(fr.formatar(rs.getFloat("valor_venda")));
 				retornoLista.setQuantidade(rs.getInt("quantidade"));
 				retornoLista.setReferencia(rs.getInt("referencia"));
 				retornoLista.setCondicao(rs.getString("condicao"));
 				
-				lista.add(retornoLista);
+				if (referencia != rs.getInt("referencia")) {
+					mostra = true;
+				}
 				
+				if (mostra == true) {
+					lista.add(retornoLista);
+					referencia = rs.getInt("referencia");
+					mostra = false;
+				}
 			}
+			
 			stm.close();
 			con.close();
 			
@@ -492,6 +504,9 @@ public class ProdutoDAO {
 		}	
 		
 		ArrayList<ProdutoSG> produtolink = new ArrayList<>();
+		
+		Boolean mostra = false;
+		Integer referencia = 0;
 		
 		sql = "select * from PRODUTO where categoria= ?";
 		
@@ -520,8 +535,15 @@ public class ProdutoDAO {
 				retornoLista.setReferencia(rs.getInt("referencia"));
 				retornoLista.setCondicao(rs.getString("condicao"));
 				
-				produtolink.add(retornoLista);
-	
+				if (referencia != rs.getInt("referencia")) {
+					mostra = true;
+				}
+				
+				if (mostra == true) {
+					produtolink.add(retornoLista);
+					referencia = rs.getInt("referencia");
+					mostra = false;
+				}
 			}
 			stm.close();
 			con.close();

@@ -92,6 +92,8 @@ public class Pedido extends HttpServlet {
 					sg.getQuantidade_dig();
 					dao.PedidoJuridico(sg, juridico);
 					
+					System.out.println(sg.getIdfornecedor());
+					
 					String subtrair = String.valueOf(sg.getIdproduto());
 					
 					ProdutoSG produto = dao.consultar(subtrair,1);

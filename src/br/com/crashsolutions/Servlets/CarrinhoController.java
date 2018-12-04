@@ -33,7 +33,7 @@ public class CarrinhoController extends HttpServlet {
 			@SuppressWarnings("unchecked")
 			ArrayList<ProdutoSG> mostrarcarrinho = (ArrayList<ProdutoSG>) sessao.getAttribute("carrinho");
 			
-			Float valortotal = 0f;
+			Float valortotal = 0f; 
 			Integer contador = 0;
 			
 			for(ProdutoSG produtosg: mostrarcarrinho) {
@@ -85,6 +85,7 @@ public class CarrinhoController extends HttpServlet {
 			produtosg.getQuantidade_dig();
 			produtosg.getQuantidade();
 			produtosg.getValor_venda();
+			produtosg.getIdfornecedor();
 			carrinho.AdicionarCarrinho(produtosg);
 			
 		}
