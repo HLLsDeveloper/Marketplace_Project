@@ -17,7 +17,7 @@
 </head>
 <body>
 	<c:import url="resources/template/nav.jsp"/>
-
+<div class="header-site py-5">
 	<div class="container mt-4">
 		<!-- INICIO: TABELA DE PRODUTOS -->
 		<div class="card bg-light mb-3">
@@ -38,30 +38,34 @@
 		  	<!-- INICIO: LISTA DE PRODUTOS -->
 			<div class="card-body">
 					<table class="table table-hover">
-						<thead>
+						<thead class="thead-dark">
 						    <tr>
-						      <th scope="col">ID</th>
-						      <th scope="col">Produto</th>
-						      <th scope="col">Valor</th>
-						      <th scope="col">U</th>
-						      <th scope="col"></th>
+						      <th scope="col" class="text-center align-middle font-weight-bold">ID</th>
+						      <th scope="col" class="text-center align-middle font-weight-bold">Produto</th>
+						      <th scope="col" class="text-center align-middle font-weight-bold">Tamanho</th>
+						      <th scope="col" class="text-center align-middle font-weight-bold">Categoria</th>
+						      <th scope="col" class="text-center align-middle font-weight-bold">Valor</th>
+						      <th scope="col" class="text-center align-middle font-weight-bold">Qtd.</th>
+						      <th scope="col" class="text-center align-middle font-weight-bold">Editar</th>
 						    </tr>
 					  	</thead>
 	  					<tbody>
 	  						<c:forEach var="lista" items="${lista_produto}">
 							    <tr>
-							      <th scope="row">${lista.idproduto}</th>
-								  	<td>${lista.produto} ${lista.tamanho} [${lista.categoria}]</td>									  									  	
-								    <td>${lista.valor_venda}</td>
-								    <td>
+							      <th class="text-center align-middle font-weight-bold" scope="row"> ${lista.idproduto}</th>
+								  	<td class="align-middle font-weight-bold"><img  height="80" src="resources/img/img-produtos/${lista.imagem}"> ${lista.produto}</td>	
+								  	<td class="text-center align-middle font-weight-bold"> ${lista.tamanho} 	</td>	
+								  	<td class="text-center align-middle font-weight-bold"> ${lista.categoria}	</td>						  									  	
+								    <td class="text-center align-middle font-weight-bold">${lista.valor_venda}</td>
+								    <td class="text-center align-middle font-weight-bold">
 								    	<div class="d-inline">${lista.quantidade}</div>
 								    </td>
-								    <td>
+								    <td class="text-center align-middle font-weight-bold">
 									    <div class="d-inline">
 									    	<form>
 												<input type="hidden" name="idproduto" value="${lista.idproduto}">
 								      			<button type="submit" formaction="AlterarProduto" formmethod="get" class="btn btn-tshirt"><img src="resources/img/icones/pencil.svg"></button>						      			
-								      			<button class="btn btn-secundary">Ativo</button>
+								      			
 							      			</form>
 							      		</div>
 					      			</td>
@@ -74,7 +78,7 @@
 		</div>
 		<!-- FIM: TABELA DE PRODUTOS -->
 	</div>
-	
+	</div>
 	<c:import url="resources/template/footer.jsp"/>
 </body>
 </html>

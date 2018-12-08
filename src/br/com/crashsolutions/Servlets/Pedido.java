@@ -91,15 +91,13 @@ public class Pedido extends HttpServlet {
 					sg.getCor();
 					sg.getQuantidade_dig();
 					dao.PedidoJuridico(sg, juridico);
-					
-					System.out.println(sg.getIdfornecedor());
-					
+										
 					String subtrair = String.valueOf(sg.getIdproduto());
 					
-					ProdutoSG produto = dao.consultar(subtrair,1);
-					
+					// DAR BAIXA NO BANCO
+					ProdutoSG produto = dao.consultar(subtrair,sg.getIdfornecedor());
 					produto.setQuantidade(produto.getQuantidade() - sg.getQuantidade_dig());
-					dao.alterar(produto,1);
+					dao.baixaQuantidade(produto,sg.getIdfornecedor());
 				}
 			}
 			

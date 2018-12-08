@@ -261,6 +261,40 @@ public class ProdutoDAO {
 		} 
 	}
 	
+	// ALTERA PRODUTO 
+		public void baixaQuantidade(ProdutoSG sg, Integer bd) throws SQLException {
+			
+			if(bd == 1) { 
+				con = new Factory().conBD1(); 
+			}
+			if(bd == 2) {
+				con = new Factory().conBD2(); 		
+			}
+			if(bd == 3) {
+				con = new Factory().conBD3(); 			
+			}	
+			
+			sql = "update PRODUTO set quantidade =? where referencia=? and tamanho=?";
+			
+			try {
+				
+				PreparedStatement stm = con.prepareStatement(sql);
+				
+				stm.setInt(1, sg.getQuantidade());
+				stm.setInt(2, sg.getReferencia());
+				stm.setString(3, sg.getTamanho());
+				
+				stm.execute();
+				stm.close();
+				con.close();
+				
+				
+			} catch (Exception ex) {
+				System.out.println("Ocorreu um erro ao alterar: "+ex);
+				con.close();
+			} 
+		}
+	
 	// BUSCA TODOS OS PRODUTOS
 	public ArrayList<ProdutoSG> buscaTodos(Integer bd) throws SQLException {
 		

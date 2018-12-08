@@ -8,43 +8,43 @@
 <title>T-Shirt Games - Finalização de Compra</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="resources/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="resources/css/style.nav.css">
 <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="resources/js/bootstrap/popper.min.js"></script>
+<script src="resources/js/popper.min.js"></script>
+<script src="resources/js/script.js"></script>
 <script src="resources/js/bootstrap/bootstrap.js"></script>
 </head>
 <body>
 	<c:import url="resources/template/nav.jsp" />
-
-	<section class="container">
+<div class="header-site">
+	<section class="container ">
 		<div class="row">
 			<div class="col-md-12 mt-4">
-				<h2 class="mb-4">Finalização de Compra</h2>
 				<form>
 					<div class="card">
-						<h5 class="card-header">Informações</h5>
+					<h2 class="card-header font-weight-bold">Finalização de Compra</h2>
 						<div class="card-body">
 							<table class="table table-striped table-sm">
-								<thead>
+								<thead class="thead-dark">
 									<tr>
-										<th scope="col">Produto</th>
-										<th scope="col">Categoria</th>
-										<th scope="col">Tamanho</th>
-										<th scope="col">Preço</th>
-										<th scope="col">Quantidade</th>
+										<th scope="col" class="mb-0 text-center align-middle font-weight-bold">Produto</th>
+										<th scope="col" class="mb-0 text-center align-middle font-weight-bold">Categoria</th>
+										<th scope="col" class="mb-0 text-center align-middle font-weight-bold">Tamanho</th>
+										<th scope="col" class="mb-0 text-center align-middle font-weight-bold">Preço</th>
+										<th scope="col" class="mb-0 text-center align-middle font-weight-bold">Quantidade</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="carrinho" items="${carrinho}">
 										<tr>
 											<td>
-												<p id="produto_row1" class="mb-0"><c:out value="${carrinho.produto}"></c:out></p>
-												<p id="produto_row2" class="mb-0"><small><c:out value="${carrinho.cor}"></c:out></small></p>
+												<p id="produto_row1" class="mb-0 text-center align-middle font-weight-bold"><c:out value="${carrinho.produto}"></c:out></p>
+												<p id="produto_row2" class="mb-0 text-center align-middle font-weight-bold"><small><c:out value="${carrinho.cor}"></c:out></small></p>
 											</td>
-											<td><p id="categoria"><c:out value="${carrinho.categoria}"></c:out></p></td>
-											<td><p id="tamanho"><c:out value="${carrinho.tamanho}"></c:out></p></td>
-											<td><p id="valor"><c:out value="R$ ${carrinho.valor_venda}"></c:out></p></td>
-											<td><p id="quantidade"><c:out value="${carrinho.quantidade_dig}"></c:out></p></td>
-										</tr>
+											<td><p id="categoria" class="mb-0 text-center align-middle font-weight-bold"><c:out value="${carrinho.categoria}"></c:out></p></td>
+											<td><p id="tamanho" class="mb-0 text-center align-middle font-weight-bold"><c:out value="${carrinho.tamanho}"></c:out></p></td>
+											<td><p id="valor" class="mb-0 text-center align-middle font-weight-bold"><c:out value="R$ ${carrinho.valor_venda}"></c:out></p></td>
+											<td><p id="quantidade" class="mb-0 text-center align-middle font-weight-bold"><c:out value="${carrinho.quantidade_dig}"></c:out></p></td>
 									</c:forEach>
 								</tbody>
 							</table>
@@ -52,10 +52,36 @@
 					</div>
 				</form>
 			</div>
-			
-			<div class="col-md-6 mt-5">
+			<div class="col-md-6 ">
 				<div class="card">
-					<h5 class="card-header">Entrega</h5>
+					<h5 class="card-header font-weight-bold" >Dados de Cadastrados</h5>
+					<div class="card-body">
+						<ul class="list-group">
+							<c:if test="${not empty idusuario}">
+								<li class="list-group-item list-group-item-dark">Nome:<c:out value=" ${nome}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Email:<c:out value=" ${email}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Celular:<c:out value=" ${celular}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Telefone:<c:out value=" ${telefone}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Tipo de cadastro:<c:out value="Fisico"></c:out></li>
+								<li class="list-group-item list-group-item-dark">CPF:<c:out value=" ${cpf}"></c:out></li>
+							</c:if>
+							<c:if test="${not empty idempresa}">
+								<li class="list-group-item list-group-item-dark">Razão Social:<c:out value=" ${razao}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Nome Fantasia:<c:out value=" ${nomefantasia}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Email:<c:out value=" ${email}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Celular:<c:out value=" ${celular}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Telefone:<c:out value=" ${telefone}"></c:out></li>
+								<li class="list-group-item list-group-item-dark">Tipo de cadastro:<c:out value="Juridico"></c:out></li>
+								<li class="list-group-item list-group-item-dark">CNPJ:<c:out value=" ${cnpj}"></c:out></li>
+							</c:if>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 ">
+				<div class="card">
+					<h5 class="card-header font-weight-bold">Endereço de Entrega</h5>
 					<div class="card-body">
 						<div class="row">
 
@@ -162,7 +188,7 @@
 			</div>
 		</div>
 	</section>
-
+</div>
 	<c:import url="resources/template/footer.jsp"/>
 
 	<!-- MODAL PARA EXCLUSÃO DA LISTA DE PRODUTOS -->
