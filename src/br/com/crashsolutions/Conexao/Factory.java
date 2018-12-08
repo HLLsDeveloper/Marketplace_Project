@@ -12,7 +12,7 @@ public class Factory {
 			try{
 				
 				Class.forName("com.mysql.jdbc.Driver");
-				conBD1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/tshirt_games_web_1", "root", "");
+				conBD1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/tshirt_games_web_1", "root", "1234");
 			} catch  (Exception e){
 				System.out.println("Erro ao conectar: " + e.getMessage());
 			}
@@ -25,7 +25,7 @@ public class Factory {
 			try{
 				
 				Class.forName("com.mysql.jdbc.Driver");
-				conBD2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/tshirt_games_web_2", "root", "");
+				conBD2 = DriverManager.getConnection("jdbc:mysql://localhost:3306/tshirt_games_web_2", "root", "1234");
 
 			} catch  (Exception e){
 				System.out.println("Erro ao conectar: " + e.getMessage());
@@ -39,7 +39,7 @@ public class Factory {
 			try{
 				
 				Class.forName("com.mysql.jdbc.Driver");
-				conBD3 = DriverManager.getConnection("jdbc:mysql://localhost:3306/tshirt_games_web_3", "root", "");
+				conBD3 = DriverManager.getConnection("jdbc:mysql://localhost:3306/tshirt_games_web_3", "root", "1234");
 
 			} catch  (Exception e){
 				System.out.println("Erro ao conectar: " + e.getMessage());
